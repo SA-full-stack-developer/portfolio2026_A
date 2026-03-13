@@ -1,37 +1,46 @@
 @use '@angular/material' as mat;
 @use './variables' as vars;
+@use './mixins' as m;
 @use './flexbox';
-@use './mixins';
 @use './typography';
 
-@include mat.core();
-
-$portfolio-primary: mat.define-palette(mat.$blue-palette, 400);
-$portfolio-accent: mat.define-palette(mat.$deep-purple-palette, 300);
-$portfolio-warn: mat.define-palette(mat.$red-palette);
-
-$portfolio-theme: mat.define-dark-theme(
+$portfolio-theme: mat.define-theme(
   (
     color: (
-      primary: $portfolio-primary,
-      accent: $portfolio-accent,
-      warn: $portfolio-warn,
+      theme-type: dark,
+      primary: mat.$azure-palette,
+      tertiary: mat.$violet-palette,
     ),
-    typography: mat.define-typography-config(
-        $font-family: 'Inter, sans-serif',
-      ),
-    density: 0,
+    typography: (
+      brand-family: 'Inter, sans-serif',
+      plain-family: 'Inter, sans-serif',
+    ),
+    density: (
+      scale: 0,
+    ),
   )
 );
 
-@include mat.all-component-themes($portfolio-theme);
+html {
+  @include mat.all-component-themes($portfolio-theme);
+  @include mat.core();
+}
 
+// Reset
 *,
 *::before,
 *::after {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  //@include m.smooth-scroll();
 }
 
 body {
@@ -39,4 +48,43 @@ body {
   color: vars.$text-primary;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  //@include m.custom-scrollbar();
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  //@include m.appearance-none();
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  //@include m.appearance-none();
+}
+
+:focus-visible {
+  outline: 2px solid vars.$primary-hue;
+  outline-offset: 2px;
 }
