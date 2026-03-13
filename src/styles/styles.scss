@@ -40,12 +40,12 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  //@include m.smooth-scroll();
+  @include m.smooth-scroll();
 }
 
 body {
-  background-color: vars.$bg-dark;
-  color: vars.$text-primary;
+  background-color: v.$bg-dark;
+  color: v.$text-primary;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -53,7 +53,7 @@ body {
 }
 
 body {
-  //@include m.custom-scrollbar();
+  @include m.custom-scrollbar();
 }
 
 img,
@@ -74,17 +74,17 @@ button {
   border: none;
   background: none;
   font-family: inherit;
-  //@include m.appearance-none();
+  @include m.appearance-none();
 }
 
 input,
 select,
 textarea {
   font-family: inherit;
-  //@include m.appearance-none();
+  @include m.appearance-none();
 }
 
 :focus-visible {
-  outline: 2px solid vars.$primary-hue;
+  outline: 2px solid v.$primary-hue;
   outline-offset: 2px;
 }
