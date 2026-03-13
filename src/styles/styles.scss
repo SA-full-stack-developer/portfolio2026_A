@@ -1,0 +1,42 @@
+@use '@angular/material' as mat;
+@use './variables' as vars;
+@use './flexbox';
+@use './mixins';
+@use './typography';
+
+@include mat.core();
+
+$portfolio-primary: mat.define-palette(mat.$blue-palette, 400);
+$portfolio-accent: mat.define-palette(mat.$deep-purple-palette, 300);
+$portfolio-warn: mat.define-palette(mat.$red-palette);
+
+$portfolio-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $portfolio-primary,
+      accent: $portfolio-accent,
+      warn: $portfolio-warn,
+    ),
+    typography: mat.define-typography-config(
+        $font-family: 'Inter, sans-serif',
+      ),
+    density: 0,
+  )
+);
+
+@include mat.all-component-themes($portfolio-theme);
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: vars.$bg-dark;
+  color: vars.$text-primary;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
