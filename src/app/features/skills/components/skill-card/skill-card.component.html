@@ -1,0 +1,32 @@
+<article
+  class="skill-card"
+  [class]="'skill-card--' + skillLevel()"
+  [matTooltip]="tooltipText()"
+  (click)="onSelect()"
+  (keydown.enter)="onSelect()"
+  tabindex="0"
+  role="button"
+  [attr.aria-label]="skill().name + ' - ' + skillLevelLabel()"
+>
+  <div class="skill-card__header flex flex-between">
+    <span class="skill-card__name">{{ skill().name }}</span>
+    @if (skill().highlighted) {
+      <span class="skill-card__badge">⭐</span>
+    }
+  </div>
+
+  <div
+    class="skill-card__bar-container"
+    role="progressbar"
+    [attr.aria-valuenow]="skill().level"
+    aria-valuemin="0"
+    aria-valuemax="100"
+  >
+    <div class="skill-card__bar" [style.width.%]="isVisible() ? skill().level : 0"></div>
+  </div>
+
+  <div class="skill-card__footer flex flex-between">
+    <span class="skill-card__level">{{ skillLevelLabel() }}</span>
+    <span class="skill-card__percent">{{ skill().level }}%</span>
+  </div>
+</article>

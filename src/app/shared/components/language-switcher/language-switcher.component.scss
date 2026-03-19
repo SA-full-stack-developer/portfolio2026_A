@@ -1,0 +1,33 @@
+@use '../../../../styles/variables' as variables;
+@use '../../../../styles/mixins' as m;
+
+.lang-switcher {
+  &__btn {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: variables.$text-secondary;
+    background: variables.$bg-card;
+    border: 1px solid variables.$border-subtle;
+    @include m.transition(all 0.2s ease);
+
+    &:hover {
+      color: variables.$text-primary;
+      border-color: rgba(variables.$primary-hue, 0.4);
+    }
+
+    &--active {
+      color: variables.$primary-hue;
+      border-color: variables.$primary-hue;
+      background: rgba(variables.$primary-hue, 0.1);
+    }
+  }
+
+  &__flag {
+    margin-right: 4px;
+  }
+  &__code {
+    letter-spacing: 0.05em;
+  }
+}

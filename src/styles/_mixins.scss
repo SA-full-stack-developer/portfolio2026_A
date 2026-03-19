@@ -1,4 +1,6 @@
-@use 'variables' as var;
+@use 'sass:map';
+@use 'sass:color';
+@use 'variables' as v;
 
 @mixin flex($direction: row, $wrap: nowrap) {
   display: -webkit-box;
@@ -29,11 +31,11 @@
   justify-content: space-between;
 }
 
-@mixin transition($props: all, $duration: 0.3s, $easing: ease) {
-  -webkit-transition: $props $duration $easing;
-  -moz-transition: $props $duration $easing;
-  -o-transition: $props $duration $easing;
-  transition: $props $duration $easing;
+@mixin transition($values...) {
+  -webkit-transition: $values;
+  -moz-transition: $values;
+  -o-transition: $values;
+  transition: $values;
 }
 
 @mixin transform($value) {
@@ -137,7 +139,7 @@ $breakpoints: (
 );
 
 @mixin respond-to($bp) {
-  @media (max-width: map-get($breakpoints, $bp)) {
+  @media (max-width: map.get($breakpoints, $bp)) {
     @content;
   }
 }

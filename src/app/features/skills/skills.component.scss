@@ -1,0 +1,49 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+.skills {
+  padding: 80px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &__header {
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: v.$text-primary;
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    color: v.$text-secondary;
+    font-size: 0.9rem;
+  }
+
+  app-skill-filter {
+    margin-bottom: 32px;
+    display: block;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+
+    @include m.respond-to('sm') {
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+    }
+  }
+
+  &__empty {
+    color: v.$text-secondary;
+    font-size: 0.9rem;
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+  }
+}

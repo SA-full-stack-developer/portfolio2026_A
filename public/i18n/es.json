@@ -1,0 +1,38 @@
+{
+  "NAV": {
+    "SKILLS": "Tecnologías",
+    "PROJECTS": "Proyectos",
+    "EXPERIENCE": "Experiencia",
+    "CONTACT": "Contacto"
+  },
+  "SKILLS": {
+    "TITLE": "Stack Tecnológico",
+    "SUBTITLE_ALL": "{{filtered}} de {{total}} tecnologías",
+    "SUBTITLE_HIGHLIGHTED": "· {{count}} destacadas",
+    "EMPTY": "No hay tecnologías en esta categoría.",
+    "YEARS_ONE": "{{count}} año de experiencia",
+    "YEARS_OTHER": "{{count}} años de experiencia",
+    "LEVELS": {
+      "EXPERT": "Experto",
+      "INTERMEDIATE": "Intermedio",
+      "BEGINNER": "Básico"
+    },
+    "CATEGORIES": {
+      "ALL": "Todos",
+      "FRONTEND": "Frontend",
+      "BACKEND": "Backend",
+      "MOBILE": "Mobile",
+      "DEVOPS": "DevOps",
+      "TOOLS": "Herramientas"
+    },
+    "FILTER": {
+      "HIGHLIGHTED": "Destacados"
+    }
+  },
+  "COMMON": {
+    "LOADING": "Cargando...",
+    "ERROR": "Algo ha ido mal",
+    "LANG_ES": "Español",
+    "LANG_EN": "Inglés"
+  }
+}

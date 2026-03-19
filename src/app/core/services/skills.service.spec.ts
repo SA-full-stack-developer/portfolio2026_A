@@ -1,13 +1,7 @@
-import { Skill, SkillsService } from './skills.service';
-
-import { TestBed } from '@angular/core/testing';
 import { provideZonelessChangeDetection } from '@angular/core';
-
-const mockSkills: Skill[] = [
-  { id: '1', name: 'Angular', level: 90, category: 'frontend', highlighted: true },
-  { id: '2', name: 'NestJS', level: 70, category: 'backend', highlighted: false },
-  { id: '3', name: 'SCSS', level: 85, category: 'frontend', highlighted: false },
-];
+import { TestBed } from '@angular/core/testing';
+import { SKILLS_DATA } from '@core/data/skills.data';
+import { SkillsService } from './skills.service';
 
 describe('SkillsService', () => {
   let service: SkillsService;
@@ -23,42 +17,105 @@ describe('SkillsService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should start with empty skills', () => {
-    expect(service.skills()).toHaveLength(0);
-    expect(service.totalSkills()).toBe(0);
+  it('should start with all skills from SKILLS_DATA', () => {
+    expect(service.skills()).toHaveLength(SKILLS_DATA.length);
   });
 
-  it('should set skills correctly', () => {
-    service.setSkills(mockSkills);
-    expect(service.skills()).toHaveLength(3);
-    expect(service.totalSkills()).toBe(3);
+  it('should start with default filter', () => {
+    expect(service.filter().category).toBe('all');
+    expect(service.filter().onlyHighlighted).toBe(false);
   });
 
-  it('should filter frontend skills via computed', () => {
-    service.setSkills(mockSkills);
-    const frontend = service.frontendSkills();
-    expect(frontend).toHaveLength(2);
-    expect(frontend.every((s) => s.category === 'frontend')).toBe(true);
+  it('should start showing all skills when filter is default', () => {
+    expect(service.filteredSkills()).toHaveLength(SKILLS_DATA.length);
   });
 
-  it('should toggle highlight correctly', () => {
-    service.setSkills(mockSkills);
+  it('should return unique categories', () => {
+    const categories = service.categories();
+    const unique = new Set(categories);
+    expect(categories.length).toBe(unique.size);
+  });
 
-    // Angular está highlighted=true, lo desmarcamos
-    service.toggleHighlight('1');
-    expect(service.skills().find((s) => s.id === '1')?.highlighted).toBe(false);
+  it('should include frontend in categories', () => {
+    expect(service.categories()).toContain('frontend');
+  });
 
-    // Lo volvemos a marcar
-    service.toggleHighlight('1');
-    expect(service.skills().find((s) => s.id === '1')?.highlighted).toBe(true);
+  it('should return correct totalSkills', () => {
+    expect(service.totalSkills()).toBe(SKILLS_DATA.length);
+  });
+
+  it('should return correct highlightedCount', () => {
+    const expected = SKILLS_DATA.filter((s) => s.highlighted).length;
+    expect(service.highlightedCount()).toBe(expected);
+  });
+
+  it('should filter by category', () => {
+    service.setFilter({ category: 'frontend' });
+    const filtered = service.filteredSkills();
+    expect(filtered.every((s) => s.category === 'frontend')).toBe(true);
+  });
+
+  it('should filter by highlighted', () => {
+    service.setFilter({ onlyHighlighted: true });
+    const filtered = service.filteredSkills();
+    expect(filtered.every((s) => s.highlighted)).toBe(true);
+  });
+
+  it('should filter by category and highlighted combined', () => {
+    service.setFilter({ category: 'frontend', onlyHighlighted: true });
+    const filtered = service.filteredSkills();
+    expect(filtered.every((s) => s.category === 'frontend' && s.highlighted)).toBe(true);
+  });
+
+  it('should update only the provided filter property', () => {
+    service.setFilter({ category: 'frontend' });
+    service.setFilter({ onlyHighlighted: true });
+    expect(service.filter().category).toBe('frontend');
+    expect(service.filter().onlyHighlighted).toBe(true);
+  });
+
+  it('should reset filter to default', () => {
+    service.setFilter({ category: 'frontend', onlyHighlighted: true });
+    service.resetFilter();
+    expect(service.filter().category).toBe('all');
+    expect(service.filter().onlyHighlighted).toBe(false);
+  });
+
+  it('should show all skills after reset', () => {
+    service.setFilter({ category: 'frontend' });
+    service.resetFilter();
+    expect(service.filteredSkills()).toHaveLength(SKILLS_DATA.length);
+  });
+
+  it('should toggle highlight on a skill', () => {
+    const skill = SKILLS_DATA[0];
+    const before = service.skills().find((s) => s.id === skill.id)!.highlighted;
+    service.toggleHighlight(skill.id);
+    const after = service.skills().find((s) => s.id === skill.id)!.highlighted;
+    expect(after).toBe(!before);
   });
 
   it('should not mutate original array on toggleHighlight', () => {
-    service.setSkills(mockSkills);
     const before = service.skills();
-    service.toggleHighlight('2');
+    service.toggleHighlight(SKILLS_DATA[0].id);
     const after = service.skills();
-    // Inmutabilidad: debe ser un nuevo array
     expect(before).not.toBe(after);
+  });
+
+  it('should not affect other skills when toggling one', () => {
+    const targetId = SKILLS_DATA[0].id;
+    const othersBefore = service
+      .skills()
+      .filter((s) => s.id !== targetId)
+      .map((s) => s.highlighted);
+
+    service.toggleHighlight(targetId);
+
+    const othersAfter = service
+      .skills()
+      .filter((s) => s.id !== targetId)
+      .map((s) => s.highlighted);
+
+    expect(othersBefore).toEqual(othersAfter);
   });
 });

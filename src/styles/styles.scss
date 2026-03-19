@@ -1,8 +1,9 @@
 @use '@angular/material' as mat;
-@use './variables' as vars;
+@use './variables' as v;
 @use './mixins' as m;
 @use './flexbox';
 @use './typography';
+@use './animations';
 
 $portfolio-theme: mat.define-theme(
   (

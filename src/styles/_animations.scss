@@ -1,0 +1,105 @@
+// Keyframes base
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(24px);
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-24px);
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(-24px);
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: translateY(12px);
+    transform: translateY(12px);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.92);
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+// Clases de animación (usadas con animate.enter / animate.leave)
+
+.anim-fade-in-up {
+  -webkit-animation: fadeInUp 0.4s ease forwards;
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.anim-fade-in-down {
+  -webkit-animation: fadeInDown 0.4s ease forwards;
+  animation: fadeInDown 0.4s ease forwards;
+}
+
+.anim-fade-in-left {
+  -webkit-animation: fadeInLeft 0.4s ease forwards;
+  animation: fadeInLeft 0.4s ease forwards;
+}
+
+.anim-scale-in {
+  -webkit-animation: scaleIn 0.35s ease forwards;
+  animation: scaleIn 0.35s ease forwards;
+}
+
+.anim-fade-out {
+  -webkit-animation: fadeOut 0.3s ease forwards;
+  animation: fadeOut 0.3s ease forwards;
+}
+
+// Leave con CSS transition (más suave)
+.anim-leave-fade {
+  opacity: 0;
+  -webkit-transform: translateY(8px) scale(0.97);
+  transform: translateY(8px) scale(0.97);
+  -webkit-transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    -webkit-transform 0.25s ease;
+}

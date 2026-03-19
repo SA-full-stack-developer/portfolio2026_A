@@ -1,0 +1,13 @@
+<div class="lang-switcher flex gap-sm">
+  @for (lang of languageService.availableLanguages; track lang.code) {
+    <button
+      class="lang-switcher__btn"
+      [class.lang-switcher__btn--active]="languageService.currentLang() === lang.code"
+      (click)="languageService.setLanguage(lang.code)"
+      [attr.aria-label]="lang.label"
+    >
+      <span class="lang-switcher__flag">{{ lang.flag }}</span>
+      <span class="lang-switcher__code">{{ lang.code.toUpperCase() }}</span>
+    </button>
+  }
+</div>

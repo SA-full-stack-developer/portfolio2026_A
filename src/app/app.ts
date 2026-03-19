@@ -1,12 +1,21 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+
+import { LanguageService } from '@core/services/language.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { LanguageSwitcherComponent } from '@shared/components/language-switcher/language-switcher.component';
+import { FeatureFlagDirective } from '@shared/directives/feature-flag.directive';
+import { SkillsComponent } from './features/skills/skills.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [SkillsComponent, FeatureFlagDirective, TranslateModule, LanguageSwitcherComponent],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('portfolio2026_A');
+  private readonly languageService = inject(LanguageService);
+
+  constructor() {
+    this.languageService.init();
+  }
 }

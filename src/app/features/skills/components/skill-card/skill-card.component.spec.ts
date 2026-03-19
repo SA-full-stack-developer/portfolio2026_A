@@ -1,0 +1,202 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  TranslateLoader,
+  TranslateService,
+  TranslationObject,
+  provideTranslateService,
+} from '@ngx-translate/core';
+import { Observable, of } from 'rxjs';
+
+import { provideZonelessChangeDetection } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { Skill } from '@core/models/skill.model';
+import { SkillCardComponent } from './skill-card.component';
+
+// Mock del loader de traducciones
+class MockTranslateLoader implements TranslateLoader {
+  getTranslation(): Observable<TranslationObject> {
+    return of({
+      SKILLS: {
+        LEVELS: {
+          EXPERT: 'Experto',
+          INTERMEDIATE: 'Intermedio',
+          BEGINNER: 'Básico',
+        },
+        YEARS_ONE: '{{count}} año de experiencia',
+        YEARS_OTHER: '{{count}} años de experiencia',
+      },
+    } as TranslationObject);
+  }
+}
+
+// Mocks de skills
+const expertSkill: Skill = {
+  id: '1',
+  name: 'Angular',
+  level: 90,
+  category: 'frontend',
+  icon: 'angular',
+  highlighted: true,
+  yearsOfExperience: 5,
+};
+
+const intermediateSkill: Skill = {
+  id: '2',
+  name: 'NestJS',
+  level: 65,
+  category: 'backend',
+  icon: 'nestjs',
+  highlighted: false,
+  yearsOfExperience: 2,
+};
+
+const beginnerSkill: Skill = {
+  id: '3',
+  name: 'Flutter',
+  level: 30,
+  category: 'mobile',
+  icon: 'flutter',
+  highlighted: false,
+  yearsOfExperience: 1,
+};
+
+describe('SkillCardComponent', () => {
+  let fixture: ComponentFixture<SkillCardComponent>;
+  let component: SkillCardComponent;
+
+  // Helper para crear el componente con una skill concreta
+  function createComponent(skill: Skill): void {
+    fixture = TestBed.createComponent(SkillCardComponent);
+    component = fixture.componentInstance;
+    fixture.componentRef.setInput('skill', skill);
+    fixture.detectChanges();
+  }
+
+  beforeEach(async () => {
+    TestBed.configureTestingModule({
+      imports: [SkillCardComponent],
+      providers: [
+        provideZonelessChangeDetection(),
+        provideTranslateService({
+          loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
+        }),
+      ],
+    });
+
+    const translate = TestBed.inject(TranslateService);
+    await translate.use('es').toPromise();
+  });
+
+  it('should create', () => {
+    createComponent(expertSkill);
+    expect(component).toBeTruthy();
+  });
+
+  // Renderizado de datos
+  it('should render skill name', () => {
+    createComponent(expertSkill);
+    const el = fixture.debugElement.query(By.css('.skill-card__name'));
+    expect(el.nativeElement.textContent.trim()).toBe('Angular');
+  });
+
+  it('should render skill level percentage', () => {
+    createComponent(expertSkill);
+    const el = fixture.debugElement.query(By.css('.skill-card__percent'));
+    expect(el.nativeElement.textContent.trim()).toBe('90%');
+  });
+
+  // CSS classes por nivel
+  it('should apply expert class when level >= 80', () => {
+    createComponent(expertSkill);
+    const card = fixture.debugElement.query(By.css('.skill-card'));
+    expect(card.classes['skill-card--expert']).toBe(true);
+  });
+
+  it('should apply intermediate class when level is between 50 and 79', () => {
+    createComponent(intermediateSkill);
+    const card = fixture.debugElement.query(By.css('.skill-card'));
+    expect(card.classes['skill-card--intermediate']).toBe(true);
+  });
+
+  it('should apply beginner class when level is below 50', () => {
+    createComponent(beginnerSkill);
+    const card = fixture.debugElement.query(By.css('.skill-card'));
+    expect(card.classes['skill-card--beginner']).toBe(true);
+  });
+
+  // Badge destacado
+  it('should show badge when skill is highlighted', () => {
+    createComponent(expertSkill); // highlighted: true
+    const badge = fixture.debugElement.query(By.css('.skill-card__badge'));
+    expect(badge).toBeTruthy();
+  });
+
+  it('should not show badge when skill is not highlighted', () => {
+    createComponent(intermediateSkill); // highlighted: false
+    const badge = fixture.debugElement.query(By.css('.skill-card__badge'));
+    expect(badge).toBeNull();
+  });
+
+  // Computed: skillLevelLabel
+  it('should return expert label for level >= 80', () => {
+    createComponent(expertSkill);
+    expect(component.skillLevelLabel()).toBe('Experto');
+  });
+
+  it('should return intermediate label for level between 50 and 79', () => {
+    createComponent(intermediateSkill);
+    expect(component.skillLevelLabel()).toBe('Intermedio');
+  });
+
+  it('should return beginner label for level < 50', () => {
+    createComponent(beginnerSkill);
+    expect(component.skillLevelLabel()).toBe('Básico');
+  });
+
+  // Computed: tooltipText
+  it('should show singular year in tooltip when yearsOfExperience is 1', () => {
+    createComponent(beginnerSkill); // yearsOfExperience: 1
+    expect(component.tooltipText()).toContain('1');
+  });
+
+  it('should show plural years in tooltip when yearsOfExperience > 1', () => {
+    createComponent(expertSkill); // yearsOfExperience: 5
+    expect(component.tooltipText()).toContain('5');
+  });
+
+  // Output: selected
+  it('should emit selected skill when card is clicked', () => {
+    createComponent(expertSkill);
+    let emittedSkill: Skill | undefined;
+    component.selected.subscribe((s: Skill) => (emittedSkill = s));
+
+    fixture.debugElement.query(By.css('.skill-card')).triggerEventHandler('click');
+
+    expect(emittedSkill).toEqual(expertSkill);
+  });
+
+  it('should emit selected skill when Enter key is pressed', () => {
+    createComponent(expertSkill);
+    let emittedSkill: Skill | undefined;
+    component.selected.subscribe((s: Skill) => (emittedSkill = s));
+
+    fixture.debugElement.query(By.css('.skill-card')).triggerEventHandler('keydown.enter');
+
+    expect(emittedSkill).toEqual(expertSkill);
+  });
+
+  // isVisible signal
+  it('should set isVisible to false before 50ms', () => {
+    createComponent(expertSkill);
+    expect(component.isVisible()).toBe(false);
+  });
+
+  it('should set isVisible to true after 50ms', async () => {
+    jest.useFakeTimers();
+    createComponent(expertSkill);
+    expect(component.isVisible()).toBe(false);
+    jest.advanceTimersByTime(50);
+    expect(component.isVisible()).toBe(true);
+    jest.useRealTimers();
+  });
+});

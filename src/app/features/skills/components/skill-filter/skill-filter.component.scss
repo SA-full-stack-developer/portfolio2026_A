@@ -1,0 +1,32 @@
+@use '../../../../../styles/variables' as v;
+@use '../../../../../styles/mixins' as m;
+
+.skill-filter {
+  &__btn {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: v.$text-secondary;
+    background: v.$bg-card;
+    border: 1px solid v.$border-subtle;
+    @include m.transition(all 0.2s ease);
+
+    &:hover {
+      color: v.$text-primary;
+      border-color: rgba(v.$primary-hue, 0.4);
+    }
+
+    &--active {
+      color: v.$primary-hue;
+      border-color: v.$primary-hue;
+      background: rgba(v.$primary-hue, 0.1);
+    }
+
+    &--highlight.skill-filter__btn--active {
+      color: #f5c518;
+      border-color: #f5c518;
+      background: rgba(#f5c518, 0.1);
+    }
+  }
+}

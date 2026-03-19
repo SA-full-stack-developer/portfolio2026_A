@@ -1,0 +1,19 @@
+<div class="skill-filter flex flex-wrap gap-sm">
+  @for (cat of allCategories(); track cat) {
+    <button
+      class="skill-filter__btn"
+      [class.skill-filter__btn--active]="activeFilter().category === cat"
+      (click)="selectCategory(cat)"
+    >
+      {{ getLabelFor(cat) | translate }}
+    </button>
+  }
+
+  <button
+    class="skill-filter__btn skill-filter__btn--highlight"
+    [class.skill-filter__btn--active]="activeFilter().onlyHighlighted"
+    (click)="toggleHighlighted()"
+  >
+    ⭐ {{ 'SKILLS.FILTER.HIGHLIGHTED' | translate }}
+  </button>
+</div>

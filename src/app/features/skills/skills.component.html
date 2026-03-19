@@ -1,0 +1,37 @@
+<section class="skills" aria-labelledby="skills-title">
+  <header class="skills__header">
+    <h2 id="skills-title" class="skills__title">
+      {{ 'SKILLS.TITLE' | translate }}
+    </h2>
+    <p class="skills__subtitle">
+      {{
+        'SKILLS.SUBTITLE_ALL'
+          | translate
+            : {
+                filtered: filteredSkills().length,
+                total: totalSkills(),
+              }
+      }}
+      @if (filter().onlyHighlighted) {
+        {{ 'SKILLS.SUBTITLE_HIGHLIGHTED' | translate: { count: highlightedCount() } }}
+      }
+    </p>
+  </header>
+
+  <app-skill-filter
+    [categories]="categories()"
+    [activeFilter]="filter()"
+    (filterChange)="onFilterChange($event)"
+  >
+  </app-skill-filter>
+
+  <div class="skills__grid">
+    @for (skill of filteredSkills(); track skill.id) {
+      <app-skill-card [skill]="skill" (selected)="onSkillSelected($event)"> </app-skill-card>
+    } @empty {
+      <p class="skills__empty">
+        {{ 'SKILLS.EMPTY' | translate }}
+      </p>
+    }
+  </div>
+</section>
