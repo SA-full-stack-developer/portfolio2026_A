@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { provideHttpClient } from '@angular/common/http';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { AVAILABLE_LANGUAGES } from '@core/models/language.model';
 import { TranslationObject } from '@ngx-translate/core'; // ✅ TranslationObject
 import { LanguageService } from './language.service';
 
@@ -70,5 +71,10 @@ describe('LanguageService', () => {
     localStorage.setItem('lang', 'en');
     service.init();
     expect(service.currentLang()).toBe('en');
+  });
+
+  it('should fallback to first language if currentLang is unknown', () => {
+    service['_currentLang'].set('fr' as any); // forzamos un idioma no existente
+    expect(service.currentLanguageOption()).toEqual(AVAILABLE_LANGUAGES[0]);
   });
 });

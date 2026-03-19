@@ -194,4 +194,15 @@ describe('SkillsComponent', () => {
     await createComponent();
     expect(component.categories().length).toBeGreaterThan(0);
   });
+
+  it('should call onSkillSelected without errors', () => {
+    createComponent();
+    const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
+    const mockSkill = SKILLS_DATA[0];
+
+    expect(() => component.onSkillSelected(mockSkill)).not.toThrow();
+    expect(consoleSpy).toHaveBeenCalledWith('Skill seleccionada:', mockSkill.name);
+
+    consoleSpy.mockRestore();
+  });
 });

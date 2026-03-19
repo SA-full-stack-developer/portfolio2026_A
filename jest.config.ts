@@ -23,12 +23,15 @@ const config: Config = {
     'src/app/**/*.ts',
     '!src/app/**/*.module.ts',
     '!src/app/**/*.routes.ts',
+    '!src/app/**/*.routes.server.ts',
+    '!src/app/app.routes.server.ts',
     '!src/app/**/index.ts',
     '!src/app/app.component.ts',
     '!src/app/app.config.ts',
     '!src/app/app.config.server.ts',
     '!src/main.ts',
     '!src/main.server.ts',
+    '!src/server.routes.ts',
   ],
   coverageThreshold: {
     global: {
