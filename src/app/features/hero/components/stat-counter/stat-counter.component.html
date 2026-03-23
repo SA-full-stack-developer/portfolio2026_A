@@ -1,7 +1,10 @@
-<article class="flex flex-col flex-center gap-md stat-counter-card">
-  <span class="stat-counter-card__icon">{{ icon() }}</span>
-  <span class="stat-counter-card__value"
-    >{{ showPlus() ? '+' : '' }}{{ displayValue() | number: '1.0-0' }}</span
-  >
-  <span class="stat-counter-card__label">{{ label() | translate }}</span>
+<article
+  class="flex flex-col flex-center gap-md stat-counter-card"
+  [attr.aria-label]="label() + ': ' + displayValue()"
+>
+  <span class="stat-counter-card__icon" aria-hidden="true">{{ icon() }}</span>
+  <span class="stat-counter-card__value" aria-live="polite">
+    {{ showPlus() ? '+' : '' }}{{ displayValue() | number: '1.0-0' }}
+  </span>
+  <span class="stat-counter-card__label flex flex-center">{{ label() | translate }}</span>
 </article>
