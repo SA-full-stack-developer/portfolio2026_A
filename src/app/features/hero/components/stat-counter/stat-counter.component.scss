@@ -1,0 +1,23 @@
+@use '../../../../../styles/variables' as v;
+@use '../../../../../styles/mixins' as m;
+
+.stat-counter-card {
+  @include m.card-base();
+  height: 100%;
+
+  &__icon {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+  }
+
+  &__value {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    color: v.$primary-hue;
+  }
+
+  &__label {
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+    color: v.$text-secondary;
+    text-align: center;
+  }
+}

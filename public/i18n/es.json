@@ -34,5 +34,11 @@
     "ERROR": "Algo ha ido mal",
     "LANG_ES": "Español",
     "LANG_EN": "Inglés"
+  },
+  "STATS": {
+    "EXPERIENCE": "Años de experiencia",
+    "COFFEES": "Cafés dedicados a la programación",
+    "REMOTE": "Años trabajando en remoto",
+    "SKILLS": "Skills destacadas"
   }
 }

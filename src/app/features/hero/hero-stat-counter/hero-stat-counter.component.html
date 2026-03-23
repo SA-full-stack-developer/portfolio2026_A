@@ -1,0 +1,11 @@
+<section class="hero-stat-counter__grid">
+  @for (stat of stats; track stat.id) {
+    <app-stat-counter
+      [icon]="stat.icon"
+      [finalValue]="getFinalValue(stat.stat)"
+      [label]="stat.label"
+      [showPlus]="getShowPlus(stat.stat)"
+    >
+    </app-stat-counter>
+  }
+</section>

@@ -2,20 +2,8 @@
 @use '../../../../../styles/mixins' as m;
 
 .skill-card {
-  background: v.$bg-card;
-  border: 1px solid v.$border-subtle;
-  border-radius: 12px;
-  padding: 20px;
-  cursor: pointer;
-  @include m.transition(transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease);
-  outline: none;
-
-  &:hover,
-  &:focus-visible {
-    @include m.transform(translateY(-3px));
-    border-color: rgba(v.$primary-hue, 0.4);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  }
+  @include m.card-base();
+  @include m.card-interactive();
 
   &--expert {
     --bar-color: #4f8ef7;

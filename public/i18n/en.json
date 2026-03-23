@@ -34,5 +34,11 @@
     "ERROR": "Something went wrong",
     "LANG_ES": "Spanish",
     "LANG_EN": "English"
+  },
+  "STATS": {
+    "EXPERIENCE": "Years of experience",
+    "COFFEES": "Coffees dedicated to coding",
+    "REMOTE": "Years working remotely",
+    "SKILLS": "Highlighted skills"
   }
 }

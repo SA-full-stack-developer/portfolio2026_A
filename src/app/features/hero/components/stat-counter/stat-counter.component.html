@@ -1,0 +1,7 @@
+<article class="flex flex-col flex-center gap-md stat-counter-card">
+  <span class="stat-counter-card__icon">{{ icon() }}</span>
+  <span class="stat-counter-card__value"
+    >{{ showPlus() ? '+' : '' }}{{ displayValue() | number: '1.0-0' }}</span
+  >
+  <span class="stat-counter-card__label">{{ label() | translate }}</span>
+</article>

@@ -1,0 +1,17 @@
+@use '../../../../styles/mixins' as m;
+
+.hero-stat-counter {
+  &__grid {
+    padding: 80px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+
+    @include m.respond-to('sm') {
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+  }
+}
