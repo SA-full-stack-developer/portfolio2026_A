@@ -137,31 +137,34 @@ describe('SkillCardComponent', () => {
     expect(badge).toBeNull();
   });
 
-  // Computed: skillLevelLabel
-  it('should return expert label for level >= 80', () => {
+  it('should return expert key for level >= 80', () => {
     createComponent(expertSkill);
-    expect(component.skillLevelLabel()).toBe('Experto');
+    expect(component.skillLevelKey()).toBe('SKILLS.LEVELS.EXPERT');
   });
 
-  it('should return intermediate label for level between 50 and 79', () => {
+  it('should return intermediate key for level between 50 and 79', () => {
     createComponent(intermediateSkill);
-    expect(component.skillLevelLabel()).toBe('Intermedio');
+    expect(component.skillLevelKey()).toBe('SKILLS.LEVELS.INTERMEDIATE');
   });
 
-  it('should return beginner label for level < 50', () => {
+  it('should return beginner key for level < 50', () => {
     createComponent(beginnerSkill);
-    expect(component.skillLevelLabel()).toBe('Básico');
+    expect(component.skillLevelKey()).toBe('SKILLS.LEVELS.BEGINNER');
   });
 
-  // Computed: tooltipText
-  it('should show singular year in tooltip when yearsOfExperience is 1', () => {
-    createComponent(beginnerSkill); // yearsOfExperience: 1
-    expect(component.tooltipText()).toContain('1');
+  it('should return singular key when yearsOfExperience is 1', () => {
+    createComponent(beginnerSkill);
+    expect(component.tooltipKey()).toBe('SKILLS.YEARS_ONE');
   });
 
-  it('should show plural years in tooltip when yearsOfExperience > 1', () => {
-    createComponent(expertSkill); // yearsOfExperience: 5
-    expect(component.tooltipText()).toContain('5');
+  it('should return plural key when yearsOfExperience > 1', () => {
+    createComponent(expertSkill);
+    expect(component.tooltipKey()).toBe('SKILLS.YEARS_OTHER');
+  });
+
+  it('should return correct tooltip params', () => {
+    createComponent(expertSkill);
+    expect(component.tooltipParams()).toEqual({ count: 5 });
   });
 
   // Output: selected

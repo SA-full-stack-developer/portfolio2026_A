@@ -79,20 +79,11 @@ describe('App', () => {
     expect(localStorage.getItem('lang')).not.toBeNull();
   });
 
-  // Componentes hijos
-  it('should render language switcher', async () => {
+  it('should render router outlet', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     fixture.detectChanges();
-    const switcher = fixture.debugElement.query(By.css('app-language-switcher'));
-    expect(switcher).toBeTruthy();
-  });
-
-  it('should render skills section', async () => {
-    const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
-    fixture.detectChanges();
-    const skills = fixture.debugElement.query(By.css('app-skills'));
-    expect(skills).toBeTruthy();
+    const outlet = fixture.debugElement.query(By.css('router-outlet'));
+    expect(outlet).toBeTruthy();
   });
 });
