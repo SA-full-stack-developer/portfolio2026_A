@@ -20,15 +20,18 @@ export class HeroStatCounterComponent {
     if (stat.kind === STAT_KIND.STATIC) return stat.value;
 
     if (stat.kind === STAT_KIND.DYNAMIC && stat.calculation === STAT_CALCULATION.YEARS) {
-      return calculateYearsBetweenDates(stat.startDate);
+      const years = calculateYearsBetweenDates(stat.startDate);
+      return years * (stat.multiplier ?? 1);
     }
 
     if (stat.kind === STAT_KIND.DYNAMIC && stat.calculation === STAT_CALCULATION.DAYS) {
-      return calculateDaysBetweenDates(stat.startDate);
+      const days = calculateDaysBetweenDates(stat.startDate);
+      return days * (stat.multiplier ?? 1);
     }
 
     if (stat.kind === STAT_KIND.SERVICE) {
-      return this.skillsService.highlightedCount();
+      const num = this.skillsService.highlightedCount();
+      return num * (stat.multiplier ?? 1);
     }
 
     return 0;

@@ -32,6 +32,7 @@ export const STATS_DATA: Stat[] = [
       startDate: new Date('2016-01-01'),
       calculation: 'days',
       showPlus: true,
+      multiplier: 3,
     },
     icon: '☕',
   },

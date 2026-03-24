@@ -13,14 +13,15 @@ export type StatKind = (typeof STAT_KIND)[keyof typeof STAT_KIND];
 export type StatCalculation = (typeof STAT_CALCULATION)[keyof typeof STAT_CALCULATION];
 
 export type StatValue =
-  | { kind: typeof STAT_KIND.STATIC; value: number; showPlus?: boolean }
+  | { kind: typeof STAT_KIND.STATIC; value: number; showPlus?: boolean; multiplier?: number }
   | {
       kind: typeof STAT_KIND.DYNAMIC;
       startDate: Date;
       calculation: StatCalculation;
       showPlus?: boolean;
+      multiplier?: number;
     }
-  | { kind: typeof STAT_KIND.SERVICE };
+  | { kind: typeof STAT_KIND.SERVICE; multiplier?: number };
 
 export interface Stat {
   id: string;
