@@ -1,34 +1,39 @@
 import { FeatureFlag } from '@core/models/feature-flag.model';
 
 export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
+  HERO_STATS: {
+    id: 'HERO_STATS',
+    label: 'Hero Stats',
+    visibility: 'public',
+  },
   SKILLS: {
     id: 'SKILLS',
     label: 'Stack Tecnológico',
     visibility: 'public',
-    description: 'Sección de habilidades técnicas',
   },
   PROJECTS: {
     id: 'PROJECTS',
     label: 'Proyectos',
-    visibility: 'public',
-    description: 'Portfolio de proyectos realizados',
+    visibility: 'hidden', // aún no existe
   },
   EXPERIENCE: {
     id: 'EXPERIENCE',
     label: 'Experiencia',
+    visibility: 'hidden', // aún no existe
+  },
+  CONTACT: {
+    id: 'CONTACT',
+    label: 'Contacto',
     visibility: 'public',
-    description: 'Trayectoria profesional',
+  },
+  LAB: {
+    id: 'LAB',
+    label: 'Laboratorio',
+    visibility: 'admin', // solo admin
   },
   EXPERIMENTS: {
     id: 'EXPERIMENTS',
     label: 'Experimentos',
     visibility: 'admin',
-    description: 'Componentes y pruebas en progreso',
-  },
-  BLOG: {
-    id: 'BLOG',
-    label: 'Blog',
-    visibility: 'hidden',
-    description: 'Pendiente de desarrollar',
   },
 };

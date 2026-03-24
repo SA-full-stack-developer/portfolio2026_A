@@ -1,12 +1,12 @@
 <article
   class="skill-card"
   [class]="'skill-card--' + skillLevel()"
-  [matTooltip]="tooltipText()"
+  [matTooltip]="tooltipKey() | translate: tooltipParams()"
   (click)="onSelect()"
   (keydown.enter)="onSelect()"
   tabindex="0"
   role="button"
-  [attr.aria-label]="skill().name + ' - ' + skillLevelLabel()"
+  [attr.aria-label]="skill().name + ' - ' + (skillLevelKey() | translate)"
 >
   <div class="skill-card__header flex flex-between">
     <span class="skill-card__name">{{ skill().name }}</span>
@@ -26,7 +26,7 @@
   </div>
 
   <div class="skill-card__footer flex flex-between">
-    <span class="skill-card__level">{{ skillLevelLabel() }}</span>
+    <span class="skill-card__level">{{ skillLevelKey() | translate }}</span>
     <span class="skill-card__percent">{{ skill().level }}%</span>
   </div>
 </article>

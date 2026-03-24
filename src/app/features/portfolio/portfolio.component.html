@@ -1,0 +1,13 @@
+<app-hero-stat-counter *appFeatureFlag="'HERO_STATS'"></app-hero-stat-counter>
+
+@defer (on viewport) {
+  <app-skills *appFeatureFlag="'SKILLS'"></app-skills>
+} @placeholder {
+  <div class="section-placeholder"></div>
+}
+
+@defer (on viewport) {
+  <!-- <app-projects> cuando exista -->
+} @placeholder {
+  <div class="section-placeholder"></div>
+}

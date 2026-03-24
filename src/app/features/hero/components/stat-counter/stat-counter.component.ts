@@ -16,6 +16,7 @@ const INTERVAL_TIME = ANIMATION_DURATION / ANIMATION_STEPS;
 })
 export class StatCounterComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
+  protected readonly Math = Math;
 
   icon = input.required<string>();
   label = input.required<string>();

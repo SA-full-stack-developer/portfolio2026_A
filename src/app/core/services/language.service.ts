@@ -29,13 +29,15 @@ export class LanguageService {
     this.translateService.addLangs(['es', 'en']);
     this.translateService.setFallbackLang(FALLBACK_LANGUAGE);
 
-    const savedLang = this.isBrowser ? (localStorage.getItem('lang') as Language | null) : null;
-
-    const browserLang = this.translateService.getBrowserLang();
-    const detectedLang: Language = browserLang === 'es' ? 'es' : 'en';
-    const langToUse = savedLang ?? detectedLang;
-
-    this.setLanguage(langToUse);
+    if (this.isBrowser) {
+      const savedLang = this.isBrowser ? (localStorage.getItem('lang') as Language | null) : null;
+      const browserLang = this.translateService.getBrowserLang();
+      const detectedLang: Language = browserLang === 'es' ? 'es' : 'en';
+      const langToUse = savedLang ?? detectedLang;
+      this.setLanguage(langToUse);
+    } else {
+      this.setLanguage(DEFAULT_LANGUAGE);
+    }
   }
 
   setLanguage(lang: Language): void {

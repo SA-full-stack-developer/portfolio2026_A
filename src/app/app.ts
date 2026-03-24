@@ -1,28 +1,23 @@
 import { Component, inject } from '@angular/core';
 
+import { RouterOutlet } from '@angular/router';
 import { LanguageService } from '@core/services/language.service';
-import { HeroStatCounterComponent } from '@features/hero/hero-stat-counter/hero-stat-counter.component';
+import { SeoService } from '@core/services/seo.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { LanguageSwitcherComponent } from '@shared/components/language-switcher/language-switcher.component';
-import { FeatureFlagDirective } from '@shared/directives/feature-flag.directive';
-import { SkillsComponent } from './features/skills/skills.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    SkillsComponent,
-    FeatureFlagDirective,
-    TranslateModule,
-    LanguageSwitcherComponent,
-    HeroStatCounterComponent,
-  ],
+  imports: [TranslateModule, LanguageSwitcherComponent, RouterOutlet],
   templateUrl: './app.html',
 })
 export class App {
   private readonly languageService = inject(LanguageService);
+  private readonly seoService = inject(SeoService);
 
   constructor() {
     this.languageService.init();
+    this.seoService.init();
   }
 }

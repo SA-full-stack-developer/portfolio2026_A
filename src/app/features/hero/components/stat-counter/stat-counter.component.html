@@ -1,6 +1,6 @@
 <article
   class="flex flex-col flex-center gap-md stat-counter-card"
-  [attr.aria-label]="label() + ': ' + displayValue()"
+  [attr.aria-label]="(label() | translate) + ': ' + Math.round(displayValue())"
 >
   <span class="stat-counter-card__icon" aria-hidden="true">{{ icon() }}</span>
   <span class="stat-counter-card__value" aria-live="polite">
