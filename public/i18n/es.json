@@ -40,5 +40,15 @@
     "COFFEES": "Cafés dedicados a la programación",
     "REMOTE": "Años trabajando en remoto",
     "SKILLS": "Skills destacadas"
+  },
+  "HERO": {
+    "GREETING": "Hola, soy",
+    "NAME": "Cristian Salcedo Rodríguez",
+    "TITLE": "Full Stack Developer",
+    "DESCRIPTION": "Especializado en Angular, NestJS y Flutter. Construyo aplicaciones web modernas, escalables y elegantes.",
+    "CTA": {
+      "CONTACT": "Contactar",
+      "STACK": "Ver mi stack"
+    }
   }
 }

@@ -1,0 +1,17 @@
+<article class="flex flex-col hero-intro">
+  <span class="hero-intro__greeting">{{ 'HERO.GREETING' | translate }}</span>
+  <h1 class="hero-intro__name">{{ 'HERO.NAME' | translate }}</h1>
+  <h2 class="hero-intro__title">{{ 'HERO.TITLE' | translate }}</h2>
+  <span class="hero-intro__decoration-bar"></span>
+  <p class="hero-intro__description">
+    {{ 'HERO.DESCRIPTION' | translate }}
+  </p>
+  <div class="hero-intro__actions flex gap-md">
+    <button class="hero-intro__btn hero-intro__btn--primary" (click)="navigateToContact()">
+      {{ 'HERO.CTA.CONTACT' | translate }}
+    </button>
+    <button class="hero-intro__btn hero-intro__btn--secondary" (click)="scrollToSkills()">
+      {{ 'HERO.CTA.STACK' | translate }}
+    </button>
+  </div>
+</article>

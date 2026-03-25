@@ -2,7 +2,7 @@
 @use '../../../styles/mixins' as m;
 
 .skills {
-  padding: 80px 24px;
+  padding: 0 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
 
@@ -24,18 +24,18 @@
   }
 
   app-skill-filter {
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
     display: block;
   }
 
   &__grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 16px;
+    gap: 1rem;
 
     @include m.respond-to('sm') {
       grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 12px;
+      gap: 0.75rem;
     }
   }
 
@@ -44,6 +44,6 @@
     font-size: 0.9rem;
     grid-column: 1 / -1;
     text-align: center;
-    padding: 40px;
+    padding: 2.5rem;
   }
 }

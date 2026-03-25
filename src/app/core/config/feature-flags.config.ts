@@ -1,6 +1,16 @@
 import { FeatureFlag } from '@core/models/feature-flag.model';
 
 export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
+  HERO: {
+    id: 'HERO',
+    label: 'Hero',
+    visibility: 'public',
+  },
+  HERO_INTRO: {
+    id: 'HERO_INTRO',
+    label: 'Hero Intro',
+    visibility: 'public',
+  },
   HERO_STATS: {
     id: 'HERO_STATS',
     label: 'Hero Stats',

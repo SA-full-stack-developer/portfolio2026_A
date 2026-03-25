@@ -1,0 +1,50 @@
+@use '../../../../../styles/variables' as v;
+@use '../../../../../styles/mixins' as m;
+
+.hero-intro {
+  max-width: 700px;
+  text-align: left;
+  gap: 12px;
+
+  @include m.respond-to('sm') {
+    text-align: center;
+    align-items: center;
+  }
+
+  &__greeting {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: v.$text-secondary;
+    font-weight: 400;
+  }
+  &__name {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: v.$primary-hue;
+    font-weight: 700;
+  }
+  &__title {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: v.$text-primary;
+    font-weight: 600;
+  }
+  &__description {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: v.$text-secondary;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  &__decoration-bar {
+    display: block;
+    border-top: solid 2px v.$primary-hue;
+    width: 200px;
+    margin-bottom: 1rem;
+  }
+
+  &__btn {
+    &--primary {
+      @include m.btn-primary;
+    }
+    &--secondary {
+      @include m.btn-secondary;
+    }
+  }
+}
