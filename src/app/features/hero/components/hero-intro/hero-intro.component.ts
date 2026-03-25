@@ -40,66 +40,7 @@ export class HeroIntroComponent {
     }
   }
 
-  /*scrollToSkills(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const el = document.getElementById('skills');
-      if (el) {
-        const rect = el.getBoundingClientRect();
-        console.log('top relativo:', rect.top);
-        console.log('scrollY actual:', window.scrollY);
-        console.log('top absoluto:', rect.top + window.scrollY);
-
-        window.scrollTo({ top: rect.top + window.scrollY, behavior: 'smooth' });
-      }
-    }
-  }*/
-
-  /*scrollToSkills(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const el = document.getElementById('skills');
-      if (el) {
-        const top = el.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-    }
-  }*/
-
-  /*scrollToSkills(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const el = document.getElementById('skills');
-      if (el) {
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          });
-        });
-      }
-    }
-  }*/
-
-  /*scrollToSkills(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const el = this.goToSkillsSmooth();
-
-      if (!el) {
-        const skillsPosition = window.innerHeight * 1.5;
-        window.scrollTo({ top: skillsPosition, behavior: 'smooth' });
-
-        setTimeout(() => {
-          this.goToSkillsSmooth();
-        }, 500);
-      }
-    }
-  }*/
-
   navigateToContact(): void {
     this.router.navigate(['/contact']);
   }
-
-  /*goToSkillsSmooth(): HTMLElement | null {
-    const el = document.getElementById('skills');
-    el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-    return el;
-  }*/
 }
