@@ -42,7 +42,6 @@ export class SkillsComponent implements AfterViewInit {
       duration: 0.6,
       stagger: 0.08,
       ease: 'power2.out',
-      clearProps: 'all',
       scrollTrigger: {
         trigger: this.el.nativeElement.querySelector('.skills__grid'),
         start: 'top 80%',
