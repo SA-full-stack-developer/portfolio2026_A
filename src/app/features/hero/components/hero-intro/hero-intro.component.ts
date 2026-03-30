@@ -1,21 +1,40 @@
-import { Component, PLATFORM_ID, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject } from '@angular/core';
 
-import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
+import { GsapService } from '@core/services/gsap.service';
+import { PlatformService } from '@core/services/platform.service';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-hero-intro',
+  standalone: true,
   imports: [TranslateModule],
   templateUrl: './hero-intro.component.html',
   styleUrl: './hero-intro.component.scss',
 })
-export class HeroIntroComponent {
+export class HeroIntroComponent implements AfterViewInit {
   private readonly router = inject(Router);
-  private readonly platformId = inject(PLATFORM_ID);
+  private readonly gsapService = inject(GsapService);
+  private readonly el = inject(ElementRef);
+  private readonly platformService = inject(PlatformService);
+
+  ngAfterViewInit(): void {
+    if (!this.platformService.isBrowser) return;
+
+    const gsap = this.gsapService.gsap;
+    const cards = this.el.nativeElement.querySelectorAll('.hero-intro > *');
+
+    gsap.from(cards, {
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: 'power2.out',
+    });
+  }
 
   scrollToSkills(): void {
-    if (isPlatformBrowser(this.platformId)) {
+    if (this.platformService.isBrowser) {
       const el = document.getElementById('skills');
       if (!el) return;
 

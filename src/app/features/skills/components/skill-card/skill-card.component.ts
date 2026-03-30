@@ -1,18 +1,19 @@
-import { Component, computed, inject, input, output, signal } from '@angular/core';
+import { AfterViewInit, Component, computed, input, output, signal } from '@angular/core';
 import { Skill, getSkillLevel } from '@core/models/skill.model';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-skill-card',
   imports: [MatTooltipModule, TranslateModule],
   templateUrl: './skill-card.component.html',
   styleUrl: './skill-card.component.scss',
+  host: {
+    style: 'display: block',
+  },
 })
-export class SkillCardComponent {
-  private readonly translateService = inject(TranslateService);
-
+export class SkillCardComponent implements AfterViewInit {
   skill = input.required<Skill>();
   selected = output<Skill>();
 
@@ -26,6 +27,8 @@ export class SkillCardComponent {
   tooltipParams = computed(() => ({
     count: this.skill().yearsOfExperience,
   }));
+
+  ngAfterViewInit(): void {}
 
   onSelect(): void {
     this.selected.emit(this.skill());

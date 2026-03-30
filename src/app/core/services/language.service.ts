@@ -1,4 +1,4 @@
-import { Injectable, PLATFORM_ID, computed, inject, signal } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import {
   AVAILABLE_LANGUAGES,
   DEFAULT_LANGUAGE,
@@ -7,14 +7,14 @@ import {
   LanguageOption,
 } from '@core/models/language.model';
 
-import { isPlatformBrowser } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
+import { PlatformService } from './platform.service';
 
 @Injectable({ providedIn: 'root' })
 export class LanguageService {
   private readonly translateService = inject(TranslateService);
-  private readonly platformId = inject(PLATFORM_ID);
-  private readonly isBrowser = isPlatformBrowser(this.platformId);
+  private readonly platformService = inject(PlatformService);
+  private readonly isBrowser = this.platformService.isBrowser;
 
   private readonly _currentLang = signal<Language>(DEFAULT_LANGUAGE);
 
