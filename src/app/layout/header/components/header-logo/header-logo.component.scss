@@ -1,0 +1,20 @@
+@use '../../../../../styles/mixins' as m;
+@use '../../../../../styles/variables' as v;
+
+.header-logo {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: v.$text-primary;
+  letter-spacing: -0.02em;
+  letter-spacing: 0.05em;
+  @include m.transition(opacity 0.2s ease);
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &__accent {
+    color: v.$primary-hue;
+    font-size: 1.6rem;
+  }
+}

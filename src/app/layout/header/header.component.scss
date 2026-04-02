@@ -1,0 +1,19 @@
+@use '../../../styles/mixins' as m;
+@use '../../../styles/variables' as v;
+
+.header {
+  &__nav {
+    @include m.respond-to('sm') {
+      gap: 0.5rem;
+    }
+  }
+
+  &__contact {
+    @include m.btn-primary;
+    padding: 0.5rem 1.25rem;
+
+    &:hover {
+      color: v.$text-primary;
+    }
+  }
+}

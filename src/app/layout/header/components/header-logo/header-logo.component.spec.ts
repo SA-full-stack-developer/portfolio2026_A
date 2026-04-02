@@ -1,0 +1,22 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { HeaderLogoComponent } from './header-logo.component';
+
+describe('HeaderLogoComponent', () => {
+  let component: HeaderLogoComponent;
+  let fixture: ComponentFixture<HeaderLogoComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [HeaderLogoComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(HeaderLogoComponent);
+    component = fixture.componentInstance;
+    await fixture.whenStable();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

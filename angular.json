@@ -45,7 +45,7 @@
                 "output": "assets"
               }
             ],
-            "styles": ["src/styles/styles.scss"],
+            "styles": ["src/styles/styles.scss", "flag-icons/css/flag-icons.min.css"],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "security": {
@@ -74,7 +74,8 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "outputHashing": "media"
             }
           },
           "defaultConfiguration": "production"

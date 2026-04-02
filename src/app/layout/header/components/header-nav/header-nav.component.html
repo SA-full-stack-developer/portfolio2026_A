@@ -1,0 +1,19 @@
+<nav>
+  <ul [class]="vertical() ? 'flex flex-col header-nav gap-md' : 'flex header-nav gap-lg'">
+    <li class="header-nav__item">
+      <button class="header-nav__link" (click)="scrollTo(ID_SKILLS)">
+        {{ 'NAV.STACK' | translate }}
+      </button>
+    </li>
+    <li class="header-nav__item">
+      <button class="header-nav__link" (click)="scrollTo(ID_EXPERIENCE)">
+        {{ 'NAV.EXPERIENCE' | translate }}
+      </button>
+    </li>
+    <li class="header-nav__item">
+      <button class="header-nav__link" (click)="scrollTo(ID_PROJECTS)">
+        {{ 'NAV.PROJECTS' | translate }}
+      </button>
+    </li>
+  </ul>
+</nav>

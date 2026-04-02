@@ -1,19 +1,14 @@
-@use './styles/variables' as v;
+@use '../styles/variables' as v;
 
 .app-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  padding: 1rem 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   background: rgba(v.$bg-dark, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid v.$border-subtle;
-
-  &__logo {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: v.$primary-hue;
-    letter-spacing: 0.05rem;
-  }
+  color: v.$text-primary;
 }

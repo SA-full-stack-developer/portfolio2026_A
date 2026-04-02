@@ -1,6 +1,26 @@
 import { FeatureFlag } from '@core/models/feature-flag.model';
 
 export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
+  HEADER: {
+    id: 'HEADER',
+    label: 'Header',
+    visibility: 'public',
+  },
+  HEADER_LOGO: {
+    id: 'HEADER_LOGO',
+    label: 'Header Logo',
+    visibility: 'public',
+  },
+  HEADER_NAV: {
+    id: 'HEADER_NAV',
+    label: 'Header Nav',
+    visibility: 'public',
+  },
+  HEADER_HAMBURGER: {
+    id: 'HEADER_HAMBURGER',
+    label: 'Header Hamburger',
+    visibility: 'public',
+  },
   HERO: {
     id: 'HERO',
     label: 'Hero',
@@ -45,5 +65,10 @@ export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
     id: 'EXPERIMENTS',
     label: 'Experimentos',
     visibility: 'admin',
+  },
+  LANGUAGE_SWITCHER: {
+    id: 'LANGUAGE_SWITCHER',
+    label: 'Language Switcher',
+    visibility: 'public',
   },
 };

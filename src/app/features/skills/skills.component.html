@@ -1,5 +1,5 @@
-<section id="skills" class="skills" aria-labelledby="skills-title">
-  <header class="skills__header">
+<section id="{{ ID_SKILLS }}" class="skills" aria-labelledby="skills-title">
+  <div class="skills__header">
     <h2 id="skills-title" class="skills__title">
       {{ 'SKILLS.TITLE' | translate }}
     </h2>
@@ -16,7 +16,7 @@
         {{ 'SKILLS.SUBTITLE_HIGHLIGHTED' | translate: { count: highlightedCount() } }}
       }
     </p>
-  </header>
+  </div>
 
   <app-skill-filter
     [categories]="categories()"

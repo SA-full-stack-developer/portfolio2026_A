@@ -1,0 +1,58 @@
+@use '../../../../../styles/mixins' as m;
+@use '../../../../../styles/variables' as v;
+
+.header-hamburger {
+  cursor: pointer;
+
+  &__btn {
+    font-size: 1.5rem;
+    color: v.$text-primary;
+    -webkit-tap-highlight-color: transparent;
+    margin-top: -4px;
+    @include m.transition(color 0.2s ease);
+
+    &:hover {
+      color: v.$primary-hue;
+    }
+  }
+
+  &__overlay {
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+  }
+
+  &__close {
+    font-size: 1.2rem;
+    color: v.$text-secondary;
+    text-align: right;
+    align-self: flex-end;
+    @include m.transition(color 0.2s ease);
+
+    &:hover {
+      color: v.$text-primary;
+    }
+  }
+
+  &__drawer {
+    width: 180px;
+    height: 100%;
+    background: v.$bg-card;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    border-left: 1px solid v.$border-subtle;
+    overflow-y: auto;
+    @include m.custom-scrollbar();
+  }
+  &__contact {
+    @include m.btn-primary;
+    text-align: center;
+    margin-top: auto;
+  }
+}

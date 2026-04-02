@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, inject } from '@angular/core';
 import { Skill, SkillFilter } from '@core/models/skill.model';
 
+import { ID_SKILLS } from '@core/constants/sections.constants';
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { SkillsService } from '@core/services/skills.service';
@@ -21,6 +22,7 @@ export class SkillsComponent implements AfterViewInit {
   private readonly el = inject(ElementRef);
   private readonly platformService = inject(PlatformService);
 
+  readonly ID_SKILLS = ID_SKILLS;
   readonly filteredSkills = this.skillsService.filteredSkills;
   readonly categories = this.skillsService.categories;
   readonly filter = this.skillsService.filter;

@@ -1,8 +1,9 @@
-<header class="app-header flex flex-between">
-  <span class="app-header__logo">CS</span>
-  <app-language-switcher></app-language-switcher>
+<header class="app-header w-100">
+  <div class="mw-1200">
+    <app-header *appFeatureFlag="'HEADER'"></app-header>
+  </div>
 </header>
 
-<main>
+<main class="mw-1200">
   <router-outlet></router-outlet>
 </main>

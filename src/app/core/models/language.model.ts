@@ -7,8 +7,8 @@ export interface LanguageOption {
 }
 
 export const AVAILABLE_LANGUAGES: LanguageOption[] = [
-  { code: 'es', label: 'Español', flag: '🇪🇸' },
-  { code: 'en', label: 'English', flag: '🇬🇧' },
+  { code: 'es', label: 'Español', flag: 'es' },
+  { code: 'en', label: 'English', flag: 'gb' },
 ];
 
 export const DEFAULT_LANGUAGE: Language = 'es';

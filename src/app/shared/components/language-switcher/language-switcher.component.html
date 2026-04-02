@@ -1,13 +1,18 @@
-<div class="lang-switcher flex gap-sm">
-  @for (lang of languageService.availableLanguages; track lang.code) {
-    <button
-      class="lang-switcher__btn"
-      [class.lang-switcher__btn--active]="languageService.currentLang() === lang.code"
-      (click)="languageService.setLanguage(lang.code)"
-      [attr.aria-label]="lang.label"
-    >
-      <span class="lang-switcher__flag">{{ lang.flag }}</span>
-      <span class="lang-switcher__code">{{ lang.code.toUpperCase() }}</span>
-    </button>
+<div class="lang-switcher" (clickOutside)="close()">
+  <button class="lang-switcher__active flex gap-sm" (click)="toggle()">
+    <span class="fi fi-{{ currentOption().flag }}"></span>
+    <span class="lang-switcher__code">{{ currentOption().code.toUpperCase() }}</span>
+    <span class="lang-switcher__arrow" [class.lang-switcher__arrow--open]="isOpen()">▾</span>
+  </button>
+
+  @if (isOpen()) {
+    <div class="lang-switcher__dropdown">
+      @for (lang of otherLanguages(); track lang.code) {
+        <button class="lang-switcher__option flex gap-sm" (click)="selectLanguage(lang.code)">
+          <span class="fi fi-{{ lang.flag }}"></span>
+          <span>{{ lang.code.toUpperCase() }}</span>
+        </button>
+      }
+    </div>
   }
 </div>

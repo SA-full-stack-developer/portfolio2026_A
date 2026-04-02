@@ -5,13 +5,15 @@ import { GsapService } from '@core/services/gsap.service';
 import { LanguageService } from '@core/services/language.service';
 import { SeoService } from '@core/services/seo.service';
 import { TranslateModule } from '@ngx-translate/core';
-import { LanguageSwitcherComponent } from '@shared/components/language-switcher/language-switcher.component';
+import { FeatureFlagDirective } from '@shared/directives/feature-flag.directive';
+import { HeaderComponent } from 'src/app/layout/header/header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [TranslateModule, LanguageSwitcherComponent, RouterOutlet],
+  imports: [TranslateModule, RouterOutlet, HeaderComponent, FeatureFlagDirective],
   templateUrl: './app.html',
+  styleUrl: './app.scss',
 })
 export class App {
   private readonly languageService = inject(LanguageService);

@@ -4,6 +4,7 @@
 @use './flexbox';
 @use './typography';
 @use './animations';
+@use './layout';
 
 $portfolio-theme: mat.define-theme(
   (
@@ -35,6 +36,7 @@ html {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -54,6 +56,7 @@ body {
 }
 
 body {
+  overflow-x: hidden;
   @include m.custom-scrollbar();
 }
 
@@ -85,7 +88,25 @@ textarea {
   @include m.appearance-none();
 }
 
+button,
+a,
+[role='button'] {
+  -webkit-tap-highlight-color: transparent;
+}
+
 :focus-visible {
   outline: 2px solid v.$primary-hue;
   outline-offset: 2px;
+}
+
+.hide-mobile {
+  @include m.respond-to('sm') {
+    display: none;
+  }
+}
+
+.hide-desktop {
+  @media (min-width: 577px) {
+    display: none;
+  }
 }

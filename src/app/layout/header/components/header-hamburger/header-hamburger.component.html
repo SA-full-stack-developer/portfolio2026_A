@@ -1,0 +1,24 @@
+<div class="header-hamburger">
+  <button
+    class="header-hamburger__btn"
+    (click)="toggleDrawer()"
+    [attr.aria-expanded]="isOpen()"
+    aria-label="Menú"
+  >
+    ☰
+  </button>
+  @if (isOpen()) {
+    <div (click)="close()" class="flex header-hamburger__overlay flex flex-end">
+      <div
+        class="header-hamburger__drawer flex flex-col align-end"
+        (click)="stopPropagation($event)"
+      >
+        <button class="header-hamburger__close" (click)="close()">✕</button>
+        <app-header-nav (linkClicked)="close()" [vertical]="true"></app-header-nav>
+        <a routerLink="/contact" class="header-hamburger__contact w-100" (click)="close()">{{
+          'NAV.CONTACT' | translate
+        }}</a>
+      </div>
+    </div>
+  }
+</div>
