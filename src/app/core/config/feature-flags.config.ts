@@ -49,7 +49,7 @@ export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
   EXPERIENCE: {
     id: 'EXPERIENCE',
     label: 'Experiencia',
-    visibility: 'hidden', // aún no existe
+    visibility: 'public',
   },
   CONTACT: {
     id: 'CONTACT',

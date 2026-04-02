@@ -51,5 +51,16 @@
       "CONTACT": "Contact me",
       "STACK": "View my stack"
     }
+  },
+  "EXPERIENCE": {
+    "TITLE": "Experience",
+    "ROLE": {
+      "BACKEND_DEV": "Backend developer"
+    },
+    "DESCRIPTION": {
+      "EVERIS": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In feugiat varius nunc, sit amet viverra ligula ornare ac. Aenean dapibus tincidunt felis, et fermentum arcu posuere a. Nunc egestas in purus ac eleifend. Curabitur varius accumsan tellus eu consectetur. Morbi sodales cursus ipsum, ac aliquet ligula dignissim vitae. Cras blandit tristique leo, a dapibus enim commodo eget. Praesent molestie aliquet tincidunt. Donec accumsan purus nec risus viverra laoreet. Etiam posuere libero sed elit tempor, quis aliquam sem volutpat. Cras vitae nisl elit.",
+      "EVERIS_2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In feugiat varius nunc, sit amet viverra ligula ornare ac. Aenean dapibus tincidunt felis, et fermentum arcu posuere a. Nunc egestas in purus ac eleifend. Curabitur varius accumsan tellus eu consectetur. Morbi sodales cursus ipsum, ac aliquet ligula dignissim vitae. Cras blandit tristique leo, a dapibus enim commodo eget. Praesent molestie aliquet tincidunt. Donec accumsan purus nec risus viverra laoreet. Etiam posuere libero sed elit tempor, quis aliquam sem volutpat. Cras vitae nisl elit.",
+      "EVERIS_3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In feugiat varius nunc, sit amet viverra ligula ornare ac. Aenean dapibus tincidunt felis, et fermentum arcu posuere a. Nunc egestas in purus ac eleifend. Curabitur varius accumsan tellus eu consectetur. Morbi sodales cursus ipsum, ac aliquet ligula dignissim vitae. Cras blandit tristique leo, a dapibus enim commodo eget. Praesent molestie aliquet tincidunt. Donec accumsan purus nec risus viverra laoreet. Etiam posuere libero sed elit tempor, quis aliquam sem volutpat. Cras vitae nisl elit."
+    }
   }
 }

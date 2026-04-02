@@ -2,18 +2,12 @@
 @use '../../../styles/mixins' as m;
 
 .skills {
-  padding: 0 1.5rem;
-
   &__header {
-    margin-bottom: 32px;
-    text-align: center;
+    @include m.header();
   }
 
   &__title {
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 700;
-    color: v.$text-primary;
-    margin-bottom: 8px;
+    @include m.title();
   }
 
   &__subtitle {

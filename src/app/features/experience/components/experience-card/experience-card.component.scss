@@ -1,0 +1,16 @@
+@use '../../../../../styles/mixins' as m;
+@use '../../../../../styles/variables' as v;
+
+.experience-card {
+  @include m.card-base();
+
+  &__company {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  &__bar {
+    width: 150px;
+    border-top: solid 2px v.$primary-hue;
+  }
+}

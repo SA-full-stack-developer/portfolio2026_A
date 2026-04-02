@@ -1,0 +1,12 @@
+<section class="experiences">
+  <div class="experiences__header">
+    <h2 class="experiences__title">
+      {{ 'EXPERIENCE.TITLE' | translate }}
+    </h2>
+  </div>
+  <div class="flex experiences__grid">
+    @for (experience of experiences(); track experience.id) {
+      <app-experience-card [experience]="experience"></app-experience-card>
+    }
+  </div>
+</section>

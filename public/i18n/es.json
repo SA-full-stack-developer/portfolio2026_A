@@ -51,5 +51,51 @@
       "CONTACT": "Contactar",
       "STACK": "Ver mi stack"
     }
+  },
+  "EXPERIENCE": {
+    "TITLE": "Experiencia",
+    "ROLE": {
+      "BACKEND_DEV": "desarrollador Backend",
+      "FRONTEND_DEV": "desarrollador Frontend",
+      "GAME_INTERFACES_DEV": "Desarrollador de UI"
+    },
+    "DESCRIPTION": {
+      "MOKENS_LEAGUE": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In feugiat varius nunc, sit amet viverra ligula ornare ac. Aenean dapibus tincidunt felis, et fermentum arcu posuere a. Nunc egestas in purus ac eleifend. Curabitur varius accumsan tellus eu consectetur. Morbi sodales cursus ipsum, ac aliquet ligula dignissim vitae. Cras blandit tristique leo, a dapibus enim commodo eget. Praesent molestie aliquet tincidunt. Donec accumsan purus nec risus viverra laoreet. Etiam posuere libero sed elit tempor, quis aliquam sem volutpat. Cras vitae nisl elit.",
+      "MEMONDO_NETWORK": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In feugiat varius nunc, sit amet viverra ligula ornare ac. Aenean dapibus tincidunt felis, et fermentum arcu posuere a. Nunc egestas in purus ac eleifend. Curabitur varius accumsan tellus eu consectetur. Morbi sodales cursus ipsum, ac aliquet ligula dignissim vitae. Cras blandit tristique leo, a dapibus enim commodo eget. Praesent molestie aliquet tincidunt. Donec accumsan purus nec risus viverra laoreet. Etiam posuere libero sed elit tempor, quis aliquam sem volutpat. Cras vitae nisl elit.",
+      "EVERIS": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In feugiat varius nunc, sit amet viverra ligula ornare ac. Aenean dapibus tincidunt felis, et fermentum arcu posuere a. Nunc egestas in purus ac eleifend. Curabitur varius accumsan tellus eu consectetur. Morbi sodales cursus ipsum, ac aliquet ligula dignissim vitae. Cras blandit tristique leo, a dapibus enim commodo eget. Praesent molestie aliquet tincidunt. Donec accumsan purus nec risus viverra laoreet. Etiam posuere libero sed elit tempor, quis aliquam sem volutpat. Cras vitae nisl elit."
+    }
+  },
+  "PROJECT": {
+    "MOKENS_LEAGUE_SOCCER": {
+      "WEBS": "",
+      "HEROES": ""
+    },
+    "MEMONDO": {
+      "ASI_VA": ""
+    },
+    "EVERIS": {
+      "NO_NAME": "",
+      "ELLICENCIES": "",
+      "COPERNICO": ""
+    },
+    "MGA": {
+      "WEBS": ""
+    },
+    "HOSPITAL": {
+      "GIRC": ""
+    },
+    "FREELANCE": {
+      "MODA_MANGAS": "",
+      "LIVING_MANGA": "",
+      "MMI": "",
+      "GDARKITECKTURA": "",
+      "EUROPACTIZYME": "",
+      "LEV2050": "",
+      "TUKOMODIN": "",
+      "DENTALTOOLS": "",
+      "UKIYOE": "",
+      "HUNTING": "",
+      "PORTFOLIO": ""
+    }
   }
 }
