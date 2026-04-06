@@ -13,4 +13,16 @@
     width: 150px;
     border-top: solid 2px v.$primary-hue;
   }
+
+  &__technologies {
+    margin-top: 1rem;
+  }
+
+  &__projects {
+    margin-top: 1rem;
+  }
+
+  &__project-title {
+    margin-top: 0.5rem;
+  }
 }

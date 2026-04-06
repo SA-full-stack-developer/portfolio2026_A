@@ -54,6 +54,7 @@
   },
   "EXPERIENCE": {
     "TITLE": "Experience",
+    "PROJECTS": "Projects",
     "ROLE": {
       "BACKEND_DEV": "Backend developer"
     },

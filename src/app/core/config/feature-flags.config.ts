@@ -59,7 +59,7 @@ export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
   LAB: {
     id: 'LAB',
     label: 'Laboratorio',
-    visibility: 'admin', // solo admin
+    visibility: 'admin',
   },
   EXPERIMENTS: {
     id: 'EXPERIMENTS',

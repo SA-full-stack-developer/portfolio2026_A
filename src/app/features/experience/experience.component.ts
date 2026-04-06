@@ -18,7 +18,7 @@ export class ExperienceComponent implements AfterViewInit {
   private readonly gsapService = inject(GsapService);
   private readonly el = inject(ElementRef);
 
-  readonly experiences = this.experienceService.experiences;
+  readonly resolvedExperiences = this.experienceService.resolvedExperiences;
 
   ngAfterViewInit(): void {
     if (!this.platformService.isBrowser) return;
@@ -38,7 +38,7 @@ export class ExperienceComponent implements AfterViewInit {
       stagger: 0.08,
       ease: 'power2.out',
       scrollTrigger: {
-        trigger: this.el.nativeElement.querySelector('.experiences__grid'),
+        trigger: this.el.nativeElement.querySelector('.experiences__timeline'),
         start: 'top 80%',
         onEnter: () => ScrollTrigger.refresh(),
       },

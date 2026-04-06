@@ -1,24 +1,41 @@
 <article class="flex flex-col gap-md experience-card">
-  <span class="experience-card__company">🏢 {{ experience().company }}</span>
-  <div class="experience-card__bar"></div>
-  <span class="experience-card__role">{{ experience().role | translate }}</span>
+  @if (experience().showCompany) {
+    <span class="experience-card__company">🏢 {{ experience().company?.name }}</span>
+    <div class="experience-card__bar"></div>
+  }
+  @for (role of experience().roles; track role) {
+    <span class="experience-card__role">{{ role | translate }}</span>
+  }
   @if (experience().endDate) {
-    <span
-      >{{ experience().startDate | date: 'MMMM yyyy' }} —
-      {{ experience().endDate | date: 'MMMM yyyy' }}</span
-    >
+    <!--<span
+      >{{ experience().startDate | date: 'MMMM yyyy' : '' : currentLang() }} —
+      {{ experience().endDate | date: 'MMMM yyyy' : '' : currentLang() }}</span
+    >-->
   } @else {
-    <span
-      >{{ experience().startDate | date: 'MMMM yyyy' }} —
+    <!--<span
+      >{{ experience().startDate | date: 'MMMM yyyy' : '' : currentLang() }} —
       {{ 'EXPERIENCE.CURRENT' | translate }}</span
-    >
+    >-->
   }
   <span class="experience-card__description">{{ experience().description | translate }}</span>
-  <div class="experience-card__technologies flex flex-wrap gap-sm">
-    @for (tech of experience().technologies; track tech) {
-      <button class="experience-card__tech-badge" (click)="onTechClick(tech)">
-        {{ tech }}
-      </button>
-    }
+  @if (experience().projects.length > 1) {
+    <div class="experience-card__projects">
+      <h3>{{ 'EXPERIENCES.PROJECTS' | translate }}</h3>
+      @for (project of experience().projects; track project.id) {
+        <div class="experience-card__project-title">
+          <h4>{{ project.name }}</h4>
+        </div>
+      }
+    </div>
+  }
+  <div class="experience-card__technologies">
+    <h3>{{ 'EXPERIENCES.SKILLS' | translate }}</h3>
+    <div class="experience-card__technologies flex flex-wrap gap-xs">
+      @for (tech of experience().skills; track tech.id) {
+        <button class="experience-card__tech-badge" (click)="onTechClick(tech.name)">
+          &nbsp;·&nbsp;{{ tech.name }}
+        </button>
+      }
+    </div>
   </div>
 </article>

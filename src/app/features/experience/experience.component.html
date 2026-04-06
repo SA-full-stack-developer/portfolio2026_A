@@ -4,9 +4,13 @@
       {{ 'EXPERIENCE.TITLE' | translate }}
     </h2>
   </div>
-  <div class="flex experiences__grid">
-    @for (experience of experiences(); track experience.id) {
-      <app-experience-card [experience]="experience"></app-experience-card>
+  <div class="experiences__timeline">
+    @for (experience of resolvedExperiences(); track experience.id; let i = $index) {
+      <div class="experiences__item" [class.experiences__item--right]="i % 2 !== 0">
+        <div class="experiences__dot"></div>
+        <app-experience-card class="experiences__card" [experience]="experience">
+        </app-experience-card>
+      </div>
     }
   </div>
 </section>

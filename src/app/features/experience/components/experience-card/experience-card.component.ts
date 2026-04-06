@@ -1,7 +1,8 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 
 import { DatePipe } from '@angular/common';
-import { Experience } from '@core/models/experience.model';
+import { ResolvedExperience } from '@core/models/experience.model';
+import { LanguageService } from '@core/services/language.service';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -11,10 +12,15 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './experience-card.component.scss',
 })
 export class ExperienceCardComponent {
-  experience = input.required<Experience>();
+  private readonly languageService = inject(LanguageService);
+  experience = input.required<ResolvedExperience>();
   delectedSkill = output<string>();
 
   onTechClick(tech: string) {
     this.delectedSkill.emit(tech);
+  }
+
+  currentLang(): string {
+    return this.languageService.currentLang();
   }
 }

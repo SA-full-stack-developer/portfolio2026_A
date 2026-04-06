@@ -52,50 +52,54 @@
       "STACK": "Ver mi stack"
     }
   },
-  "EXPERIENCE": {
+  "EXPERIENCES": {
     "TITLE": "Experiencia",
-    "ROLE": {
-      "BACKEND_DEV": "desarrollador Backend",
-      "FRONTEND_DEV": "desarrollador Frontend",
+    "PROJECTS": "Proyectos",
+    "SKILLS": "Tecnologías y soft skills",
+    "ROLES": {
+      "BACKEND_DEV": "Desarrollador Backend",
+      "FRONTEND_DEV": "Desarrollador Frontend",
+      "FULLSTACK_DEV": "Desarrollador FullStack",
       "GAME_INTERFACES_DEV": "Desarrollador de UI"
     },
-    "DESCRIPTION": {
-      "MOKENS_LEAGUE": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In feugiat varius nunc, sit amet viverra ligula ornare ac. Aenean dapibus tincidunt felis, et fermentum arcu posuere a. Nunc egestas in purus ac eleifend. Curabitur varius accumsan tellus eu consectetur. Morbi sodales cursus ipsum, ac aliquet ligula dignissim vitae. Cras blandit tristique leo, a dapibus enim commodo eget. Praesent molestie aliquet tincidunt. Donec accumsan purus nec risus viverra laoreet. Etiam posuere libero sed elit tempor, quis aliquam sem volutpat. Cras vitae nisl elit.",
-      "MEMONDO_NETWORK": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In feugiat varius nunc, sit amet viverra ligula ornare ac. Aenean dapibus tincidunt felis, et fermentum arcu posuere a. Nunc egestas in purus ac eleifend. Curabitur varius accumsan tellus eu consectetur. Morbi sodales cursus ipsum, ac aliquet ligula dignissim vitae. Cras blandit tristique leo, a dapibus enim commodo eget. Praesent molestie aliquet tincidunt. Donec accumsan purus nec risus viverra laoreet. Etiam posuere libero sed elit tempor, quis aliquam sem volutpat. Cras vitae nisl elit.",
-      "EVERIS": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In feugiat varius nunc, sit amet viverra ligula ornare ac. Aenean dapibus tincidunt felis, et fermentum arcu posuere a. Nunc egestas in purus ac eleifend. Curabitur varius accumsan tellus eu consectetur. Morbi sodales cursus ipsum, ac aliquet ligula dignissim vitae. Cras blandit tristique leo, a dapibus enim commodo eget. Praesent molestie aliquet tincidunt. Donec accumsan purus nec risus viverra laoreet. Etiam posuere libero sed elit tempor, quis aliquam sem volutpat. Cras vitae nisl elit."
+    "DESCRIPTIONS": {
+      "MOKENS_LEAGUE": "Desarrollador frontend multidisciplinar, frontend web developer y desarrollador de UI para videojuegos. Participé en diferentes proyectos de la empresa, disponían de diferentes tipos de webs y cada una de ellas en un lenguaje. Trabajé mantiendo y creando nuevas features y añadiendo responsive a esas webs. Las tecnologias utilizadas han sido Angular + Angular Material, React + FastAPI + Chakra UI + docker, SASS, unity + UIToolkit, tecnología web3 + NFTs y todo implementado merdiante gitHub. Lo que considero más interesante fue un album de cromos NFTs creado con React desde 0 donde me encargué de absolutamente todo el frontend, la conexión con la API y el tratamiento de datos mediante web3. Aparte había otras landings que funcionaban mediante Aquare y figma quye también mantuve.",
+      "EVERIS": "Participé en diversos proyectos como dedsarrollador fullstack con Java + HTML + CSS y Java + Angular + SCSS. Todos eran proyectos para la Generalitat de Cataluña, a destacar que fui certificado por Oracle. He trabajado con Spring, Struts y Jira, he formado al nuevo personal que se incorporaba. Cada proyecto tenía su peculiaridad, pero fui adaptandome según las tecnologías necesarias.",
+      "FREELANCE": "Como todo el mundo, todos tenemos un inicio del cual no debemos avergonzarnos, en mi caso, al inicio para poder ganar experiencia tuve que ser Freelance en varias ocasiones. Al inicio hacía webs en Wordpress para diferentes empresas y clientes, luego monté un negocio online con Prestashop de ropa para vender camisetas de corte geek. Cuando encontré trabajo contratado por una empresa, dejé de ser Freelance pero me dejó una espinita clavada, notaba que algo ahí podría funcionar. Más adelante, mientras trabajaba en Memondo Network, decidí volver a ser Freelance al mismo tiempo que trabajaba para la empresa, tenía una jornada laboral de 8 horas con ellos y luego monté, gestioné e hice todos los cargos yo solo de un nuevo proyecto, una tienda online de importación de productos japoneses, realizado con Prestashop + Symphony. Este proyecto iba más allá que vender camisetas, se vendían figuras exclusivas de Japón, videojuegos y emrchandising. Fue un proyecto llevado en paralelo a mi jornada laboral, debido a la cantidad de horas que echaba al día entre el trabajo como desarrollador y la tienda, decidí dejar de ser Freelance yd edicarme únicamente al trabajo por cuenta ajena.",
+      "PRACTICES": "De esto hace ya demasiado tiempo y no es ni relevante ni destacable. Al tener 2 ciclos formativos de grado superior, realicé las prácticas correspondientes, en el Hospital Universitario de Cruces en Barakaldo en el año 2013, aquí fue para una aplicación de gestión médica, el GIRC en ASP. Net. EL otro lugar que hice las prácticas es MGA en Sant Cugat en el año 2013, una empresa de máquinas de slots y las tecnologías usadas fueron ASP .Net, HTML, CSS y SQL."
     }
   },
-  "PROJECT": {
+  "PROJECTS": {
     "MOKENS_LEAGUE_SOCCER": {
-      "WEBS": "",
-      "HEROES": ""
+      "WEBS": "Ejecución y participación en varios proyectos internos de la empresa, así como en el mantenimiento continuo de los mismos. Con Angular trabajé en una aplicación web de gestión para la venta de la criptomoneda de la empresa, $MOKA. Con React desarrollé un proyecto desde cero cuya funcionalidad era similar a un álbum de cromos, pero que mostraba mediante cartas, los NFTs que poseía cada usuario. También me encargué del mantenimiento y la actualización constante de las webs principales de la compañía, desarrolladas con Square. En todos los casos se trabajó siempre con las últimas versiones disponibles de cada tecnología.",
+      "HEROES": "Aparte de mis funciones como desarrollador web, aprendí a utilizar Unity y la herramienta UI Toolkit para desarrollar interfaces del videojuego Mokens League Champs (publicado en Epic Games https://store.epicgames.com/es-ES/p/mokens-league-champs-db0388). Realicé todas las interfaces del juego, apliqué transiciones y animaciones para que los elementos no se vieran estáticos y optimicé los recursos para que no afectaran al rendimiento."
     },
     "MEMONDO": {
-      "ASI_VA": ""
+      "ASI_VA": "Mejora y mantenimiento de las webs de Memondo, creando un sistema reutilizable y fácilmente escalable que pudiera utilizarse en cada una de las webs, con la capacidad de añadir diferencias entre ellas sin necesidad de duplicar código ni proyectos. Proyecto optimizado en Angular. Se inició en Angular 9 y se fue actualizando progresivamente hasta la versión 18. Se incorporaron todas las mejoras que iban surgiendo en cada versión. Reestructuré completamente el proyecto para que funcionara íntegramente con signals, se aplicó SSR y se utilizaron imágenes optimizadas en formatos AVIF y WebP. Se realizó todo el frontend desde 0 optimizado para Google, mejorando la Performance al máximo y se utilizó SSR para el prerrenderizado. La web que tiene aplicadas todas estas mejoras es: https://www.asivaespana.com"
     },
     "EVERIS": {
-      "NO_NAME": "",
-      "ELLICENCIES": "",
-      "COPERNICO": ""
+      "NO_NAME": "Proyecto completamente nuevo para desarrollar un nuevo aplicativo para la Generalitat de Cataluña en el cual tomo el rol nuevamente de Fullstack utilizando Java para el Backend y Angular para el frontend.",
+      "ELLICENCIES": "Consiste en una aplicación de gestión interna para la tramitación de licencias de obras en la ciudad de Barcelona. El desarrollo se está llevando con un framework propio del Ayuntamiento (Openframe) basado en Java, Struts y Spring enlazados con Oracle SQL. Mi función es desarrollar nuevas funcionalidades dentro de la aplicación según las necesidades del cliente, llevando a cabo la homogenización con el control actual de la aplicación.  También asesoro y ayudo a las nuevas incorporaciones para aprender el nuevo sistema.",
+      "COPERNICO": "Consiste en una aplicación de gestión interna donde los diferentes grupos políticos hacen peticiones al Ayuntamiento de Barcelona, y este gestiona las respuestas y documentos pertinentes para cada caso. El desarrollo se está llevando con un framework propio del Ayuntamiento (Openframe) basado en Java, Struts y Spring enlazados con Oracle SQL. Mi función es desarrollar nuevas funcionalidades dentro de la aplicación según las necesidades del cliente, llevando a cabo la homogenización con el control actual de la aplicación. "
     },
     "MGA": {
-      "WEBS": ""
+      "WEBS": "Realizé las prácticas del C.F.G.S. de Desarrollo de Aplicaciones Web en la empresa MGA en Cerdanyola del Vallés obteniendo una carta de recomendación de la misma. Las tareas que se me encomiendan son principalmente de programación en entorno ASP clásico, ASP Net MVC y HTML5 en los proyectos en curso de la empresa. Concretamente tomo parte activa como Front-end Developer en casi todos los casos y en algunos de Back-end Developer al ejercer una serie de consultas DML hacia la base de datos."
     },
     "HOSPITAL": {
-      "GIRC": ""
+      "GIRC": "Realizé las prácticas del C.F.G.S. de Desarrollo de Aplicaciones Multiplataforma en el Hospital Universitario de Cruces obteniendo una calificación final de “Excelente”. Las tareas que se me encomiendan son principalmente de programación en entorno .Net, desarrollando con la plataforma de Visual Studio 2010. Concretamente tomo parte activa en la programación del proyecto de la aplicación GIRC."
     },
     "FREELANCE": {
-      "MODA_MANGAS": "",
-      "LIVING_MANGA": "",
-      "MMI": "",
-      "GDARKITECKTURA": "",
-      "EUROPACTIZYME": "",
-      "LEV2050": "",
-      "TUKOMODIN": "",
-      "DENTALTOOLS": "",
-      "UKIYOE": "",
-      "HUNTING": "",
-      "PORTFOLIO": ""
+      "MODA_MANGAS": "Proyecto web personal, tienda online de ropa Geek realizada con Prestashop. Me encargué de diseñarla, mantenerla, cargar los productos y realizar algñun plugin personal. Actualmente ya no existe, es de 2013.",
+      "LIVING_MANGA": "Proyecto web personal, tienda online de figuras, merch y productos exclusivos japoneses. Me dediqué a montar la tienda con Prestashop + Symphony, realizar cambios a nivel de código en plugins de terceros, diseño y CSS, gestionaba desde la creación, la incorporación de productos, la búsqueda de neuvos productos, la importación y los trámites aduaneros, la facturación, la atención al cliente y los envíos, es decir, todo el proceso de inicio a fin. A día de hoy ya no se puede comprar nada, pero está funcional en modo catálogo en https://www.livingmanga.com/. Es de 2023.",
+      "MMI": "Este fue mi primer proyecto, de hecho fue el proyecto conjunto del fin de FP, que tenía potencial, pero cuando íbamos a sacarlo al mercado, nos enteramos que el instituto pellizcaría neustros ingresos y decidimon no hacerlo. Pero consistía en un Mooc Interactivo donde habría cursos reglados de Univeridades e institutos. Se realizó con la priemra versión de AngularJS, cuando salió. 2010.",
+      "GDARKITECKTURA": "Proyecto web simple en HTML + CSS + JS para un arquitecto de San Sebastián que actualmente ya no ejerce y la web no existe, es de 2015.",
+      "EUROPACTIZYME": "Proyecto Wordpress realizado en 2015 de la empresa Europ Acti Zyme, aun puede verse la web en https://www.actizyme.net/",
+      "LEV2050": "Proyecto Wordpress realizado en 2015 de la empresa LEV2050, aun puede verse la web en https://www.lev2050.com/ aunque ene ste caso ya la han actualizado nuevamente, y es lógico, la versión actual no es la que yo realicé.",
+      "TUKOMODIN": "Proyecto Wordpress realizado en 2015 de la empresa TUKOMODIN, aun puede verse la web en https://tukomodin.es/ aunque ene ste caso ya la han actualizado nuevamente, y es lógico, la versión actual no es la que yo realicé.",
+      "DENTALTOOLS": "Proyecto Wordpress realizado en 2015 de la empresa DENTALTOOLS, la landing ya no existe.",
+      "UKIYOE": "Proyecto web realizado con Angular 11 en 2020 para la artista Maider Véliz Ramas, se compone de un proyecto web eprsonal abierto al público que hablas sobre su tesis doctoral sobre el arte del Ukiyo-e en los videojuegos, puede verse en https://ukiyoe.maidervelizramas.nom.es/index",
+      "HUNTING": "Proyecto personal web realizado con Angular 12 en 2021, era una web para tener localizada mi colección personal de videojuegos, anotaba lugares donde los había visto más baratos etc. Tuve que eliminar la web porque los costes de dominios y mantenimientos del servidor se encarecieron, pero siempre estoy con algún proyecto personal para ponerme al día da las nuevas versiones de Angular.",
+      "PORTFOLIO": "También es un proyecto personal, ha sido actualizado a versiones de Angular nuevas cada X tiempo realizando el proyectod esde cero dándole diferentes enfoques. Esta edición de 2026 está hecho con Angular 21."
     }
   }
 }
