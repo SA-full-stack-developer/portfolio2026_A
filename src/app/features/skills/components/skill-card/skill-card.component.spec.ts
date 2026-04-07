@@ -167,27 +167,6 @@ describe('SkillCardComponent', () => {
     expect(component.tooltipParams()).toEqual({ count: 5 });
   });
 
-  // Output: selected
-  it('should emit selected skill when card is clicked', () => {
-    createComponent(expertSkill);
-    let emittedSkill: Skill | undefined;
-    component.selected.subscribe((s: Skill) => (emittedSkill = s));
-
-    fixture.debugElement.query(By.css('.skill-card')).triggerEventHandler('click');
-
-    expect(emittedSkill).toEqual(expertSkill);
-  });
-
-  it('should emit selected skill when Enter key is pressed', () => {
-    createComponent(expertSkill);
-    let emittedSkill: Skill | undefined;
-    component.selected.subscribe((s: Skill) => (emittedSkill = s));
-
-    fixture.debugElement.query(By.css('.skill-card')).triggerEventHandler('keydown.enter');
-
-    expect(emittedSkill).toEqual(expertSkill);
-  });
-
   // isVisible signal
   it('should set isVisible to false before 50ms', () => {
     createComponent(expertSkill);

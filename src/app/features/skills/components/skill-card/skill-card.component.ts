@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, computed, input, output, signal } from '@angular/core';
+import { Component, computed, input, output, signal } from '@angular/core';
 import { Skill, getSkillLevel } from '@core/models/skill.model';
 
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -13,7 +13,7 @@ import { TranslateModule } from '@ngx-translate/core';
     style: 'display: block',
   },
 })
-export class SkillCardComponent implements AfterViewInit {
+export class SkillCardComponent {
   skill = input.required<Skill>();
   selected = output<Skill>();
 
@@ -27,12 +27,6 @@ export class SkillCardComponent implements AfterViewInit {
   tooltipParams = computed(() => ({
     count: this.skill().yearsOfExperience,
   }));
-
-  ngAfterViewInit(): void {}
-
-  onSelect(): void {
-    this.selected.emit(this.skill());
-  }
 
   readonly isVisible = signal(false);
 

@@ -135,7 +135,7 @@ describe('SkillFilterComponent', () => {
   it('should not mark other buttons as active when frontend is selected', async () => {
     await createComponent(mockCategories, filterFrontend);
     const buttons = fixture.debugElement.queryAll(By.css('.skill-filter__btn'));
-    // índice 0 = all, índice 2 = backend — ninguno debe estar activo
+    // índice 0 = all, índice 2 = backend - ninguno debe estar activo
     expect(buttons[0].classes['skill-filter__btn--active']).toBeFalsy();
     expect(buttons[2].classes['skill-filter__btn--active']).toBeFalsy();
   });

@@ -1,41 +1,73 @@
 <article class="flex flex-col gap-md experience-card">
-  @if (experience().showCompany) {
-    <span class="experience-card__company">🏢 {{ experience().company?.name }}</span>
-    <div class="experience-card__bar"></div>
-  }
-  @for (role of experience().roles; track role) {
-    <span class="experience-card__role">{{ role | translate }}</span>
-  }
-  @if (experience().endDate) {
-    <!--<span
-      >{{ experience().startDate | date: 'MMMM yyyy' : '' : currentLang() }} —
-      {{ experience().endDate | date: 'MMMM yyyy' : '' : currentLang() }}</span
-    >-->
+  @if (!showProjects()) {
+    <div class="flex flex-wrap experience-card__roles">
+      <div class="w-100">
+        @if (experience().endDate) {
+          <span>
+            {{ experience().startDate | date: 'MMMM yyyy' : '' : currentLang() }} -
+            {{ experience().endDate | date: 'MMMM yyyy' : '' : currentLang() }}
+          </span>
+        } @else if ((experience().dates?.length ?? 0) > 0) {
+          <div class="flex flex-col">
+            @for (date of experience().dates; track date) {
+              <span>
+                {{ date.startDate | date: 'MMMM yyyy' : '' : currentLang() }} -
+                {{ date.endDate | date: 'MMMM yyyy' : '' : currentLang() }}
+              </span>
+            }
+          </div>
+        } @else {
+          <span
+            >{{ experience().startDate | date: 'MMMM yyyy' : '' : currentLang() }} -
+            {{ 'EXPERIENCE.CURRENT' | translate }}</span
+          >
+        }
+      </div>
+
+      <b>{{ 'EXPERIENCES.ROLES.TITLE' | translate }}:</b>&nbsp;
+      @for (role of experience().roles; track $index; let i = $index) {
+        <span>
+          @if (i > 0) {
+            &nbsp;-
+          }
+          {{ role | translate }}
+        </span>
+      }
+    </div>
+    <span class="experience-card__description">{{ experience().description | translate }}</span>
   } @else {
-    <!--<span
-      >{{ experience().startDate | date: 'MMMM yyyy' : '' : currentLang() }} —
-      {{ 'EXPERIENCE.CURRENT' | translate }}</span
-    >-->
-  }
-  <span class="experience-card__description">{{ experience().description | translate }}</span>
-  @if (experience().projects.length > 1) {
-    <div class="experience-card__projects">
-      <h3>{{ 'EXPERIENCES.PROJECTS' | translate }}</h3>
+    <div class="flex flex-col experience-card__projects">
+      <h3 class="experience-card__subtitle">{{ 'EXPERIENCES.PROJECTS' | translate }}</h3>
       @for (project of experience().projects; track project.id) {
-        <div class="experience-card__project-title">
-          <h4>{{ project.name }}</h4>
-        </div>
+        <button
+          class="flex flex-baseline experience-card__project-title"
+          (click)="onProjectClick(project.id)"
+        >
+          {{ project.name }}
+          <span class="experience-card__arrow">
+            {{ isProjectOpen(project.id) ? '▲' : '▼' }}
+          </span>
+        </button>
+        <p
+          class="experience-card__project-description"
+          [class.experience-card__project-description--open]="isProjectOpen(project.id)"
+        >
+          {{ project.description | translate }}
+        </p>
       }
+    </div>
+    <div>
+      <h3 class="experience-card__subtitle">{{ 'EXPERIENCES.SKILLS' | translate }}</h3>
+      <div class="experience-card__technologies flex flex-wrap gap-xs">
+        @for (tech of experience().skills; track tech.id) {
+          <button class="experience-card__tech-badge" (click)="onTechClick(tech)">
+            &nbsp;·&nbsp;{{ tech.name }}
+          </button>
+        }
+      </div>
+      <div class="experience-card__skill">
+        <app-skill-card [skill]="selectedSkill()!"> </app-skill-card>
+      </div>
     </div>
   }
-  <div class="experience-card__technologies">
-    <h3>{{ 'EXPERIENCES.SKILLS' | translate }}</h3>
-    <div class="experience-card__technologies flex flex-wrap gap-xs">
-      @for (tech of experience().skills; track tech.id) {
-        <button class="experience-card__tech-badge" (click)="onTechClick(tech.name)">
-          &nbsp;·&nbsp;{{ tech.name }}
-        </button>
-      }
-    </div>
-  </div>
 </article>

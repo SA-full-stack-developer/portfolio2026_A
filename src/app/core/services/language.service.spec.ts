@@ -8,7 +8,7 @@ import { AVAILABLE_LANGUAGES } from '@core/models/language.model';
 import { TranslationObject } from '@ngx-translate/core'; // ✅ TranslationObject
 import { LanguageService } from './language.service';
 
-// Mock loader para tests — no necesita archivos JSON reales
+// Mock loader para tests - no necesita archivos JSON reales
 class MockTranslateLoader implements TranslateLoader {
   getTranslation(lang: string): Observable<TranslationObject> {
     return of({

@@ -43,7 +43,7 @@ export const EXPERIENCES_DATA: Experience[] = [
     roles: ['EXPERIENCES.ROLES.FRONTEND_DEV'],
     startDate: new Date('2020-04'),
     endDate: new Date('2024-10'),
-    description: 'PROJECTS.MEMONDO.ASI_VA',
+    description: 'EXPERIENCES.DESCRIPTIONS.MEMONDO',
     technologyIds: [
       'Angular',
       'TypeScript',
@@ -74,8 +74,8 @@ export const EXPERIENCES_DATA: Experience[] = [
     endDate: new Date('2020-04'),
     description: 'EXPERIENCES.DESCRIPTIONS.EVERIS',
     technologyIds: [
-      'Java',
       'Angular',
+      'Java',
       'TypeScript',
       'SASS',
       'RxJS',
@@ -98,7 +98,7 @@ export const EXPERIENCES_DATA: Experience[] = [
     projectIds: ['4', '5', '6'],
   },
   {
-    id: '3',
+    id: '4',
     companyId: '6',
     showCompany: true,
     roles: ['EXPERIENCES.ROLES.FULLSTACK_DEV'],
@@ -143,7 +143,7 @@ export const EXPERIENCES_DATA: Experience[] = [
     projectIds: ['9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'],
   },
   {
-    id: '3',
+    id: '5',
     companyId: '6',
     showCompany: false,
     roles: ['EXPERIENCES.ROLES.FULLSTACK_DEV'],
@@ -158,7 +158,7 @@ export const EXPERIENCES_DATA: Experience[] = [
       },
     ],
     description: 'EXPERIENCES.DESCRIPTIONS.PRACTICES',
-    technologyIds: ['ASP .Net', 'SQL', 'HTML5'],
+    technologyIds: ['HTML5', 'SQL', 'ASP .Net'],
     projectIds: ['7', '8'],
   },
 ];

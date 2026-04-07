@@ -16,11 +16,18 @@ export class SkillsService {
 
   readonly filteredSkills = computed(() => {
     const { category, onlyHighlighted } = this._filter();
-    return this._skills().filter((skill) => {
-      const matchCategory = category === 'all' || skill.category === category;
-      const matchHighlight = !onlyHighlighted || skill.highlighted;
-      return matchCategory && matchHighlight;
-    });
+    return this._skills()
+      .filter((skill) => {
+        const matchCategory = category === 'all' || skill.category === category;
+        const matchHighlight = !onlyHighlighted || skill.highlighted;
+        return matchCategory && matchHighlight;
+      })
+      .sort((a, b) => {
+        if (a.highlighted !== b.highlighted) {
+          return a.highlighted ? -1 : 1;
+        }
+        return b.level - a.level;
+      });
   });
 
   readonly categories = computed<SkillCategory[]>(() => {

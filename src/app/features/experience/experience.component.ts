@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, inject } from '@angular/core';
+import { Component, ElementRef, Injector, afterNextRender, inject, signal } from '@angular/core';
 
 import { ExperienceService } from '@core/services/experience.service';
 import { GsapService } from '@core/services/gsap.service';
@@ -12,36 +12,53 @@ import { ExperienceCardComponent } from './components/experience-card/experience
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss',
 })
-export class ExperienceComponent implements AfterViewInit {
+export class ExperienceComponent {
   private readonly experienceService = inject(ExperienceService);
   private readonly platformService = inject(PlatformService);
   private readonly gsapService = inject(GsapService);
   private readonly el = inject(ElementRef);
+  private readonly injector = inject(Injector);
 
   readonly resolvedExperiences = this.experienceService.resolvedExperiences;
+  readonly openProjectId = signal<string | null>(null);
 
-  ngAfterViewInit(): void {
-    if (!this.platformService.isBrowser) return;
-    this.animateCards();
+  constructor() {
+    afterNextRender(
+      () => {
+        if (!this.platformService.isBrowser) return;
+        this.animateCards();
+      },
+      { injector: this.injector },
+    );
   }
 
   private animateCards() {
     const gsap = this.gsapService.gsap;
-    const cards = this.el.nativeElement.querySelectorAll('app-experience-card');
+    const cards = this.el.nativeElement.querySelectorAll('.experience-card');
 
-    gsap.set(cards, { opacity: 0, y: 50 });
-
-    gsap.to(cards, {
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      stagger: 0.08,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: this.el.nativeElement.querySelector('.experiences__timeline'),
-        start: 'top 80%',
-        onEnter: () => ScrollTrigger.refresh(),
-      },
+    cards.forEach((card: HTMLElement) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 80%',
+          },
+        },
+      );
     });
+  }
+
+  onProjectClick(projectId: string): void {
+    this.openProjectId.update((current) => (current === projectId ? null : projectId));
+  }
+
+  getCardOrder(index: number): boolean[] {
+    return index % 2 === 0 ? [false, true] : [true, false];
   }
 }

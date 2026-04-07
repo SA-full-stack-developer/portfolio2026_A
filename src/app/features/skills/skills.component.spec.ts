@@ -144,7 +144,7 @@ describe('SkillsComponent', () => {
   // Estado vacío
   it('should show empty message when no cards match the filter', async () => {
     await createComponent();
-    // Forzamos un estado imposible — ninguna skill tiene categoria 'tools' y highlighted true
+    // Forzamos un estado imposible - ninguna skill tiene categoria 'tools' y highlighted true
     skillsService.setFilter({ category: 'tools', onlyHighlighted: true });
     fixture.detectChanges();
 
@@ -193,16 +193,5 @@ describe('SkillsComponent', () => {
   it('should expose categories from service', async () => {
     await createComponent();
     expect(component.categories().length).toBeGreaterThan(0);
-  });
-
-  it('should call onSkillSelected without errors', () => {
-    createComponent();
-    const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
-    const mockSkill = SKILLS_DATA[0];
-
-    expect(() => component.onSkillSelected(mockSkill)).not.toThrow();
-    expect(consoleSpy).toHaveBeenCalledWith('Skill seleccionada:', mockSkill.name);
-
-    consoleSpy.mockRestore();
   });
 });

@@ -25,14 +25,16 @@ export class ExperienceService {
   }
 
   getSkillsByName(names: string[]): Skill[] {
-    return SKILLS_DATA.filter((s) => names.includes(s.name));
+    return names
+      .map((name) => SKILLS_DATA.find((s) => s.name === name))
+      .filter((s) => s !== undefined);
   }
 
   readonly resolvedExperiences = computed<ResolvedExperience[]>(() =>
     this._experiences().map((exp) => ({
       ...exp,
       company: this.getCompany(exp.companyId),
-      projects: this.getProjects(exp.projectIds),
+      projects: this.getProjects(exp.projectIds).map((p) => ({ ...p, isOpen: false })),
       skills: this.getSkillsByName(exp.technologyIds),
     })),
   );

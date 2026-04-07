@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, inject } from '@angular/core';
-import { Skill, SkillFilter } from '@core/models/skill.model';
+import { SkillFilter } from '@core/models/skill.model';
 
 import { ID_SKILLS } from '@core/constants/sections.constants';
 import { GsapService } from '@core/services/gsap.service';
@@ -53,9 +53,5 @@ export class SkillsComponent implements AfterViewInit {
 
   onFilterChange(changes: Partial<SkillFilter>): void {
     this.skillsService.setFilter(changes);
-  }
-
-  onSkillSelected(skill: Skill): void {
-    console.log('Skill seleccionada:', skill.name);
   }
 }

@@ -27,7 +27,7 @@
 
   <div class="skills__grid">
     @for (skill of filteredSkills(); track skill.id) {
-      <app-skill-card [skill]="skill" (selected)="onSkillSelected($event)"> </app-skill-card>
+      <app-skill-card [skill]="skill"> </app-skill-card>
     } @empty {
       <p class="skills__empty">
         {{ 'SKILLS.EMPTY' | translate }}

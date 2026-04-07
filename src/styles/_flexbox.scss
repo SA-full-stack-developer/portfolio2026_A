@@ -26,11 +26,14 @@
   align-items: center;
 }
 
+.flex-baseline {
+  -webkit-align-items: baseline;
+  align-items: baseline;
+}
+
 .flex-between {
   -webkit-justify-content: space-between;
   justify-content: space-between;
-  -webkit-align-items: center;
-  align-items: center;
 }
 
 .flex-around {

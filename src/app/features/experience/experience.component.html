@@ -6,10 +6,30 @@
   </div>
   <div class="experiences__timeline">
     @for (experience of resolvedExperiences(); track experience.id; let i = $index) {
-      <div class="experiences__item" [class.experiences__item--right]="i % 2 !== 0">
+      <div class="flex flex-between flex-start flex-wrap experiences__cards-container">
+        <div class="w-100 flex flex-col flex-center">
+          <span class="experiences__company"
+            >🏢
+            {{
+              experience.showCompany
+                ? experience.company?.name
+                : ('EXPERIENCES.PRACTICES' | translate)
+            }}</span
+          >
+          <div class="experiences__bar"></div>
+        </div>
         <div class="experiences__dot"></div>
-        <app-experience-card class="experiences__card" [experience]="experience">
-        </app-experience-card>
+        @for (showProjects of getCardOrder(i); track showProjects) {
+          <div class="experiences__item">
+            <app-experience-card
+              class="experiences__card"
+              [experience]="experience"
+              [showProjects]="showProjects"
+              [openProjectId]="openProjectId()"
+              (projectClick)="onProjectClick($event)"
+            />
+          </div>
+        }
       </div>
     }
   </div>

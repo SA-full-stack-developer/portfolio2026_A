@@ -19,4 +19,8 @@ export class GsapService {
   get gsap() {
     return gsap;
   }
+
+  get scrollTrigger() {
+    return ScrollTrigger;
+  }
 }
