@@ -10,7 +10,7 @@
 
   &__contact {
     @include m.btn-primary;
-    padding: 0.5rem 1.25rem;
+    padding: 0.5rem 1rem;
 
     &:hover {
       color: v.$text-primary;

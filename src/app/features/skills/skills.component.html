@@ -27,11 +27,24 @@
 
   <div class="skills__grid">
     @for (skill of filteredSkills(); track skill.id) {
-      <app-skill-card [skill]="skill"> </app-skill-card>
+      <app-skill-card [skill]="skill" [animate]="animatedIds().has(skill.id)" />
     } @empty {
       <p class="skills__empty">
         {{ 'SKILLS.EMPTY' | translate }}
       </p>
     }
   </div>
+
+  @if (hasMore()) {
+    <div class="flex flex-center">
+      <button
+        class="flex flex-col flex-center skills__more"
+        (click)="onLoadMore()"
+        aria-label="Cargar más habilidades"
+      >
+        <span>{{ 'SKILLS.LOAD_MORE' | translate }}</span>
+        <app-icon name="arrow-fat-down" [size]="20" />
+      </button>
+    </div>
+  }
 </section>

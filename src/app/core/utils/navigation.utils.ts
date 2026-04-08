@@ -2,7 +2,7 @@ export function navScrollTo(el: HTMLElement | null): void {
   if (!el) return;
 
   const start = window.scrollY;
-  const target = el.getBoundingClientRect().top + window.scrollY;
+  const target = el.getBoundingClientRect().top + start;
   const duration = 650;
   const startTime = performance.now();
 

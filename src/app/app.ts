@@ -7,11 +7,12 @@ import { SeoService } from '@core/services/seo.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { FeatureFlagDirective } from '@shared/directives/feature-flag.directive';
 import { HeaderComponent } from 'src/app/layout/header/header.component';
+import { GoToTopComponent } from './layout/go-to-top/go-to-top.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [TranslateModule, RouterOutlet, HeaderComponent, FeatureFlagDirective],
+  imports: [TranslateModule, RouterOutlet, HeaderComponent, FeatureFlagDirective, GoToTopComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

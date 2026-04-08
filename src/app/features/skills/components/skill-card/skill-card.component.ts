@@ -1,12 +1,14 @@
-import { Component, computed, input, output, signal } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { Skill, getSkillLevel } from '@core/models/skill.model';
 
+import { NgOptimizedImage } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
+import { IconComponent } from '@shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-skill-card',
-  imports: [MatTooltipModule, TranslateModule],
+  imports: [MatTooltipModule, TranslateModule, IconComponent, NgOptimizedImage],
   templateUrl: './skill-card.component.html',
   styleUrl: './skill-card.component.scss',
   host: {
@@ -15,6 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class SkillCardComponent {
   skill = input.required<Skill>();
+  animate = input<boolean>(false);
   selected = output<Skill>();
 
   skillLevel = computed(() => getSkillLevel(this.skill().level));
@@ -28,9 +31,6 @@ export class SkillCardComponent {
     count: this.skill().yearsOfExperience,
   }));
 
-  readonly isVisible = signal(false);
-
-  ngOnInit(): void {
-    setTimeout(() => this.isVisible.set(true), 50);
-  }
+  protected hasSvgFile = computed(() => this.skill().icon.includes('.'));
+  protected isRaster = computed(() => /\.(png|jpg|jpeg|webp)$/i.test(this.skill().icon));
 }

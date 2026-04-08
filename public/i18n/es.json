@@ -13,6 +13,7 @@
     "EMPTY": "No hay tecnologías en esta categoría.",
     "YEARS_ONE": "{{count}} año de experiencia",
     "YEARS_OTHER": "{{count}} años de experiencia",
+    "LOAD_MORE": "Cargar más",
     "LEVELS": {
       "EXPERT": "Experto",
       "INTERMEDIATE": "Intermedio",
@@ -57,6 +58,7 @@
     "PROJECTS": "Proyectos",
     "PRACTICES": "Prácticas",
     "SKILLS": "Tecnologías y soft skills",
+    "CURRENT": "Actualmente",
     "ROLES": {
       "TITLE": "Roles",
       "BACKEND_DEV": "Desarrollador Backend",

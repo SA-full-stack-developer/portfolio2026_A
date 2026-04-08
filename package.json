@@ -2,9 +2,10 @@
   "name": "portfolio2026-a",
   "version": "0.0.0",
   "scripts": {
+    "build:icons": "node scripts/build-icons.mjs",
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng build:icons && serve",
+    "build": "ng build:icons && build",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -27,6 +28,7 @@
     "@angular/ssr": "^21.2.1",
     "@ngx-translate/core": "^17.0.0",
     "@ngx-translate/http-loader": "^17.0.0",
+    "@phosphor-icons/core": "^2.1.1",
     "express": "^5.1.0",
     "flag-icons": "^7.5.0",
     "gsap": "^3.14.2",
@@ -47,6 +49,7 @@
     "jest-preset-angular": "^16.1.1",
     "jsdom": "^28.0.0",
     "prettier": "^3.8.1",
+    "svg-sprite": "^2.0.4",
     "ts-jest": "^29.4.6",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"

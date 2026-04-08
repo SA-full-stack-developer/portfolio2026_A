@@ -6,25 +6,51 @@
   role="button"
   [attr.aria-label]="skill().name + ' - ' + (skillLevelKey() | translate)"
 >
-  <div class="skill-card__header flex flex-between">
-    <span class="skill-card__name">{{ skill().name }}</span>
-    @if (skill().highlighted) {
-      <span class="skill-card__badge">⭐</span>
-    }
-  </div>
+  <div class="flex flex-center">
+    <div class="flex flex-center skill-card__logo">
+      @if (hasSvgFile()) {
+        @if (isRaster()) {
+          <img
+            [ngSrc]="'assets/icons/skills/' + skill().icon"
+            [alt]="skill().name"
+            width="40"
+            height="40"
+          />
+        } @else {
+          <img
+            [src]="'assets/icons/skills/' + skill().icon"
+            [alt]="skill().name"
+            width="40"
+            height="40"
+            loading="lazy"
+          />
+        }
+      } @else {
+        <app-icon [name]="skill().icon" [size]="40" />
+      }
+    </div>
+    <div class="w-100">
+      <div class="skill-card__header flex flex-between">
+        <span class="skill-card__name">{{ skill().name }}</span>
+        @if (skill().highlighted) {
+          <span class="skill-card__badge">⭐</span>
+        }
+      </div>
 
-  <div
-    class="skill-card__bar-container"
-    role="progressbar"
-    [attr.aria-valuenow]="skill().level"
-    aria-valuemin="0"
-    aria-valuemax="100"
-  >
-    <div class="skill-card__bar" [style.width.%]="isVisible() ? skill().level : 0"></div>
-  </div>
+      <div
+        class="skill-card__bar-container"
+        role="progressbar"
+        [attr.aria-valuenow]="skill().level"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      >
+        <div class="skill-card__bar" [style.width.%]="animate() ? skill().level : 0"></div>
+      </div>
 
-  <div class="skill-card__footer flex flex-between">
-    <span class="skill-card__level">{{ skillLevelKey() | translate }}</span>
-    <span class="skill-card__percent">{{ skill().level }}%</span>
+      <div class="skill-card__footer flex flex-between">
+        <span class="skill-card__level">{{ skillLevelKey() | translate }}</span>
+        <span class="skill-card__percent">{{ skill().level }}%</span>
+      </div>
+    </div>
   </div>
 </article>

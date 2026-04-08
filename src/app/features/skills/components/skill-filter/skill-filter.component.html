@@ -1,4 +1,8 @@
-<div class="skill-filter flex flex-wrap gap-sm">
+<div
+  class="skill-filter flex flex-wrap gap-sm"
+  role="group"
+  aria-label="Filtrar habilidades por categoría"
+>
   @for (cat of allCategories(); track cat) {
     <button
       class="skill-filter__btn"

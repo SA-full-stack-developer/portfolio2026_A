@@ -19,7 +19,7 @@
         } @else {
           <span
             >{{ experience().startDate | date: 'MMMM yyyy' : '' : currentLang() }} -
-            {{ 'EXPERIENCE.CURRENT' | translate }}</span
+            {{ 'EXPERIENCES.CURRENT' | translate }} ⭐</span
           >
         }
       </div>
@@ -66,7 +66,7 @@
         }
       </div>
       <div class="experience-card__skill">
-        <app-skill-card [skill]="selectedSkill()!"> </app-skill-card>
+        <app-skill-card [skill]="selectedSkill()!" [animate]="true"> </app-skill-card>
       </div>
     </div>
   }

@@ -1,21 +1,25 @@
 <section class="experiences">
   <div class="experiences__header">
     <h2 class="experiences__title">
-      {{ 'EXPERIENCE.TITLE' | translate }}
+      {{ 'EXPERIENCES.TITLE' | translate }}
     </h2>
   </div>
   <div class="experiences__timeline">
     @for (experience of resolvedExperiences(); track experience.id; let i = $index) {
       <div class="flex flex-between flex-start flex-wrap experiences__cards-container">
         <div class="w-100 flex flex-col flex-center">
-          <span class="experiences__company"
-            >🏢
+          <span class="flex flex-center experiences__company">
+            <img
+              class="experiences__company-logo"
+              [src]="'assets/icons/companies/' + experience.company?.logo"
+              [alt]="experience.company?.name ?? ''"
+            />
             {{
               experience.showCompany
                 ? experience.company?.name
                 : ('EXPERIENCES.PRACTICES' | translate)
-            }}</span
-          >
+            }}
+          </span>
           <div class="experiences__bar"></div>
         </div>
         <div class="experiences__dot"></div>
