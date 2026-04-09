@@ -1,6 +1,14 @@
-<article class="flex flex-col hero-intro">
+<article class="w-100 flex flex-col hero-intro">
   <span class="hero-intro__greeting">{{ 'HERO.GREETING' | translate }}</span>
-  <h1 class="hero-intro__name">{{ 'HERO.NAME' | translate }}</h1>
+  <div class="w-100 flex flex-between hero-intro__header">
+    <h1 class="hero-intro__name">{{ 'HERO.NAME' | translate }}</h1>
+    <div class="flex flex-center hero-intro__avatar-wrapper">
+      <app-hero-avatar
+        [avatarSrc]="'assets/images/avatar.jpg'"
+        [avatarAlt]="'Avatar'"
+      ></app-hero-avatar>
+    </div>
+  </div>
   <h2 class="hero-intro__title">{{ 'HERO.TITLE' | translate }}</h2>
   <span class="hero-intro__decoration-bar"></span>
   <p class="hero-intro__description">

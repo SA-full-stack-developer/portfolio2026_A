@@ -1,3 +1,5 @@
+@use './mixins' as m;
+
 .mw-1200 {
   max-width: 1200px;
   margin: 0 auto;
@@ -6,4 +8,16 @@
 
 .w-100 {
   width: 100%;
+}
+
+.w-50 {
+  width: 50%;
+
+  @include m.respond-to('md') {
+    width: 100%;
+  }
+}
+
+.mx-700px {
+  max-width: 700px;
 }
