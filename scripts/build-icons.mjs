@@ -17,6 +17,8 @@ const ICONS = [
   'arrow-fat-up',
   'arrow-fat-down',
   'arrow-clockwise',
+  'list',
+  'x-circle',
 ];
 
 const input = 'node_modules/@phosphor-icons/core/assets/duotone';

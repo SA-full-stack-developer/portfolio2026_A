@@ -4,11 +4,12 @@ import { RouterLink } from '@angular/router';
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { IconComponent } from '@shared/components/icon/icon.component';
 import { HeaderNavComponent } from '../header-nav/header-nav.component';
 
 @Component({
   selector: 'app-header-hamburger',
-  imports: [TranslateModule, RouterLink, HeaderNavComponent],
+  imports: [TranslateModule, RouterLink, HeaderNavComponent, IconComponent],
   templateUrl: './header-hamburger.component.html',
   styleUrl: './header-hamburger.component.scss',
 })

@@ -1,13 +1,13 @@
 <div class="header-hamburger">
   <button
-    class="header-hamburger__btn"
+    class="flex flex-center header-hamburger__btn"
     (click)="toggleDrawer()"
     [attr.aria-expanded]="isOpen()"
     aria-label="Menú"
     [attr.aria-controls]="'nav-drawer'"
     aria-label="Abrir menú de navegación"
   >
-    ☰
+    <app-icon name="list" [size]="30" />
   </button>
   @if (isOpen()) {
     <div
@@ -23,7 +23,7 @@
         (click)="stopPropagation($event)"
       >
         <button class="header-hamburger__close" (click)="close()" aria-label="Cerrar menú">
-          ✕
+          <app-icon name="x-circle" [size]="30" />
         </button>
         <app-header-nav (linkClicked)="close()" [vertical]="true"></app-header-nav>
         <a routerLink="/contact" class="header-hamburger__contact w-100" (click)="close()">{{
