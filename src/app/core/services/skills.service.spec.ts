@@ -1,16 +1,34 @@
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+
+import { provideHttpClient } from '@angular/common/http';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { SKILLS_DATA } from '@core/data/skills.data';
+import { environment } from '@env/environment';
 import { SkillsService } from './skills.service';
 
 describe('SkillsService', () => {
   let service: SkillsService;
+  let httpMock: HttpTestingController;
+  const apiUrl = `${environment.apiUrl}/skills`;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [provideZonelessChangeDetection()],
+      providers: [
+        provideZonelessChangeDetection(),
+        provideHttpClient(),
+        provideHttpClientTesting(),
+      ],
     });
     service = TestBed.inject(SkillsService);
+    httpMock = TestBed.inject(HttpTestingController);
+
+    const req = httpMock.expectOne(`${environment.apiUrl}/skills`);
+    req.flush(SKILLS_DATA);
+  });
+
+  afterEach(() => {
+    httpMock.verify();
   });
 
   it('should be created', () => {
@@ -121,5 +139,41 @@ describe('SkillsService', () => {
       .map((s) => s.highlighted);
 
     expect(othersBefore).toEqual(othersAfter);
+  });
+
+  it('should be created and fetch skills', () => {
+    const service = TestBed.inject(SkillsService);
+    const req = httpMock.expectOne(apiUrl);
+    req.flush(SKILLS_DATA);
+
+    expect(service).toBeTruthy();
+    expect(service.skills()).toHaveLength(SKILLS_DATA.length);
+    expect(service.error()).toBeNull();
+  });
+
+  it('should handle error when API fails', () => {
+    const service = TestBed.inject(SkillsService);
+    const req = httpMock.expectOne(apiUrl);
+
+    req.flush('Error del servidor', { status: 500, statusText: 'Server Error' });
+
+    expect(service.loading()).toBe(false);
+    expect(service.error()).toBe(
+      'No se pudieron cargar las habilidades. Inténtalo de nuevo más tarde.',
+    );
+    expect(service.skills()).toHaveLength(0);
+  });
+
+  it('should toggle highlight locally (optimistic update)', () => {
+    const service = TestBed.inject(SkillsService);
+    httpMock.expectOne(apiUrl).flush(SKILLS_DATA);
+
+    const skillId = SKILLS_DATA[0].id;
+    const initialState = service.skills().find((s) => s.id === skillId)!.highlighted;
+
+    service.toggleHighlight(skillId);
+
+    const newState = service.skills().find((s) => s.id === skillId)!.highlighted;
+    expect(newState).toBe(!initialState);
   });
 });

@@ -110,3 +110,18 @@ a,
     display: none;
   }
 }
+
+.error-container {
+  color: v.$warn-hue;
+}
+
+.loading-shade {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 3rem;
+  margin: auto;
+  @include m.flex();
+  @include m.flex-center();
+}

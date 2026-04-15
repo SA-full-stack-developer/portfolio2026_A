@@ -4,6 +4,9 @@
   "scripts": {
     "build:icons": "node scripts/build-icons.mjs",
     "ng": "ng",
+    "start:ng": "ng serve",
+    "start:nest": "npm run start:dev --prefix backend",
+    "start:all": "concurrently -n \"NG,NEST\" -c \"cyan,magenta\" \"npm run start:ng\" \"npm run start:nest\"",
     "start": "ng build:icons && serve",
     "build": "ng build:icons && build",
     "watch": "ng build --watch --configuration development",
@@ -44,6 +47,7 @@
     "@types/gsap": "^1.20.2",
     "@types/jest": "^30.0.0",
     "@types/node": "^20.17.19",
+    "concurrently": "^9.2.1",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
     "jest-preset-angular": "^16.1.1",

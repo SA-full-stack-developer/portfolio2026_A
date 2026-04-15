@@ -25,10 +25,14 @@
       "BACKEND": "Backend",
       "MOBILE": "Mobile",
       "DEVOPS": "DevOps",
-      "TOOLS": "Herramientas"
+      "TOOLS": "Herramientas",
+      "SOFT": "Soft"
     },
     "FILTER": {
       "HIGHLIGHTED": "Destacados"
+    },
+    "ERRORS": {
+      "FETCH_ERROR": "No se pudieron cargar las habilidades. Inténtalo de nuevo más tarde."
     }
   },
   "COMMON": {

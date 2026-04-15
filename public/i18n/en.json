@@ -25,10 +25,14 @@
       "BACKEND": "Backend",
       "MOBILE": "Mobile",
       "DEVOPS": "DevOps",
-      "TOOLS": "Tools"
+      "TOOLS": "Tools",
+      "SOFT": "Soft"
     },
     "FILTER": {
       "HIGHLIGHTED": "Highlighted"
+    },
+    "ERRORS": {
+      "FETCH_ERROR": "Could not load skills. Please try again later."
     }
   },
   "COMMON": {

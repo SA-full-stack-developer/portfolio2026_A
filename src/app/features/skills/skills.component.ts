@@ -4,12 +4,15 @@ import {
   ElementRef,
   Injector,
   afterNextRender,
+  effect,
   inject,
   signal,
+  untracked,
 } from '@angular/core';
+import { SkillCategory, SkillFilter } from '@core/models/skill.model';
 
+import { MatIconModule } from '@angular/material/icon';
 import { ID_SKILLS } from '@core/constants/sections.constants';
-import { SkillFilter } from '@core/models/skill.model';
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { SkillsService } from '@core/services/skills.service';
@@ -21,7 +24,13 @@ import { SkillFilterComponent } from './components/skill-filter/skill-filter.com
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [SkillCardComponent, SkillFilterComponent, TranslateModule, IconComponent],
+  imports: [
+    SkillCardComponent,
+    SkillFilterComponent,
+    TranslateModule,
+    IconComponent,
+    MatIconModule,
+  ],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss',
 })
@@ -31,6 +40,7 @@ export class SkillsComponent implements AfterViewInit {
   private readonly el = inject(ElementRef);
   private readonly platformService = inject(PlatformService);
   private readonly injector = inject(Injector);
+  private readonly _availableCategories = signal<SkillCategory[]>([]);
 
   readonly ID_SKILLS = ID_SKILLS;
   readonly filteredSkills = this.skillsService.filteredSkills;
@@ -40,8 +50,25 @@ export class SkillsComponent implements AfterViewInit {
   readonly highlightedCount = this.skillsService.highlightedCount;
   readonly totalSkills = this.skillsService.totalSkills;
   readonly hasMore = this.skillsService.hasMore;
+  readonly loading = this.skillsService.loading;
+  readonly error = this.skillsService.error;
 
   readonly animatedIds = signal<Set<string>>(new Set());
+
+  constructor() {
+    effect(() => {
+      const currentSkills = this.skillsService.filteredSkills();
+
+      untracked(() => {
+        afterNextRender(
+          () => {
+            this.animateCards(0);
+          },
+          { injector: this.injector },
+        );
+      });
+    });
+  }
 
   ngAfterViewInit(): void {
     if (!this.platformService.isBrowser) return;
