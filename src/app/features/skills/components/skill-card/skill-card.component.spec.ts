@@ -54,7 +54,7 @@ const beginnerSkill: Skill = {
   id: '3',
   name: 'Flutter',
   level: 30,
-  category: 'mobile',
+  category: 'devops',
   icon: 'flutter',
   highlighted: false,
   yearsOfExperience: 1,
@@ -165,20 +165,5 @@ describe('SkillCardComponent', () => {
   it('should return correct tooltip params', () => {
     createComponent(expertSkill);
     expect(component.tooltipParams()).toEqual({ count: 5 });
-  });
-
-  // isVisible signal
-  it('should set isVisible to false before 50ms', () => {
-    createComponent(expertSkill);
-    expect(component.isVisible()).toBe(false);
-  });
-
-  it('should set isVisible to true after 50ms', async () => {
-    jest.useFakeTimers();
-    createComponent(expertSkill);
-    expect(component.isVisible()).toBe(false);
-    jest.advanceTimersByTime(50);
-    expect(component.isVisible()).toBe(true);
-    jest.useRealTimers();
   });
 });

@@ -32,7 +32,7 @@ class MockTranslateLoader implements TranslateLoader {
 }
 
 // Mocks de datos
-const mockCategories: SkillCategory[] = ['frontend', 'backend', 'mobile', 'devops', 'tools'];
+const mockCategories: SkillCategory[] = ['frontend', 'backend', 'devops', 'tools', 'soft'];
 
 const filterAll: SkillFilter = { category: 'all', onlyHighlighted: false };
 const filterFrontend: SkillFilter = { category: 'frontend', onlyHighlighted: false };

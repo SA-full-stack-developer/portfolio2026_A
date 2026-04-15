@@ -81,10 +81,10 @@ describe('SkillsComponent', () => {
     expect(title.nativeElement.textContent.trim()).toBe('Stack Tecnológico');
   });
 
-  it('should render all skill cards on init', async () => {
+  it('should render first page of skill cards on init', async () => {
     await createComponent();
     const cards = fixture.debugElement.queryAll(By.css('app-skill-card'));
-    expect(cards.length).toBe(SKILLS_DATA.length);
+    expect(cards.length).toBe(skillsService.PAGE_SIZE);
   });
 
   it('should render skill filter component', async () => {
@@ -104,7 +104,7 @@ describe('SkillsComponent', () => {
     expect(cards.length).toBe(expected);
   });
 
-  it('should show all cards when filter is reset to all', async () => {
+  it('should show first page of cards when filter is reset to all', async () => {
     await createComponent();
     skillsService.setFilter({ category: 'frontend' });
     fixture.detectChanges();
@@ -112,7 +112,7 @@ describe('SkillsComponent', () => {
     fixture.detectChanges();
 
     const cards = fixture.debugElement.queryAll(By.css('app-skill-card'));
-    expect(cards.length).toBe(SKILLS_DATA.length);
+    expect(cards.length).toBe(skillsService.PAGE_SIZE);
   });
 
   // Filtro por destacados
@@ -144,21 +144,16 @@ describe('SkillsComponent', () => {
   // Estado vacío
   it('should show empty message when no cards match the filter', async () => {
     await createComponent();
-    // Forzamos un estado imposible - ninguna skill tiene categoria 'tools' y highlighted true
-    skillsService.setFilter({ category: 'tools', onlyHighlighted: true });
+    // Soft skills are not highlighted
+    skillsService.setFilter({ category: 'soft', onlyHighlighted: true });
     fixture.detectChanges();
 
-    // Verificamos si hay empty o si hay 0 cards
     const cards = fixture.debugElement.queryAll(By.css('app-skill-card'));
-    const empty = fixture.debugElement.query(By.css('.skills__empty'));
+    expect(cards.length).toBe(0);
 
-    if (cards.length === 0) {
-      expect(empty).toBeTruthy();
-      expect(empty.nativeElement.textContent.trim()).toContain('No hay');
-    } else {
-      // Si hay skills de tools highlighted, verificamos que son correctas
-      expect(cards.length).toBeGreaterThan(0);
-    }
+    const empty = fixture.debugElement.query(By.css('.skills__empty'));
+    expect(empty).toBeTruthy();
+    expect(empty.nativeElement.textContent.trim()).toContain('No hay');
   });
 
   // onFilterChange
@@ -187,11 +182,42 @@ describe('SkillsComponent', () => {
 
   it('should expose filteredSkills equal to all skills on init', async () => {
     await createComponent();
-    expect(component.filteredSkills().length).toBe(SKILLS_DATA.length);
+    expect(component.allFilteredSkills().length).toBe(SKILLS_DATA.length);
   });
 
   it('should expose categories from service', async () => {
     await createComponent();
     expect(component.categories().length).toBeGreaterThan(0);
+  });
+
+  it('should expose highlightedCount from service', async () => {
+    await createComponent();
+    const expected = SKILLS_DATA.filter((s) => s.highlighted).length;
+    expect(component.highlightedCount()).toBe(expected);
+  });
+
+  it('should expose hasMore correctly on init', async () => {
+    await createComponent();
+    expect(component.hasMore()).toBe(
+      component.allFilteredSkills().length > skillsService.PAGE_SIZE,
+    );
+  });
+
+  it('should expose filter from service', async () => {
+    await createComponent();
+    expect(component.filter()).toEqual({ category: 'all', onlyHighlighted: false });
+  });
+
+  it('should show load more button when hasMore is true', async () => {
+    await createComponent();
+    const button = fixture.debugElement.query(By.css('.skills__more'));
+    expect(button).toBeTruthy();
+  });
+
+  it('should call loadMore on service when onLoadMore is called', async () => {
+    await createComponent();
+    jest.spyOn(skillsService, 'loadMore');
+    component.onLoadMore();
+    expect(skillsService.loadMore).toHaveBeenCalled();
   });
 });

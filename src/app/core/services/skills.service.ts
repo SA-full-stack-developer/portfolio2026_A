@@ -5,7 +5,7 @@ import { SKILLS_DATA } from '@core/data/skills.data';
 
 @Injectable({ providedIn: 'root' })
 export class SkillsService {
-  private readonly PAGE_SIZE = 24;
+  readonly PAGE_SIZE = 24;
 
   private readonly _skills = signal<Skill[]>(SKILLS_DATA);
   private readonly _filter = signal<SkillFilter>({

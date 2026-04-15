@@ -26,8 +26,12 @@ describe('SkillsService', () => {
     expect(service.filter().onlyHighlighted).toBe(false);
   });
 
-  it('should start showing all skills when filter is default', () => {
-    expect(service.filteredSkills()).toHaveLength(SKILLS_DATA.length);
+  it('should start showing first page of skills when filter is default', () => {
+    expect(service.filteredSkills()).toHaveLength(service.PAGE_SIZE);
+  });
+
+  it('should have allFilteredSkills equal to all skills on init', () => {
+    expect(service.allFilteredSkills()).toHaveLength(SKILLS_DATA.length);
   });
 
   it('should return unique categories', () => {
@@ -81,10 +85,10 @@ describe('SkillsService', () => {
     expect(service.filter().onlyHighlighted).toBe(false);
   });
 
-  it('should show all skills after reset', () => {
+  it('should show first page of skills after reset', () => {
     service.setFilter({ category: 'frontend' });
     service.resetFilter();
-    expect(service.filteredSkills()).toHaveLength(SKILLS_DATA.length);
+    expect(service.filteredSkills()).toHaveLength(service.PAGE_SIZE);
   });
 
   it('should toggle highlight on a skill', () => {

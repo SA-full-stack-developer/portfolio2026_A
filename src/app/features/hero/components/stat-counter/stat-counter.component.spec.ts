@@ -28,6 +28,10 @@ describe('StatCounterComponent', () => {
 
     fixture = TestBed.createComponent(StatCounterComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('icon', 'test-icon');
+    fixture.componentRef.setInput('label', 'Test label');
+    fixture.componentRef.setInput('finalValue', 42);
+    fixture.detectChanges();
     await fixture.whenStable();
   });
 

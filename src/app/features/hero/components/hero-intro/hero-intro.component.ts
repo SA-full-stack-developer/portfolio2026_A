@@ -43,6 +43,8 @@ export class HeroIntroComponent implements AfterViewInit {
   }
 
   navigateToContact(): void {
-    this.router.navigate(['/contact']);
+    if (this.platformService.isBrowser) {
+      this.router.navigate(['/contact']);
+    }
   }
 }
