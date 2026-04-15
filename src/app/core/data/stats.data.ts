@@ -10,19 +10,19 @@ export const STATS_DATA: Stat[] = [
       calculation: 'years',
       showPlus: true,
     },
-    icon: '💻',
+    icon: 'experience.webp',
   },
   {
     id: '2',
     label: 'STATS.REMOTE',
     stat: { kind: 'static', value: 5, showPlus: true },
-    icon: '🌍',
+    icon: 'remote.webp',
   },
   {
     id: '3',
     label: 'STATS.SKILLS',
     stat: { kind: 'service' },
-    icon: '⭐',
+    icon: 'skills.webp',
   },
   {
     id: '4',
@@ -34,6 +34,6 @@ export const STATS_DATA: Stat[] = [
       showPlus: true,
       multiplier: 3,
     },
-    icon: '☕',
+    icon: 'coffee.webp',
   },
 ];

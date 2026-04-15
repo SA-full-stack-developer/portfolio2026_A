@@ -3,7 +3,12 @@
   role="figure"
   [attr.aria-label]="(label() | translate) + ': ' + Math.round(displayValue())"
 >
-  <span class="stat-counter-card__icon" aria-hidden="true">{{ icon() }}</span>
+  <img
+    class="stat-counter-card__icon"
+    aria-hidden="true"
+    [src]="'assets/icons/' + icon()"
+    [alt]="label() | translate"
+  />
   <span class="stat-counter-card__value" aria-live="polite">
     {{ showPlus() ? '+' : '' }}{{ displayValue() | number: '1.0-0' }}
   </span>
