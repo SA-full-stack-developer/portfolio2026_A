@@ -4,4 +4,5 @@ export declare class SkillsService {
     findAll(category?: string, onlyHighlighted?: boolean): Skill[];
     getCategories(): string[];
     findByIds(ids: string[]): Skill[];
+    getHighlightedCount(): number;
 }

@@ -1,4 +1,4 @@
-import { CompaniesService } from "../companies/companies.service";
+import { CompaniesService } from '../companies/companies.service';
 import { ProjectResponseDto } from './dto/project-response.dto';
 export declare class ProjectsService {
     private readonly companiesService;

@@ -31,4 +31,8 @@ export class SkillsService {
   findByIds(ids: string[]): Skill[] {
     return this.skills.filter((s) => ids.includes(s.id));
   }
+
+  getHighlightedCount(): number {
+    return this.skills.filter((s) => s.highlighted).length;
+  }
 }

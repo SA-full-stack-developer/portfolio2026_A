@@ -2,8 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateLoader, TranslationObject, provideTranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
-import { provideZonelessChangeDetection } from '@angular/core';
+import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { GsapService } from '@core/services/gsap.service';
+import { StatsService } from '@core/services/stats.service';
 import { PortfolioComponent } from './portfolio.component';
 
 class MockTranslateLoader implements TranslateLoader {
@@ -21,6 +22,12 @@ class MockGsapService {
   };
 }
 
+const mockStatsService = {
+  stats: signal([]),
+  loadStats: jest.fn(),
+  refresh: jest.fn(),
+};
+
 describe('PortfolioComponent', () => {
   let component: PortfolioComponent;
   let fixture: ComponentFixture<PortfolioComponent>;
@@ -34,7 +41,6 @@ describe('PortfolioComponent', () => {
   }
 
   beforeEach(async () => {
-    // Mock IntersectionObserver
     global.IntersectionObserver = jest.fn().mockImplementation(() => ({
       observe: jest.fn(),
       unobserve: jest.fn(),
@@ -49,6 +55,7 @@ describe('PortfolioComponent', () => {
           loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
         }),
         { provide: GsapService, useClass: MockGsapService },
+        { provide: StatsService, useValue: mockStatsService },
       ],
     });
   });

@@ -17,8 +17,17 @@ let StatsController = class StatsController {
     constructor(statsService) {
         this.statsService = statsService;
     }
+    findAll() {
+        return this.statsService.findAll();
+    }
 };
 exports.StatsController = StatsController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], StatsController.prototype, "findAll", null);
 exports.StatsController = StatsController = __decorate([
     (0, common_1.Controller)('stats'),
     __metadata("design:paramtypes", [stats_service_1.StatsService])

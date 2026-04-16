@@ -1,6 +1,6 @@
-import { CompaniesService } from "../companies/companies.service";
-import { ProjectsService } from "../projects/projects.service";
-import { SkillsService } from "../skills/skills.service";
+import { CompaniesService } from '../companies/companies.service';
+import { ProjectsService } from '../projects/projects.service';
+import { SkillsService } from '../skills/skills.service';
 import { ExperienceResponseDto } from './dto/experience-response.dto';
 export declare class ExperienceService {
     private readonly companiesService;

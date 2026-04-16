@@ -1,11 +1,11 @@
 <article class="hero-stat-counter__grid">
-  @for (stat of stats; track stat.id; let i = $index) {
+  @for (stat of stats(); track stat.id; let i = $index) {
     <app-stat-counter
       [icon]="stat.icon"
       [startDelay]="i * 300"
-      [finalValue]="getFinalValue(stat.stat)"
+      [finalValue]="stat.value"
       [label]="stat.label"
-      [showPlus]="getShowPlus(stat.stat)"
+      [showPlus]="stat.showPlus"
       [shouldStartAnimation]="statsVisible()"
     >
     </app-stat-counter>

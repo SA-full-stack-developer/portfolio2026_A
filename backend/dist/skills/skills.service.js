@@ -32,6 +32,9 @@ let SkillsService = class SkillsService {
     findByIds(ids) {
         return this.skills.filter((s) => ids.includes(s.id));
     }
+    getHighlightedCount() {
+        return this.skills.filter((s) => s.highlighted).length;
+    }
 };
 exports.SkillsService = SkillsService;
 exports.SkillsService = SkillsService = __decorate([

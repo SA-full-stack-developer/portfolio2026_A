@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 
 import { INestApplication } from '@nestjs/common';
 import request from 'supertest';
-import { AppModule } from './../src/app.module';
+import { AppModule } from '../src/app.module';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
@@ -163,6 +163,31 @@ describe('AppController (e2e)', () => {
 
     it('GET /projects/:id - should return 404 for non-existent project', () => {
       return request(app.getHttpServer()).get('/projects/999999').expect(404);
+    });
+  });
+
+  describe('/stats (e2e)', () => {
+    it('GET /stats - should return 200 and 4 calculated stats', () => {
+      return request(app.getHttpServer())
+        .get('/stats')
+        .expect(200)
+        .expect((res) => {
+          expect(Array.isArray(res.body)).toBe(true);
+          expect(res.body.length).toBe(4);
+
+          const stat = res.body[0];
+          expect(stat).toHaveProperty('id');
+          expect(stat).toHaveProperty('label');
+          expect(stat).toHaveProperty('value');
+          expect(stat).toHaveProperty('showPlus');
+          expect(stat).toHaveProperty('icon');
+
+          expect(stat.stat).toBeUndefined();
+          expect(stat.kind).toBeUndefined();
+
+          expect(typeof stat.value).toBe('number');
+          expect(typeof stat.showPlus).toBe('boolean');
+        });
     });
   });
 

@@ -1,8 +1,9 @@
+import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateLoader, TranslationObject, provideTranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
-import { provideZonelessChangeDetection } from '@angular/core';
+import { StatsService } from '@core/services/stats.service';
 import { HeroComponent } from './hero.component';
 
 class MockTranslateLoader implements TranslateLoader {
@@ -10,6 +11,12 @@ class MockTranslateLoader implements TranslateLoader {
     return of({} as TranslationObject);
   }
 }
+
+const mockStatsService = {
+  stats: signal([]),
+  loadStats: jest.fn(),
+  refresh: jest.fn(),
+};
 
 describe('HeroComponent', () => {
   let component: HeroComponent;
@@ -31,6 +38,7 @@ describe('HeroComponent', () => {
         provideTranslateService({
           loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
         }),
+        { provide: StatsService, useValue: mockStatsService },
       ],
     });
   });

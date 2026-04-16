@@ -1,11 +1,8 @@
 import { AfterViewInit, Component, ElementRef, inject, signal } from '@angular/core';
-import { STAT_CALCULATION, STAT_KIND, StatValue } from '@core/models/stat.model';
-import { calculateDaysBetweenDates, calculateYearsBetweenDates } from '@core/utils/date.utils';
 
-import { STATS_DATA } from '@core/mocks/stats.data';
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
-import { SkillsService } from '@core/services/skills.service';
+import { StatsService } from '@core/services/stats.service';
 import { StatCounterComponent } from '../components/stat-counter/stat-counter.component';
 
 @Component({
@@ -15,12 +12,12 @@ import { StatCounterComponent } from '../components/stat-counter/stat-counter.co
   styleUrl: './hero-stat-counter.component.scss',
 })
 export class HeroStatCounterComponent implements AfterViewInit {
-  private readonly skillsService = inject(SkillsService);
+  private readonly statsService = inject(StatsService);
   private readonly gsapService = inject(GsapService);
   private readonly platformService = inject(PlatformService);
   private readonly el = inject(ElementRef);
 
-  readonly stats = STATS_DATA;
+  readonly stats = this.statsService.stats;
   statsVisible = signal(false);
 
   ngAfterViewInit(): void {
@@ -44,33 +41,5 @@ export class HeroStatCounterComponent implements AfterViewInit {
         onEnter: () => this.statsVisible.set(true),
       },
     });
-  }
-
-  getFinalValue(stat: StatValue): number {
-    if (stat.kind === STAT_KIND.STATIC) return stat.value;
-
-    if (stat.kind === STAT_KIND.DYNAMIC && stat.calculation === STAT_CALCULATION.YEARS) {
-      const years = calculateYearsBetweenDates(stat.startDate);
-      return years * (stat.multiplier ?? 1);
-    }
-
-    if (stat.kind === STAT_KIND.DYNAMIC && stat.calculation === STAT_CALCULATION.DAYS) {
-      const days = calculateDaysBetweenDates(stat.startDate);
-      return days * (stat.multiplier ?? 1);
-    }
-
-    if (stat.kind === STAT_KIND.SERVICE) {
-      const num = this.skillsService.highlightedCount();
-      return num * (stat.multiplier ?? 1);
-    }
-
-    return 0;
-  }
-
-  getShowPlus(stat: StatValue): boolean {
-    if (stat.kind === 'static' || stat.kind === 'dynamic') {
-      return stat.showPlus ?? false;
-    }
-    return false;
   }
 }
