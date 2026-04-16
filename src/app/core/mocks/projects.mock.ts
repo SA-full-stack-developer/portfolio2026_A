@@ -1,6 +1,6 @@
 import { Project } from '@core/models/project.model';
 
-export const PROJECTS_DATA: Project[] = [
+export const PROJECTS_MOCK: Project[] = [
   {
     id: '1',
     name: 'Mokens League Soccer webs',

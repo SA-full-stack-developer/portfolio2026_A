@@ -1,5 +1,14 @@
-import { Component, ElementRef, Injector, afterNextRender, inject, signal } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Injector,
+  afterNextRender,
+  effect,
+  inject,
+  signal,
+} from '@angular/core';
 
+import { MatIconModule } from '@angular/material/icon';
 import { ExperienceService } from '@core/services/experience.service';
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
@@ -8,7 +17,7 @@ import { ExperienceCardComponent } from './components/experience-card/experience
 
 @Component({
   selector: 'app-experience',
-  imports: [ExperienceCardComponent, TranslateModule],
+  imports: [ExperienceCardComponent, TranslateModule, MatIconModule],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss',
 })
@@ -19,17 +28,27 @@ export class ExperienceComponent {
   private readonly el = inject(ElementRef);
   private readonly injector = inject(Injector);
 
-  readonly resolvedExperiences = this.experienceService.resolvedExperiences;
+  readonly resolvedExperiences = this.experienceService.experiences;
   readonly openProjectId = signal<string | null>(null);
+  readonly loading = this.experienceService.loading;
+  readonly error = this.experienceService.error;
 
   constructor() {
-    afterNextRender(
-      () => {
-        if (!this.platformService.isBrowser) return;
-        this.animateCards();
-      },
-      { injector: this.injector },
-    );
+    effect(() => {
+      const experiences = this.resolvedExperiences();
+      const isLoading = this.loading();
+
+      if (experiences.length > 0 && !isLoading) {
+        afterNextRender(
+          () => {
+            if (this.platformService.isBrowser) {
+              this.animateCards();
+            }
+          },
+          { injector: this.injector },
+        );
+      }
+    });
   }
 
   private animateCards() {

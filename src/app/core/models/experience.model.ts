@@ -15,7 +15,7 @@ export interface Experience {
   endDate?: Date | null;
 }
 
-export interface ResolvedExperience extends Experience {
+export interface ResolvedExperience extends Omit<Experience, 'technologyIds' | 'projectIds'> {
   company: Company | undefined;
   projects: Project[];
   skills: Skill[];
@@ -27,5 +27,8 @@ export interface Dates {
 }
 
 export function isCurrentJob(experience: Experience): boolean {
+  if (experience.dates && experience.dates.length > 0) {
+    return experience.dates[experience.dates.length - 1].endDate === null;
+  }
   return experience.endDate === null;
 }

@@ -1,41 +1,46 @@
-import { Injectable, computed, signal } from '@angular/core';
-import { Experience, ResolvedExperience } from '@core/models/experience.model';
+import { Injectable, inject, signal } from '@angular/core';
+import { catchError, of } from 'rxjs';
 
-import { COMPANIES_DATA } from '@core/data/companies.data';
-import { EXPERIENCES_DATA } from '@core/data/experiences.data';
-import { PROJECTS_DATA } from '@core/data/projects.data';
-import { SKILLS_DATA } from '@core/data/skills.data';
-import { Company } from '@core/models/company.model';
-import { Project } from '@core/models/project.model';
-import { Skill } from '@core/models/skill.model';
+import { HttpClient } from '@angular/common/http';
+import { ResolvedExperience } from '@core/models/experience.model';
+import { environment } from '@env/environment';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({ providedIn: 'root' })
 export class ExperienceService {
-  private readonly _experiences = signal<Experience[]>(EXPERIENCES_DATA);
+  private readonly http = inject(HttpClient);
+  private readonly apiUrl = `${environment.apiUrl}/experience`;
+  private readonly translate = inject(TranslateService);
+  private readonly _experiences = signal<ResolvedExperience[]>([]);
+  private readonly _loading = signal<boolean>(false);
+  private readonly _error = signal<string | null>(null);
 
   readonly experiences = this._experiences.asReadonly();
+  readonly loading = this._loading.asReadonly();
+  readonly error = this._error.asReadonly();
 
-  getCompany(companyId: string): Company | undefined {
-    return COMPANIES_DATA.find((c) => c.id === companyId);
+  constructor() {
+    this.fetchExperience();
   }
 
-  getProjects(projectIds: string[]): Project[] {
-    if (!projectIds?.length) return [];
-    return PROJECTS_DATA.filter((p) => projectIds.includes(p.id));
-  }
+  private fetchExperience() {
+    this._loading.set(true);
+    this._error.set(null);
 
-  getSkillsByName(names: string[]): Skill[] {
-    return names
-      .map((name) => SKILLS_DATA.find((s) => s.name === name))
-      .filter((s) => s !== undefined);
+    this.http
+      .get<ResolvedExperience[]>(this.apiUrl)
+      .pipe(
+        catchError((err) => {
+          const errorMessage = this.translate.instant('EXPERIENCE.ERRORS.FETCH_ERROR');
+          this._error.set(errorMessage);
+          this._loading.set(false);
+          console.error('API Error:', err);
+          return of([]);
+        }),
+      )
+      .subscribe((data) => {
+        this._experiences.set(data);
+        this._loading.set(false);
+      });
   }
-
-  readonly resolvedExperiences = computed<ResolvedExperience[]>(() =>
-    this._experiences().map((exp) => ({
-      ...exp,
-      company: this.getCompany(exp.companyId),
-      projects: this.getProjects(exp.projectIds).map((p) => ({ ...p, isOpen: false })),
-      skills: this.getSkillsByName(exp.technologyIds),
-    })),
-  );
 }

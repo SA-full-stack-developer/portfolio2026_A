@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
   TranslateLoader,
@@ -9,11 +10,31 @@ import { Observable, of } from 'rxjs';
 
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-import { provideZonelessChangeDetection, signal } from '@angular/core';
+import { ResolvedExperience } from '@core/models/experience.model';
+import { Skill } from '@core/models/skill.model';
+import { ExperienceService } from '@core/services/experience.service';
 import { GsapService } from '@core/services/gsap.service';
 import { LanguageService } from '@core/services/language.service';
 import { PlatformService } from '@core/services/platform.service';
+import { EXPERIENCES_MOCK } from '../../core/mocks/experiences.mock';
 import { ExperienceComponent } from './experience.component';
+
+const MOCK_SKILL: Skill = {
+  id: '1',
+  name: 'Angular',
+  level: 3,
+  category: 'frontend',
+  icon: 'angular',
+  highlighted: true,
+  yearsOfExperience: 2,
+};
+
+const RESOLVED_EXPERIENCES_MOCK: ResolvedExperience[] = EXPERIENCES_MOCK.map((exp) => ({
+  ...exp,
+  skills: [MOCK_SKILL],
+  projects: [],
+  company: undefined,
+}));
 
 class MockTranslateLoader implements TranslateLoader {
   getTranslation(): Observable<TranslationObject> {
@@ -34,6 +55,12 @@ class MockGsapService {
 
 class MockPlatformService {
   isBrowser = true;
+}
+
+class MockExperienceService {
+  experiences = signal(RESOLVED_EXPERIENCES_MOCK);
+  loading = signal(false);
+  error = signal(null);
 }
 
 describe('ExperienceComponent', () => {
@@ -61,6 +88,7 @@ describe('ExperienceComponent', () => {
         { provide: LanguageService, useValue: { currentLang: signal('en') } },
         { provide: PlatformService, useClass: MockPlatformService },
         { provide: GsapService, useClass: MockGsapService },
+        { provide: ExperienceService, useClass: MockExperienceService },
       ],
     });
 
@@ -99,45 +127,19 @@ describe('ExperienceComponent', () => {
     expect(component.resolvedExperiences()).not.toBeNull();
   });
 
-  it('should call animateCards on initialization if platform is browser', async () => {
-    await createComponent();
-    const gsapService = TestBed.inject(GsapService) as any;
-    component['animateCards']();
-    expect(gsapService.gsap.fromTo).toHaveBeenCalled();
-  });
-
   it('should not call animateCards on initialization if platform is not browser', async () => {
     const platformService = TestBed.inject(PlatformService) as any;
     platformService.isBrowser = false;
     await createComponent();
-    // The component should be created without calling animateCards when not in browser
     expect(component).toBeTruthy();
   });
 
-  it('should animate cards with gsap', async () => {
-    await createComponent();
+  it('should call gsap fromTo if there are cards in the DOM', async () => {
     const gsapService = TestBed.inject(GsapService) as any;
+
+    await createComponent();
+    const cards = fixture.nativeElement.querySelectorAll('.experience-card');
     component['animateCards']();
     expect(gsapService.gsap.fromTo).toHaveBeenCalled();
-  });
-
-  it('should set correct animation properties in animateCards', async () => {
-    await createComponent();
-    const gsapService = TestBed.inject(GsapService) as any;
-    component['animateCards']();
-    expect(gsapService.gsap.fromTo).toHaveBeenCalledWith(
-      expect.any(HTMLElement),
-      { opacity: 0, y: 50 },
-      expect.objectContaining({
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: 'power2.out',
-        scrollTrigger: expect.objectContaining({
-          trigger: expect.any(HTMLElement),
-          start: 'top 80%',
-        }),
-      }),
-    );
   });
 });

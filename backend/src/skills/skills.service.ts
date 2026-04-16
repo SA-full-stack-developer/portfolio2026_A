@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { SKILLS_DATA } from 'src/skills/data/skills.data';
+import { SKILLS_DATA } from './data/skills.data';
 import { Skill } from './entities/skill.entity';
 
 @Injectable()
@@ -26,5 +26,9 @@ export class SkillsService {
   getCategories(): string[] {
     const categories = this.skills.map((s) => s.category);
     return [...new Set(categories)];
+  }
+
+  findByIds(ids: string[]): Skill[] {
+    return this.skills.filter((s) => ids.includes(s.id));
   }
 }

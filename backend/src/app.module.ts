@@ -5,9 +5,11 @@ import { SkillsModule } from './skills/skills.module';
 import { ExperienceModule } from './experience/experience.module';
 import { ContactModule } from './contact/contact.module';
 import { StatsModule } from './stats/stats.module';
+import { ProjectsModule } from './projects/projects.module';
+import { CompaniesModule } from './companies/companies.module';
 
 @Module({
-  imports: [SkillsModule, ExperienceModule, ContactModule, StatsModule],
+  imports: [SkillsModule, ExperienceModule, ContactModule, StatsModule, ProjectsModule, CompaniesModule],
   controllers: [AppController],
   providers: [AppService],
 })

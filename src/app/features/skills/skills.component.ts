@@ -7,12 +7,11 @@ import {
   effect,
   inject,
   signal,
-  untracked,
 } from '@angular/core';
-import { SkillCategory, SkillFilter } from '@core/models/skill.model';
 
 import { MatIconModule } from '@angular/material/icon';
 import { ID_SKILLS } from '@core/constants/sections.constants';
+import { SkillFilter } from '@core/models/skill.model';
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { SkillsService } from '@core/services/skills.service';
@@ -40,7 +39,6 @@ export class SkillsComponent implements AfterViewInit {
   private readonly el = inject(ElementRef);
   private readonly platformService = inject(PlatformService);
   private readonly injector = inject(Injector);
-  private readonly _availableCategories = signal<SkillCategory[]>([]);
 
   readonly ID_SKILLS = ID_SKILLS;
   readonly filteredSkills = this.skillsService.filteredSkills;
@@ -55,69 +53,82 @@ export class SkillsComponent implements AfterViewInit {
 
   readonly animatedIds = signal<Set<string>>(new Set());
 
+  private lastAnimatedCount = 0;
+
   constructor() {
     effect(() => {
-      const currentSkills = this.skillsService.filteredSkills();
+      const skills = this.filteredSkills();
 
-      untracked(() => {
-        afterNextRender(
-          () => {
-            this.animateCards(0);
-          },
-          { injector: this.injector },
-        );
-      });
+      if (skills.length <= 24) {
+        this.lastAnimatedCount = 0;
+      }
+
+      afterNextRender(
+        () => {
+          if (this.platformService.isBrowser) {
+            this.animateCards();
+          }
+        },
+        { injector: this.injector },
+      );
     });
   }
 
   ngAfterViewInit(): void {
     if (!this.platformService.isBrowser) return;
-    this.animateCards(0);
+    this.animateCards();
   }
 
-  private animateCards(fromIndex: number) {
+  private animateCards() {
     const gsap = this.gsapService.gsap;
+    const ScrollTrigger = this.gsapService.scrollTrigger;
+
     const allCards = Array.from(
       this.el.nativeElement.querySelectorAll('app-skill-card'),
     ) as HTMLElement[];
-    const cards = allCards.slice(fromIndex);
+    const newCards = allCards.slice(this.lastAnimatedCount);
 
-    if (!cards.length) return;
+    if (newCards.length === 0) return;
 
-    gsap.set(cards, { opacity: 0, y: 50 });
+    gsap.set(newCards, { opacity: 0, y: 50 });
 
-    gsap.to(cards, {
+    gsap.to(newCards, {
       opacity: 1,
       y: 0,
       duration: 0.6,
       stagger: 0.08,
       ease: 'power2.out',
-      onStart: () => {
-        const newIds = this.filteredSkills()
-          .slice(fromIndex)
-          .map((s) => s.id);
-        this.animatedIds.update((set) => {
-          const next = new Set(set);
-          newIds.forEach((id) => next.add(id));
-          return next;
-        });
+      scrollTrigger: {
+        trigger: newCards[0],
+        start: 'top 92%',
+        toggleActions: 'play none none none',
+        onEnter: () => {
+          const currentFrom = this.lastAnimatedCount;
+          const newIds = this.filteredSkills()
+            .slice(currentFrom)
+            .map((s) => s.id);
+
+          this.animatedIds.update((set) => {
+            const next = new Set(set);
+            newIds.forEach((id) => next.add(id));
+            return next;
+          });
+        },
+      },
+      onComplete: () => {
+        this.lastAnimatedCount = allCards.length;
       },
     });
+
+    ScrollTrigger.refresh();
   }
 
   onFilterChange(changes: Partial<SkillFilter>): void {
+    this.lastAnimatedCount = 0;
     this.skillsService.setFilter(changes);
   }
 
   onLoadMore(): void {
-    const currentCount = this.filteredSkills().length;
     this.skillsService.loadMore();
-
-    afterNextRender(
-      () => {
-        this.animateCards(currentCount);
-      },
-      { injector: this.injector },
-    );
   }
 }

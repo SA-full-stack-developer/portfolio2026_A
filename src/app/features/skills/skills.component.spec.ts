@@ -1,3 +1,4 @@
+import { computed, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
   TranslateLoader,
@@ -7,9 +8,9 @@ import {
 } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
-import { provideZonelessChangeDetection } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { SKILLS_DATA } from '@core/data/skills.data';
+import { SKILLS_MOCK } from '@core/mocks/skills.mock';
+import { GsapService } from '@core/services/gsap.service';
 import { SkillsService } from '@core/services/skills.service';
 import { SkillsComponent } from './skills.component';
 
@@ -39,6 +40,63 @@ class MockTranslateLoader implements TranslateLoader {
   }
 }
 
+class MockGsapService {
+  gsap = {
+    set: jest.fn(),
+    to: jest.fn(),
+    fromTo: jest.fn(),
+  };
+  scrollTrigger = {
+    refresh: jest.fn(),
+  };
+  init = jest.fn();
+}
+
+class MockSkillsService {
+  PAGE_SIZE = 24;
+
+  private _skills = signal(SKILLS_MOCK);
+  private _filter = signal({ category: 'all', onlyHighlighted: false });
+  private _page = signal(1);
+  private _loading = signal(false);
+  private _error = signal(null);
+  private _availableCategories = signal(['frontend', 'backend', 'mobile', 'devops', 'tools']);
+
+  skills = this._skills.asReadonly();
+  filter = this._filter.asReadonly();
+  page = this._page.asReadonly();
+  loading = this._loading.asReadonly();
+  error = this._error.asReadonly();
+  categories = this._availableCategories.asReadonly();
+
+  allFilteredSkills = computed(() => {
+    const { category, onlyHighlighted } = this._filter();
+    return this._skills().filter((skill) => {
+      const matchCategory = category === 'all' || skill.category === category;
+      const matchHighlight = !onlyHighlighted || skill.highlighted;
+      return matchCategory && matchHighlight;
+    });
+  });
+
+  filteredSkills = computed(() => this.allFilteredSkills().slice(0, this._page() * this.PAGE_SIZE));
+
+  hasMore = computed(() => this.filteredSkills().length < this.allFilteredSkills().length);
+  totalSkills = computed(() => this._skills().length);
+  highlightedCount = computed(() => this._skills().filter((s) => s.highlighted).length);
+
+  setFilter(filter: any) {
+    this._filter.set(filter);
+  }
+
+  resetFilter() {
+    this._filter.set({ category: 'all', onlyHighlighted: false });
+  }
+
+  loadMore() {
+    this._page.update((p) => p + 1);
+  }
+}
+
 describe('SkillsComponent', () => {
   let fixture: ComponentFixture<SkillsComponent>;
   let component: SkillsComponent;
@@ -60,6 +118,8 @@ describe('SkillsComponent', () => {
         provideTranslateService({
           loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
         }),
+        { provide: SkillsService, useClass: MockSkillsService },
+        { provide: GsapService, useClass: MockGsapService },
       ],
     });
     skillsService = TestBed.inject(SkillsService);
@@ -99,7 +159,7 @@ describe('SkillsComponent', () => {
     skillsService.setFilter({ category: 'frontend' });
     fixture.detectChanges();
 
-    const expected = SKILLS_DATA.filter((s) => s.category === 'frontend').length;
+    const expected = SKILLS_MOCK.filter((s) => s.category === 'frontend').length;
     const cards = fixture.debugElement.queryAll(By.css('app-skill-card'));
     expect(cards.length).toBe(expected);
   });
@@ -136,7 +196,7 @@ describe('SkillsComponent', () => {
     skillsService.setFilter({ category: 'frontend', onlyHighlighted: true });
     fixture.detectChanges();
 
-    const expected = SKILLS_DATA.filter((s) => s.category === 'frontend' && s.highlighted).length;
+    const expected = SKILLS_MOCK.filter((s) => s.category === 'frontend' && s.highlighted).length;
     const cards = fixture.debugElement.queryAll(By.css('app-skill-card'));
     expect(cards.length).toBe(expected);
   });
@@ -169,7 +229,7 @@ describe('SkillsComponent', () => {
     component.onFilterChange({ category: 'backend' });
     fixture.detectChanges();
 
-    const expected = SKILLS_DATA.filter((s) => s.category === 'backend').length;
+    const expected = SKILLS_MOCK.filter((s) => s.category === 'backend').length;
     const cards = fixture.debugElement.queryAll(By.css('app-skill-card'));
     expect(cards.length).toBe(expected);
   });
@@ -177,12 +237,12 @@ describe('SkillsComponent', () => {
   // ── Signals expuestos ────────────────────────────────────────────
   it('should expose totalSkills matching SKILLS_DATA length', async () => {
     await createComponent();
-    expect(component.totalSkills()).toBe(SKILLS_DATA.length);
+    expect(component.totalSkills()).toBe(SKILLS_MOCK.length);
   });
 
   it('should expose filteredSkills equal to all skills on init', async () => {
     await createComponent();
-    expect(component.allFilteredSkills().length).toBe(SKILLS_DATA.length);
+    expect(component.allFilteredSkills().length).toBe(SKILLS_MOCK.length);
   });
 
   it('should expose categories from service', async () => {
@@ -192,7 +252,7 @@ describe('SkillsComponent', () => {
 
   it('should expose highlightedCount from service', async () => {
     await createComponent();
-    const expected = SKILLS_DATA.filter((s) => s.highlighted).length;
+    const expected = SKILLS_MOCK.filter((s) => s.highlighted).length;
     expect(component.highlightedCount()).toBe(expected);
   });
 

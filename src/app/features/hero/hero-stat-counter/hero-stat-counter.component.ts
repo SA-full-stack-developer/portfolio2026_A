@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, inject, signal } from '@angular/c
 import { STAT_CALCULATION, STAT_KIND, StatValue } from '@core/models/stat.model';
 import { calculateDaysBetweenDates, calculateYearsBetweenDates } from '@core/utils/date.utils';
 
-import { STATS_DATA } from '@core/data/stats.data';
+import { STATS_DATA } from '@core/mocks/stats.data';
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { SkillsService } from '@core/services/skills.service';

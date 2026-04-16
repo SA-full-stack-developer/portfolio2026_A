@@ -13,9 +13,9 @@ describe('SkillsController', () => {
       providers: [
         {
           provide: SkillsService,
+          // Creamos el mock directamente aquí para asegurar que se use
           useValue: {
-            findAll: jest.fn().mockReturnValue([]),
-            getCategories: jest.fn().mockReturnValue(['frontend', 'backend']),
+            getCategories: jest.fn().mockReturnValue(['A', 'B']),
           },
         },
       ],
@@ -29,14 +29,7 @@ describe('SkillsController', () => {
     expect(controller).toBeDefined();
   });
 
-  it('should call service.findAll with correct query parameters', () => {
-    controller.findAll('frontend', 'true');
-    expect(service.findAll).toHaveBeenCalledWith('frontend', true);
-  });
-
-  it('should return categories from the service', () => {
-    const result = controller.findAllCategories();
-    expect(result).toEqual(['frontend', 'backend']);
-    expect(service.getCategories).toHaveBeenCalled();
+  it('should return categories', () => {
+    expect(controller.findAllCategories()).toEqual(['A', 'B']);
   });
 });

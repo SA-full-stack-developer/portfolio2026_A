@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ExperienceModule = void 0;
 const common_1 = require("@nestjs/common");
+const companies_module_1 = require("../companies/companies.module");
+const projects_module_1 = require("../projects/projects.module");
+const skills_module_1 = require("../skills/skills.module");
 const experience_controller_1 = require("./experience.controller");
 const experience_service_1 = require("./experience.service");
 let ExperienceModule = class ExperienceModule {
@@ -15,8 +18,9 @@ let ExperienceModule = class ExperienceModule {
 exports.ExperienceModule = ExperienceModule;
 exports.ExperienceModule = ExperienceModule = __decorate([
     (0, common_1.Module)({
+        imports: [companies_module_1.CompaniesModule, projects_module_1.ProjectsModule, skills_module_1.SkillsModule],
         controllers: [experience_controller_1.ExperienceController],
-        providers: [experience_service_1.ExperienceService]
+        providers: [experience_service_1.ExperienceService],
     })
 ], ExperienceModule);
 //# sourceMappingURL=experience.module.js.map

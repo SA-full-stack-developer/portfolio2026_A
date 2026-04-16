@@ -1,6 +1,6 @@
 import { Skill } from '@core/models/skill.model';
 
-export const SKILLS_DATA: Skill[] = [
+export const SKILLS_MOCK: Skill[] = [
   {
     id: '1',
     name: 'Angular',

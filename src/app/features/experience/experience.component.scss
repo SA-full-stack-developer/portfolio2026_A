@@ -2,6 +2,8 @@
 @use '../../../styles/variables' as v;
 
 .experiences {
+  min-height: 100vh;
+
   &__header {
     @include m.header();
     margin-top: 7rem;

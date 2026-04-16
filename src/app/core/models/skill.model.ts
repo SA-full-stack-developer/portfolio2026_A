@@ -14,6 +14,7 @@ export interface Skill {
 export interface SkillFilter {
   category: SkillCategory | 'all';
   onlyHighlighted: boolean;
+  searchQuery?: string;
 }
 
 export function getSkillLevel(level: number): SkillLevel {

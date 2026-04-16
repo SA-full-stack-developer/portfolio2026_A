@@ -14,12 +14,14 @@ const skills_module_1 = require("./skills/skills.module");
 const experience_module_1 = require("./experience/experience.module");
 const contact_module_1 = require("./contact/contact.module");
 const stats_module_1 = require("./stats/stats.module");
+const projects_module_1 = require("./projects/projects.module");
+const companies_module_1 = require("./companies/companies.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [skills_module_1.SkillsModule, experience_module_1.ExperienceModule, contact_module_1.ContactModule, stats_module_1.StatsModule],
+        imports: [skills_module_1.SkillsModule, experience_module_1.ExperienceModule, contact_module_1.ContactModule, stats_module_1.StatsModule, projects_module_1.ProjectsModule, companies_module_1.CompaniesModule],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })

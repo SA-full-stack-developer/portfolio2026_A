@@ -71,6 +71,7 @@ export class SkillsService {
         catchError((err) => {
           const errorMessage = this.translate.instant('SKILLS.ERRORS.FETCH_ERROR');
           this._error.set(errorMessage);
+          this._loading.set(false);
           console.error('API Error:', err);
           return of([]);
         }),

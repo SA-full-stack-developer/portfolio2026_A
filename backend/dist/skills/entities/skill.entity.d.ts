@@ -1,4 +1,4 @@
-export interface Skill {
+export declare class Skill {
     id: string;
     name: string;
     level: number;

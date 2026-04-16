@@ -29,6 +29,9 @@ let SkillsService = class SkillsService {
         const categories = this.skills.map((s) => s.category);
         return [...new Set(categories)];
     }
+    findByIds(ids) {
+        return this.skills.filter((s) => ids.includes(s.id));
+    }
 };
 exports.SkillsService = SkillsService;
 exports.SkillsService = SkillsService = __decorate([
