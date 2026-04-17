@@ -10,6 +10,12 @@
   width: 100%;
 }
 
+.w-100-mobile {
+  @include m.respond-to('md') {
+    width: 100%;
+  }
+}
+
 .w-50 {
   width: 50%;
 

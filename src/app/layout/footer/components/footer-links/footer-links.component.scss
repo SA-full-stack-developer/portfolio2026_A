@@ -1,0 +1,32 @@
+@use '../../../../../styles/variables.scss' as v;
+@use '../../../../../styles/mixins.scss' as m;
+
+.footerl {
+  width: 350px;
+
+  @include m.respond-to('md') {
+    width: 100%;
+  }
+
+  &__title {
+    color: v.$text-secondary;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    color: rgba(v.$text-primary, 0.5);
+    transition: all 0.3s ease;
+    filter: grayscale(100%);
+    font-weight: 100;
+
+    &:hover {
+      color: v.$primary-hue;
+      filter: drop-shadow(0 0 5px rgba(v.$primary-hue, 0.7))
+        drop-shadow(0 0 12px rgba(v.$primary-hue, 0.3));
+      text-shadow: 0 0 8px rgba(v.$primary-hue, 0.4);
+    }
+  }
+}

@@ -113,5 +113,29 @@
       "HUNTING": "Personal project built with Angular 12 in 2021 to track my personal video game collection and note where to find games at the best prices. Taken offline due to rising domain and hosting costs.",
       "PORTFOLIO": "A personal project that has evolved alongside each new version of Angular, rebuilt from scratch each time with a different approach. This 2026 edition is built with Angular 21."
     }
+  },
+  "FOOTER": {
+    "EXPLORE": "EXPLORE",
+    "CONTACT": "Contact",
+    "ABOUT_ME": "About me",
+    "ABOUT_THIS": "About this web",
+    "LOOK_404": "Look my 404 page",
+    "SYSTEM_STATUS": "System Status",
+    "AVAILABLE": "Available for projects",
+    "UNAVAILABLE": "Unavailable for projects",
+    "TEXT": "Building scalable digital experiences.",
+    "CONTACT_TITLE": "Let's connect",
+    "CONTACT_SUBTITLE": "If you are looking for someone with a passion for detail and clean code, find me on LinkedIn or",
+    "CONTACT_CTA": "get in touch",
+    "LEGAL": "Legal & Privacy"
+  },
+  "LEGAL": {
+    "TITLE": "Legal Notice & Privacy Policy",
+    "SECTION_1_TITLE": "1. General Information",
+    "SECTION_1_BODY": "This website is a personal portfolio managed by <strong>Cristian Salcedo Rodriguez</strong>.",
+    "SECTION_2_TITLE": "2. Intellectual Property",
+    "SECTION_2_BODY": "The content, design, and source code are owned by <strong>Cristian Salcedo Rodriguez</strong>. Reproduction without authorization is prohibited.",
+    "SECTION_3_TITLE": "3. Privacy & Cookies",
+    "SECTION_3_BODY": "If you use the contact form, your data will only be used to reply to you. I do not use intrusive tracking cookies or sell your data to third parties.<br><br>By browsing, you only accept the <strong>technical cookies</strong> essential for the site's operation."
   }
 }

@@ -18,6 +18,7 @@ const config: Config = {
     '^@shared/(.*)$': '<rootDir>/src/app/shared/$1',
     '^@features/(.*)$': '<rootDir>/src/app/features/$1',
     '^@env/(.*)$': '<rootDir>/src/environments/$1',
+    '^src/(.*)$': '<rootDir>/src/$1',
   },
   collectCoverageFrom: [
     'src/app/**/*.ts',

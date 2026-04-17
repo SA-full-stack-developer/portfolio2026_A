@@ -135,3 +135,16 @@ a,
 .green {
   background: v.$success-hue;
 }
+
+.footer__bar {
+  margin-top: 3rem;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, v.$primary-hue 0%, v.$accent-color 100%);
+  box-shadow: 0 0 10px rgba(v.$primary-hue, 0.5);
+}
+
+.footer-copy-app {
+  background-color: rgba(#000000, 1);
+  border-top: solid 1px v.$bg-card;
+}

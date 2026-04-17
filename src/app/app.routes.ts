@@ -21,6 +21,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/lab/lab.component').then((m) => m.LabComponent),
   },
   {
+    path: 'legal',
+    loadComponent: () => import('./pages/legal/legal.component').then((m) => m.LegalComponent),
+  },
+  {
     path: '**',
     redirectTo: '',
   },

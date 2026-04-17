@@ -6,6 +6,8 @@ import { LanguageService } from '@core/services/language.service';
 import { SeoService } from '@core/services/seo.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { FeatureFlagDirective } from '@shared/directives/feature-flag.directive';
+import { FooterCopyrightComponent } from './layout/footer/components/footer-copyright/footer-copyright.component';
+import { FooterComponent } from './layout/footer/footer.component';
 import { GoToTopComponent } from './layout/go-to-top/go-to-top.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { ScrollProgressComponent } from './layout/scroll-progress/scroll-progress.component';
@@ -20,6 +22,8 @@ import { ScrollProgressComponent } from './layout/scroll-progress/scroll-progres
     FeatureFlagDirective,
     GoToTopComponent,
     ScrollProgressComponent,
+    FooterComponent,
+    FooterCopyrightComponent,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',

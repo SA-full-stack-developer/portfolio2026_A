@@ -1,0 +1,21 @@
+@use '../../../styles/variables' as v;
+
+.legal {
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+
+  strong {
+    color: v.$primary-hue;
+    font-weight: 600;
+  }
+
+  h3 {
+    margin-top: 2rem;
+    color: v.$text-primary;
+  }
+
+  p {
+    color: v.$text-secondary;
+    line-height: 1.6;
+  }
+}

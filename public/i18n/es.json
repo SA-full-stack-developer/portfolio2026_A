@@ -113,5 +113,29 @@
       "HUNTING": "Proyecto personal desarrollado con Angular 12 en 2021 para gestionar mi colección personal de videojuegos, registrando ubicaciones donde encontrarlos a mejor precio. Tuve que darlo de baja por el incremento en los costes de dominio y servidor.",
       "PORTFOLIO": "Proyecto personal que ha ido evolucionando con cada nueva versión de Angular, rehecho desde cero en cada iteración con distintos enfoques. Esta edición de 2026 está desarrollada con Angular 21."
     }
+  },
+  "FOOTER": {
+    "EXPLORE": "EXPLORA",
+    "CONTACT": "Contacto",
+    "ABOUT_ME": "Sobre mí",
+    "ABOUT_THIS": "Sobre esta web",
+    "LOOK_404": "Mira mi página 404",
+    "SYSTEM_STATUS": "Estado del sistema",
+    "AVAILABLE": "Disponible para proyectos",
+    "UNAVAILABLE": "No disponible para proyectos",
+    "TEXT": "Creando experiencias digitales escalables",
+    "CONTACT_TITLE": "¿Conectamos?",
+    "CONTACT_SUBTITLE": "Si buscas a alguien con pasión por el detalle y el código limpio, te espero en LinkedIn o",
+    "CONTACT_CTA": "contacta conmigo",
+    "LEGAL": "Legal & Privacidad"
+  },
+  "LEGAL": {
+    "TITLE": "Aviso Legal y Política de Privacidad",
+    "SECTION_1_TITLE": "1. Información General",
+    "SECTION_1_BODY": "Esta web es un portfolio personal gestionado por <strong>Cristian Salcedo Rodriguez</strong>.",
+    "SECTION_2_TITLE": "2. Propiedad Intelectual",
+    "SECTION_2_BODY": "El contenido, diseño y código fuente son propiedad de <strong>Cristian Salcedo Rodriguez</strong>. Queda prohibida su reproducción sin autorización.",
+    "SECTION_3_TITLE": "3. Privacidad y Cookies",
+    "SECTION_3_BODY": "Si usas el formulario, tus datos solo se usarán para responderte. No uso cookies de rastreo intrusivas ni vendo tus datos a terceros.<br><br>Al navegar, aceptas únicamente las <strong>cookies técnicas</strong> esenciales para el funcionamiento del sitio."
   }
 }

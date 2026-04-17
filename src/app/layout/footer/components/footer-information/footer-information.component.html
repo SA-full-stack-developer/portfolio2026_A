@@ -1,0 +1,20 @@
+<div class="flex flex-col gap-md footer-i">
+  <app-header-logo *appFeatureFlag="'HEADER_LOGO'" />
+  <div class="flex">
+    <span class="footer-i__title">CRISTIANSALCEDO</span>
+    <span class="footer-i__subtitle">.DEV</span>
+  </div>
+  <div class="flex gap-md footer-i__status">
+    <div class="footer-i__status-icon">
+      <app-status-dot />
+    </div>
+    <div class="flex flex-col">
+      <span class="footer-i__sys-title">{{ 'FOOTER.SYSTEM_STATUS' | translate }}:</span>
+      <div class="flex flex-center">
+        <span class="footer-i__status--online">Online</span>
+        <span class="footer-i__status-text">&nbsp;| {{ 'FOOTER.AVAILABLE' | translate }}</span>
+      </div>
+    </div>
+  </div>
+  <p class="footer-i__status-text">{{ 'FOOTER.TEXT' | translate }}</p>
+</div>

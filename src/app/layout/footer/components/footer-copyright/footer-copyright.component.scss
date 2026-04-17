@@ -1,0 +1,11 @@
+@use '../../../../../styles/variables.scss' as v;
+
+.footer-copy {
+  padding: 2rem 0;
+  font-size: 0.75rem;
+  color: v.$text-secondary;
+
+  a:hover {
+    color: v.$primary-hue;
+  }
+}

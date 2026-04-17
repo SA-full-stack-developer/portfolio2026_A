@@ -1,0 +1,59 @@
+<div class="flex flex-between footerl">
+  <div class="flex flex-col gap-md">
+    <span class="footerl__title">{{ 'FOOTER.EXPLORE' | translate }}</span>
+    <a routerLink="/">Home</a>
+    <a routerLink="/contact">{{ 'FOOTER.CONTACT' | translate }}</a>
+    <a routerLink="/lab">Lab</a>
+    <a routerLink="/about-me">{{ 'FOOTER.ABOUT_ME' | translate }}</a>
+    <a routerLink="/about-this">{{ 'FOOTER.ABOUT_THIS' | translate }}</a>
+  </div>
+  <div class="flex flex-col gap-md">
+    <span class="footerl__title">SOCIAL</span>
+    <a matTooltip="Github" target="_blank" href="https://github.com/SA-full-stack-developer">
+      <img src="assets/icons/skills/github.svg" alt="Github" width="20" height="20" />
+      &nbsp; GitHub
+    </a>
+    <a
+      matTooltip="Linkedin"
+      target="_blank"
+      href="https://www.linkedin.com/in/cristian-salcedo-fullstack/"
+    >
+      <img src="assets/icons/socials/linkedin.svg" alt="Linkedin" width="20" height="20" />
+      &nbsp; Linkedin
+    </a>
+    <a
+      matTooltip="My personal Prestashop project, the online store, Living Manga"
+      target="_blank"
+      href="https://www.livingmanga.com/"
+    >
+      <img src="assets/icons/socials/livingmanga.webp" alt="Living Manga" width="20" height="20" />
+      &nbsp; Living Manga</a
+    >
+    <a matTooltip="Instagram" target="_blank" href="https://www.instagram.com/huntingvg/">
+      <img src="assets/icons/socials/instagram.svg" alt="Instagram" width="20" height="20" />
+      &nbsp; Instagram
+    </a>
+    <a matTooltip="404 page" routerLink="/error">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-error-404"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M3 8v3a1 1 0 0 0 1 1h3" />
+        <path d="M7 8v8" />
+        <path d="M17 8v3a1 1 0 0 0 1 1h3" />
+        <path d="M21 8v8" />
+        <path d="M10 10v4a2 2 0 1 0 4 0v-4a2 2 0 1 0 -4 0" />
+      </svg>
+      &nbsp; {{ 'FOOTER.LOOK_404' | translate }}
+    </a>
+  </div>
+</div>

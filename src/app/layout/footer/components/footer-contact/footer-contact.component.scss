@@ -1,0 +1,33 @@
+@use '../../../../../styles/variables' as v;
+@use '../../../../../styles/mixins.scss' as m;
+
+.footer-contact {
+  background-color: v.$border-subtle;
+  width: 350px;
+  height: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  border: solid 1px rgba(v.$text-secondary, 0.25);
+
+  @include m.respond-to('md') {
+    width: 100%;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 100;
+    margin-bottom: 1rem;
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    font-weight: 100;
+    text-align: center;
+  }
+
+  &__cta {
+    @include m.btn-primary();
+    margin-top: 1rem;
+    padding: 0.3rem;
+  }
+}
