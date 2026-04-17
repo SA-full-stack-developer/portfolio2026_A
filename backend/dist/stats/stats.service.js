@@ -20,7 +20,7 @@ let StatsService = class StatsService {
     }
     rawStats = [
         {
-            id: '1',
+            id: 'experience',
             label: 'STATS.EXPERIENCE',
             icon: 'experience.webp',
             stat: {
@@ -31,7 +31,7 @@ let StatsService = class StatsService {
             },
         },
         {
-            id: '2',
+            id: 'remote',
             label: 'STATS.REMOTE',
             icon: 'remote.webp',
             stat: {
@@ -41,13 +41,13 @@ let StatsService = class StatsService {
             },
         },
         {
-            id: '3',
+            id: 'skills',
             label: 'STATS.SKILLS',
             icon: 'skills.webp',
             stat: { kind: stat_constants_1.StatKind.SERVICE },
         },
         {
-            id: '4',
+            id: 'coffee',
             label: 'STATS.COFFEES',
             icon: 'coffee.webp',
             stat: {

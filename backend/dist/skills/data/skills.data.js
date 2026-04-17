@@ -50,11 +50,11 @@ exports.SKILLS_DATA = [
     {
         id: '6',
         name: 'NestJS',
-        level: 0,
+        level: 60,
         category: 'backend',
         icon: 'nestjs.svg',
         highlighted: false,
-        yearsOfExperience: 0,
+        yearsOfExperience: 1,
     },
     {
         id: '7',
@@ -370,6 +370,24 @@ exports.SKILLS_DATA = [
         icon: 'screencast',
         highlighted: false,
         yearsOfExperience: 5,
+    },
+    {
+        id: '48',
+        name: 'Jest',
+        level: 60,
+        category: 'frontend',
+        icon: 'jest.svg',
+        highlighted: false,
+        yearsOfExperience: 1,
+    },
+    {
+        id: '49',
+        name: 'GSAP',
+        level: 60,
+        category: 'frontend',
+        icon: 'gsap.svg',
+        highlighted: false,
+        yearsOfExperience: 1,
     },
 ];
 //# sourceMappingURL=skills.data.js.map
