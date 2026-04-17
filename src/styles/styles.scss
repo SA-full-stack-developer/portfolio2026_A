@@ -125,3 +125,13 @@ a,
   @include m.flex();
   @include m.flex-center();
 }
+
+.red {
+  background: v.$warn-hue;
+}
+.yellow {
+  background: v.$warn-orange-hue;
+}
+.green {
+  background: v.$success-hue;
+}

@@ -4,16 +4,21 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./features/portfolio/portfolio.component').then((m) => m.PortfolioComponent),
+      import('./pages/portfolio/portfolio.component').then((m) => m.PortfolioComponent),
   },
   {
     path: 'contact',
     loadComponent: () =>
-      import('./features/contact/contact.component').then((m) => m.ContactComponent),
+      import('./pages/contact/contact.component').then((m) => m.ContactComponent),
+  },
+  {
+    path: 'error',
+    loadComponent: () =>
+      import('./pages/error404/error404.component').then((m) => m.Error404Component),
   },
   {
     path: 'lab',
-    loadComponent: () => import('./features/lab/lab.component').then((m) => m.LabComponent),
+    loadComponent: () => import('./pages/lab/lab.component').then((m) => m.LabComponent),
   },
   {
     path: '**',

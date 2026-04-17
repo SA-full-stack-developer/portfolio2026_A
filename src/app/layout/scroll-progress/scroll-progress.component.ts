@@ -35,12 +35,15 @@ export class ScrollProgressComponent implements AfterViewInit, OnDestroy {
 
     this.scrollTriggerInstance = tween.scrollTrigger;
 
-    this.resizeObserver = new ResizeObserver(() => {
-      if (this.scrollTriggerInstance) {
-        this.scrollTriggerInstance.refresh();
-      }
-    });
-    this.resizeObserver.observe(document.documentElement);
+    const ResizeObserverClass = typeof ResizeObserver !== 'undefined' ? ResizeObserver : null;
+    if (ResizeObserverClass) {
+      this.resizeObserver = new ResizeObserverClass(() => {
+        if (this.scrollTriggerInstance) {
+          this.scrollTriggerInstance.refresh();
+        }
+      });
+      this.resizeObserver.observe(document.documentElement);
+    }
   }
 
   ngOnDestroy(): void {
