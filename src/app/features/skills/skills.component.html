@@ -24,12 +24,7 @@
     (filterChange)="onFilterChange($event)"
   />
 
-  @if (error()) {
-    <div class="flex error-container">
-      <mat-icon>error_outline</mat-icon>
-      <p>{{ error() }}</p>
-    </div>
-  }
+  <app-error [error]="error()" />
 
   @if (!loading() && !error()) {
     <div class="skills__grid">

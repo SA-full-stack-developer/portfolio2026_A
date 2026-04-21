@@ -5,12 +5,7 @@
     </h2>
   </div>
   <div class="experiences__timeline">
-    @if (error()) {
-      <div class="flex error-container">
-        <mat-icon>error_outline</mat-icon>
-        <p>{{ error() }}</p>
-      </div>
-    }
+    <app-error [error]="error()" />
 
     @if (!loading() && !error()) {
       @for (experience of resolvedExperiences(); track experience.id; let i = $index) {

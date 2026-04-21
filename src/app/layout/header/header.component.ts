@@ -3,14 +3,14 @@ import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { LanguageSwitcherComponent } from '@shared/components/language-switcher/language-switcher.component';
 import { FeatureFlagDirective } from '@shared/directives/feature-flag.directive';
+import { LogoComponent } from '../../shared/components/logo/logo.component';
 import { HeaderHamburgerComponent } from './components/header-hamburger/header-hamburger.component';
-import { HeaderLogoComponent } from './components/header-logo/header-logo.component';
 import { HeaderNavComponent } from './components/header-nav/header-nav.component';
 
 @Component({
   selector: 'app-header',
   imports: [
-    HeaderLogoComponent,
+    LogoComponent,
     HeaderNavComponent,
     HeaderHamburgerComponent,
     LanguageSwitcherComponent,

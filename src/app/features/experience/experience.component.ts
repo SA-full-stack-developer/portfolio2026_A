@@ -13,11 +13,12 @@ import { ExperienceService } from '@core/services/experience.service';
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { ErrorComponent } from '@shared/components/error/error.component';
 import { ExperienceCardComponent } from './components/experience-card/experience-card.component';
 
 @Component({
   selector: 'app-experience',
-  imports: [ExperienceCardComponent, TranslateModule, MatIconModule],
+  imports: [ExperienceCardComponent, TranslateModule, MatIconModule, ErrorComponent],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss',
 })

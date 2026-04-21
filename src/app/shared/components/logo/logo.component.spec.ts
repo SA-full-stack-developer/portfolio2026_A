@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 
 import { provideZonelessChangeDetection } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { HeaderLogoComponent } from './header-logo.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HeaderLogoComponent } from './logo.component';
 
 describe('HeaderLogoComponent', () => {
   let component: HeaderLogoComponent;

@@ -1,6 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterLink } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
 import {
   TranslateLoader,
   TranslateService,
@@ -11,6 +9,8 @@ import { Observable, of } from 'rxjs';
 
 import { provideZonelessChangeDetection } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { RouterLink } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { HeaderComponent } from './header.component';
 
 class MockTranslateLoader implements TranslateLoader {
@@ -59,7 +59,7 @@ describe('HeaderComponent', () => {
 
   it('should render header logo', async () => {
     await createComponent();
-    const logo = fixture.debugElement.query(By.css('app-header-logo'));
+    const logo = fixture.debugElement.query(By.css('app-logo'));
     expect(logo).toBeTruthy();
   });
 

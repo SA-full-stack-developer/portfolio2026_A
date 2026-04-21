@@ -16,6 +16,7 @@ import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { SkillsService } from '@core/services/skills.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { ErrorComponent } from '@shared/components/error/error.component';
 import { IconComponent } from '@shared/components/icon/icon.component';
 import { SkillCardComponent } from './components/skill-card/skill-card.component';
 import { SkillFilterComponent } from './components/skill-filter/skill-filter.component';
@@ -29,6 +30,7 @@ import { SkillFilterComponent } from './components/skill-filter/skill-filter.com
     TranslateModule,
     IconComponent,
     MatIconModule,
+    ErrorComponent,
   ],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss',
