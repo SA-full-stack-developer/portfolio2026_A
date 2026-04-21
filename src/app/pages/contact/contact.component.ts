@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, computed, inject, signal } from '@angular/core';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
@@ -8,6 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Form } from '@core/models/form.model';
+import { GsapService } from '@core/services/gsap.service';
+import { PlatformService } from '@core/services/platform.service';
 import emailjs from '@emailjs/browser';
 
 @Component({
@@ -24,7 +26,10 @@ import emailjs from '@emailjs/browser';
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })
-export class ContactComponent {
+export class ContactComponent implements AfterViewInit {
+  private readonly gsapService = inject(GsapService);
+  private readonly el = inject(ElementRef);
+  private readonly platformService = inject(PlatformService);
   private readonly translate = inject(TranslateService);
   private snackBar = inject(MatSnackBar);
   botTrap = '';
@@ -47,6 +52,21 @@ export class ContactComponent {
       data.message.trim().length >= 10
     );
   });
+
+  ngAfterViewInit(): void {
+    if (!this.platformService.isBrowser) return;
+
+    const gsap = this.gsapService.gsap;
+    const cards = this.el.nativeElement.querySelectorAll('.contact--row');
+
+    gsap.from(cards, {
+      opacity: 0,
+      x: -100,
+      duration: 0.6,
+      stagger: 0.2,
+      ease: 'power2.out',
+    });
+  }
 
   updateField(field: string, value: string) {
     this.formData.update((prev) => ({ ...prev, [field]: value }));

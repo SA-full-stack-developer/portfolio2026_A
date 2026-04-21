@@ -19,7 +19,7 @@ export class AboutMeComponent implements AfterViewInit {
     if (!this.platformService.isBrowser) return;
 
     const gsap = this.gsapService.gsap;
-    const cards = this.el.nativeElement.querySelectorAll('.about-me--article');
+    const cards = this.el.nativeElement.querySelectorAll('.about-me--row');
 
     gsap.from(cards, {
       opacity: 0,

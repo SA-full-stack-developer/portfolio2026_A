@@ -1,7 +1,7 @@
 <section class="flex flex-col gap-md contact">
-  <h2 class="contact__title">{{ 'CONTACT.TITLE' | translate }}</h2>
-  <p class="contact__subtitle">{{ 'CONTACT.SUBTITLE' | translate }}</p>
-  <div class="contact__social">
+  <h2 class="contact--row contact__title">{{ 'CONTACT.TITLE' | translate }}</h2>
+  <p class="contact--row contact__subtitle">{{ 'CONTACT.SUBTITLE' | translate }}</p>
+  <div class="contact--row contact__social">
     <p class="contact__social-label">{{ 'CONTACT.LINKEDIN_TEXT' | translate }}</p>
     <a
       href="https://linkedin.com/in/cristian-salcedo-fullstack"
@@ -14,7 +14,7 @@
   </div>
 
   <form class="flex flex-col gap-md contact__form" (submit)="onSubmit(); $event.preventDefault()">
-    <mat-form-field appearance="outline" class="glow-field">
+    <mat-form-field appearance="outline" class="contact--row">
       <mat-label>{{ 'CONTACT.NAME' | translate }}</mat-label>
       <input
         matInput
@@ -39,7 +39,7 @@
       }
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="glow-field">
+    <mat-form-field appearance="outline" class="contact--row">
       <mat-label>{{ 'CONTACT.SUBJECT' | translate }}</mat-label>
       <input
         matInput
@@ -64,7 +64,7 @@
       }
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="glow-field">
+    <mat-form-field appearance="outline" class="contact--row">
       <mat-label>{{ 'CONTACT.EMAIL' | translate }}</mat-label>
       <input
         matInput
@@ -91,7 +91,7 @@
       }
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="glow-field">
+    <mat-form-field appearance="outline" class="contact--row">
       <mat-label>{{ 'CONTACT.MESSAGE' | translate }}</mat-label>
       <textarea
         matInput
@@ -121,7 +121,7 @@
       <input type="text" name="bot_trap" [(ngModel)]="botTrap" />
     </div>
 
-    <div class="flex flex-center">
+    <div class="flex flex-center contact--row">
       <button
         class="flex flex-center gap-sm contact__cta"
         [disabled]="!isFormValid() || isLoading()"
