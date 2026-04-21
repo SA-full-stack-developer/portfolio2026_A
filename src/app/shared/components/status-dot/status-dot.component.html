@@ -5,6 +5,10 @@
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
   class="status-dot"
+  [style.--dot-color]="selectedColor()"
+  [style.--dot-glow]="selectedColor() + 'cc'"
+  [style.--dot-glow-low]="selectedColor() + '99'"
+  [style.--dot-glow-high]="selectedColor()"
 >
   <circle cx="6" cy="6" r="5" fill="url(#paint0_radial)" />
   <defs>
@@ -16,8 +20,8 @@
       gradientUnits="userSpaceOnUse"
       gradientTransform="translate(6 6) rotate(90) scale(5)"
     >
-      <stop stop-color="#4ADE80" />
-      <stop offset="1" stop-color="#166534" />
+      <stop [attr.stop-color]="selectedColor()" />
+      <stop offset="1" [attr.stop-color]="selectedOffsetColor()" />
     </radialGradient>
   </defs>
 </svg>

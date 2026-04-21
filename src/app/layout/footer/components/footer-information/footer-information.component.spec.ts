@@ -8,6 +8,7 @@ import {
 import { Observable, of } from 'rxjs';
 
 import { provideZonelessChangeDetection } from '@angular/core';
+import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FooterInformationComponent } from './footer-information.component';
 
@@ -69,5 +70,10 @@ describe('FooterInformationComponent', () => {
     expect(fixture.nativeElement.textContent).toContain('Estado del sistema');
     expect(fixture.nativeElement.textContent).toContain('Disponible');
     expect(fixture.nativeElement.textContent).toContain('Sitio web en línea');
+  });
+
+  it('should pass the status signal to app-status-dot', () => {
+    const statusDot = fixture.debugElement.query(By.css('app-status-dot'));
+    expect(statusDot.componentInstance.status).toBe('Online');
   });
 });

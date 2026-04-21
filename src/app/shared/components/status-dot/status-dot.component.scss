@@ -1,21 +1,26 @@
 .status-dot {
   display: inline-block;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  filter: drop-shadow(0 0 3px rgba(74, 222, 128, 0.8));
+  background-color: var(--dot-color);
+  transition: all 0.5s ease;
+
+  filter: drop-shadow(0 0 3px var(--dot-glow));
   animation: pulse-glow 2s infinite;
 }
 
 @keyframes pulse-glow {
   0% {
-    filter: drop-shadow(0 0 2px rgba(74, 222, 128, 0.6));
+    filter: drop-shadow(0 0 2px var(--dot-glow-low));
     transform: scale(0.95);
   }
   50% {
-    filter: drop-shadow(0 0 8px rgba(74, 222, 128, 1));
+    filter: drop-shadow(0 0 8px var(--dot-glow-high));
     transform: scale(1.05);
   }
   100% {
-    filter: drop-shadow(0 0 2px rgba(74, 222, 128, 0.6));
+    filter: drop-shadow(0 0 2px var(--dot-glow-low));
     transform: scale(0.95);
   }
 }

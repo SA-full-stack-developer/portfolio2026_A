@@ -191,6 +191,31 @@ describe('AppController (e2e)', () => {
     });
   });
 
+  // Status endpoints
+  describe('/status', () => {
+    it('GET /status - should return 200 and the current system status', () => {
+      return request(app.getHttpServer())
+        .get('/status')
+        .expect(200)
+        .expect((res) => {
+          expect(res.body).toHaveProperty('status');
+          expect(typeof res.body.status).toBe('string');
+
+          const validStatuses = ['Online', 'Offline', 'Maintenance'];
+          expect(validStatuses).toContain(res.body.status);
+        });
+    });
+
+    it('GET /status - should return a non-empty status value', () => {
+      return request(app.getHttpServer())
+        .get('/status')
+        .expect(200)
+        .expect((res) => {
+          expect(res.body.status.length).toBeGreaterThan(0);
+        });
+    });
+  });
+
   afterAll(async () => {
     await app.close();
   });
