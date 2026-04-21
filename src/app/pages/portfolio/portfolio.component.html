@@ -1,9 +1,9 @@
-<app-hero *appFeatureFlag="'HERO'"></app-hero>
-<app-skills *appFeatureFlag="'SKILLS'"></app-skills>
+<app-hero *appFeatureFlag="'HERO'" />
+<app-skills *appFeatureFlag="'SKILLS'" />
 
 <div id="{{ ID_EXPERIENCE }}"></div>
 @defer (on viewport) {
-  <app-experience *appFeatureFlag="'EXPERIENCE'"></app-experience>
+  <app-experience *appFeatureFlag="'EXPERIENCE'" />
 } @placeholder {
   <div class="section-placeholder"></div>
 }

@@ -25,11 +25,7 @@
         <button class="header-hamburger__close" (click)="close()" aria-label="Cerrar menú">
           <app-icon name="x-circle" [size]="30" />
         </button>
-        <app-header-nav
-          *appFeatureFlag="'HEADER_NAV'"
-          (linkClicked)="close()"
-          [vertical]="true"
-        ></app-header-nav>
+        <app-header-nav *appFeatureFlag="'HEADER_NAV'" (linkClicked)="close()" [vertical]="true" />
         <a routerLink="/contact" class="header-hamburger__contact w-100" (click)="close()">{{
           'NAV.CONTACT' | translate
         }}</a>

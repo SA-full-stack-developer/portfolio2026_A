@@ -1,12 +1,9 @@
 <nav class="flex flex-between">
-  <div><app-header-logo *appFeatureFlag="'HEADER_LOGO'"></app-header-logo></div>
+  <div><app-header-logo *appFeatureFlag="'HEADER_LOGO'" /></div>
   <div class="flex flex-between align-center gap-lg header__nav">
-    <app-header-nav class="hide-mobile" *appFeatureFlag="'HEADER_NAV'"></app-header-nav>
-    <app-language-switcher *appFeatureFlag="'LANGUAGE_SWITCHER'"></app-language-switcher>
-    <app-header-hamburger
-      *appFeatureFlag="'HEADER_HAMBURGER'"
-      class="hide-desktop"
-    ></app-header-hamburger>
+    <app-header-nav class="hide-mobile" *appFeatureFlag="'HEADER_NAV'" />
+    <app-language-switcher *appFeatureFlag="'LANGUAGE_SWITCHER'" />
+    <app-header-hamburger *appFeatureFlag="'HEADER_HAMBURGER'" class="hide-desktop" />
     <a class="header__contact hide-mobile" routerLink="/contact">
       {{ 'HERO.CTA.CONTACT' | translate }}
     </a>
