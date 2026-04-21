@@ -36,15 +36,15 @@ export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
     label: 'Hero Stats',
     visibility: 'public',
   },
+  HERO_AVATAR: {
+    id: 'HERO_AVATAR',
+    label: 'Hero Avatar',
+    visibility: 'public',
+  },
   SKILLS: {
     id: 'SKILLS',
     label: 'Stack Tecnológico',
     visibility: 'public',
-  },
-  PROJECTS: {
-    id: 'PROJECTS',
-    label: 'Proyectos',
-    visibility: 'hidden', // aún no existe
   },
   EXPERIENCE: {
     id: 'EXPERIENCE',
@@ -56,19 +56,39 @@ export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
     label: 'Contacto',
     visibility: 'public',
   },
-  LAB: {
-    id: 'LAB',
-    label: 'Laboratorio',
-    visibility: 'admin',
-  },
-  EXPERIMENTS: {
-    id: 'EXPERIMENTS',
-    label: 'Experimentos',
-    visibility: 'admin',
-  },
   LANGUAGE_SWITCHER: {
     id: 'LANGUAGE_SWITCHER',
     label: 'Language Switcher',
+    visibility: 'public',
+  },
+  GO_TO_TOP: {
+    id: 'GO_TO_TOP',
+    label: 'Go to top',
+    visibility: 'public',
+  },
+  FOOTER: {
+    id: 'FOOTER',
+    label: 'Footer',
+    visibility: 'public',
+  },
+  FOOTER_INFORMATION: {
+    id: 'FOOTER_INFORMATION',
+    label: 'Footer Information',
+    visibility: 'public',
+  },
+  FOOTER_LINKS: {
+    id: 'FOOTER_LINKS',
+    label: 'Footer Links',
+    visibility: 'public',
+  },
+  FOOTER_CONTACT: {
+    id: 'FOOTER_CONTACT',
+    label: 'Footer Contact',
+    visibility: 'public',
+  },
+  COPYRIGHT: {
+    id: 'COPYRIGHT',
+    label: 'Copyright',
     visibility: 'public',
   },
 };

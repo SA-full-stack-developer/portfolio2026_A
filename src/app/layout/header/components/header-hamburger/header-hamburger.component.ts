@@ -5,11 +5,12 @@ import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { IconComponent } from '@shared/components/icon/icon.component';
+import { FeatureFlagDirective } from '@shared/directives/feature-flag.directive';
 import { HeaderNavComponent } from '../header-nav/header-nav.component';
 
 @Component({
   selector: 'app-header-hamburger',
-  imports: [TranslateModule, RouterLink, HeaderNavComponent, IconComponent],
+  imports: [TranslateModule, RouterLink, HeaderNavComponent, IconComponent, FeatureFlagDirective],
   templateUrl: './header-hamburger.component.html',
   styleUrl: './header-hamburger.component.scss',
 })

@@ -9,14 +9,14 @@
   <router-outlet></router-outlet>
 </main>
 
-<app-go-to-top></app-go-to-top>
+<app-go-to-top *appFeatureFlag="'GO_TO_TOP'"></app-go-to-top>
 
 <div class="footer__bar"></div>
 <footer class="mw-1200">
-  <app-footer></app-footer>
+  <app-footer *appFeatureFlag="'FOOTER'"></app-footer>
 </footer>
 <div class="footer-copy-app">
   <div class="mw-1200">
-    <app-footer-copyright />
+    <app-footer-copyright *appFeatureFlag="'COPYRIGHT'" />
   </div>
 </div>

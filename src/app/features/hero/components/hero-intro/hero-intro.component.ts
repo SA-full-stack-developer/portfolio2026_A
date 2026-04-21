@@ -5,12 +5,13 @@ import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { navScrollTo } from '@core/utils/navigation.utils';
 import { TranslateModule } from '@ngx-translate/core';
+import { FeatureFlagDirective } from '@shared/directives/feature-flag.directive';
 import { HeroAvatarComponent } from '../hero-avatar/hero-avatar.component';
 
 @Component({
   selector: 'app-hero-intro',
   standalone: true,
-  imports: [TranslateModule, HeroAvatarComponent],
+  imports: [TranslateModule, HeroAvatarComponent, FeatureFlagDirective],
   templateUrl: './hero-intro.component.html',
   styleUrl: './hero-intro.component.scss',
 })

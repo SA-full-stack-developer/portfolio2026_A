@@ -3,7 +3,7 @@
 
 <div id="{{ ID_EXPERIENCE }}"></div>
 @defer (on viewport) {
-  <app-experience></app-experience>
+  <app-experience *appFeatureFlag="'EXPERIENCE'"></app-experience>
 } @placeholder {
   <div class="section-placeholder"></div>
 }

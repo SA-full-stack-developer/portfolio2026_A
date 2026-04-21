@@ -4,6 +4,7 @@
     <h1 class="hero-intro__name">{{ 'HERO.NAME' | translate }}</h1>
     <div class="flex flex-center hero-intro__avatar-wrapper">
       <app-hero-avatar
+        *appFeatureFlag="'HERO_AVATAR'"
         [avatarSrc]="'assets/images/avatar.jpg'"
         [avatarAlt]="'Avatar'"
       ></app-hero-avatar>
