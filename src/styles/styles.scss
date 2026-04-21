@@ -23,6 +23,34 @@ $portfolio-theme: mat.define-theme(
   )
 );
 
+:root {
+  @include mat.form-field-overrides(
+    (
+      error-focus-trailing-icon-color: v.$warn-hue,
+      error-hover-trailing-icon-color: v.$warn-hue,
+      error-text-color: v.$warn-hue,
+      error-trailing-icon-color: v.$warn-hue,
+      outlined-caret-color: v.$primary-hue,
+      outlined-error-caret-color: v.$primary-hue,
+      outlined-error-focus-label-text-color: v.$warn-hue,
+      outlined-error-focus-outline-color: v.$warn-hue,
+      outlined-error-hover-label-text-color: v.$warn-hue,
+      outlined-error-hover-outline-color: v.$warn-hue,
+      outlined-error-label-text-color: v.$warn-hue,
+      outlined-error-outline-color: v.$warn-hue,
+      outlined-focus-label-text-color: v.$success-hue,
+      outlined-focus-outline-color: v.$success-hue,
+      outlined-hover-label-text-color: v.$primary-hue,
+      outlined-hover-outline-color: v.$primary-hue,
+      outlined-input-text-color: v.$primary-hue,
+      outlined-input-text-placeholder-color: v.$primary-hue,
+      outlined-label-text-color: v.$primary-hue,
+      outlined-outline-color: v.$primary-hue,
+      trailing-icon-color: v.$primary-hue,
+    )
+  );
+}
+
 html {
   @include mat.all-component-themes($portfolio-theme);
   @include mat.core();
@@ -92,6 +120,22 @@ button,
 a,
 [role='button'] {
   -webkit-tap-highlight-color: transparent;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px v.$bg-dark inset !important;
+  -webkit-text-fill-color: v.$text-primary !important;
+  outline: none !important;
+  box-shadow: 0 0 0 1000px v.$bg-dark inset !important;
+  border: none !important;
+}
+
+input:-internal-autofill-selected {
+  background-color: transparent !important;
+  outline: none !important;
 }
 
 :focus-visible {

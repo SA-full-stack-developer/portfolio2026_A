@@ -149,5 +149,28 @@
     "HOBBIES_TITLE": "Beyond the terminal",
     "HOBBIES_TEXT": "When I'm not coding, my creativity stays active in the physical world. I am a <strong class='principal-color'>Gunpla</strong> and <strong class='principal-color'>3D printing</strong> enthusiast, where precision is key. I'm also a huge anime and manga fan, and I always find time for a good gaming session.",
     "CLOSING": "At the end of the day, whether I'm building a Gundam or refactoring a service, my goal is the same: assembly perfection."
+  },
+  "CONTACT": {
+    "TITLE": "CONTACT",
+    "SUBTITLE": "Sending signals to the server... Connect with me for any inquiries, proposals, or just to say hi.",
+    "LINKEDIN_TEXT": "Sync professional profile",
+    "LINKEDIN_ID": "LinkedIn Node: /in/cristian-salcedo-fullstack",
+    "NAME": "Identifier",
+    "NAME_PLACEHOLDER": "Enter your identifier",
+    "SUBJECT": "Protocol Subject",
+    "SUBJECT_PLACEHOLDER": "What is the purpose of the signal?",
+    "EMAIL": "Uplink Address",
+    "MESSAGE": "Message Body",
+    "MESSAGE_PLACEHOLDER": "Write your transmission here...",
+    "SENDING": "Transmitting...",
+    "CTA": "Execute Send",
+    "SUCCESS": "Form sended successfully",
+    "ERROR": "Transmission error. Protocol interrupted, please retry later.",
+    "ERRORS": {
+      "REQUIRED": "Required field to establish connection.",
+      "MIN_3": "At least 3 characters required to validate signal.",
+      "MIN_10": "Transmission too short. Minimum 10 characters.",
+      "EMAIL": "Unrecognized uplink format (example@domain.com)."
+    }
   }
 }

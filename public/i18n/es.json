@@ -149,5 +149,28 @@
     "HOBBIES_TITLE": "Fuera de la terminal",
     "HOBBIES_TEXT": "Cuando no estoy programando, mi creatividad sigue activa en el mundo físico. Soy un entusiasta del <strong class='principal-color'>Gunpla</strong> y la <strong class='principal-color'>impresión 3D</strong>, donde la precisión es clave. También soy un gran seguidor del anime y el manga, y siempre encuentro tiempo para una buena partida de videojuegos.",
     "CLOSING": "Al final del día, ya sea montando un Gundam o refactorizando un servicio, mi meta es la misma: la perfección en el ensamblaje."
+  },
+  "CONTACT": {
+    "TITLE": "CONTACTO",
+    "SUBTITLE": "Enviando señales al servidor... Conecta conmigo para cualquier consulta, propuesta o simplemente para saludar.",
+    "LINKEDIN_TEXT": "Sincronizar perfil profesional",
+    "LINKEDIN_ID": "LinkedIn Node: /in/cristian-salcedo-fullstack",
+    "NAME": "Identificador",
+    "NAME_PLACEHOLDER": "Introduce tu identificador",
+    "SUBJECT": "Asunto del Protocolo",
+    "SUBJECT_PLACEHOLDER": "¿Cuál es el propósito de la señal?",
+    "EMAIL": "Dirección de Enlace",
+    "MESSAGE": "Cuerpo del Mensaje",
+    "MESSAGE_PLACEHOLDER": "Escribe tu transmisión aquí...",
+    "SENDING": "Transmitiendo...",
+    "CTA": "Ejecutar Envío",
+    "SUCCESS": "Formulario enviado correctamente",
+    "ERROR": "Ha habido un error, inténtelo de nuevo mas tarde",
+    "ERRORS": {
+      "REQUIRED": "Campo obligatorio para establecer conexión.",
+      "MIN_3": "Se requieren al menos 3 caracteres para validar la señal.",
+      "MIN_10": "Transmisión demasiado corta. Mínimo 10 caracteres.",
+      "EMAIL": "Formato de enlace no reconocido (ejemplo@dominio.com)."
+    }
   }
 }

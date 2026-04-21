@@ -1,1 +1,139 @@
-<p>contact works!</p>
+<section class="flex flex-col gap-md contact">
+  <h2 class="contact__title">{{ 'CONTACT.TITLE' | translate }}</h2>
+  <p class="contact__subtitle">{{ 'CONTACT.SUBTITLE' | translate }}</p>
+  <div class="contact__social">
+    <p class="contact__social-label">{{ 'CONTACT.LINKEDIN_TEXT' | translate }}</p>
+    <a
+      href="https://linkedin.com/in/cristian-salcedo-fullstack"
+      target="_blank"
+      class="flex align-center gap-sm contact__link"
+    >
+      <img src="assets/icons/socials/linkedin.svg" alt="Linkedin" width="20" height="20" />
+      <span class="contact__node">{{ 'CONTACT.LINKEDIN_ID' | translate }}</span>
+    </a>
+  </div>
+
+  <form class="flex flex-col gap-md contact__form" (submit)="onSubmit(); $event.preventDefault()">
+    <mat-form-field appearance="outline" class="glow-field">
+      <mat-label>{{ 'CONTACT.NAME' | translate }}</mat-label>
+      <input
+        matInput
+        name="name"
+        [ngModel]="formData().name"
+        (ngModelChange)="updateField('name', $event)"
+        [placeholder]="'CONTACT.NAME_PLACEHOLDER' | translate"
+        minlength="3"
+        #nameInput="ngModel"
+        required
+      />
+      <mat-icon matSuffix>person</mat-icon>
+      @if (nameInput.invalid && (nameInput.dirty || nameInput.touched)) {
+        <mat-error>
+          @if (nameInput.errors?.['required']) {
+            {{ 'CONTACT.ERRORS.REQUIRED' | translate }}
+          }
+          @if (nameInput.errors?.['minlength']) {
+            {{ 'CONTACT.ERRORS.MIN_3' | translate }}
+          }
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="glow-field">
+      <mat-label>{{ 'CONTACT.SUBJECT' | translate }}</mat-label>
+      <input
+        matInput
+        name="subject"
+        [ngModel]="formData().subject"
+        (ngModelChange)="updateField('subject', $event)"
+        [placeholder]="'CONTACT.SUBJECT_PLACEHOLDER' | translate"
+        required
+        #subjectInput="ngModel"
+        minlength="3"
+      />
+      <mat-icon matSuffix>topic</mat-icon>
+      @if (subjectInput.invalid && (subjectInput.dirty || subjectInput.touched)) {
+        <mat-error>
+          @if (subjectInput.errors?.['required']) {
+            {{ 'CONTACT.ERRORS.REQUIRED' | translate }}
+          }
+          @if (subjectInput.errors?.['minlength']) {
+            {{ 'CONTACT.ERRORS.MIN_3' | translate }}
+          }
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="glow-field">
+      <mat-label>{{ 'CONTACT.EMAIL' | translate }}</mat-label>
+      <input
+        matInput
+        type="email"
+        name="email"
+        [ngModel]="formData().email"
+        (ngModelChange)="updateField('email', $event)"
+        placeholder="...@correo.com"
+        required
+        email
+        #emailInput="ngModel"
+      />
+      <mat-icon matSuffix>email</mat-icon>
+
+      @if (emailInput.invalid && (emailInput.dirty || emailInput.touched)) {
+        <mat-error>
+          @if (emailInput.errors?.['required']) {
+            {{ 'CONTACT.ERRORS.REQUIRED' | translate }}
+          }
+          @if (emailInput.errors?.['email']) {
+            {{ 'CONTACT.ERRORS.EMAIL' | translate }}
+          }
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="glow-field">
+      <mat-label>{{ 'CONTACT.MESSAGE' | translate }}</mat-label>
+      <textarea
+        matInput
+        name="message"
+        rows="5"
+        [ngModel]="formData().message"
+        (ngModelChange)="updateField('message', $event)"
+        [placeholder]="'CONTACT.MESSAGE_PLACEHOLDER' | translate"
+        required
+        #messageInput="ngModel"
+        minlength="10"
+      ></textarea>
+
+      @if (messageInput.invalid && (messageInput.dirty || messageInput.touched)) {
+        <mat-error>
+          @if (messageInput.errors?.['required']) {
+            {{ 'CONTACT.ERRORS.REQUIRED' | translate }}
+          }
+          @if (messageInput.errors?.['minlength']) {
+            {{ 'CONTACT.ERRORS.MIN_10' | translate }}
+          }
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <div style="display: none">
+      <input type="text" name="bot_trap" [(ngModel)]="botTrap" />
+    </div>
+
+    <div class="flex flex-center">
+      <button
+        class="flex flex-center gap-sm contact__cta"
+        [disabled]="!isFormValid() || isLoading()"
+        type="submit"
+      >
+        @if (isLoading()) {
+          <span>{{ 'CONTACT.SENDING' | translate }}</span>
+        } @else {
+          <span>{{ 'CONTACT.CTA' | translate }}</span>
+          <mat-icon>send</mat-icon>
+        }
+      </button>
+    </div>
+  </form>
+</section>
