@@ -122,6 +122,10 @@ a,
   @include m.flex-center();
 }
 
+.principal-color {
+  color: v.$primary-hue;
+}
+
 .red {
   background: v.$warn-hue;
 }
@@ -141,6 +145,24 @@ a,
 }
 
 .footer-copy-app {
-  background-color: rgba(#000000, 1);
+  background-color: rgba(black, 1);
   border-top: solid 1px v.$bg-card;
+}
+
+.tag {
+  padding: 4px 12px;
+  border: 1px solid v.$primary-hue;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: v.$primary-hue;
+  background: rgba(v.$primary-hue, 0.1);
+  box-shadow: 0 0 5px rgba(v.$primary-hue, 0.2);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: v.$primary-hue;
+    color: white;
+    box-shadow: 0 0 15px rgba(v.$primary-hue, 0.6);
+    cursor: default;
+  }
 }

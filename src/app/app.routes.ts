@@ -12,6 +12,11 @@ export const routes: Routes = [
       import('./pages/contact/contact.component').then((m) => m.ContactComponent),
   },
   {
+    path: 'about-me',
+    loadComponent: () =>
+      import('./pages/about-me/about-me.component').then((m) => m.AboutMeComponent),
+  },
+  {
     path: 'error',
     loadComponent: () =>
       import('./pages/error404/error404.component').then((m) => m.Error404Component),

@@ -1,0 +1,20 @@
+@use '../../../styles/variables' as v;
+
+.about-me {
+  max-width: 800px;
+  margin: auto;
+  color: v.$text-secondary;
+  padding-top: 2rem;
+
+  &__title {
+    display: block;
+    width: 100%;
+    text-align: left;
+    color: v.$primary-hue;
+    margin-top: 1rem;
+  }
+
+  &__closing {
+    margin-top: 2rem;
+  }
+}

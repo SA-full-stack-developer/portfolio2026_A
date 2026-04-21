@@ -137,5 +137,17 @@
     "SECTION_2_BODY": "The content, design, and source code are owned by <strong>Cristian Salcedo Rodriguez</strong>. Reproduction without authorization is prohibited.",
     "SECTION_3_TITLE": "3. Privacy & Cookies",
     "SECTION_3_BODY": "If you use the contact form, your data will only be used to reply to you. I do not use intrusive tracking cookies or sell your data to third parties.<br><br>By browsing, you only accept the <strong>technical cookies</strong> essential for the site's operation."
+  },
+  "ABOUT_ME": {
+    "TITLE": "About Me",
+    "INTRO_TITLE": "Hi, I'm <span class='highlight'>Cristian Salcedo Rodriguez</span>",
+    "INTRO_TEXT": "A Full Stack Developer passionate about building digital solutions where <strong class='principal-color'>performance</strong> and < class='principal-color'strong>aesthetics</strong> converge. I don't just write code; I design seamless experiences and scalable architectures.",
+    "MY_PHILOSOPHY_TITLE": "My Philosophy",
+    "MY_PHILOSOPHY_TEXT": "I strongly believe in <strong class='principal-color'>Clean Code</strong> and reactive architecture. My goal is for every line of code to have a purpose, always striving for technical elegance and efficiency.",
+    "WHAT_I_DO_TITLE": "What I do",
+    "WHAT_I_DO_TEXT": "Specialized in the <strong class='principal-color'>TypeScript</strong> ecosystem, I spend my days transforming complex ideas into robust applications with Angular and NestJS. I am obsessed with optimization and the small details that make a difference.",
+    "HOBBIES_TITLE": "Beyond the terminal",
+    "HOBBIES_TEXT": "When I'm not coding, my creativity stays active in the physical world. I am a <strong class='principal-color'>Gunpla</strong> and <strong class='principal-color'>3D printing</strong> enthusiast, where precision is key. I'm also a huge anime and manga fan, and I always find time for a good gaming session.",
+    "CLOSING": "At the end of the day, whether I'm building a Gundam or refactoring a service, my goal is the same: assembly perfection."
   }
 }

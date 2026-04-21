@@ -137,5 +137,17 @@
     "SECTION_2_BODY": "El contenido, diseño y código fuente son propiedad de <strong>Cristian Salcedo Rodriguez</strong>. Queda prohibida su reproducción sin autorización.",
     "SECTION_3_TITLE": "3. Privacidad y Cookies",
     "SECTION_3_BODY": "Si usas el formulario, tus datos solo se usarán para responderte. No uso cookies de rastreo intrusivas ni vendo tus datos a terceros.<br><br>Al navegar, aceptas únicamente las <strong>cookies técnicas</strong> esenciales para el funcionamiento del sitio."
+  },
+  "ABOUT_ME": {
+    "TITLE": "Sobre mí",
+    "INTRO_TITLE": "Hola, soy <span class='highlight'>Cristian Salcedo Rodriguez</span>",
+    "INTRO_TEXT": "Un desarrollador Full Stack apasionado por construir soluciones digitales donde el <strong class='principal-color'>rendimiento</strong> y la <strong class='principal-color'>estética</strong> convergen. No solo escribo código; diseño experiencias fluidas y arquitecturas escalables.",
+    "MY_PHILOSOPHY_TITLE": "Mi Filosofía",
+    "MY_PHILOSOPHY_TEXT": "Creo firmemente en el <strong class='principal-color'>Clean Code</strong> y en la arquitectura reactiva. Mi objetivo es que cada línea de código tenga un propósito, buscando siempre la elegancia técnica y la eficiencia.",
+    "WHAT_I_DO_TITLE": "¿Qué hago?",
+    "WHAT_I_DO_TEXT": "Especializado en el ecosistema <strong class='principal-color'>TypeScript</strong>, paso mis días transformando ideas complejas en aplicaciones robustas con Angular y NestJS. Me obsesiona la optimización y los pequeños detalles que marcan la diferencia.",
+    "HOBBIES_TITLE": "Fuera de la terminal",
+    "HOBBIES_TEXT": "Cuando no estoy programando, mi creatividad sigue activa en el mundo físico. Soy un entusiasta del <strong class='principal-color'>Gunpla</strong> y la <strong class='principal-color'>impresión 3D</strong>, donde la precisión es clave. También soy un gran seguidor del anime y el manga, y siempre encuentro tiempo para una buena partida de videojuegos.",
+    "CLOSING": "Al final del día, ya sea montando un Gundam o refactorizando un servicio, mi meta es la misma: la perfección en el ensamblaje."
   }
 }

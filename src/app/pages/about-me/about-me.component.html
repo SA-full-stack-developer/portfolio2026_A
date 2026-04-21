@@ -1,0 +1,38 @@
+<section class="flex flex-col flex-center gap-md about-me">
+  <article class="about-me--article about-me__title">
+    <h1 [innerHTML]="'ABOUT_ME.TITLE' | translate"></h1>
+  </article>
+  <article class="about-me--article about-me__title">
+    <h2 [innerHTML]="'ABOUT_ME.INTRO_TITLE' | translate"></h2>
+  </article>
+  <article class="about-me--article">
+    <p [innerHTML]="'ABOUT_ME.INTRO_TEXT' | translate"></p>
+  </article>
+  <article class="about-me--article about-me__title">
+    <h3 [innerHTML]="'ABOUT_ME.MY_PHILOSOPHY_TITLE' | translate"></h3>
+  </article>
+  <article class="about-me--article">
+    <p [innerHTML]="'ABOUT_ME.MY_PHILOSOPHY_TEXT' | translate"></p>
+  </article>
+  <article class="about-me--article about-me__title">
+    <h3 [innerHTML]="'ABOUT_ME.WHAT_I_DO_TITLE' | translate"></h3>
+  </article>
+  <article class="about-me--article">
+    <p [innerHTML]="'ABOUT_ME.WHAT_I_DO_TEXT' | translate"></p>
+  </article>
+  <article class="about-me--article about-me__title">
+    <h3 [innerHTML]="'ABOUT_ME.HOBBIES_TITLE' | translate"></h3>
+  </article>
+  <article class="flex flex-col gap-md about-me--article">
+    <p [innerHTML]="'ABOUT_ME.HOBBIES_TEXT' | translate"></p>
+    <div class="flex gap-sm">
+      <span class="tag">#Gunpla</span>
+      <span class="tag">#3DPrinting</span>
+      <span class="tag">#Gaming</span>
+      <span class="tag">#Anime</span>
+    </div>
+  </article>
+  <article class="about-me--article about-me__closing">
+    <p [innerHTML]="'ABOUT_ME.CLOSING' | translate"></p>
+  </article>
+</section>
