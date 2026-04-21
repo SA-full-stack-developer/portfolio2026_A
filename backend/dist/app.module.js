@@ -16,14 +16,16 @@ const contact_module_1 = require("./contact/contact.module");
 const stats_module_1 = require("./stats/stats.module");
 const projects_module_1 = require("./projects/projects.module");
 const companies_module_1 = require("./companies/companies.module");
+const portfolio_service_1 = require("./portfolio/portfolio.service");
+const portfolio_module_1 = require("./portfolio/portfolio.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [skills_module_1.SkillsModule, experience_module_1.ExperienceModule, contact_module_1.ContactModule, stats_module_1.StatsModule, projects_module_1.ProjectsModule, companies_module_1.CompaniesModule],
+        imports: [skills_module_1.SkillsModule, experience_module_1.ExperienceModule, contact_module_1.ContactModule, stats_module_1.StatsModule, projects_module_1.ProjectsModule, companies_module_1.CompaniesModule, portfolio_module_1.PortfolioModule],
         controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        providers: [app_service_1.AppService, portfolio_service_1.PortfolioService],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

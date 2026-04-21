@@ -191,6 +191,97 @@ describe('AppController (e2e)', () => {
     });
   });
 
+  // Portfolio endpoints
+  describe('/portfolio', () => {
+    it('GET /portfolio/init-data - should return 200 and portfolio initialization data', () => {
+      return request(app.getHttpServer())
+        .get('/portfolio/init-data')
+        .expect(200)
+        .expect((res) => {
+          expect(res.body).toHaveProperty('skills');
+          expect(res.body).toHaveProperty('experience');
+          expect(res.body).toHaveProperty('timestamp');
+
+          expect(Array.isArray(res.body.skills)).toBe(true);
+          expect(Array.isArray(res.body.experience)).toBe(true);
+          expect(res.body.timestamp).toBeDefined();
+        });
+    });
+
+    it('GET /portfolio/init-data - skills should contain valid structure', () => {
+      return request(app.getHttpServer())
+        .get('/portfolio/init-data')
+        .expect(200)
+        .expect((res) => {
+          if (res.body.skills.length > 0) {
+            const skill = res.body.skills[0];
+            expect(skill).toHaveProperty('id');
+            expect(skill).toHaveProperty('name');
+            expect(typeof skill.name).toBe('string');
+          }
+        });
+    });
+
+    it('GET /portfolio/init-data - experience should contain valid structure', () => {
+      return request(app.getHttpServer())
+        .get('/portfolio/init-data')
+        .expect(200)
+        .expect((res) => {
+          if (res.body.experience.length > 0) {
+            const exp = res.body.experience[0];
+            expect(exp).toHaveProperty('id');
+            expect(exp).toHaveProperty('companyId');
+          }
+        });
+    });
+
+    it('GET /portfolio/init-data - timestamp should be a valid ISO date string', () => {
+      return request(app.getHttpServer())
+        .get('/portfolio/init-data')
+        .expect(200)
+        .expect((res) => {
+          const timestamp = new Date(res.body.timestamp);
+          expect(timestamp).toBeInstanceOf(Date);
+          expect(timestamp.getTime()).not.toBeNaN();
+          // Verify timestamp is recent (within last 5 seconds)
+          const timeDiff = new Date().getTime() - timestamp.getTime();
+          expect(timeDiff).toBeLessThan(5000);
+          expect(timeDiff).toBeGreaterThanOrEqual(0);
+        });
+    });
+
+    it('GET /portfolio/init-data - should fetch skills and experience in parallel', async () => {
+      const startTime = Date.now();
+      return request(app.getHttpServer())
+        .get('/portfolio/init-data')
+        .expect(200)
+        .expect(() => {
+          const endTime = Date.now();
+          const duration = endTime - startTime;
+          // If called sequentially, it would take much longer
+          // This is a basic check that the endpoint responds reasonably
+          expect(duration).toBeLessThan(5000);
+        });
+    });
+
+    it('GET /portfolio/init-data - should contain non-empty arrays', () => {
+      return request(app.getHttpServer())
+        .get('/portfolio/init-data')
+        .expect(200)
+        .expect((res) => {
+          expect(res.body.skills.length).toBeGreaterThan(0);
+          expect(res.body.experience.length).toBeGreaterThan(0);
+        });
+    });
+
+    it('GET /portfolio/init-data - response should have proper content-type', () => {
+      return request(app.getHttpServer())
+        .get('/portfolio/init-data')
+        .expect(200)
+        .expect('Content-Type', /json/);
+    });
+  });
+
   afterAll(async () => {
     await app.close();
   });

@@ -21,6 +21,7 @@ exports.ExperienceModule = ExperienceModule = __decorate([
         imports: [companies_module_1.CompaniesModule, projects_module_1.ProjectsModule, skills_module_1.SkillsModule],
         controllers: [experience_controller_1.ExperienceController],
         providers: [experience_service_1.ExperienceService],
+        exports: [experience_service_1.ExperienceService],
     })
 ], ExperienceModule);
 //# sourceMappingURL=experience.module.js.map

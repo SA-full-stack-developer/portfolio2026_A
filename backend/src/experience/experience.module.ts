@@ -9,5 +9,6 @@ import { ExperienceService } from './experience.service';
   imports: [CompaniesModule, ProjectsModule, SkillsModule],
   controllers: [ExperienceController],
   providers: [ExperienceService],
+  exports: [ExperienceService],
 })
 export class ExperienceModule {}
