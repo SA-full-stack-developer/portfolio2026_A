@@ -1,9 +1,9 @@
 import { Injectable, inject, signal } from '@angular/core';
+import { map, tap } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
 import { Stat } from '@core/models/stat.model';
 import { environment } from '@env/environment';
-import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,8 +20,11 @@ export class StatsService {
 
   loadStats(): void {
     this.http
-      .get<Stat[]>(this.apiUrl)
-      .pipe(tap((data) => this.stats.set(data)))
+      .get<any>(this.apiUrl)
+      .pipe(
+        map((res) => res.data),
+        tap((data) => this.stats.set(data)),
+      )
       .subscribe();
   }
 }

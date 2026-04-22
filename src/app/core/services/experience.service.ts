@@ -1,5 +1,5 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { catchError, of } from 'rxjs';
+import { catchError, map, of } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
 import { ResolvedExperience } from '@core/models/experience.model';
@@ -28,8 +28,9 @@ export class ExperienceService {
     this._error.set(null);
 
     this.http
-      .get<ResolvedExperience[]>(this.apiUrl)
+      .get<any>(this.apiUrl)
       .pipe(
+        map((res) => res.data),
         catchError((err) => {
           const errorMessage = this.translate.instant('EXPERIENCE.ERRORS.FETCH_ERROR');
           this._error.set(errorMessage);
