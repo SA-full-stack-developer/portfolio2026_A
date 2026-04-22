@@ -43,7 +43,8 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets"
-              }
+              },
+              "src/.htaccess"
             ],
             "styles": ["src/styles/styles.scss", "flag-icons/css/flag-icons.min.css"],
             "server": "src/main.server.ts",
