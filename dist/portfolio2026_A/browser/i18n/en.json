@@ -1,0 +1,173 @@
+{
+  "NAV": {
+    "EXPERIENCE": "Experience",
+    "CONTACT": "Contact",
+    "STACK": "Stack"
+  },
+  "SKILLS": {
+    "TITLE": "Tech Stack",
+    "SUBTITLE_ALL": "{{filtered}} of {{total}} technologies",
+    "SUBTITLE_HIGHLIGHTED": "· {{count}} highlighted",
+    "EMPTY": "No technologies in this category.",
+    "YEARS_ONE": "{{count}} year of experience",
+    "YEARS_OTHER": "{{count}} years of experience",
+    "LOAD_MORE": "Load more",
+    "LEVELS": {
+      "EXPERT": "Expert",
+      "INTERMEDIATE": "Intermediate",
+      "BEGINNER": "Beginner"
+    },
+    "CATEGORIES": {
+      "ALL": "All",
+      "FRONTEND": "Frontend",
+      "BACKEND": "Backend",
+      "MOBILE": "Mobile",
+      "DEVOPS": "DevOps",
+      "TOOLS": "Tools",
+      "SOFT": "Soft"
+    },
+    "FILTER": {
+      "HIGHLIGHTED": "Highlighted"
+    },
+    "ERRORS": {
+      "FETCH_ERROR": "Could not load skills. Please try again later."
+    }
+  },
+  "COMMON": {
+    "LOADING": "Loading...",
+    "ERROR": "Something went wrong",
+    "LANG_ES": "Spanish",
+    "LANG_EN": "English"
+  },
+  "STATS": {
+    "EXPERIENCE": "Years of experience",
+    "COFFEES": "Coffees dedicated to coding",
+    "REMOTE": "Years working remotely",
+    "SKILLS": "Highlighted skills"
+  },
+  "HERO": {
+    "GREETING": "Hi, I'm",
+    "NAME": "Cristian Salcedo Rodríguez",
+    "TITLE": "Full Stack Developer",
+    "DESCRIPTION": "Specialized in Angular, NestJS and Flutter. I build modern, scalable and elegant web applications.",
+    "CTA": {
+      "CONTACT": "Contact me",
+      "STACK": "View my stack"
+    }
+  },
+  "EXPERIENCES": {
+    "TITLE": "Experience",
+    "PROJECTS": "Projects",
+    "PRACTICES": "Internships",
+    "CURRENT": "Current",
+    "SKILLS": "Technologies & soft skills",
+    "ROLES": {
+      "TITLE": "Roles",
+      "BACKEND_DEV": "Backend Developer",
+      "FRONTEND_DEV": "Frontend Developer",
+      "FULLSTACK_DEV": "FullStack Developer",
+      "GAME_INTERFACES_DEV": "UI Developer"
+    },
+    "DESCRIPTIONS": {
+      "MOKENS_LEAGUE": "Multidisciplinary frontend developer and game UI developer. I took part in a wide range of projects within the company, each with its own stack and type of web application.\n\nMy responsibilities included maintaining and building new features as well as implementing responsive design. The main technologies used were Angular + Angular Material, React + FastAPI + Chakra UI + Docker, SASS, Unity + UI Toolkit, and web3 + NFTs, with everything managed through GitHub and tasks coordinated via Jira.\n\nThe most notable project was an NFT trading card album built from scratch with React, where I took full ownership of the frontend, the API integration, and the data handling using web3. I also maintained several landing pages built with Square and designed in Figma.",
+      "EVERIS": "FullStack developer for nearly 4 years on projects for the Generalitat de Catalunya and the Barcelona City Council. I worked with Java + Struts + Spring + Oracle SQL on the backend and Angular + SCSS on the frontend, using PrimeFaces and PrimeNG depending on the project.\n\nDuring this period I obtained Oracle certification and acted as a technical reference for new team members, taking on mentoring and code review responsibilities. I managed tasks through Jira and adapted to the specific requirements of each project within the City Council's proprietary framework (Openframe).",
+      "MEMONDO": "Frontend developer at Memondo Network for over 4 years. My main responsibility was the improvement and maintenance of their web platforms, building a reusable and scalable system shared across all projects.\n\nThe main project was developed in Angular, starting at version 9 and progressively updated to Angular 18, incorporating all relevant improvements along the way. I fully restructured the project to work with Signals, implemented SSR with prerendering, optimised images in AVIF and WebP formats, and maximised Google Performance scores. The result can be seen at asivaespana.com.",
+      "FREELANCE": "My freelance career spans three distinct periods, some of them running alongside full-time employment.\n\nIn the early days I developed WordPress websites for various businesses and clients, handling design, content and custom code. I also launched a geek clothing e-commerce store built with Prestashop, managing the entire process myself.\n\nLater, while working at Memondo Network, I simultaneously launched an online store importing exclusive Japanese products, built with Prestashop + Symphony. I handled everything end to end: technical development, third-party plugin customisation, design and CSS, product sourcing, imports, customs, invoicing and customer support — all coordinated with Asana.\n\nIn the most recent period I took on more technically complex projects, expanding my stack to include Angular, NestJS and Flutter.",
+      "PRACTICES": "I completed the internships required by my two Higher Vocational Training qualifications at two different companies.\n\nAt Hospital Universitario de Cruces in Barakaldo I worked on the GIRC medical management application using ASP .Net with Visual Studio 2010, graduating with an Excellent grade.\n\nAt MGA in Sant Cugat I worked on slot machine projects as both a frontend and backend developer, using classic ASP, ASP .Net MVC, HTML5 and SQL. I received a letter of recommendation from the company."
+    },
+    "ERRORS": {
+      "FETCH_ERROR": "Could not load experience. Please try again later."
+    }
+  },
+  "PROJECTS": {
+    "MOKENS_LEAGUE_SOCCER": {
+      "WEBS": "I worked on several internal company projects, handling both development and continuous maintenance. With Angular I maintained and updated a web management application for trading the company's cryptocurrency, $MOKA, adding new components and features. With React I built an NFT trading card album from scratch, where each card displayed the NFTs owned by the user, integrating the API and managing data through web3.\n\nI also maintained and updated the company's main websites built with Square, coordinating designs from Figma and managing tasks through Jira. In every case, the latest available version of each technology was used.",
+      "HEROES": "In addition to my web development role, I learned Unity and UI Toolkit to build all the interfaces for the video game Mokens League Champs, published on Epic Games. I implemented transitions and animations to bring the elements to life and optimised assets to avoid impacting game performance."
+    },
+    "MEMONDO": {
+      "ASI_VA": "A digital media project developed in Angular from version 9 to version 18, progressively incorporating all relevant improvements across each release. I fully restructured the project to work with Signals, implemented SSR with prerendering, optimised images in AVIF and WebP, and maximised Google Performance scores.\n\nThe result can be seen at asivaespana.com."
+    },
+    "EVERIS": {
+      "NO_NAME": "A brand new project for the Generalitat de Catalunya where I took on a FullStack role, using Java for the backend and Angular for the frontend.",
+      "ELLICENCIES": "An internal management application for processing building permit applications in Barcelona, built on the City Council's proprietary framework (Openframe), based on Java, Struts, Spring and Oracle SQL.\n\nMy role was to develop new features according to client requirements, maintain code consistency, and mentor new team members.",
+      "COPERNICO": "An internal management application for Barcelona City Council where political groups submit requests and the council manages the corresponding responses and documents. Built on Openframe (Java, Struts, Spring + Oracle SQL).\n\nMy role was to develop new features and maintain consistency across the existing codebase."
+    },
+    "MGA": {
+      "WEBS": "Internship for my Higher Vocational Training in Web Application Development at MGA in Cerdanyola del Vallés, where I received a letter of recommendation. I worked primarily as a frontend developer and occasionally as a backend developer on active company projects, using classic ASP, ASP .Net MVC, HTML5 and SQL."
+    },
+    "HOSPITAL": {
+      "GIRC": "Internship for my Higher Vocational Training in Multiplatform Application Development at Hospital Universitario de Cruces, where I graduated with an Excellent grade. I actively contributed to the development of the GIRC medical management application using ASP .Net and Visual Studio 2010."
+    },
+    "FREELANCE": {
+      "MODA_MANGAS": "Personal e-commerce project for geek clothing built with Prestashop in 2013. I handled design, product management, maintenance and custom plugin development. No longer active.",
+      "LIVING_MANGA": "Personal e-commerce store for exclusive Japanese figures, merchandise and products, built with Prestashop + Symphony in 2023. I managed everything end to end: technical development, third-party plugin customisation, design and CSS, product sourcing, imports, customs, invoicing and customer support. Still live in catalogue mode at livingmanga.com.",
+      "MMI": "My first major project and the joint final FP project, built with the first version of AngularJS when it launched in 2010. It was an interactive MOOC platform featuring structured courses from universities and institutes. It had real potential but was never released.",
+      "GDARKITECKTURA": "A simple corporate website for an architect from San Sebastián, built in 2015 with HTML, CSS and JavaScript.",
+      "EUROPACTIZYME": "Corporate website built with WordPress in 2015 for Europ Acti Zyme. Still live at actizyme.net.",
+      "LEV2050": "Corporate website built with WordPress in 2015 for LEV2050. Visible at lev2050.com, though the current version has since been updated.",
+      "TUKOMODIN": "Corporate website built with WordPress in 2015 for TUKOMODIN. Visible at tukomodin.es, though the current version has since been updated.",
+      "DENTALTOOLS": "Corporate website built with WordPress in 2015 for DENTALTOOLS. No longer active.",
+      "UKIYOE": "Personal website built with Angular 11 in 2020 for artist Maider Véliz Ramas, dedicated to her doctoral thesis on Ukiyo-e art in video games. Live at ukiyoe.maidervelizramas.nom.es.",
+      "HUNTING": "Personal project built with Angular 12 in 2021 to track my personal video game collection and note where to find games at the best prices. Taken offline due to rising domain and hosting costs.",
+      "PORTFOLIO": "A personal project that has evolved alongside each new version of Angular, rebuilt from scratch each time with a different approach. This 2026 edition is built with Angular 21."
+    }
+  },
+  "FOOTER": {
+    "EXPLORE": "EXPLORE",
+    "CONTACT": "Contact",
+    "ABOUT_ME": "About me",
+    "LOOK_404": "Look my 404 page",
+    "SYSTEM_STATUS": "System Status",
+    "AVAILABLE": "Available for projects",
+    "UNAVAILABLE": "Unavailable for projects",
+    "TEXT": "Building scalable digital experiences.",
+    "CONTACT_TITLE": "Let's connect",
+    "CONTACT_SUBTITLE": "If you are looking for someone with a passion for detail and clean code, find me on LinkedIn or",
+    "CONTACT_CTA": "get in touch",
+    "LEGAL": "Legal & Privacy"
+  },
+  "LEGAL": {
+    "TITLE": "Legal Notice & Privacy Policy",
+    "SECTION_1_TITLE": "1. General Information",
+    "SECTION_1_BODY": "This website is a personal portfolio managed by <strong>Cristian Salcedo Rodriguez</strong>.",
+    "SECTION_2_TITLE": "2. Intellectual Property",
+    "SECTION_2_BODY": "The content, design, and source code are owned by <strong>Cristian Salcedo Rodriguez</strong>. Reproduction without authorization is prohibited.",
+    "SECTION_3_TITLE": "3. Privacy & Cookies",
+    "SECTION_3_BODY": "If you use the contact form, your data will only be used to reply to you. I do not use intrusive tracking cookies or sell your data to third parties.<br><br>By browsing, you only accept the <strong>technical cookies</strong> essential for the site's operation."
+  },
+  "ABOUT_ME": {
+    "TITLE": "About Me",
+    "INTRO_TITLE": "Hi, I'm <span class='highlight'>Cristian Salcedo Rodriguez</span>",
+    "INTRO_TEXT": "A Full Stack Developer passionate about building digital solutions where <strong class='principal-color'>performance</strong> and < class='principal-color'strong>aesthetics</strong> converge. I don't just write code; I design seamless experiences and scalable architectures.",
+    "MY_PHILOSOPHY_TITLE": "My Philosophy",
+    "MY_PHILOSOPHY_TEXT": "I strongly believe in <strong class='principal-color'>Clean Code</strong> and reactive architecture. My goal is for every line of code to have a purpose, always striving for technical elegance and efficiency.",
+    "WHAT_I_DO_TITLE": "What I do",
+    "WHAT_I_DO_TEXT": "Specialized in the <strong class='principal-color'>TypeScript</strong> ecosystem, I spend my days transforming complex ideas into robust applications with Angular and NestJS. I am obsessed with optimization and the small details that make a difference.",
+    "HOBBIES_TITLE": "Beyond the terminal",
+    "HOBBIES_TEXT": "When I'm not coding, my creativity stays active in the physical world. I am a <strong class='principal-color'>Gunpla</strong> and <strong class='principal-color'>3D printing</strong> enthusiast, where precision is key. I'm also a huge anime and manga fan, and I always find time for a good gaming session.",
+    "CLOSING": "At the end of the day, whether I'm building a Gundam or refactoring a service, my goal is the same: assembly perfection."
+  },
+  "CONTACT": {
+    "TITLE": "CONTACT",
+    "SUBTITLE": "Sending signals to the server... Connect with me for any inquiries, proposals, or just to say hi.",
+    "LINKEDIN_TEXT": "Sync professional profile",
+    "LINKEDIN_ID": "LinkedIn Node: /in/cristian-salcedo-fullstack",
+    "NAME": "Identifier",
+    "NAME_PLACEHOLDER": "Enter your identifier",
+    "SUBJECT": "Protocol Subject",
+    "SUBJECT_PLACEHOLDER": "What is the purpose of the signal?",
+    "EMAIL": "Uplink Address",
+    "MESSAGE": "Message Body",
+    "MESSAGE_PLACEHOLDER": "Write your transmission here...",
+    "SENDING": "Transmitting...",
+    "CTA": "Execute Send",
+    "SUCCESS": "Form sended successfully",
+    "ERROR": "Transmission error. Protocol interrupted, please retry later.",
+    "ERRORS": {
+      "REQUIRED": "Required field to establish connection.",
+      "MIN_3": "At least 3 characters required to validate signal.",
+      "MIN_10": "Transmission too short. Minimum 10 characters.",
+      "EMAIL": "Unrecognized uplink format (example@domain.com)."
+    }
+  }
+}
