@@ -14,7 +14,7 @@ async function bootstrap() {
         .addTag('status')
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config);
-    swagger_1.SwaggerModule.setup('docs', app, document);
+    swagger_1.SwaggerModule.setup('api/v1/docs', app, document);
     app.useGlobalInterceptors(new transform_interceptor_1.TransformInterceptor());
     app.enableCors({
         origin: ['https://csrangulardeveloper.nom.es', 'http://localhost:4200'],
