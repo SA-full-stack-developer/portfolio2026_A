@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SkillsController = void 0;
 const common_1 = require("@nestjs/common");
+const swagger_1 = require("@nestjs/swagger");
 const skills_service_1 = require("./skills.service");
 let SkillsController = class SkillsController {
     skillsService;
@@ -31,6 +32,7 @@ let SkillsController = class SkillsController {
 exports.SkillsController = SkillsController;
 __decorate([
     (0, common_1.Get)(),
+    (0, swagger_1.ApiOperation)({ summary: 'Obtener listado completo de habilidades' }),
     __param(0, (0, common_1.Query)('category')),
     __param(1, (0, common_1.Query)('onlyHighlighted')),
     __metadata("design:type", Function),
@@ -39,6 +41,9 @@ __decorate([
 ], SkillsController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)('categories'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Obtener las categorías de habilidades (Frontend, Backend, etc.)',
+    }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)

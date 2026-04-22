@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.StatsController = void 0;
 const common_1 = require("@nestjs/common");
+const swagger_1 = require("@nestjs/swagger");
 const stats_service_1 = require("./stats.service");
 let StatsController = class StatsController {
     statsService;
@@ -24,6 +25,9 @@ let StatsController = class StatsController {
 exports.StatsController = StatsController;
 __decorate([
     (0, common_1.Get)(),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Obtener estadísticas generales (años de experiencia, proyectos totales, etc.)',
+    }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)

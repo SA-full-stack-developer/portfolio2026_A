@@ -11,7 +11,6 @@ async function bootstrap() {
         .setTitle('CSR Angular Developer API')
         .setDescription('Documentación de los servicios del Portfolio')
         .setVersion('1.0')
-        .addTag('status')
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup('api/v1/docs', app, document);
