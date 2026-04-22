@@ -14,7 +14,7 @@ async function bootstrap() {
     .addTag('status')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('docs', app, document);
+  SwaggerModule.setup('api/v1/docs', app, document);
 
   app.useGlobalInterceptors(new TransformInterceptor());
 
