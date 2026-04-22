@@ -1,8 +1,7 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { catchError, of } from 'rxjs';
+import { catchError, map, of } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
-import { Status } from '@core/models/status.model';
 import { environment } from '@env/environment';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -24,8 +23,9 @@ export class StatusService {
 
   loadStatus() {
     this.http
-      .get<Status>(this.apiUrl)
+      .get<any>(this.apiUrl)
       .pipe(
+        map((res) => res.data),
         catchError((err) => {
           const errorMessage = this.translate.instant('STATUS.ERROR');
           this._error.set(errorMessage);

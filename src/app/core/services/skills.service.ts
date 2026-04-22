@@ -1,6 +1,6 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { Skill, SkillCategory, SkillFilter } from '@core/models/skill.model';
-import { catchError, of } from 'rxjs';
+import { catchError, map, of } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
@@ -66,8 +66,9 @@ export class SkillsService {
     }
 
     this.http
-      .get<Skill[]>(this.apiUrl, { params })
+      .get<any>(this.apiUrl, { params })
       .pipe(
+        map((res) => res.data),
         catchError((err) => {
           const errorMessage = this.translate.instant('SKILLS.ERRORS.FETCH_ERROR');
           this._error.set(errorMessage);
@@ -84,8 +85,9 @@ export class SkillsService {
 
   private fetchCategories(): void {
     this.http
-      .get<SkillCategory[]>(`${this.apiUrl}/categories`)
+      .get<any>(`${this.apiUrl}/categories`)
       .pipe(
+        map((res) => res.data),
         catchError((err) => {
           console.error('Error cargando categorías:', err);
           return of([]);
