@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.StatusController = void 0;
 const common_1 = require("@nestjs/common");
+const swagger_1 = require("@nestjs/swagger");
 const status_service_1 = require("./status.service");
 let StatusController = class StatusController {
     statusService;
@@ -18,12 +19,13 @@ let StatusController = class StatusController {
         this.statusService = statusService;
     }
     getStatus() {
-        return this.statusService.getStatus();
+        return { status: this.statusService.getStatus(), uptime: process.uptime() };
     }
 };
 exports.StatusController = StatusController;
 __decorate([
     (0, common_1.Get)(),
+    (0, swagger_1.ApiOperation)({ summary: 'Verificar el estado de la API' }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
