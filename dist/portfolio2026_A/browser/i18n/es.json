@@ -1,0 +1,173 @@
+{
+  "NAV": {
+    "EXPERIENCE": "Experiencia",
+    "CONTACT": "Contacto",
+    "STACK": "Stack"
+  },
+  "SKILLS": {
+    "TITLE": "Stack Tecnológico",
+    "SUBTITLE_ALL": "{{filtered}} de {{total}} tecnologías",
+    "SUBTITLE_HIGHLIGHTED": "· {{count}} destacadas",
+    "EMPTY": "No hay tecnologías en esta categoría.",
+    "YEARS_ONE": "{{count}} año de experiencia",
+    "YEARS_OTHER": "{{count}} años de experiencia",
+    "LOAD_MORE": "Cargar más",
+    "LEVELS": {
+      "EXPERT": "Experto",
+      "INTERMEDIATE": "Intermedio",
+      "BEGINNER": "Básico"
+    },
+    "CATEGORIES": {
+      "ALL": "Todos",
+      "FRONTEND": "Frontend",
+      "BACKEND": "Backend",
+      "MOBILE": "Mobile",
+      "DEVOPS": "DevOps",
+      "TOOLS": "Herramientas",
+      "SOFT": "Soft"
+    },
+    "FILTER": {
+      "HIGHLIGHTED": "Destacados"
+    },
+    "ERRORS": {
+      "FETCH_ERROR": "No se pudieron cargar las habilidades. Inténtalo de nuevo más tarde."
+    }
+  },
+  "COMMON": {
+    "LOADING": "Cargando...",
+    "ERROR": "Algo ha ido mal",
+    "LANG_ES": "Español",
+    "LANG_EN": "Inglés"
+  },
+  "STATS": {
+    "EXPERIENCE": "Años de experiencia",
+    "COFFEES": "Cafés dedicados a la programación",
+    "REMOTE": "Años trabajando en remoto",
+    "SKILLS": "Skills destacadas"
+  },
+  "HERO": {
+    "GREETING": "Hola, soy",
+    "NAME": "Cristian Salcedo Rodríguez",
+    "TITLE": "Full Stack Developer",
+    "DESCRIPTION": "Especializado en Angular, NestJS y Flutter. Construyo aplicaciones web modernas, escalables y elegantes.",
+    "CTA": {
+      "CONTACT": "Contactar",
+      "STACK": "Ver mi stack"
+    }
+  },
+  "EXPERIENCES": {
+    "TITLE": "Experiencia",
+    "PROJECTS": "Proyectos",
+    "PRACTICES": "Prácticas",
+    "SKILLS": "Tecnologías y soft skills",
+    "CURRENT": "Actualmente",
+    "ROLES": {
+      "TITLE": "Roles",
+      "BACKEND_DEV": "Desarrollador Backend",
+      "FRONTEND_DEV": "Desarrollador Frontend",
+      "FULLSTACK_DEV": "Desarrollador FullStack",
+      "GAME_INTERFACES_DEV": "Desarrollador de UI"
+    },
+    "DESCRIPTIONS": {
+      "MOKENS_LEAGUE": "Desarrollador frontend multidisciplinar y desarrollador de interfaces para videojuegos. Participé en proyectos muy diversos dentro de la empresa, cada uno con su propio stack tecnológico.\n\nMis responsabilidades incluyeron el mantenimiento y desarrollo de nuevas funcionalidades, así como la implementación de diseño responsive. Las tecnologías principales fueron Angular + Angular Material, React + FastAPI + Chakra UI + Docker, SASS, Unity + UI Toolkit y tecnología web3 + NFTs, gestionando todo mediante GitHub y coordinando tareas con Jira.\n\nLo más destacado fue el desarrollo desde cero de un álbum de cromos NFTs con React, donde asumí toda la responsabilidad del frontend, la integración con la API y el tratamiento de datos con web3. También mantuve landings desarrolladas con Square y maquetadas con Figma.",
+      "MEMONDO": "Trabajé como desarrollador frontend en Memondo Network durante más de 4 años. Mi único proyecto fue AsivaEspaña, una web de medios digitales que inicié en Angular 9 y actualicé progresivamente hasta Angular 18, incorporando las mejoras relevantes de cada versión.\n\nReestructuré el proyecto completamente para trabajar con Signals, implementé SSR con prerenderizado, optimicé imágenes en formatos AVIF y WebP y maximicé la Performance para Google, coordinando las tareas con Asana. El resultado puede verse en asivaespana.com.",
+      "EVERIS": "Desarrollador fullstack durante casi 4 años en proyectos para la Generalitat de Cataluña y el Ayuntamiento de Barcelona. Trabajé con Java + Struts + Spring + Oracle SQL en backend y Angular + SCSS en frontend, utilizando PrimeFaces y PrimeNG según el proyecto.\n\nDurante esta etapa obtuve la certificación Oracle y fui referente técnico para las nuevas incorporaciones al equipo, ejerciendo labores de mentoring y code review. Gestioné tareas con Jira y me adapté a las necesidades específicas de cada proyecto dentro del framework propio del Ayuntamiento (Openframe).",
+      "FREELANCE": "Mi trayectoria freelance abarca tres etapas distintas a lo largo de los años, compaginando en algunas de ellas el trabajo por cuenta ajena.\n\nEn los inicios desarrollé webs con WordPress para diferentes empresas y clientes, gestionando diseño, contenido y personalizaciones a nivel de código. También monté una tienda online de ropa geek con Prestashop haciéndome cargo de todo el proceso.\n\nMás adelante, mientras trabajaba en Memondo Network, lancé en paralelo una tienda online de importación de productos japoneses desarrollada con Prestashop + Symphony, gestionando de forma íntegra tanto el desarrollo técnico como toda la operativa del negocio: productos, importación, trámites aduaneros, facturación y atención al cliente. Todo coordinado con Asana.\n\nEn la etapa más reciente abordé proyectos de mayor complejidad técnica ampliando el stack con Angular, NestJS y Flutter.",
+      "PRACTICES": "Realicé las prácticas correspondientes a mis dos ciclos formativos de grado superior en dos empresas del sector.\n\nEn el Hospital Universitario de Cruces en Barakaldo participé en el desarrollo de la aplicación de gestión médica GIRC, utilizando ASP .Net con Visual Studio 2010, obteniendo la calificación de Excelente.\n\nEn MGA en Sant Cugat participé en proyectos de máquinas de slots como desarrollador frontend y backend, trabajando con ASP clásico, ASP .Net MVC, HTML5 y SQL, y obtuve una carta de recomendación de la empresa."
+    },
+    "ERRORS": {
+      "FETCH_ERROR": "No se pudo cargar la experiencia. Inténtalo de nuevo más tarde."
+    }
+  },
+  "PROJECTS": {
+    "MOKENS_LEAGUE_SOCCER": {
+      "WEBS": "Participé en varios proyectos internos de la empresa, encargándome tanto del desarrollo como del mantenimiento continuo. Con Angular mantuve y actualicé una aplicación web de gestión para la venta de $MOKA, la criptomoneda de la empresa, añadiendo nuevos componentes y funcionalidades. Con React desarrollé desde cero un álbum de cromos NFTs donde cada carta mostraba los NFTs del usuario, integrando la API y gestionando los datos mediante web3.\n\nTambién mantuve y actualicé las webs principales de la compañía desarrolladas con Square, coordinando diseños desde Figma y gestionando tareas con Jira. En todos los casos se trabajó con las últimas versiones disponibles de cada tecnología.",
+      "HEROES": "Además de mis funciones como desarrollador web, aprendí Unity y UI Toolkit para desarrollar todas las interfaces del videojuego Mokens League Champs, publicado en Epic Games. Implementé transiciones y animaciones para dar vida a los elementos y optimicé los recursos para que no afectaran al rendimiento del juego."
+    },
+    "MEMONDO": {
+      "ASI_VA": "Proyecto de medios digitales desarrollado en Angular desde la versión 9 hasta la 18, incorporando progresivamente todas las mejoras de cada versión. Reestructuré completamente el proyecto para trabajar con Signals, implementé SSR con prerenderizado, optimicé imágenes en AVIF y WebP y maximicé la Performance para Google.\n\nPuede verse en asivaespana.com."
+    },
+    "EVERIS": {
+      "NO_NAME": "Proyecto nuevo para la Generalitat de Cataluña en el que asumí el rol fullstack, utilizando Java para el backend y Angular para el frontend.",
+      "ELLICENCIES": "Aplicación de gestión interna para la tramitación de licencias de obras en Barcelona, desarrollada con el framework propio del Ayuntamiento (Openframe), basado en Java, Struts, Spring y Oracle SQL.\n\nMi función fue desarrollar nuevas funcionalidades según las necesidades del cliente, mantener la homogeneidad del código y ejercer de mentor para las nuevas incorporaciones al equipo.",
+      "COPERNICO": "Aplicación de gestión interna para el Ayuntamiento de Barcelona donde los grupos políticos gestionan peticiones y documentos. Desarrollada con Openframe (Java, Struts, Spring + Oracle SQL).\n\nMi función fue desarrollar nuevas funcionalidades y mantener la homogeneidad del código existente."
+    },
+    "MGA": {
+      "WEBS": "Prácticas del C.F.G.S. de Desarrollo de Aplicaciones Web en MGA, Cerdanyola del Vallés, en 2015. Participé como desarrollador frontend y puntualmente como backend en proyectos de máquinas de slots, trabajando con ASP clásico, ASP .Net MVC, HTML5 y SQL. Obtuve una carta de recomendación de la empresa."
+    },
+    "HOSPITAL": {
+      "GIRC": "Prácticas del C.F.G.S. de Desarrollo de Aplicaciones Multiplataforma en el Hospital Universitario de Cruces, Barakaldo, en 2013. Participé en el desarrollo de la aplicación de gestión médica GIRC con ASP .Net y Visual Studio 2010. Obtuve la calificación final de Excelente."
+    },
+    "FREELANCE": {
+      "MODA_MANGAS": "Tienda online de ropa geek desarrollada con Prestashop en 2013. Me encargué del diseño, la carga de productos, el mantenimiento y el desarrollo de algún plugin personalizado. Fue mi primer proyecto de e-commerce propio. Actualmente ya no está activa.",
+      "LIVING_MANGA": "Tienda online de figuras, merchandising y productos exclusivos japoneses desarrollada con Prestashop + Symphony en 2023. Me encargué íntegramente de todo el proceso: desarrollo técnico, modificación de plugins de terceros, diseño y CSS, incorporación de productos, búsqueda de nuevos artículos, importación, trámites aduaneros, facturación y atención al cliente.\n\nActualmente está activa en modo catálogo en livingmanga.com.",
+      "MMI": "Proyecto de fin de FP desarrollado con AngularJS en 2010, uno de mis primeros contactos con Angular. Consistía en una plataforma MOOC interactiva con cursos de universidades e institutos. Tenía potencial para salir al mercado pero finalmente no se llegó a lanzar.",
+      "GDARKITECKTURA": "Web corporativa para un arquitecto de San Sebastián, desarrollada en 2015 con HTML, CSS y JavaScript.",
+      "EUROPACTIZYME": "Web corporativa desarrollada con WordPress en 2015 para la empresa Europ Acti Zyme. Aún puede verse en actizyme.net.",
+      "LEV2050": "Web corporativa desarrollada con WordPress en 2015 para la empresa LEV2050. Puede verse en lev2050.com, aunque la versión actual ya ha sido actualizada posteriormente.",
+      "TUKOMODIN": "Web corporativa desarrollada con WordPress en 2015 para la empresa TUKOMODIN. Puede verse en tukomodin.es, aunque la versión actual ya ha sido actualizada posteriormente.",
+      "DENTALTOOLS": "Web corporativa desarrollada con WordPress en 2015 para la empresa DENTALTOOLS. Actualmente ya no está activa.",
+      "UKIYOE": "Web personal desarrollada con Angular 11 en 2020 para la artista Maider Véliz Ramas, dedicada a su tesis doctoral sobre el arte del Ukiyo-e en los videojuegos. Puede verse en ukiyoe.maidervelizramas.nom.es.",
+      "HUNTING": "Proyecto personal desarrollado con Angular 12 en 2021 para gestionar mi colección personal de videojuegos, registrando ubicaciones donde encontrarlos a mejor precio. Tuve que darlo de baja por el incremento en los costes de dominio y servidor.",
+      "PORTFOLIO": "Proyecto personal que ha ido evolucionando con cada nueva versión de Angular, rehecho desde cero en cada iteración con distintos enfoques. Esta edición de 2026 está desarrollada con Angular 21."
+    }
+  },
+  "FOOTER": {
+    "EXPLORE": "EXPLORA",
+    "CONTACT": "Contacto",
+    "ABOUT_ME": "Sobre mí",
+    "LOOK_404": "Mira mi página 404",
+    "SYSTEM_STATUS": "Estado del sistema",
+    "AVAILABLE": "Disponible para proyectos",
+    "UNAVAILABLE": "No disponible para proyectos",
+    "TEXT": "Creando experiencias digitales escalables",
+    "CONTACT_TITLE": "¿Conectamos?",
+    "CONTACT_SUBTITLE": "Si buscas a alguien con pasión por el detalle y el código limpio, te espero en LinkedIn o",
+    "CONTACT_CTA": "contacta conmigo",
+    "LEGAL": "Legal & Privacidad"
+  },
+  "LEGAL": {
+    "TITLE": "Aviso Legal y Política de Privacidad",
+    "SECTION_1_TITLE": "1. Información General",
+    "SECTION_1_BODY": "Esta web es un portfolio personal gestionado por <strong>Cristian Salcedo Rodriguez</strong>.",
+    "SECTION_2_TITLE": "2. Propiedad Intelectual",
+    "SECTION_2_BODY": "El contenido, diseño y código fuente son propiedad de <strong>Cristian Salcedo Rodriguez</strong>. Queda prohibida su reproducción sin autorización.",
+    "SECTION_3_TITLE": "3. Privacidad y Cookies",
+    "SECTION_3_BODY": "Si usas el formulario, tus datos solo se usarán para responderte. No uso cookies de rastreo intrusivas ni vendo tus datos a terceros.<br><br>Al navegar, aceptas únicamente las <strong>cookies técnicas</strong> esenciales para el funcionamiento del sitio."
+  },
+  "ABOUT_ME": {
+    "TITLE": "Sobre mí",
+    "INTRO_TITLE": "Hola, soy <span class='highlight'>Cristian Salcedo Rodriguez</span>",
+    "INTRO_TEXT": "Un desarrollador Full Stack apasionado por construir soluciones digitales donde el <strong class='principal-color'>rendimiento</strong> y la <strong class='principal-color'>estética</strong> convergen. No solo escribo código; diseño experiencias fluidas y arquitecturas escalables.",
+    "MY_PHILOSOPHY_TITLE": "Mi Filosofía",
+    "MY_PHILOSOPHY_TEXT": "Creo firmemente en el <strong class='principal-color'>Clean Code</strong> y en la arquitectura reactiva. Mi objetivo es que cada línea de código tenga un propósito, buscando siempre la elegancia técnica y la eficiencia.",
+    "WHAT_I_DO_TITLE": "¿Qué hago?",
+    "WHAT_I_DO_TEXT": "Especializado en el ecosistema <strong class='principal-color'>TypeScript</strong>, paso mis días transformando ideas complejas en aplicaciones robustas con Angular y NestJS. Me obsesiona la optimización y los pequeños detalles que marcan la diferencia.",
+    "HOBBIES_TITLE": "Fuera de la terminal",
+    "HOBBIES_TEXT": "Cuando no estoy programando, mi creatividad sigue activa en el mundo físico. Soy un entusiasta del <strong class='principal-color'>Gunpla</strong> y la <strong class='principal-color'>impresión 3D</strong>, donde la precisión es clave. También soy un gran seguidor del anime y el manga, y siempre encuentro tiempo para una buena partida de videojuegos.",
+    "CLOSING": "Al final del día, ya sea montando un Gundam o refactorizando un servicio, mi meta es la misma: la perfección en el ensamblaje."
+  },
+  "CONTACT": {
+    "TITLE": "CONTACTO",
+    "SUBTITLE": "Enviando señales al servidor... Conecta conmigo para cualquier consulta, propuesta o simplemente para saludar.",
+    "LINKEDIN_TEXT": "Sincronizar perfil profesional",
+    "LINKEDIN_ID": "LinkedIn Node: /in/cristian-salcedo-fullstack",
+    "NAME": "Identificador",
+    "NAME_PLACEHOLDER": "Introduce tu identificador",
+    "SUBJECT": "Asunto del Protocolo",
+    "SUBJECT_PLACEHOLDER": "¿Cuál es el propósito de la señal?",
+    "EMAIL": "Dirección de Enlace",
+    "MESSAGE": "Cuerpo del Mensaje",
+    "MESSAGE_PLACEHOLDER": "Escribe tu transmisión aquí...",
+    "SENDING": "Transmitiendo...",
+    "CTA": "Ejecutar Envío",
+    "SUCCESS": "Formulario enviado correctamente",
+    "ERROR": "Ha habido un error, inténtelo de nuevo mas tarde",
+    "ERRORS": {
+      "REQUIRED": "Campo obligatorio para establecer conexión.",
+      "MIN_3": "Se requieren al menos 3 caracteres para validar la señal.",
+      "MIN_10": "Transmisión demasiado corta. Mínimo 10 caracteres.",
+      "EMAIL": "Formato de enlace no reconocido (ejemplo@dominio.com)."
+    }
+  }
+}
