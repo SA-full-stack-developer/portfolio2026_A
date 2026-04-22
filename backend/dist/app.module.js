@@ -10,19 +10,25 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
-const skills_module_1 = require("./skills/skills.module");
-const experience_module_1 = require("./experience/experience.module");
-const contact_module_1 = require("./contact/contact.module");
-const stats_module_1 = require("./stats/stats.module");
-const projects_module_1 = require("./projects/projects.module");
 const companies_module_1 = require("./companies/companies.module");
+const experience_module_1 = require("./experience/experience.module");
+const projects_module_1 = require("./projects/projects.module");
+const skills_module_1 = require("./skills/skills.module");
+const stats_module_1 = require("./stats/stats.module");
 const status_module_1 = require("./status/status.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [skills_module_1.SkillsModule, experience_module_1.ExperienceModule, contact_module_1.ContactModule, stats_module_1.StatsModule, projects_module_1.ProjectsModule, companies_module_1.CompaniesModule, status_module_1.StatusModule],
+        imports: [
+            skills_module_1.SkillsModule,
+            experience_module_1.ExperienceModule,
+            stats_module_1.StatsModule,
+            projects_module_1.ProjectsModule,
+            companies_module_1.CompaniesModule,
+            status_module_1.StatusModule,
+        ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })
