@@ -1,18 +1,42 @@
-# Full Stack Portfolio 2026
+# Full-Stack Professional Portfolio & API Ecosistema 🚀
 
-Repositorio del ecosistema completo de mi portfolio profesional, integrando un Frontend dinámico y una API robusta.
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge)](https://csrangulardeveloper.nom.es)
+[![API Documentation](https://img.shields.io/badge/Swagger-OpenAPI-blue?style=for-the-badge)](https://api.csrangulardeveloper.nom.es/api/v1/docs)
 
-## 🚀 Tecnologías
+Repositorio oficial de mi portfolio profesional. Este proyecto no es solo una vitrina de trabajos, sino una demostración técnica de una arquitectura desacoplada, escalable y moderna utilizando el ecosistema completo de TypeScript.
 
-- **Frontend:** Angular 21+, Signals, RxJS, SASS.
-- **Backend:** NestJS, TypeScript, Swagger (OpenAPI).
-- **Despliegue:** Plesk, Node.js, Git Hooks.
+## 🏗️ Arquitectura del Sistema
 
-## 📦 Estructura del Proyecto
+El proyecto está dividido en dos grandes bloques independientes:
 
-- `raiz`: Aplicación SPA con Angular.
-- `/backend`: API RESTful con arquitectura modular de NestJS.
+1.  **Frontend (Angular):** Una Single Page Application (SPA) de alto rendimiento enfocada en la experiencia de usuario y la reactividad.
+2.  **Backend (NestJS):** Una API REST robusta que gestiona la persistencia de datos y la lógica de negocio, documentada bajo el estándar OpenAPI.
 
-## 📄 Documentación API
+---
 
-La documentación detallada de los endpoints está disponible vía Swagger en: `https://api.csrangulardeveloper.nom.es/api/docs` (o la ruta que hayas definido).
+## 🛠️ Stack Tecnológico
+
+### Frontend
+
+- **Framework:** Angular 21+
+- **Gestión de Estado:** Arquitectura basada en **Signals** para una detección de cambios eficiente.
+- **Programación Reactiva:** RxJS para el manejo de flujos de datos asíncronos.
+- **Estilos:** SASS.
+- **Internacionalización:** Soporte multiidioma (ES/EN) mediante `ngx-translate`.
+
+### Backend
+
+- **Framework:** NestJS (Node.js)
+- **Documentación:** Swagger UI integrada para pruebas de endpoints en tiempo real.
+- **Arquitectura:** Modular, facilitando el mantenimiento y la escalabilidad de cada sección (Habilidades, Experiencia).
+- **Seguridad:** Configuración de CORS restringida y validación de datos.
+
+---
+
+## 🚀 Despliegue y DevOps
+
+El proyecto implementa un flujo de **Continuous Deployment (CD)** simplificado:
+
+- **Hosting:** Entorno gestionado con Plesk.
+- **Automatización:** Git Hooks para el despliegue automático de ramas específicas.
+- **Normalización:** Uso de Interceptores globales para asegurar que todas las respuestas de la API sigan un esquema consistente:

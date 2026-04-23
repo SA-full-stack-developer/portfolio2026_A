@@ -11,6 +11,7 @@
     flex-direction: column;
     justify-content: flex-end;
     padding: 0.5rem;
+    touch-action: pan-y;
   }
 
   &--expert {
