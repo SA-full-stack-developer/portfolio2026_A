@@ -13,7 +13,11 @@
     </a>
   </div>
 
-  <form class="flex flex-col gap-md contact__form" (submit)="onSubmit(); $event.preventDefault()">
+  <form
+    class="flex flex-col gap-md contact__form"
+    #contactForm="ngForm"
+    (submit)="onSubmit(contactForm); $event.preventDefault()"
+  >
     <mat-form-field appearance="outline" class="contact--row">
       <mat-label>{{ 'CONTACT.NAME' | translate }}</mat-label>
       <input
@@ -129,6 +133,7 @@
       >
         @if (isLoading()) {
           <span>{{ 'CONTACT.SENDING' | translate }}</span>
+          <mat-spinner diameter="20" class="mr-2"></mat-spinner>
         } @else {
           <span>{{ 'CONTACT.CTA' | translate }}</span>
           <mat-icon>send</mat-icon>
