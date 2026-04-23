@@ -10,6 +10,6 @@ export class StatusController {
   @Get()
   @ApiOperation({ summary: 'Verificar el estado de la API' })
   getStatus() {
-    return { status: this.statusService.getStatus(), uptime: process.uptime() };
+    return this.statusService.getStatus();
   }
 }
