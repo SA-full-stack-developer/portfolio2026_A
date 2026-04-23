@@ -19,7 +19,7 @@ let StatusController = class StatusController {
         this.statusService = statusService;
     }
     getStatus() {
-        return { status: this.statusService.getStatus(), uptime: process.uptime() };
+        return this.statusService.getStatus();
     }
 };
 exports.StatusController = StatusController;
