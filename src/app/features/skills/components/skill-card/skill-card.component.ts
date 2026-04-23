@@ -2,13 +2,12 @@ import { Component, computed, input, output } from '@angular/core';
 import { Skill, getSkillLevel } from '@core/models/skill.model';
 
 import { NgOptimizedImage } from '@angular/common';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 import { IconComponent } from '@shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-skill-card',
-  imports: [MatTooltipModule, TranslateModule, IconComponent, NgOptimizedImage],
+  imports: [TranslateModule, IconComponent, NgOptimizedImage],
   templateUrl: './skill-card.component.html',
   styleUrl: './skill-card.component.scss',
   host: {
