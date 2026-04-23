@@ -1,12 +1,13 @@
 import { AfterViewInit, Component, ElementRef, computed, inject, signal } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
-import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Form } from '@core/models/form.model';
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
@@ -22,6 +23,7 @@ import emailjs from '@emailjs/browser';
     MatIconModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
@@ -44,12 +46,19 @@ export class ContactComponent implements AfterViewInit {
 
   isFormValid = computed(() => {
     const data = this.formData();
+    // Añadimos el encadenamiento opcional ?. y valores por defecto ''
+    const name = data?.name ?? '';
+    const email = data?.email ?? '';
+    const subject = data?.subject ?? '';
+    const message = data?.message ?? '';
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     return (
-      data.name.trim().length >= 3 &&
-      emailRegex.test(data.email) &&
-      data.subject.trim().length >= 3 &&
-      data.message.trim().length >= 10
+      name.trim().length >= 3 &&
+      emailRegex.test(email) &&
+      subject.trim().length >= 3 &&
+      message.trim().length >= 10
     );
   });
 
@@ -72,7 +81,7 @@ export class ContactComponent implements AfterViewInit {
     this.formData.update((prev) => ({ ...prev, [field]: value }));
   }
 
-  async onSubmit() {
+  async onSubmit(form: NgForm) {
     if (this.botTrap !== '') {
       return;
     }
@@ -94,10 +103,12 @@ export class ContactComponent implements AfterViewInit {
       try {
         await emailjs.send(serviceID, templateID, templateParams, publicKey);
 
-        this.snackBar.open(this.translate.instant('CONTACT.SUCCESS'));
+        this.snackBar.open(this.translate.instant('CONTACT.SUCCESS'), '', { duration: 1000 });
+        form.resetForm();
         this.formData.set({ name: '', subject: '', email: '', message: '' });
+        this.botTrap = '';
       } catch (error) {
-        this.snackBar.open(this.translate.instant('CONTACT.ERROR') + error);
+        this.snackBar.open(this.translate.instant('CONTACT.ERROR') + error, '', { duration: 1000 });
       } finally {
         this.isLoading.set(false);
       }
