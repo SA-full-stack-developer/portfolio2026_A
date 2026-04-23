@@ -52,10 +52,10 @@ const intermediateSkill: Skill = {
 
 const beginnerSkill: Skill = {
   id: '3',
-  name: 'Flutter',
+  name: 'Prestashop',
   level: 30,
   category: 'devops',
-  icon: 'flutter',
+  icon: 'prestashop',
   highlighted: false,
   yearsOfExperience: 1,
 };

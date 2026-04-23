@@ -65,15 +65,6 @@ export const SKILLS_MOCK: Skill[] = [
     yearsOfExperience: 5,
   },
   {
-    id: '8',
-    name: 'Flutter',
-    level: 0,
-    category: 'frontend',
-    icon: 'flutter.svg',
-    highlighted: false,
-    yearsOfExperience: 0,
-  },
-  {
     id: '9',
     name: 'Docker',
     level: 30,
