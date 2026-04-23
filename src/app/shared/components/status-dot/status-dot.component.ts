@@ -23,6 +23,8 @@ export class StatusDotComponent {
     effect(() => {
       const statusChanged = this.status();
 
+      console.log(statusChanged);
+
       if (statusChanged === OFFLINE) {
         this.selectedColor.set(OFFLINE_COLOR);
         this.selectedOffsetColor.set(OFFLINE_OFFSET_COLOR);
