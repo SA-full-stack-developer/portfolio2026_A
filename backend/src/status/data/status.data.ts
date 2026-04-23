@@ -1,3 +1,3 @@
-import { OFFLINE } from '../constants/status.contants';
+import { ONLINE } from '../constants/status.contants';
 
-export const STATUS: string = OFFLINE;
+export const STATUS: string = ONLINE;
