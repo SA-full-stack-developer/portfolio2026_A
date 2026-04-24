@@ -5,11 +5,15 @@ import { HttpClient } from '@angular/common/http';
 import { ResolvedExperience } from '@core/models/experience.model';
 import { environment } from '@env/environment';
 import { TranslateService } from '@ngx-translate/core';
+import { PlatformService } from './platform.service';
 
 @Injectable({ providedIn: 'root' })
 export class ExperienceService {
   private readonly http = inject(HttpClient);
-  private readonly apiUrl = `${environment.apiUrl}/experience`;
+  private readonly platformService = inject(PlatformService);
+  private readonly apiUrl = `${
+    this.platformService.isBrowser ? environment.browserApiUrl : environment.apiUrl
+  }/experience`;
   private readonly translate = inject(TranslateService);
   private readonly _experiences = signal<ResolvedExperience[]>([]);
   private readonly _loading = signal<boolean>(false);
@@ -32,7 +36,7 @@ export class ExperienceService {
       .pipe(
         map((res) => res.data),
         catchError((err) => {
-          const errorMessage = this.translate.instant('EXPERIENCE.ERRORS.FETCH_ERROR');
+          const errorMessage = this.translate.instant('ERRORS.API');
           this._error.set(errorMessage);
           this._loading.set(false);
           console.error('API Error:', err);

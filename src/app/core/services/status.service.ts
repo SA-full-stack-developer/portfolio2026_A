@@ -4,6 +4,7 @@ import { catchError, map, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { TranslateService } from '@ngx-translate/core';
+import { PlatformService } from './platform.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,10 @@ import { TranslateService } from '@ngx-translate/core';
 export class StatusService {
   private readonly http = inject(HttpClient);
   private readonly translate = inject(TranslateService);
-  private readonly apiUrl = `${environment.apiUrl}/status`;
+  private readonly platformService = inject(PlatformService);
+  private readonly apiUrl = `${
+    this.platformService.isBrowser ? environment.browserApiUrl : environment.apiUrl
+  }/status`;
   private readonly _error = signal<string | null>(null);
   private readonly _status = signal<string>('');
 
@@ -27,7 +31,7 @@ export class StatusService {
       .pipe(
         map((res) => res.data),
         catchError((err) => {
-          const errorMessage = this.translate.instant('STATUS.ERROR');
+          const errorMessage = this.translate.instant('ERRORS.API');
           this._error.set(errorMessage);
           console.error('API Error:', err);
           return of({ status: '' });
