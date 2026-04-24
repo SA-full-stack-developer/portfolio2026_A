@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { GsapService } from '@core/services/gsap.service';
@@ -10,12 +10,12 @@ import { PlatformService } from '@core/services/platform.service';
   templateUrl: './error404.component.html',
   styleUrl: './error404.component.scss',
 })
-export class Error404Component {
+export class Error404Component implements OnInit {
   private readonly router = inject(Router);
   private readonly gsapService = inject(GsapService);
   private readonly platformService = inject(PlatformService);
 
-  public currentRoute: string = '';
+  public currentRoute = '';
   public terminalLines: string[] = [
     'Initializing system recovery...',
     'Scanning local host for missing routes...',
