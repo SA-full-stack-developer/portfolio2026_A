@@ -8,7 +8,7 @@
     "start:nest": "npm run start:dev --prefix backend",
     "start:all": "concurrently -n \"NG,NEST\" -c \"cyan,magenta\" \"npm run start:ng\" \"npm run start:nest\"",
     "start": "ng build:icons && serve",
-    "build": "ng build:icons && build",
+    "build": "node scripts/build-icons.mjs && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "test:watch": "jest --watch",

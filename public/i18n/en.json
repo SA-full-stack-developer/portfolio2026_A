@@ -169,5 +169,8 @@
       "MIN_10": "Transmission too short. Minimum 10 characters.",
       "EMAIL": "Unrecognized uplink format (example@domain.com)."
     }
+  },
+  "ERRORS": {
+    "API": "API error"
   }
 }

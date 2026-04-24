@@ -5,11 +5,15 @@ import { catchError, map, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { TranslateService } from '@ngx-translate/core';
+import { PlatformService } from './platform.service';
 
 @Injectable({ providedIn: 'root' })
 export class SkillsService {
   private readonly http = inject(HttpClient);
-  private readonly apiUrl = `${environment.apiUrl}/skills`;
+  private readonly platformService = inject(PlatformService);
+  private readonly apiUrl = `${
+    this.platformService.isBrowser ? environment.browserApiUrl : environment.apiUrl
+  }/skills`;
   private readonly translate = inject(TranslateService);
   private readonly _availableCategories = signal<SkillCategory[]>([]);
 
@@ -70,7 +74,7 @@ export class SkillsService {
       .pipe(
         map((res) => res.data),
         catchError((err) => {
-          const errorMessage = this.translate.instant('SKILLS.ERRORS.FETCH_ERROR');
+          const errorMessage = this.translate.instant('ERRORS.API');
           this._error.set(errorMessage);
           this._loading.set(false);
           console.error('API Error:', err);
@@ -89,7 +93,10 @@ export class SkillsService {
       .pipe(
         map((res) => res.data),
         catchError((err) => {
-          console.error('Error cargando categorías:', err);
+          const errorMessage = this.translate.instant('ERRORS.API');
+          this._error.set(errorMessage);
+          this._loading.set(false);
+          console.error('API Error:', err);
           return of([]);
         }),
       )

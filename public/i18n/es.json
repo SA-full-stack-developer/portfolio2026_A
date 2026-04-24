@@ -169,5 +169,8 @@
       "MIN_10": "Transmisión demasiado corta. Mínimo 10 caracteres.",
       "EMAIL": "Formato de enlace no reconocido (ejemplo@dominio.com)."
     }
+  },
+  "ERRORS": {
+    "API": "Ha habido un error en la API"
   }
 }
