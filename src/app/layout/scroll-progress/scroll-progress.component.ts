@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, inject } from '@angula
 
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 @Component({
   selector: 'app-scroll-progress',
@@ -13,7 +14,7 @@ export class ScrollProgressComponent implements AfterViewInit, OnDestroy {
   private readonly gsapService = inject(GsapService);
   private readonly el = inject(ElementRef);
   private readonly platformService = inject(PlatformService);
-  private scrollTriggerInstance: any;
+  private scrollTriggerInstance: ScrollTrigger | undefined;
   private resizeObserver: ResizeObserver | null = null;
 
   ngAfterViewInit(): void {

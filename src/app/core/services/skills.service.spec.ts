@@ -1,6 +1,5 @@
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
-import { TranslateLoader, TranslateService, TranslationObject } from '@ngx-translate/core';
-import { Observable, of } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 import { provideHttpClient } from '@angular/common/http';
 import { provideZonelessChangeDetection } from '@angular/core';
@@ -9,22 +8,9 @@ import { SKILLS_MOCK } from '@core/mocks/skills.mock';
 import { environment } from '@env/environment';
 import { SkillsService } from './skills.service';
 
-// Mock loader
-class MockTranslateLoader implements TranslateLoader {
-  getTranslation(): Observable<TranslationObject> {
-    return of({
-      SKILLS: {
-        ERRORS: {
-          FETCH_ERROR: 'Error fetching skills',
-        },
-      },
-    } as TranslationObject);
-  }
-}
-
 class MockTranslateService {
   instant = jest.fn((key: string) => {
-    if (key === 'SKILLS.ERRORS.FETCH_ERROR') {
+    if (key === 'ERRORS.API') {
       return 'No se pudieron cargar las habilidades. Inténtalo de nuevo más tarde.';
     }
     return key;
@@ -50,9 +36,9 @@ describe('SkillsService', () => {
   function createServiceWithMocks(): SkillsService {
     const service = TestBed.inject(SkillsService);
     const skillsReq = httpMock.expectOne(`${apiUrl}?onlyHighlighted=false`);
-    skillsReq.flush(SKILLS_MOCK);
+    skillsReq.flush({ data: SKILLS_MOCK });
     const categoriesReq = httpMock.expectOne(`${apiUrl}/categories`);
-    categoriesReq.flush(['frontend', 'backend', 'mobile', 'devops', 'tools']);
+    categoriesReq.flush({ data: ['frontend', 'backend', 'mobile', 'devops', 'tools'] });
     return service;
   }
 
@@ -113,7 +99,7 @@ describe('SkillsService', () => {
     const service = createServiceWithMocks();
     service.setFilter({ category: 'frontend' });
     const req = httpMock.expectOne(`${apiUrl}?onlyHighlighted=false&category=frontend`);
-    req.flush(SKILLS_MOCK.filter((s) => s.category === 'frontend'));
+    req.flush({ data: SKILLS_MOCK.filter((s) => s.category === 'frontend') });
     const filtered = service.filteredSkills();
     expect(filtered.every((s) => s.category === 'frontend')).toBe(true);
   });
@@ -122,7 +108,7 @@ describe('SkillsService', () => {
     const service = createServiceWithMocks();
     service.setFilter({ onlyHighlighted: true });
     const req = httpMock.expectOne(`${apiUrl}?onlyHighlighted=true`);
-    req.flush(SKILLS_MOCK.filter((s) => s.highlighted));
+    req.flush({ data: SKILLS_MOCK.filter((s) => s.highlighted) });
     const filtered = service.filteredSkills();
     expect(filtered.every((s) => s.highlighted)).toBe(true);
   });
@@ -131,7 +117,7 @@ describe('SkillsService', () => {
     const service = createServiceWithMocks();
     service.setFilter({ category: 'frontend', onlyHighlighted: true });
     const req = httpMock.expectOne(`${apiUrl}?onlyHighlighted=true&category=frontend`);
-    req.flush(SKILLS_MOCK.filter((s) => s.category === 'frontend' && s.highlighted));
+    req.flush({ data: SKILLS_MOCK.filter((s) => s.category === 'frontend' && s.highlighted) });
     const filtered = service.filteredSkills();
     expect(filtered.every((s) => s.category === 'frontend' && s.highlighted)).toBe(true);
   });
@@ -140,10 +126,10 @@ describe('SkillsService', () => {
     const service = createServiceWithMocks();
     service.setFilter({ category: 'frontend' });
     const req1 = httpMock.expectOne(`${apiUrl}?onlyHighlighted=false&category=frontend`);
-    req1.flush(SKILLS_MOCK.filter((s) => s.category === 'frontend'));
+    req1.flush({ data: SKILLS_MOCK.filter((s) => s.category === 'frontend') });
     service.setFilter({ onlyHighlighted: true });
     const req2 = httpMock.expectOne(`${apiUrl}?onlyHighlighted=true&category=frontend`);
-    req2.flush(SKILLS_MOCK.filter((s) => s.category === 'frontend' && s.highlighted));
+    req2.flush({ data: SKILLS_MOCK.filter((s) => s.category === 'frontend' && s.highlighted) });
     expect(service.filter().category).toBe('frontend');
     expect(service.filter().onlyHighlighted).toBe(true);
   });
@@ -152,10 +138,10 @@ describe('SkillsService', () => {
     const service = createServiceWithMocks();
     service.setFilter({ category: 'frontend', onlyHighlighted: true });
     const req1 = httpMock.expectOne(`${apiUrl}?onlyHighlighted=true&category=frontend`);
-    req1.flush(SKILLS_MOCK.filter((s) => s.category === 'frontend' && s.highlighted));
+    req1.flush({ data: SKILLS_MOCK.filter((s) => s.category === 'frontend' && s.highlighted) });
     service.resetFilter();
     const req2 = httpMock.expectOne(`${apiUrl}?onlyHighlighted=false`);
-    req2.flush(SKILLS_MOCK);
+    req2.flush({ data: SKILLS_MOCK });
     expect(service.filter().category).toBe('all');
     expect(service.filter().onlyHighlighted).toBe(false);
   });
@@ -164,10 +150,10 @@ describe('SkillsService', () => {
     const service = createServiceWithMocks();
     service.setFilter({ category: 'frontend' });
     const req1 = httpMock.expectOne(`${apiUrl}?onlyHighlighted=false&category=frontend`);
-    req1.flush(SKILLS_MOCK.filter((s) => s.category === 'frontend'));
+    req1.flush({ data: SKILLS_MOCK.filter((s) => s.category === 'frontend') });
     service.resetFilter();
     const req2 = httpMock.expectOne(`${apiUrl}?onlyHighlighted=false`);
-    req2.flush(SKILLS_MOCK);
+    req2.flush({ data: SKILLS_MOCK });
     expect(service.filteredSkills()).toHaveLength(service.PAGE_SIZE);
   });
 
@@ -209,9 +195,9 @@ describe('SkillsService', () => {
   it('should be created and fetch skills', () => {
     const service = TestBed.inject(SkillsService);
     const skillsReq = httpMock.expectOne(`${apiUrl}?onlyHighlighted=false`);
-    skillsReq.flush(SKILLS_MOCK);
+    skillsReq.flush({ data: SKILLS_MOCK });
     const categoriesReq = httpMock.expectOne(`${apiUrl}/categories`);
-    categoriesReq.flush(['frontend', 'backend']);
+    categoriesReq.flush({ data: ['frontend', 'backend'] });
 
     expect(service).toBeTruthy();
     expect(service.skills()).toHaveLength(SKILLS_MOCK.length);
@@ -222,8 +208,7 @@ describe('SkillsService', () => {
     const service = TestBed.inject(SkillsService);
     const skillsReq = httpMock.expectOne(`${apiUrl}?onlyHighlighted=false`);
     const categoriesReq = httpMock.expectOne(`${apiUrl}/categories`);
-    categoriesReq.flush(['frontend']);
-
+    categoriesReq.flush({ data: ['frontend'] });
     skillsReq.flush('Error del servidor', { status: 500, statusText: 'Server Error' });
 
     expect(service.loading()).toBe(false);
@@ -236,9 +221,9 @@ describe('SkillsService', () => {
   it('should toggle highlight locally (optimistic update)', () => {
     const service = TestBed.inject(SkillsService);
     const skillsReq = httpMock.expectOne(`${apiUrl}?onlyHighlighted=false`);
-    skillsReq.flush(SKILLS_MOCK);
+    skillsReq.flush({ data: SKILLS_MOCK });
     const categoriesReq = httpMock.expectOne(`${apiUrl}/categories`);
-    categoriesReq.flush(['frontend']);
+    categoriesReq.flush({ data: ['frontend'] });
 
     const skillId = SKILLS_MOCK[0].id;
     const initialState = service.skills().find((s) => s.id === skillId)!.highlighted;

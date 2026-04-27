@@ -1,9 +1,16 @@
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 
+import { provideHttpClient } from '@angular/common/http';
+import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { STATS_MOCK } from '@core/mocks/stats.mock';
 import { environment } from '@env/environment';
+import { TranslateService } from '@ngx-translate/core';
 import { StatsService } from './stats.service';
+
+class MockTranslateService {
+  instant = jest.fn((key: string) => key);
+}
 
 describe('StatsService', () => {
   let service: StatsService;
@@ -12,12 +19,17 @@ describe('StatsService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [StatsService],
+      providers: [
+        provideZonelessChangeDetection(),
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        { provide: TranslateService, useClass: MockTranslateService },
+      ],
     });
-
-    service = TestBed.inject(StatsService);
     httpMock = TestBed.inject(HttpTestingController);
+    service = TestBed.inject(StatsService);
+    const req = httpMock.expectOne(apiUrl);
+    req.flush({ data: [] });
   });
 
   afterEach(() => {
@@ -25,20 +37,14 @@ describe('StatsService', () => {
   });
 
   it('should be created', () => {
-    const req = httpMock.expectOne(apiUrl);
-    expect(req.request.method).toBe('GET');
-
-    req.flush([]);
-
     expect(service).toBeTruthy();
   });
 
   it('should load stats and update the signal', () => {
+    service.loadStats();
     const req = httpMock.expectOne(apiUrl);
-    req.flush(STATS_MOCK);
-
-    const stats = service.stats();
-    expect(stats.length).toBe(4);
-    expect(stats).toEqual(STATS_MOCK);
+    req.flush({ data: STATS_MOCK });
+    expect(service.stats().length).toBe(4);
+    expect(service.stats()).toEqual(STATS_MOCK);
   });
 });

@@ -12,6 +12,8 @@
   @if (isOpen()) {
     <div
       (click)="close()"
+      (keydown.escape)="close()"
+      tabindex="0"
       class="flex header-hamburger__overlay flex flex-end"
       role="dialog"
       aria-modal="true"
@@ -21,6 +23,8 @@
       <div
         class="header-hamburger__drawer flex flex-col align-end"
         (click)="stopPropagation($event)"
+        (keydown)="stopPropagation($event)"
+        tabindex="-1"
       >
         <button class="header-hamburger__close" (click)="close()" aria-label="Cerrar menú">
           <app-icon name="x-circle" [size]="30" />

@@ -27,7 +27,7 @@ export class StatsService {
 
   loadStats(): void {
     this.http
-      .get<any>(this.apiUrl)
+      .get<{ data: Stat[] }>(this.apiUrl)
       .pipe(
         map((res) => res.data),
         tap((data) => this.stats.set(data)),

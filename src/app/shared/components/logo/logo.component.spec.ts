@@ -2,15 +2,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { provideZonelessChangeDetection } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { RouterTestingModule } from '@angular/router/testing';
-import { HeaderLogoComponent } from './logo.component';
+import { provideRouter } from '@angular/router';
+import { LogoComponent } from './logo.component';
 
-describe('HeaderLogoComponent', () => {
-  let component: HeaderLogoComponent;
-  let fixture: ComponentFixture<HeaderLogoComponent>;
+describe('LogoComponent', () => {
+  let component: LogoComponent;
+  let fixture: ComponentFixture<LogoComponent>;
 
   async function createComponent(): Promise<void> {
-    fixture = TestBed.createComponent(HeaderLogoComponent);
+    fixture = TestBed.createComponent(LogoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
     await fixture.whenStable();
@@ -19,8 +19,8 @@ describe('HeaderLogoComponent', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [HeaderLogoComponent, RouterTestingModule],
-      providers: [provideZonelessChangeDetection()],
+      imports: [LogoComponent],
+      providers: [provideZonelessChangeDetection(), provideRouter([])],
     });
   });
 

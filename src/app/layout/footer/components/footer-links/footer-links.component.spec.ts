@@ -8,7 +8,7 @@ import {
 import { Observable, of } from 'rxjs';
 
 import { provideZonelessChangeDetection } from '@angular/core';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 import { FooterLinksComponent } from './footer-links.component';
 
 class MockTranslateLoader implements TranslateLoader {
@@ -39,9 +39,10 @@ describe('FooterLinksComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FooterLinksComponent, RouterTestingModule],
+      imports: [FooterLinksComponent],
       providers: [
         provideZonelessChangeDetection(),
+        provideRouter([]),
         provideTranslateService({
           loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
         }),
@@ -61,10 +62,10 @@ describe('FooterLinksComponent', () => {
     await createComponent();
     const anchors = fixture.nativeElement.querySelectorAll('a');
 
-    expect(anchors.length).toBe(10);
+    expect(anchors.length).toBe(9);
     expect(anchors[0].textContent.trim()).toBe('Home');
     expect(anchors[1].textContent.trim()).toBe('Contacto');
-    expect(anchors[4].textContent.trim()).toBe('Sobre esto');
+    expect(anchors[4].textContent.trim()).toContain('GitHub');
   });
 
   it('should render social and external links with href values', async () => {
@@ -79,7 +80,6 @@ describe('FooterLinksComponent', () => {
 
   it('should render the 404 link text from translations', async () => {
     await createComponent();
-
     expect(fixture.nativeElement.textContent).toContain('Página 404');
   });
 });

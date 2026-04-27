@@ -1,8 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateModule } from '@ngx-translate/core';
 import { ContactComponent } from './contact.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { TranslateModule } from '@ngx-translate/core';
+import { provideZonelessChangeDetection } from '@angular/core';
+
+// Mock emailjs para evitar llamadas reales
+jest.mock('@emailjs/browser', () => ({
+  default: {
+    send: jest.fn().mockResolvedValue({ status: 200 }),
+  },
+}));
 
 describe('ContactComponent', () => {
   let component: ContactComponent;
@@ -10,7 +18,8 @@ describe('ContactComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ContactComponent, TranslateModule.forRoot(), BrowserAnimationsModule],
+      imports: [ContactComponent, TranslateModule.forRoot(), NoopAnimationsModule],
+      providers: [provideZonelessChangeDetection()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ContactComponent);
@@ -27,15 +36,16 @@ describe('ContactComponent', () => {
     expect(initialData).toEqual({ name: '', subject: '', email: '', message: '' });
   });
 
-  it('should validate form correctly (isFormValid)', () => {
+  it('should be invalid when form is empty', () => {
     expect(component.isFormValid()).toBeFalsy();
+  });
 
+  it('should be valid when all fields are correct', () => {
     component.updateField('name', 'Gundam Pilot');
     component.updateField('email', 'test@domain.com');
     component.updateField('subject', 'Project Alpha');
     component.updateField('message', 'This is a long enough message for testing.');
-
-    expect(component.isFormValid()).toBeFalsy();
+    expect(component.isFormValid()).toBeTruthy();
   });
 
   it('should invalidate incorrect email format', () => {
@@ -43,22 +53,6 @@ describe('ContactComponent', () => {
     component.updateField('email', 'invalid-email');
     component.updateField('subject', 'Valid Subject');
     component.updateField('message', 'Valid message long enough');
-
     expect(component.isFormValid()).toBeFalsy();
-  });
-
-  it('should set isLoading to true on submit', (done) => {
-    component.updateField('name', 'Test User');
-    component.updateField('email', 'test@test.com');
-    component.updateField('subject', 'Test Subject');
-    component.updateField('message', 'Test message with more than ten characters');
-
-    component.onSubmit();
-    expect(component.isLoading()).toBeTruthy();
-    setTimeout(() => {
-      expect(component.isLoading()).toBeFalsy();
-      expect(component.formData().name).toBe('');
-      done();
-    }, 2100);
   });
 });

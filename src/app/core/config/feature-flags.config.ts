@@ -91,4 +91,14 @@ export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
     label: 'Copyright',
     visibility: 'public',
   },
+  PROJECTS: {
+    id: 'PROJECTS',
+    label: 'Proyectos',
+    visibility: 'hidden',
+  },
+  EXPERIMENTS: {
+    id: 'EXPERIMENTS',
+    label: 'Experimentos',
+    visibility: 'admin',
+  },
 };

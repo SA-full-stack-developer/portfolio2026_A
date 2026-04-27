@@ -2,6 +2,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { catchError, map, of } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
+import { Status } from '@core/models/status.model';
 import { environment } from '@env/environment';
 import { TranslateService } from '@ngx-translate/core';
 import { PlatformService } from './platform.service';
@@ -27,7 +28,7 @@ export class StatusService {
 
   loadStatus() {
     this.http
-      .get<any>(this.apiUrl)
+      .get<{ data: Status }>(this.apiUrl)
       .pipe(
         map((res) => res.data),
         catchError((err) => {

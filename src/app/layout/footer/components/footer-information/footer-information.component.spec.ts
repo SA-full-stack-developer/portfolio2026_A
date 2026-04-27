@@ -9,7 +9,8 @@ import { Observable, of } from 'rxjs';
 
 import { provideZonelessChangeDetection } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
+import { StatusService } from '@core/services/status.service';
 import { FooterInformationComponent } from './footer-information.component';
 
 class MockTranslateLoader implements TranslateLoader {
@@ -22,6 +23,10 @@ class MockTranslateLoader implements TranslateLoader {
       },
     } as TranslationObject);
   }
+}
+
+class MockStatusService {
+  status = () => 'Online';
 }
 
 describe('FooterInformationComponent', () => {
@@ -38,12 +43,14 @@ describe('FooterInformationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FooterInformationComponent, RouterTestingModule],
+      imports: [FooterInformationComponent],
       providers: [
         provideZonelessChangeDetection(),
+        provideRouter([]),
         provideTranslateService({
           loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
         }),
+        { provide: StatusService, useClass: MockStatusService },
       ],
     }).compileComponents();
 
@@ -58,7 +65,6 @@ describe('FooterInformationComponent', () => {
 
   it('should render brand name and status text', async () => {
     await createComponent();
-
     expect(fixture.nativeElement.textContent).toContain('CRISTIANSALCEDO');
     expect(fixture.nativeElement.textContent).toContain('.DEV');
     expect(fixture.nativeElement.textContent).toContain('Online');
@@ -66,14 +72,14 @@ describe('FooterInformationComponent', () => {
 
   it('should render translated status labels', async () => {
     await createComponent();
-
     expect(fixture.nativeElement.textContent).toContain('Estado del sistema');
     expect(fixture.nativeElement.textContent).toContain('Disponible');
     expect(fixture.nativeElement.textContent).toContain('Sitio web en línea');
   });
 
-  it('should pass the status signal to app-status-dot', () => {
+  it('should pass the status signal to app-status-dot', async () => {
+    await createComponent();
     const statusDot = fixture.debugElement.query(By.css('app-status-dot'));
-    expect(statusDot.componentInstance.status).toBe('Online');
+    expect(statusDot.componentInstance.status()).toBe('Online');
   });
 });

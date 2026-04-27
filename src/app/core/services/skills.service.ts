@@ -61,16 +61,13 @@ export class SkillsService {
 
     const { category, onlyHighlighted } = this._filter();
 
-    const params: any = {
+    const params: Record<string, string> = {
       onlyHighlighted: onlyHighlighted.toString(),
+      ...(category !== 'all' && { category }),
     };
 
-    if (category !== 'all') {
-      params.category = category;
-    }
-
     this.http
-      .get<any>(this.apiUrl, { params })
+      .get<{ data: Skill[] }>(this.apiUrl, { params })
       .pipe(
         map((res) => res.data),
         catchError((err) => {
@@ -89,7 +86,7 @@ export class SkillsService {
 
   private fetchCategories(): void {
     this.http
-      .get<any>(`${this.apiUrl}/categories`)
+      .get<{ data: SkillCategory[] }>(`${this.apiUrl}/categories`)
       .pipe(
         map((res) => res.data),
         catchError((err) => {

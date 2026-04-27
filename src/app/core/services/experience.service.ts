@@ -32,7 +32,7 @@ export class ExperienceService {
     this._error.set(null);
 
     this.http
-      .get<any>(this.apiUrl)
+      .get<{ data: ResolvedExperience[] }>(this.apiUrl)
       .pipe(
         map((res) => res.data),
         catchError((err) => {
