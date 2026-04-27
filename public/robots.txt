@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /error
+
 Sitemap: https://csrangulardeveloper.nom.es/sitemap.xml
