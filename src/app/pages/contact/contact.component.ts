@@ -1,4 +1,12 @@
-import { AfterViewInit, Component, ElementRef, computed, inject, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -8,9 +16,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { PAGE_SEO } from '@core/config/seo.config';
 import { Form } from '@core/models/form.model';
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
+import { SeoService } from '@core/services/seo.service';
 import emailjs from '@emailjs/browser';
 
 @Component({
@@ -28,7 +38,8 @@ import emailjs from '@emailjs/browser';
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })
-export class ContactComponent implements AfterViewInit {
+export class ContactComponent implements OnInit, AfterViewInit {
+  private readonly seoService = inject(SeoService);
   private readonly gsapService = inject(GsapService);
   private readonly el = inject(ElementRef);
   private readonly platformService = inject(PlatformService);
@@ -61,6 +72,10 @@ export class ContactComponent implements AfterViewInit {
       message.trim().length >= 10
     );
   });
+
+  ngOnInit(): void {
+    this.seoService.update(PAGE_SEO['contact']);
+  }
 
   ngAfterViewInit(): void {
     if (!this.platformService.isBrowser) return;
