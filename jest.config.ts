@@ -43,6 +43,7 @@ const config: Config = {
     },
   },
   coverageReporters: ['html', 'lcov', 'text-summary'],
+  testPathIgnorePatterns: ['/node_modules/', '/backend/'],
 };
 
 export default config;
