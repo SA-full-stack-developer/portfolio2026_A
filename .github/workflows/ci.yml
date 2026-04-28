@@ -101,17 +101,12 @@ jobs:
           git checkout deploy-api
           git rm -rf . --quiet
           cp -r /tmp/backend-dist/dist/. .
-          # Crear package.json de producción
-          cat > package.json << 'EOF'
-          {
-            "name": "backend",
-            "version": "1.0.0",
-            "scripts": {
-              "start": "node main.js"
-            },
-            "dependencies": {}
-          }
-          EOF
+          # Coger el package.json real pero cambiar el script start
+          node -e "
+            const pkg = require('/tmp/backend-dist/package.json');
+            pkg.scripts = { start: 'node main.js' };
+            require('fs').writeFileSync('package.json', JSON.stringify(pkg, null, 2));
+          "
           git add .
           git commit -m "deploy: backend $(date +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
           git push origin deploy-api
