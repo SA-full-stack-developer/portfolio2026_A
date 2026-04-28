@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-      - run: npm ci
+      - run: npm ci --legacy-peer-deps
       - run: npm run lint
 
   test:
@@ -27,7 +27,7 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-      - run: npm ci
+      - run: npm ci --legacy-peer-deps
       - run: npm test -- --watch=false --browsers=ChromeHeadless
 
   build:
@@ -41,12 +41,12 @@ jobs:
           cache: 'npm'
       - name: Build frontend
         run: |
-          npm ci
+          npm ci --legacy-peer-deps
           npm run build -- --configuration production
       - name: Build backend
         working-directory: backend
         run: |
-          npm ci
+          npm ci --legacy-peer-deps
           npm run build
       - name: Upload frontend artifact
         uses: actions/upload-artifact@v4
