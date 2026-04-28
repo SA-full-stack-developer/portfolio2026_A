@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://csrangulardeveloper.nom.es/sitemap.xml
