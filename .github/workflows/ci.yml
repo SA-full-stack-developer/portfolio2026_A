@@ -65,6 +65,12 @@ jobs:
     if: github.ref == 'refs/heads/develop'
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install backend production dependencies
+        working-directory: backend
+        run: npm install --omit=dev
       - name: Download backend artifact
         uses: actions/download-artifact@v4
         with:
@@ -86,6 +92,10 @@ jobs:
             -e "ssh -i ~/.ssh/id_ed25519 -p 2222" \
             backend/package.json \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/api.csrangulardeveloper.nom.es/package.json
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/id_ed25519 -p 2222" \
+            backend/node_modules/ \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/api.csrangulardeveloper.nom.es/node_modules/
 
   deploy-frontend:
     runs-on: ubuntu-latest
