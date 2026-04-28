@@ -1,6 +1,0 @@
-import { StatusService } from './status.service';
-export declare class StatusController {
-    private readonly statusService;
-    constructor(statusService: StatusService);
-    getStatus(): import("./entities/status.entity").Status;
-}
