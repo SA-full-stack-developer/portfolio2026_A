@@ -75,7 +75,7 @@ export class StatsService {
         return diff * multiplier;
 
       case StatKind.SERVICE:
-        return this.skillsService.getHighlightedCount() * multiplier + 2222;
+        return this.skillsService.getHighlightedCount() * multiplier + 5555;
 
       default:
         return 0;
