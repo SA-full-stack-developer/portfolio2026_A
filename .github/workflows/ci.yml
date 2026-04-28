@@ -1,4 +1,4 @@
-name: CI
+name: CI + Deploy
 
 on:
   push:
@@ -8,61 +8,108 @@ on:
 
 jobs:
   lint:
-    name: Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '20'
           cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Lint
-        run: npm run lint
+      - run: npm ci
+      - run: npm run lint
 
   test:
-    name: Test
     runs-on: ubuntu-latest
     needs: lint
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '20'
           cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Test
-        run: npm run test:ci
+      - run: npm ci
+      - run: npm test -- --watch=false --browsers=ChromeHeadless
 
   build:
-    name: Build
     runs-on: ubuntu-latest
     needs: test
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '20'
           cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
       - name: Build frontend
-        run: npm run build -- --configuration production
-
-      - name: Install backend dependencies
-        run: npm ci --prefix backend
-
+        run: |
+          npm ci
+          npm run build -- --configuration production
       - name: Build backend
-        run: npm run build --prefix backend
+        working-directory: backend
+        run: |
+          npm ci
+          npm run build
+      - name: Upload frontend artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-dist
+          path: dist/portfolio2026_A/
+      - name: Upload backend artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-dist
+          path: backend/dist/
+
+  deploy-backend:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/develop'
+    steps:
+      - name: Download backend artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: backend-dist
+          path: backend-dist/
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      - name: Deploy backend
+        run: |
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/id_ed25519" \
+            backend-dist/ \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/api.csrangulardeveloper.nom.es/
+
+  deploy-frontend:
+    runs-on: ubuntu-latest
+    needs: deploy-backend
+    if: github.ref == 'refs/heads/develop'
+    steps:
+      - name: Download frontend artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: frontend-dist
+          path: frontend-dist/
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      - name: Deploy frontend
+        run: |
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/id_ed25519" \
+            frontend-dist/browser/ \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/csrangulardeveloper.nom.es/public/
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/id_ed25519" \
+            frontend-dist/server/ \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/csrangulardeveloper.nom.es/server/
+      - name: Restart frontend app
+        run: |
+          ssh -i ~/.ssh/id_ed25519 \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "touch ~/csrangulardeveloper.nom.es/server/server.mjs"

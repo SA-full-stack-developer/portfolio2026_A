@@ -1,5 +1,3 @@
-// backend/src/stats/stats.service.ts
-
 import { StatCalculation, StatKind } from './constants/stat.constants';
 
 import { Injectable } from '@nestjs/common';
