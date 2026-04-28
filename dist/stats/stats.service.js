@@ -79,7 +79,7 @@ let StatsService = class StatsService {
                     : this.diffInDays(stat.startDate);
                 return diff * multiplier;
             case stat_constants_1.StatKind.SERVICE:
-                return this.skillsService.getHighlightedCount() * multiplier + 4444;
+                return this.skillsService.getHighlightedCount() * multiplier;
             default:
                 return 0;
         }
