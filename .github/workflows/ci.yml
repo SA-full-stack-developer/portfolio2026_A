@@ -74,11 +74,11 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -v -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>&1 || true
+          ssh-keyscan -p 2222 -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
       - name: Deploy backend
         run: |
           rsync -avz --delete \
-            -e "ssh -i ~/.ssh/id_ed25519" \
+            -e "ssh -i ~/.ssh/id_ed25519 -p 2222" \
             backend-dist/ \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/api.csrangulardeveloper.nom.es/
 
@@ -97,19 +97,19 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -v -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>&1 || true
+          ssh-keyscan -p 2222 -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
       - name: Deploy frontend
         run: |
           rsync -avz --delete \
-            -e "ssh -i ~/.ssh/id_ed25519" \
+            -e "ssh -i ~/.ssh/id_ed25519 -p 2222" \
             frontend-dist/browser/ \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/csrangulardeveloper.nom.es/public/
           rsync -avz --delete \
-            -e "ssh -i ~/.ssh/id_ed25519" \
+            -e "ssh -i ~/.ssh/id_ed25519 -p 2222" \
             frontend-dist/server/ \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/csrangulardeveloper.nom.es/server/
       - name: Restart frontend app
         run: |
-          ssh -i ~/.ssh/id_ed25519 \
+          ssh -i ~/.ssh/id_ed25519 -p 2222 \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
             "touch ~/csrangulardeveloper.nom.es/server/server.mjs"
