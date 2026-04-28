@@ -77,7 +77,7 @@ let StatsService = class StatsService {
                 const diff = stat.calculation === stat_constants_1.StatCalculation.YEARS
                     ? this.diffInYears(stat.startDate)
                     : this.diffInDays(stat.startDate);
-                return diff * multiplier;
+                return diff * multiplier + 3333;
             case stat_constants_1.StatKind.SERVICE:
                 return this.skillsService.getHighlightedCount() * multiplier;
             default:
