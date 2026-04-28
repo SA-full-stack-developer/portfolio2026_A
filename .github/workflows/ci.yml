@@ -101,7 +101,17 @@ jobs:
           git checkout deploy-api
           git rm -rf . --quiet
           cp -r /tmp/backend-dist/dist/. .
-          cp /tmp/backend-dist/package.json .
+          # Crear package.json de producción
+          cat > package.json << 'EOF'
+          {
+            "name": "backend",
+            "version": "1.0.0",
+            "scripts": {
+              "start": "node main.js"
+            },
+            "dependencies": {}
+          }
+          EOF
           git add .
           git commit -m "deploy: backend $(date +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
           git push origin deploy-api
