@@ -57,7 +57,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: backend-dist
-          path: backend/dist/
+          path: |
+            backend/dist/
+            backend/package.json
 
   deploy:
     runs-on: ubuntu-latest
@@ -98,8 +100,8 @@ jobs:
         run: |
           git checkout deploy-api
           git rm -rf . --quiet
-          cp -r /tmp/backend-dist/. .
-          cp /tmp/backend-dist/../backend/package.json . 2>/dev/null || true
+          cp -r /tmp/backend-dist/dist/. .
+          cp /tmp/backend-dist/package.json .
           git add .
           git commit -m "deploy: backend $(date +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
           git push origin deploy-api
