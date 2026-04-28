@@ -72,10 +72,10 @@ export class StatsService {
           stat.calculation === StatCalculation.YEARS
             ? this.diffInYears(stat.startDate)
             : this.diffInDays(stat.startDate);
-        return diff * multiplier + 3333;
+        return diff * multiplier;
 
       case StatKind.SERVICE:
-        return this.skillsService.getHighlightedCount() * multiplier;
+        return this.skillsService.getHighlightedCount() * multiplier + 2222;
 
       default:
         return 0;

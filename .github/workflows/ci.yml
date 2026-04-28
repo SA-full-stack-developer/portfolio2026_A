@@ -115,6 +115,9 @@ jobs:
           git commit -m "deploy: backend $(date +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
           git push origin deploy-api
 
+      - name: Wait for backend to restart
+        run: sleep 30
+
       - name: Push frontend to deploy branch
         run: |
           git checkout deploy
