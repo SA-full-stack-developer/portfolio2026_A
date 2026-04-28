@@ -99,14 +99,14 @@ jobs:
       - name: Push backend to deploy-api branch
         run: |
           git checkout deploy-api
-          git rm -rf . --quiet
+          git rm -rf --ignore-unmatch . --quiet
           cp -r /tmp/backend-dist/dist/. .
-          # Coger el package.json real pero cambiar el script start
           node -e "
             const pkg = require('/tmp/backend-dist/package.json');
             pkg.scripts = { start: 'node main.js' };
             require('fs').writeFileSync('package.json', JSON.stringify(pkg, null, 2));
           "
+          echo 'node_modules/' >> .gitignore
           git add .
           git commit -m "deploy: backend $(date +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
           git push origin deploy-api
