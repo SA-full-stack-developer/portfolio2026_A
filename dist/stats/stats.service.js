@@ -72,14 +72,14 @@ let StatsService = class StatsService {
         const multiplier = stat.multiplier ?? 1;
         switch (stat.kind) {
             case stat_constants_1.StatKind.STATIC:
-                return stat.value + 6666;
+                return stat.value;
             case stat_constants_1.StatKind.DYNAMIC:
                 const diff = stat.calculation === stat_constants_1.StatCalculation.YEARS
                     ? this.diffInYears(stat.startDate)
                     : this.diffInDays(stat.startDate);
-                return diff * multiplier + 6666;
+                return diff * multiplier;
             case stat_constants_1.StatKind.SERVICE:
-                return this.skillsService.getHighlightedCount() * multiplier + 6666;
+                return this.skillsService.getHighlightedCount() * multiplier;
             default:
                 return 0;
         }
