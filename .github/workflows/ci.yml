@@ -100,12 +100,27 @@ jobs:
         run: |
           git checkout deploy-api
           git rm -rf --ignore-unmatch . --quiet
-          cp -r /tmp/backend-dist/dist/. .
+          mkdir -p dist
+          cp -r /tmp/backend-dist/dist/. dist/
           node -e "
             const pkg = require('/tmp/backend-dist/package.json');
-            pkg.scripts = { start: 'node main.js' };
+            pkg.scripts = { start: 'node dist/main.js' };
             require('fs').writeFileSync('package.json', JSON.stringify(pkg, null, 2));
           "
+          cat > ecosystem.config.js << 'EOF'
+          module.exports = {
+            apps: [
+              {
+                name: 'portfolio-backend',
+                script: 'dist/main.js',
+                env: {
+                  NODE_ENV: 'production',
+                  PORT: 3000,
+                },
+              },
+            ],
+          };
+          EOF
           echo 'node_modules/' >> .gitignore
           git add .
           git commit -m "deploy: backend $(date +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
