@@ -72,12 +72,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: frontend-dist
-          path: frontend-dist/
+          path: /tmp/frontend-dist/
       - name: Download backend artifact
         uses: actions/download-artifact@v4
         with:
           name: backend-dist
-          path: backend-dist/
+          path: /tmp/backend-dist/
       - name: Configure git
         run: |
           git config user.name "github-actions"
@@ -87,9 +87,9 @@ jobs:
         run: |
           git checkout deploy
           git rm -rf . --quiet
-          cp -r frontend-dist/browser/. .
+          cp -r /tmp/frontend-dist/browser/. .
           mkdir -p server
-          cp -r frontend-dist/server/. server/
+          cp -r /tmp/frontend-dist/server/. server/
           git add .
           git commit -m "deploy: frontend $(date +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
           git push origin deploy
@@ -98,8 +98,8 @@ jobs:
         run: |
           git checkout deploy-api
           git rm -rf . --quiet
-          cp -r backend-dist/. .
-          cp backend/package.json .
+          cp -r /tmp/backend-dist/. .
+          cp /tmp/backend-dist/../backend/package.json . 2>/dev/null || true
           git add .
           git commit -m "deploy: backend $(date +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
           git push origin deploy-api
