@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import {
   TranslateLoader,
   TranslateService,
@@ -9,6 +8,7 @@ import {
 import { Observable, of } from 'rxjs';
 
 import { provideZonelessChangeDetection } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { HeaderHamburgerComponent } from './header-hamburger.component';
@@ -109,21 +109,6 @@ describe('HeaderHamburgerComponent', () => {
     component.stopPropagation(event);
     expect(event.stopPropagation).toHaveBeenCalled();
   });
-
-  // it('should not open drawer on non-browser platforms', async () => {
-  //   jest.spyOn(TestBed.inject(PlatformService), 'isBrowser', 'get').mockReturnValue(false);
-  //   await createComponent();
-  //   component.open();
-  //   expect(component.isOpen()).toBeFalsy();
-  // });
-
-  // it('should not close drawer on non-browser platforms', async () => {
-  //   await createComponent();
-  //   component.open();
-  //   jest.spyOn(TestBed.inject(PlatformService), 'isBrowser', 'get').mockReturnValue(false);
-  //   component.close();
-  //   expect(component.isOpen()).toBeTruthy(); // Should remain true since close does nothing
-  // });
 
   it('should apply scrollbar compensation when opening drawer', async () => {
     await createComponent();

@@ -13,7 +13,6 @@ describe('SkillsController', () => {
       providers: [
         {
           provide: SkillsService,
-          // Creamos el mock directamente aquí para asegurar que se use
           useValue: {
             getCategories: jest.fn().mockReturnValue(['A', 'B']),
           },

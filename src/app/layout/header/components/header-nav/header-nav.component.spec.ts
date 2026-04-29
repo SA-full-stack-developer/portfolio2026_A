@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import {
   TranslateLoader,
   TranslateService,
@@ -9,6 +8,7 @@ import {
 import { Observable, of } from 'rxjs';
 
 import { provideZonelessChangeDetection } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 import { PlatformService } from '@core/services/platform.service';
 import { HeaderNavComponent } from './header-nav.component';
 
@@ -65,7 +65,6 @@ describe('HeaderNavComponent', () => {
     await createComponent();
     expect(component.ID_SKILLS).toBeDefined();
     expect(component.ID_EXPERIENCE).toBeDefined();
-    expect(component.ID_PROJECTS).toBeDefined();
   });
 
   it('should have vertical input initialized to false', async () => {
@@ -136,6 +135,5 @@ describe('HeaderNavComponent', () => {
     await createComponent();
     expect(component.ID_SKILLS).toBe('skills');
     expect(component.ID_EXPERIENCE).toBe('experience');
-    expect(component.ID_PROJECTS).toBe('projects');
   });
 });

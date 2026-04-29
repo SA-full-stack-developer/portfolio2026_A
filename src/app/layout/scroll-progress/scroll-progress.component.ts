@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, inject } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, inject } from '@angular/core';
 
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
@@ -12,7 +12,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 })
 export class ScrollProgressComponent implements AfterViewInit, OnDestroy {
   private readonly gsapService = inject(GsapService);
-  private readonly el = inject(ElementRef);
   private readonly platformService = inject(PlatformService);
   private scrollTriggerInstance: ScrollTrigger | undefined;
   private resizeObserver: ResizeObserver | null = null;

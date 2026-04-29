@@ -1,5 +1,5 @@
 import { Component, inject, input, output } from '@angular/core';
-import { ID_EXPERIENCE, ID_PROJECTS, ID_SKILLS } from '@core/constants/sections.constants';
+import { ID_EXPERIENCE, ID_SKILLS } from '@core/constants/sections.constants';
 
 import { Router } from '@angular/router';
 import { PlatformService } from '@core/services/platform.service';
@@ -18,7 +18,6 @@ export class HeaderNavComponent {
 
   readonly ID_SKILLS = ID_SKILLS;
   readonly ID_EXPERIENCE = ID_EXPERIENCE;
-  readonly ID_PROJECTS = ID_PROJECTS;
 
   vertical = input<boolean>(false);
   linkClicked = output<void>();

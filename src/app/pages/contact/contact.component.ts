@@ -57,7 +57,6 @@ export class ContactComponent implements OnInit, AfterViewInit {
 
   isFormValid = computed(() => {
     const data = this.formData();
-    // Añadimos el encadenamiento opcional ?. y valores por defecto ''
     const name = data?.name ?? '';
     const email = data?.email ?? '';
     const subject = data?.subject ?? '';
