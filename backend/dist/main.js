@@ -16,7 +16,11 @@ async function bootstrap() {
     swagger_1.SwaggerModule.setup('api/v1/docs', app, document);
     app.useGlobalInterceptors(new transform_interceptor_1.TransformInterceptor());
     app.enableCors({
-        origin: ['https://csrangulardeveloper.nom.es', 'http://localhost:4200'],
+        origin: [
+            'https://csrangulardeveloper.nom.es',
+            'http://localhost:4200',
+            'http://localhost:4000',
+        ],
     });
     await app.listen(process.env.PORT || 3000);
 }

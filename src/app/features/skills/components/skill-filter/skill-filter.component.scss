@@ -24,9 +24,9 @@
     }
 
     &--highlight.skill-filter__btn--active {
-      color: #f5c518;
-      border-color: #f5c518;
-      background: rgba(#f5c518, 0.1);
+      color: v.$highlight;
+      border-color: v.$highlight;
+      background: rgba(v.$highlight, 0.1);
     }
   }
 }
