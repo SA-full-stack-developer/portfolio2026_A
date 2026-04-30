@@ -6,7 +6,8 @@
   height: 100%;
 
   &__icon {
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    width: 96px;
+    height: 96px;
   }
 
   &__value {
