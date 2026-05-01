@@ -51,7 +51,7 @@ app.use(async (req: Request, res: Response, next: NextFunction) => {
 
     if (fontPreloadTags) {
       const html = await response.text();
-      const injected = html.replace(/(<meta charset[^>]+>)/i, `$1\n  ${fontPreloadTags}`);
+      const injected = html.replace(/(<head[^>]*>)/i, `$1\n  ${fontPreloadTags}`);
 
       res.status(response.status);
       response.headers.forEach((value, key) => {
