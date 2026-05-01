@@ -36,6 +36,13 @@ try {
   // Durante el build el directorio media aún no existe — se omite
 }
 
+app.get('/debug-fonts', (req: Request, res: Response) => {
+  res.json({
+    fontPreloadTags,
+    browserDistFolder,
+  });
+});
+
 app.use(
   express.static(browserDistFolder, {
     maxAge: '1y',
@@ -51,16 +58,7 @@ app.use(async (req: Request, res: Response, next: NextFunction) => {
 
     if (fontPreloadTags) {
       const html = await response.text();
-
-      // LOG TEMPORAL
-      console.log('=== DEBUG ===');
-      console.log('fontPreloadTags:', fontPreloadTags);
-      console.log('html starts with:', html.substring(0, 200));
-      console.log('head match:', html.match(/(<head[^>]*>)/i)?.[0]);
-
       const injected = html.replace(/(<head[^>]*>)/i, `$1\n  ${fontPreloadTags}`);
-      console.log('injection worked:', injected !== html);
-      // FIN LOG
 
       res.status(response.status);
       response.headers.forEach((value, key) => {
@@ -70,7 +68,6 @@ app.use(async (req: Request, res: Response, next: NextFunction) => {
       });
       res.send(injected);
     } else {
-      console.log('=== fontPreloadTags está vacío ===');
       writeResponseToNodeResponse(response, res);
     }
   } catch (err) {
