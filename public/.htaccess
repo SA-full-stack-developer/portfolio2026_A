@@ -1,19 +1,32 @@
-<IfModule mod_rewrite.c>
-  RewriteEngine On
+<IfModule mod_expires.c>
+  ExpiresActive On
 
-  # Redirigir a HTTPS (Opcional si ya lo hace Plesk, pero recomendado)
-  RewriteCond %{HTTPS} off
-  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  # SVGs, webp, imágenes — 1 año (son assets con hash en nombre)
+  ExpiresByType image/svg+xml          "access plus 1 year"
+  ExpiresByType image/webp             "access plus 1 year"
+  ExpiresByType image/png              "access plus 1 year"
+  ExpiresByType image/jpeg             "access plus 1 year"
 
-  # Si el archivo o carpeta existe en el servidor, lo sirve normalmente (js, css, imágenes)
-  RewriteCond %{REQUEST_FILENAME} -s [OR]
-  RewriteCond %{REQUEST_FILENAME} -l [OR]
-  RewriteCond %{REQUEST_FILENAME} -d
-  RewriteRule ^.*$ - [NC,L]
+  # JS y CSS — 1 año (Angular les pone hash en el nombre)
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/css               "access plus 1 year"
 
-  # Si la ruta no existe físicamente, envía todo al index.html de Angular
-  RewriteRule ^(.*) /index.html [NC,L]
+  # Fuentes
+  ExpiresByType font/woff2             "access plus 1 year"
+  ExpiresByType font/woff              "access plus 1 year"
+
+  # HTML — nunca cachear (SSR siempre fresco)
+  ExpiresByType text/html              "access plus 0 seconds"
 </IfModule>
 
-# Desactivar el listado de directorios por seguridad
-Options -Indexes
+<IfModule mod_headers.c>
+  # Assets con hash → immutable
+  <FilesMatch "\.(js|css|svg|webp|png|jpg|woff2|woff)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # HTML siempre revalida
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
