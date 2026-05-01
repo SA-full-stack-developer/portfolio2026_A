@@ -1,7 +1,6 @@
 import {
   AngularNodeAppEngine,
   createNodeRequestHandler,
-  isMainModule,
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
 import express, { NextFunction, Request, Response } from 'express';
@@ -36,13 +35,6 @@ try {
   // Durante el build el directorio media aún no existe — se omite
 }
 
-app.get('/debug-fonts', (req: Request, res: Response) => {
-  res.json({
-    fontPreloadTags,
-    browserDistFolder,
-  });
-});
-
 app.use(
   express.static(browserDistFolder, {
     maxAge: '1y',
@@ -75,12 +67,10 @@ app.use(async (req: Request, res: Response, next: NextFunction) => {
   }
 });
 
-if (isMainModule(import.meta.url) || process.env['pm_id']) {
-  const port = process.env['PORT'] || 4000;
-  app.listen(port, (error) => {
-    if (error) throw error;
-    console.log(`Node Express server listening on http://localhost:${port}`);
-  });
-}
+const port = process.env['PORT'] || 4000;
+app.listen(port, (error) => {
+  if (error) throw error;
+  console.log(`Node Express server listening on http://localhost:${port}`);
+});
 
 export const reqHandler = createNodeRequestHandler(app);
