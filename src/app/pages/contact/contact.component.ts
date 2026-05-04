@@ -25,7 +25,6 @@ import { Form } from '@core/models/form.model';
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { SeoService } from '@core/services/seo.service';
-import emailjs from '@emailjs/browser';
 
 @Component({
   selector: 'app-contact',
@@ -114,6 +113,8 @@ export class ContactComponent implements OnInit, AfterViewInit {
     }
     if (this.isFormValid()) {
       this.isLoading.set(true);
+
+      const { default: emailjs } = await import('@emailjs/browser');
 
       const serviceID = 'service_tsklp4n';
       const templateID = 'template_4p83km7';
