@@ -4,9 +4,22 @@ import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { ScrollProgressComponent } from './scroll-progress.component';
 
+jest.mock('@angular/core', () => {
+  const actual = jest.requireActual('@angular/core');
+  return {
+    ...actual,
+    afterNextRender: jest.fn((cb: () => void) => cb()),
+  };
+});
+
 describe('ScrollProgressComponent', () => {
   let component: ScrollProgressComponent;
   let fixture: ComponentFixture<ScrollProgressComponent>;
+
+  const mockScrollTriggerInstance = {
+    refresh: jest.fn(),
+    kill: jest.fn(),
+  };
 
   const mockGsap = {
     to: jest.fn().mockReturnValue({
@@ -39,6 +52,11 @@ describe('ScrollProgressComponent', () => {
     mockPlatformService.isBrowser = true;
     (global as any).ResizeObserver = mockResizeObserver;
 
+    mockGsap.to.mockClear();
+    mockScrollTriggerInstance.refresh.mockClear();
+    mockScrollTriggerInstance.kill.mockClear();
+    mockResizeObserver.mockClear();
+
     await TestBed.configureTestingModule({
       imports: [ScrollProgressComponent],
       providers: [
@@ -49,6 +67,8 @@ describe('ScrollProgressComponent', () => {
 
     fixture = TestBed.createComponent(ScrollProgressComponent);
     component = fixture.componentInstance;
+
+    (component as any).progressBar = { nativeElement: document.createElement('div') };
   });
 
   it('should create', () => {
@@ -59,7 +79,7 @@ describe('ScrollProgressComponent', () => {
     component.ngAfterViewInit();
 
     expect(mockGsap.to).toHaveBeenCalledWith(
-      '.scroll-progress__bar',
+      expect.any(HTMLElement),
       expect.objectContaining({
         width: '100%',
         scrollTrigger: expect.objectContaining({
@@ -71,8 +91,7 @@ describe('ScrollProgressComponent', () => {
   });
 
   it('should NOT initialize GSAP if not in browser', () => {
-    (component as any).platformService.isBrowser = false;
-    jest.clearAllMocks();
+    mockPlatformService.isBrowser = false;
 
     component.ngAfterViewInit();
 

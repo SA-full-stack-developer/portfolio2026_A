@@ -127,10 +127,9 @@ describe('HeroIntroComponent', () => {
   });
 
   it('should animate cards on view init', async () => {
-    await createComponent();
     const gsapService = TestBed.inject(GsapService);
     jest.spyOn(gsapService.gsap, 'from').mockImplementation(() => ({}) as any);
-    component.ngAfterViewInit();
+    await createComponent();
     expect(gsapService.gsap.from).toHaveBeenCalled();
   });
 });

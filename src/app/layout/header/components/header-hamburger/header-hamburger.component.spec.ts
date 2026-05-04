@@ -116,7 +116,7 @@ describe('HeaderHamburgerComponent', () => {
     Object.defineProperty(document.documentElement, 'clientWidth', { value: 1180, writable: true });
     component.open();
     expect(document.body.style.overflow).toBe('hidden');
-    expect(document.body.style.paddingRight).toBe('20px');
+    expect(document.body.style.paddingRight).toBe('var(--scrollbar-width)');
   });
 
   it('should remove scrollbar compensation when closing drawer', async () => {
