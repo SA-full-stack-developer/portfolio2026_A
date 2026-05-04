@@ -15,6 +15,7 @@ const angularApp = new AngularNodeAppEngine();
 
 // Lee los woff2 de Inter una vez al arrancar — protegido para la fase de build
 let fontPreloadTags = '';
+let materialIconPreload = '';
 try {
   const interFonts = readdirSync(join(browserDistFolder, 'media')).filter(
     (f) => f.startsWith('inter-latin-') && f.endsWith('.woff2'),
@@ -31,6 +32,8 @@ try {
         `<link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/media/${f}">`,
     )
     .join('\n  ');
+
+  materialIconPreload = `<link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/assets/fonts/material-icons.woff2">`;
 } catch {
   // Durante el build el directorio media aún no existe — se omite
 }
@@ -50,7 +53,10 @@ app.use(async (req: Request, res: Response, next: NextFunction) => {
 
     if (fontPreloadTags) {
       const html = await response.text();
-      const injected = html.replace(/(<head[^>]*>)/i, `$1\n  ${fontPreloadTags}`);
+      const injected = html.replace(
+        /(<head[^>]*>)/i,
+        `$1\n  ${fontPreloadTags}\n  ${materialIconPreload}`,
+      );
 
       res.status(response.status);
       response.headers.forEach((value, key) => {
