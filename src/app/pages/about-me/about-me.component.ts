@@ -1,4 +1,14 @@
-import { AfterViewInit, Component, ElementRef, OnInit, inject } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Injector,
+  OnInit,
+  QueryList,
+  ViewChildren,
+  afterNextRender,
+  inject,
+} from '@angular/core';
 
 import { PAGE_SEO } from '@core/config/seo.config';
 import { GsapService } from '@core/services/gsap.service';
@@ -15,8 +25,10 @@ import { TranslateModule } from '@ngx-translate/core';
 export class AboutMeComponent implements OnInit, AfterViewInit {
   private readonly seoService = inject(SeoService);
   private readonly gsapService = inject(GsapService);
-  private readonly el = inject(ElementRef);
   private readonly platformService = inject(PlatformService);
+  private readonly injector = inject(Injector);
+
+  @ViewChildren('animRow') animRows!: QueryList<ElementRef>;
 
   ngOnInit(): void {
     this.seoService.update(PAGE_SEO['aboutMe']);
@@ -24,14 +36,21 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     if (!this.platformService.isBrowser) return;
-    const gsap = this.gsapService.gsap;
-    const cards = this.el.nativeElement.querySelectorAll('.about-me--row');
-    gsap.from(cards, {
-      opacity: 0,
-      x: -100,
-      duration: 0.6,
-      stagger: 0.2,
-      ease: 'power2.out',
-    });
+
+    afterNextRender(
+      () => {
+        const gsap = this.gsapService.gsap;
+        const rows = this.animRows.map((r) => r.nativeElement);
+
+        gsap.from(rows, {
+          opacity: 0,
+          x: -100,
+          duration: 0.6,
+          stagger: 0.2,
+          ease: 'power2.out',
+        });
+      },
+      { injector: this.injector },
+    );
   }
 }

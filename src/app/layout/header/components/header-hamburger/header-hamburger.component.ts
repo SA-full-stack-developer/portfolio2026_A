@@ -1,4 +1,12 @@
-import { Component, ElementRef, Injector, afterNextRender, inject, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Injector,
+  afterNextRender,
+  inject,
+  signal,
+} from '@angular/core';
 
 import { RouterLink } from '@angular/router';
 import { GsapService } from '@core/services/gsap.service';
@@ -14,7 +22,7 @@ import { HeaderNavComponent } from '../header-nav/header-nav.component';
   templateUrl: './header-hamburger.component.html',
   styleUrl: './header-hamburger.component.scss',
 })
-export class HeaderHamburgerComponent {
+export class HeaderHamburgerComponent implements AfterViewInit {
   private readonly platformService = inject(PlatformService);
   private readonly gsapService = inject(GsapService);
   private readonly el = inject(ElementRef);
@@ -22,13 +30,16 @@ export class HeaderHamburgerComponent {
 
   readonly isOpen = signal<boolean>(false);
 
+  ngAfterViewInit(): void {
+    this.setScrollbarWidth();
+  }
+
   open(): void {
     this.isOpen.set(true);
     if (!this.platformService.isBrowser) return;
 
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = 'hidden';
-    document.body.style.paddingRight = `${scrollbarWidth}px`;
+    document.body.style.paddingRight = 'var(--scrollbar-width)';
 
     afterNextRender(
       () => {
@@ -44,6 +55,11 @@ export class HeaderHamburgerComponent {
       },
       { injector: this.injector },
     );
+  }
+
+  private setScrollbarWidth(): void {
+    const width = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty('--scrollbar-width', `${width}px`);
   }
 
   close(): void {

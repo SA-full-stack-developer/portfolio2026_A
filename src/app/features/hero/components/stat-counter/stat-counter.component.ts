@@ -1,11 +1,8 @@
 import { Component, DestroyRef, effect, inject, input, signal } from '@angular/core';
 
 import { DecimalPipe } from '@angular/common';
+import { GsapService } from '@core/services/gsap.service';
 import { TranslateModule } from '@ngx-translate/core';
-
-const ANIMATION_DURATION = 800;
-const ANIMATION_STEPS = 60;
-const INTERVAL_TIME = ANIMATION_DURATION / ANIMATION_STEPS;
 
 @Component({
   selector: 'app-stat-counter',
@@ -15,6 +12,7 @@ const INTERVAL_TIME = ANIMATION_DURATION / ANIMATION_STEPS;
   styleUrl: './stat-counter.component.scss',
 })
 export class StatCounterComponent {
+  private readonly gsapService = inject(GsapService);
   private readonly destroyRef = inject(DestroyRef);
   protected readonly Math = Math;
 
@@ -30,28 +28,26 @@ export class StatCounterComponent {
   constructor() {
     effect(() => {
       if (this.shouldStartAnimation()) {
-        setTimeout(() => {
-          this.startCounting();
-        }, this.startDelay());
+        this.startCounting();
       }
     });
   }
 
   private startCounting(): void {
+    const delay = this.startDelay();
     const target = this.finalValue();
-    const increment = target / ANIMATION_STEPS;
+    const gsap = this.gsapService.gsap;
 
-    const id = setInterval(() => {
-      this.displayValue.update((current) => {
-        const next = current + increment;
-        if (next >= target) {
-          clearInterval(id);
-          return target;
-        }
-        return next;
-      });
-    }, INTERVAL_TIME);
+    const proxy = { value: 0 };
+    const tween = gsap.to(proxy, {
+      value: target,
+      duration: 1.5,
+      delay: delay / 1000,
+      ease: 'power2.out',
+      onUpdate: () => this.displayValue.set(Math.round(proxy.value)),
+      onComplete: () => this.displayValue.set(target),
+    });
 
-    this.destroyRef.onDestroy(() => clearInterval(id));
+    this.destroyRef.onDestroy(() => tween.kill());
   }
 }

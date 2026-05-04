@@ -2,6 +2,8 @@ import {
   Component,
   ElementRef,
   Injector,
+  QueryList,
+  ViewChildren,
   afterNextRender,
   effect,
   inject,
@@ -26,13 +28,14 @@ export class ExperienceComponent {
   private readonly experienceService = inject(ExperienceService);
   private readonly platformService = inject(PlatformService);
   private readonly gsapService = inject(GsapService);
-  private readonly el = inject(ElementRef);
   private readonly injector = inject(Injector);
 
   readonly resolvedExperiences = this.experienceService.experiences;
   readonly openProjectId = signal<string | null>(null);
   readonly loading = this.experienceService.loading;
   readonly error = this.experienceService.error;
+
+  @ViewChildren('expCard') expCards!: QueryList<ElementRef>;
 
   constructor() {
     effect(() => {
@@ -42,9 +45,8 @@ export class ExperienceComponent {
       if (experiences.length > 0 && !isLoading) {
         afterNextRender(
           () => {
-            if (this.platformService.isBrowser) {
-              this.animateCards();
-            }
+            if (!this.platformService.isBrowser) return;
+            this.animateCards();
           },
           { injector: this.injector },
         );
@@ -54,9 +56,9 @@ export class ExperienceComponent {
 
   private animateCards() {
     const gsap = this.gsapService.gsap;
-    const cards = this.el.nativeElement.querySelectorAll('.experience-card');
 
-    cards.forEach((card: HTMLElement) => {
+    this.expCards.forEach((cardRef) => {
+      const card = cardRef.nativeElement;
       gsap.fromTo(
         card,
         { opacity: 0, y: 50 },

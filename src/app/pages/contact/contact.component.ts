@@ -2,7 +2,11 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  Injector,
   OnInit,
+  QueryList,
+  ViewChildren,
+  afterNextRender,
   computed,
   inject,
   signal,
@@ -45,6 +49,10 @@ export class ContactComponent implements OnInit, AfterViewInit {
   private readonly platformService = inject(PlatformService);
   private readonly translate = inject(TranslateService);
   private snackBar = inject(MatSnackBar);
+  private readonly injector = inject(Injector);
+
+  @ViewChildren('animRow') animRows!: QueryList<ElementRef>;
+
   botTrap = '';
   formData = signal<Form>({
     name: '',
@@ -79,16 +87,21 @@ export class ContactComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     if (!this.platformService.isBrowser) return;
 
-    const gsap = this.gsapService.gsap;
-    const cards = this.el.nativeElement.querySelectorAll('.contact--row');
+    afterNextRender(
+      () => {
+        const gsap = this.gsapService.gsap;
+        const cards = this.animRows.map((r) => r.nativeElement);
 
-    gsap.from(cards, {
-      opacity: 0,
-      x: -100,
-      duration: 0.6,
-      stagger: 0.2,
-      ease: 'power2.out',
-    });
+        gsap.from(cards, {
+          opacity: 0,
+          x: -100,
+          duration: 0.6,
+          stagger: 0.2,
+          ease: 'power2.out',
+        });
+      },
+      { injector: this.injector },
+    );
   }
 
   updateField(field: string, value: string) {

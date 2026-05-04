@@ -27,7 +27,7 @@
           </div>
           <div class="experiences__dot"></div>
           @for (showProjects of getCardOrder(i); track showProjects) {
-            <div class="experiences__item">
+            <div #expCard class="experiences__item">
               <app-experience-card
                 class="experiences__card"
                 [experience]="experience"

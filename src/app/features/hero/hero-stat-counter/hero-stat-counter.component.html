@@ -1,4 +1,4 @@
-<article class="hero-stat-counter__grid">
+<article #grid class="hero-stat-counter__grid">
   @for (stat of stats(); track stat.id; let i = $index) {
     <app-stat-counter
       [icon]="stat.icon"

@@ -1,4 +1,13 @@
-import { AfterViewInit, Component, ElementRef, inject } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Injector,
+  QueryList,
+  ViewChildren,
+  afterNextRender,
+  inject,
+} from '@angular/core';
 
 import { Router } from '@angular/router';
 import { GsapService } from '@core/services/gsap.service';
@@ -18,22 +27,29 @@ import { HeroAvatarComponent } from '../hero-avatar/hero-avatar.component';
 export class HeroIntroComponent implements AfterViewInit {
   private readonly router = inject(Router);
   private readonly gsapService = inject(GsapService);
-  private readonly el = inject(ElementRef);
   private readonly platformService = inject(PlatformService);
+  private readonly injector = inject(Injector);
+
+  @ViewChildren('animItem') animItems!: QueryList<ElementRef>;
 
   ngAfterViewInit(): void {
     if (!this.platformService.isBrowser) return;
 
-    const gsap = this.gsapService.gsap;
-    const cards = this.el.nativeElement.querySelectorAll('.hero-intro > *');
+    afterNextRender(
+      () => {
+        const gsap = this.gsapService.gsap;
+        const cards = this.animItems.map((c) => c.nativeElement);
 
-    gsap.from(cards, {
-      opacity: 0,
-      y: 30,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: 'power2.out',
-    });
+        gsap.from(cards, {
+          opacity: 0,
+          y: 30,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: 'power2.out',
+        });
+      },
+      { injector: this.injector },
+    );
   }
 
   scrollToSkills(): void {

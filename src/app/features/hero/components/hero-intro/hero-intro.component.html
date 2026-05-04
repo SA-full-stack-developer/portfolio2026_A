@@ -1,6 +1,6 @@
 <article class="w-100 flex flex-col hero-intro">
-  <span class="hero-intro__greeting">{{ 'HERO.GREETING' | translate }}</span>
-  <div class="w-100 flex flex-between hero-intro__header">
+  <span #animItem class="hero-intro__greeting">{{ 'HERO.GREETING' | translate }}</span>
+  <div #animItem class="w-100 flex flex-between hero-intro__header">
     <h1 class="hero-intro__name">{{ 'HERO.NAME' | translate }}</h1>
     <div class="flex flex-center hero-intro__avatar-wrapper">
       <app-hero-avatar
@@ -10,12 +10,12 @@
       />
     </div>
   </div>
-  <h2 class="hero-intro__title">{{ 'HERO.TITLE' | translate }}</h2>
-  <span class="hero-intro__decoration-bar"></span>
-  <p class="hero-intro__description">
+  <h2 #animItem class="hero-intro__title">{{ 'HERO.TITLE' | translate }}</h2>
+  <span #animItem class="hero-intro__decoration-bar"></span>
+  <p #animItem class="hero-intro__description">
     {{ 'HERO.DESCRIPTION' | translate }}
   </p>
-  <div class="hero-intro__actions flex gap-md">
+  <div #animItem class="hero-intro__actions flex gap-md">
     <button class="hero-intro__btn hero-intro__btn--primary" (click)="navigateToContact()">
       {{ 'HERO.CTA.CONTACT' | translate }}
     </button>

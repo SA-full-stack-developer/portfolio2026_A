@@ -1,4 +1,15 @@
-import { AfterViewInit, Component, ElementRef, inject, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Injector,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+  afterNextRender,
+  inject,
+  signal,
+} from '@angular/core';
 
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
@@ -15,19 +26,27 @@ export class HeroStatCounterComponent implements AfterViewInit {
   private readonly statsService = inject(StatsService);
   private readonly gsapService = inject(GsapService);
   private readonly platformService = inject(PlatformService);
-  private readonly el = inject(ElementRef);
+  private readonly injector = inject(Injector);
+
+  @ViewChild('grid') gridRef!: ElementRef;
+  @ViewChildren('statCard') statCards!: QueryList<ElementRef>;
 
   readonly stats = this.statsService.stats;
   statsVisible = signal(false);
 
   ngAfterViewInit(): void {
     if (!this.platformService.isBrowser) return;
-    this.animateStats();
+    afterNextRender(
+      () => {
+        this.animateStats();
+      },
+      { injector: this.injector },
+    );
   }
 
   private animateStats(): void {
     const gsap = this.gsapService.gsap;
-    const cards = this.el.nativeElement.querySelectorAll('app-stat-counter');
+    const cards = this.statCards.map((c) => c.nativeElement);
 
     gsap.from(cards, {
       opacity: 0,
@@ -36,7 +55,7 @@ export class HeroStatCounterComponent implements AfterViewInit {
       stagger: 0.3,
       ease: 'power2.out',
       scrollTrigger: {
-        trigger: this.el.nativeElement.querySelector('.hero-stat-counter__grid'),
+        trigger: this.gridRef.nativeElement,
         start: 'top 85%',
         onEnter: () => this.statsVisible.set(true),
       },
