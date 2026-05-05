@@ -1,0 +1,4 @@
+import './polyfills.server.mjs';
+import{Ca as a,Na as r,Z as s,cb as i,hc as o,nb as p,ob as m,pb as c}from"./chunk-HNZMZAOY.mjs";var l={production:!0,apiUrl:"https://api.csrangulardeveloper.nom.es/api/v1",browserApiUrl:"https://api.csrangulardeveloper.nom.es/api/v1"};var h=(()=>{class e{name=o.required();size=o(24);static \u0275fac=function(n){return new(n||e)};static \u0275cmp=r({type:e,selectors:[["app-icon"]],inputs:{name:[1,"name"],size:[1,"size"]},decls:2,vars:3,consts:[["aria-hidden","true",1,"icon"]],template:function(n,t){n&1&&(s(),p(0,"svg",0),c(1,"use"),m()),n&2&&(i("width",t.size())("height",t.size()),a(),i("href","/assets/icons/sprite.svg#ph-"+t.name()))},styles:[`[_nghost-%COMP%]{display:inline-flex;align-items:center}svg[_ngcontent-%COMP%]{display:block;fill:currentColor}
+/*# sourceMappingURL=icon.component-U55PV2OD.css.map */`]})}return e})();export{l as a,h as b};
+//# sourceMappingURL=chunk-JU7M4TMB.mjs.map

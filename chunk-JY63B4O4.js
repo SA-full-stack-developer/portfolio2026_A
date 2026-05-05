@@ -1,0 +1,2 @@
+import{a as m,b as p}from"./chunk-77UXGDOU.js";import{Cb as a,Ia as n,T as o,gb as i,hb as r}from"./chunk-HOIDG3JP.js";import"./chunk-P7Y7N6AM.js";var S=(()=>{class e{seoService=o(p);ngOnInit(){this.seoService.update(m.lab)}static \u0275fac=function(t){return new(t||e)};static \u0275cmp=n({type:e,selectors:[["app-lab"]],decls:2,vars:0,template:function(t,s){t&1&&(i(0,"p"),a(1,"lab works!"),r())},encapsulation:2})}return e})();export{S as LabComponent};
+//# sourceMappingURL=chunk-JY63B4O4.js.map
