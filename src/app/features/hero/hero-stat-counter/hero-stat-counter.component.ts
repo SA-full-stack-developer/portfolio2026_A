@@ -28,6 +28,8 @@ export class HeroStatCounterComponent implements AfterViewInit {
   private readonly platformService = inject(PlatformService);
   private readonly injector = inject(Injector);
 
+  private scrollTriggerInstance: ScrollTrigger | undefined;
+
   @ViewChild('grid') gridRef!: ElementRef;
   @ViewChildren('statCard') statCards!: QueryList<ElementRef>;
 
@@ -48,7 +50,7 @@ export class HeroStatCounterComponent implements AfterViewInit {
     const gsap = this.gsapService.gsap;
     const cards = this.statCards.map((c) => c.nativeElement);
 
-    gsap.from(cards, {
+    const st = gsap.from(cards, {
       opacity: 0,
       y: 30,
       duration: 0.6,
@@ -57,8 +59,15 @@ export class HeroStatCounterComponent implements AfterViewInit {
       scrollTrigger: {
         trigger: this.gridRef.nativeElement,
         start: 'top 85%',
+        invalidateOnRefresh: true, // ← añadir
         onEnter: () => this.statsVisible.set(true),
       },
     });
+
+    this.scrollTriggerInstance = st.scrollTrigger;
+  }
+
+  ngOnDestroy(): void {
+    this.scrollTriggerInstance?.kill();
   }
 }

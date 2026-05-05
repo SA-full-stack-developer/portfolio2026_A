@@ -8,6 +8,7 @@ import {
 } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
+import { GsapService } from '@core/services/gsap.service';
 import { StatsService } from '@core/services/stats.service';
 import { HeroStatCounterComponent } from './hero-stat-counter.component';
 
@@ -26,6 +27,16 @@ const mockStatsService = {
   loadStats: jest.fn(),
   refresh: jest.fn(),
 };
+
+class MockGsapService {
+  gsap = {
+    set: jest.fn(),
+    to: jest.fn().mockReturnValue({ scrollTrigger: null }),
+    from: jest.fn().mockReturnValue({ scrollTrigger: null }),
+    fromTo: jest.fn().mockReturnValue({ scrollTrigger: null }),
+  };
+  init = jest.fn();
+}
 
 describe('HeroStatCounterComponent', () => {
   let component: HeroStatCounterComponent;
@@ -48,6 +59,7 @@ describe('HeroStatCounterComponent', () => {
           loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
         }),
         { provide: StatsService, useValue: mockStatsService },
+        { provide: GsapService, useClass: MockGsapService },
       ],
     });
 

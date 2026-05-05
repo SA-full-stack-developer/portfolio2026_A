@@ -1,8 +1,8 @@
+import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateLoader, TranslationObject, provideTranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
-import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { GsapService } from '@core/services/gsap.service';
 import { StatsService } from '@core/services/stats.service';
 import { PortfolioComponent } from './portfolio.component';
@@ -15,11 +15,12 @@ class MockTranslateLoader implements TranslateLoader {
 
 class MockGsapService {
   gsap = {
-    from: jest.fn(),
     set: jest.fn(),
-    to: jest.fn(),
-    registerPlugin: jest.fn(),
+    to: jest.fn().mockReturnValue({ scrollTrigger: null }),
+    from: jest.fn().mockReturnValue({ scrollTrigger: null }),
+    fromTo: jest.fn().mockReturnValue({ scrollTrigger: null }),
   };
+  init = jest.fn();
 }
 
 const mockStatsService = {

@@ -35,6 +35,9 @@ export class ExperienceComponent {
   readonly loading = this.experienceService.loading;
   readonly error = this.experienceService.error;
 
+  private scrollTriggers: ScrollTrigger[] = [];
+  private animationInitialized = false;
+
   @ViewChildren('expCard') expCards!: QueryList<ElementRef>;
 
   constructor() {
@@ -42,7 +45,8 @@ export class ExperienceComponent {
       const experiences = this.resolvedExperiences();
       const isLoading = this.loading();
 
-      if (experiences.length > 0 && !isLoading) {
+      if (experiences.length > 0 && !isLoading && !this.animationInitialized) {
+        this.animationInitialized = true; // ← solo una vez
         afterNextRender(
           () => {
             if (!this.platformService.isBrowser) return;
@@ -59,7 +63,7 @@ export class ExperienceComponent {
 
     this.expCards.forEach((cardRef) => {
       const card = cardRef.nativeElement;
-      gsap.fromTo(
+      const st = gsap.fromTo(
         card,
         { opacity: 0, y: 50 },
         {
@@ -70,9 +74,13 @@ export class ExperienceComponent {
           scrollTrigger: {
             trigger: card,
             start: 'top 80%',
+            invalidateOnRefresh: true, // ← añadir
           },
         },
       );
+      if (st.scrollTrigger) {
+        this.scrollTriggers.push(st.scrollTrigger);
+      }
     });
   }
 
@@ -82,5 +90,9 @@ export class ExperienceComponent {
 
   getCardOrder(index: number): boolean[] {
     return index % 2 === 0 ? [false, true] : [true, false];
+  }
+
+  ngOnDestroy(): void {
+    this.scrollTriggers.forEach((st) => st.kill());
   }
 }

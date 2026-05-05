@@ -43,8 +43,8 @@ class MockTranslateLoader implements TranslateLoader {
 class MockGsapService {
   gsap = {
     set: jest.fn(),
-    to: jest.fn(),
-    fromTo: jest.fn(),
+    to: jest.fn().mockReturnValue({ scrollTrigger: null }),
+    fromTo: jest.fn().mockReturnValue({ scrollTrigger: null }),
   };
   scrollTrigger = {
     refresh: jest.fn(),
