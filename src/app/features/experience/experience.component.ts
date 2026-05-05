@@ -2,6 +2,7 @@ import {
   Component,
   ElementRef,
   Injector,
+  OnDestroy,
   QueryList,
   ViewChildren,
   afterNextRender,
@@ -24,7 +25,7 @@ import { ExperienceCardComponent } from './components/experience-card/experience
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss',
 })
-export class ExperienceComponent {
+export class ExperienceComponent implements OnDestroy {
   private readonly experienceService = inject(ExperienceService);
   private readonly platformService = inject(PlatformService);
   private readonly gsapService = inject(GsapService);
@@ -46,7 +47,7 @@ export class ExperienceComponent {
       const isLoading = this.loading();
 
       if (experiences.length > 0 && !isLoading && !this.animationInitialized) {
-        this.animationInitialized = true; // ← solo una vez
+        this.animationInitialized = true;
         afterNextRender(
           () => {
             if (!this.platformService.isBrowser) return;
@@ -74,7 +75,7 @@ export class ExperienceComponent {
           scrollTrigger: {
             trigger: card,
             start: 'top 80%',
-            invalidateOnRefresh: true, // ← añadir
+            invalidateOnRefresh: true,
           },
         },
       );

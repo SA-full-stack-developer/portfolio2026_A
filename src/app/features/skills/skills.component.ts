@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   Injector,
+  OnDestroy,
   afterNextRender,
   effect,
   inject,
@@ -35,7 +36,7 @@ import { SkillFilterComponent } from './components/skill-filter/skill-filter.com
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss',
 })
-export class SkillsComponent implements AfterViewInit {
+export class SkillsComponent implements AfterViewInit, OnDestroy {
   private readonly skillsService = inject(SkillsService);
   private readonly gsapService = inject(GsapService);
   private readonly el = inject(ElementRef);
@@ -86,7 +87,6 @@ export class SkillsComponent implements AfterViewInit {
 
   private animateCards() {
     const gsap = this.gsapService.gsap;
-    const ScrollTrigger = this.gsapService.scrollTrigger; // asume que lo expones
     const allCards = Array.from(
       this.el.nativeElement.querySelectorAll('app-skill-card'),
     ) as HTMLElement[];
@@ -94,7 +94,6 @@ export class SkillsComponent implements AfterViewInit {
 
     if (newCards.length === 0) return;
 
-    // Establecer estado inicial SIN leer el DOM
     gsap.set(newCards, { opacity: 0, y: 50 });
 
     const st = gsap.to(newCards, {
@@ -107,7 +106,7 @@ export class SkillsComponent implements AfterViewInit {
         trigger: newCards[0],
         start: 'top 92%',
         toggleActions: 'play none none none',
-        invalidateOnRefresh: true, // ← evita reflow en resize
+        invalidateOnRefresh: true,
         onEnter: () => {
           const currentFrom = this.lastAnimatedCount;
           const newIds = this.filteredSkills()

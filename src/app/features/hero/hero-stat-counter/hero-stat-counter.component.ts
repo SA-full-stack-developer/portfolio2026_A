@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   Injector,
+  OnDestroy,
   QueryList,
   ViewChild,
   ViewChildren,
@@ -22,7 +23,7 @@ import { StatCounterComponent } from '../components/stat-counter/stat-counter.co
   templateUrl: './hero-stat-counter.component.html',
   styleUrl: './hero-stat-counter.component.scss',
 })
-export class HeroStatCounterComponent implements AfterViewInit {
+export class HeroStatCounterComponent implements AfterViewInit, OnDestroy {
   private readonly statsService = inject(StatsService);
   private readonly gsapService = inject(GsapService);
   private readonly platformService = inject(PlatformService);
@@ -59,7 +60,7 @@ export class HeroStatCounterComponent implements AfterViewInit {
       scrollTrigger: {
         trigger: this.gridRef.nativeElement,
         start: 'top 85%',
-        invalidateOnRefresh: true, // ← añadir
+        invalidateOnRefresh: true,
         onEnter: () => this.statsVisible.set(true),
       },
     });
