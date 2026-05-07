@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/shared/components/status-dot/status-dot.component.scss"],
-  "sourcesContent": [".status-dot {\n  display: inline-block;\n  width: 10px;\n  height: 10px;\n  border-radius: 50%;\n  background-color: var(--dot-color);\n  transition: all 0.5s ease;\n\n  filter: drop-shadow(0 0 3px var(--dot-glow));\n  animation: pulse-glow 2s infinite;\n}\n\n@keyframes pulse-glow {\n  0% {\n    filter: drop-shadow(0 0 2px var(--dot-glow-low));\n    transform: scale(0.95);\n  }\n  50% {\n    filter: drop-shadow(0 0 8px var(--dot-glow-high));\n    transform: scale(1.05);\n  }\n  100% {\n    filter: drop-shadow(0 0 2px var(--dot-glow-low));\n    transform: scale(0.95);\n  }\n}\n"],
-  "mappings": "AAAA,CAAA,WACE,QAAA,aACA,MAAA,KACA,OAAA,KAHF,cAIE,IACA,iBAAA,IAAA,aACA,WAAA,IAAA,IAAA,KAEA,OAAA,YAAA,EAAA,EAAA,IAAA,IAAA,aACA,UAAA,WAAA,GAAA,SAGF,WAHE,WAIA,GACE,OAAA,YAAA,EAAA,EAAA,IAAA,IAAA,iBACA,UAAA,MAAA,KAEF,IACE,OAAA,YAAA,EAAA,EAAA,IAAA,IAAA,kBACA,UAAA,MAAA,MAEF,GACE,OAAA,YAAA,EAAA,EAAA,IAAA,IAAA,iBACA,UAAA,MAAA",
-  "names": []
-}

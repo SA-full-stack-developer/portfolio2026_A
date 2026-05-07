@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/features/hero/components/hero-avatar/hero-avatar.component.scss"],
-  "sourcesContent": ["@use '../../../../../styles/variables' as v;\n\n.hero-avatar {\n  border-radius: 50%;\n  box-shadow: 0 0 24px 4px rgba(v.$primary-hue, 0.3);\n  border: solid 2px v.$primary-hue;\n  height: clamp(80px, 20vw, 150px);\n  width: clamp(80px, 20vw, 150px);\n  overflow: hidden;\n\n  & img {\n    width: 100%;\n    object-fit: cover;\n    display: block;\n  }\n}\n"],
-  "mappings": "AAEA,CAAA,YAAA,cACE,IACA,WAAA,EAAA,EAAA,KAAA,IAAA,UACA,OAAA,MAAA,IAAA,QACA,OAAA,MAAA,IAAA,CAAA,IAAA,CAAA,OACA,MAAA,MAAA,IAAA,CAAA,IAAA,CAAA,OACA,SAAA,OAEA,CARF,YAQE,IACE,MAAA,KACA,WAAA,MACA,QAAA",
-  "names": []
-}
