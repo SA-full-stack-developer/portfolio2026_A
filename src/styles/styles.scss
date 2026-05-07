@@ -8,30 +8,6 @@
 @import '@fontsource/inter/latin-500.css';
 @import '@fontsource/inter/latin-700.css';
 
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Inter');
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: local('Inter');
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Inter');
-}
-
 $portfolio-theme: mat.define-theme(
   (
     color: (
