@@ -30,7 +30,7 @@
 
   &__name {
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 700;
     color: v.$text-primary;
 
     @include m.respond-to('md') {

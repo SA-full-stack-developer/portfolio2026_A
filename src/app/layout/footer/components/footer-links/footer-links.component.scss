@@ -14,13 +14,12 @@
     font-size: 0.9rem;
   }
 
-  a {
+  & a {
     display: flex;
     align-items: center;
     color: rgba(v.$text-primary, 0.5);
     transition: all 0.3s ease;
     filter: grayscale(100%);
-    font-weight: 100;
 
     &:hover {
       color: v.$primary-hue;
