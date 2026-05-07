@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { BREADCRUMB_HOME, PERSON_SCHEMA, WEBSITE_SCHEMA } from '@core/config/seo.config';
 
 import { RouterOutlet } from '@angular/router';
 import { GsapService } from '@core/services/gsap.service';
@@ -37,5 +38,6 @@ export class App {
     this.languageService.init();
     this.seoService.init();
     this.gsapService.init();
+    this.seoService.updateSchemas([PERSON_SCHEMA, WEBSITE_SCHEMA, BREADCRUMB_HOME]);
   }
 }

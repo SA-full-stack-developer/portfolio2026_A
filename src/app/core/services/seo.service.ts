@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { DOCUMENT, Injectable, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
 import { DEFAULT_SEO } from '@core/config/seo.config';
@@ -8,6 +8,7 @@ import { SeoConfig } from '@core/models/seo.model';
 export class SeoService {
   private readonly meta = inject(Meta);
   private readonly title = inject(Title);
+  private readonly document = inject(DOCUMENT);
 
   init(): void {
     this.update(DEFAULT_SEO);
@@ -36,5 +37,33 @@ export class SeoService {
       content: merged.ogDescription ?? merged.description,
     });
     this.meta.updateTag({ name: 'twitter:image', content: merged.ogImage ?? '' });
+  }
+
+  updateSchema(schema: object): void {
+    const id = 'schema-json-ld';
+    let script = this.document.getElementById(id) as HTMLScriptElement | null;
+
+    if (!script) {
+      script = this.document.createElement('script');
+      script.id = id;
+      script.type = 'application/ld+json';
+      this.document.head.appendChild(script);
+    }
+
+    script.textContent = JSON.stringify(schema);
+  }
+
+  updateSchemas(schemas: object[]): void {
+    const id = 'schema-json-ld';
+    let script = this.document.getElementById(id) as HTMLScriptElement | null;
+
+    if (!script) {
+      script = this.document.createElement('script');
+      script.id = id;
+      script.type = 'application/ld+json';
+      this.document.head.appendChild(script);
+    }
+
+    script.textContent = JSON.stringify(schemas);
   }
 }

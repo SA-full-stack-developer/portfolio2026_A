@@ -136,4 +136,30 @@ describe('SeoService', () => {
   it('should not throw error when updating with invalid config', () => {
     expect(() => service.update({ title: 123 } as any)).not.toThrow();
   });
+
+  it('should create and inject schema script tag', () => {
+    const schemas = [{ '@context': 'https://schema.org', '@type': 'Person', name: 'Test' }];
+    service.updateSchemas(schemas);
+
+    const script = document.getElementById('schema-json-ld') as HTMLScriptElement;
+    expect(script).toBeTruthy();
+    expect(script.type).toBe('application/ld+json');
+    expect(JSON.parse(script.textContent!)).toEqual(schemas);
+  });
+
+  it('should update existing schema script tag instead of creating a new one', () => {
+    const schemas1 = [{ '@context': 'https://schema.org', '@type': 'Person', name: 'First' }];
+    const schemas2 = [{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Second' }];
+
+    service.updateSchemas(schemas1);
+    service.updateSchemas(schemas2);
+
+    const scripts = document.querySelectorAll('#schema-json-ld');
+    expect(scripts.length).toBe(1); // no duplicados
+    expect(JSON.parse(scripts[0].textContent!)).toEqual(schemas2);
+  });
+
+  it('should handle empty schemas array', () => {
+    expect(() => service.updateSchemas([])).not.toThrow();
+  });
 });

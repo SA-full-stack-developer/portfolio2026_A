@@ -9,8 +9,8 @@ import {
   afterNextRender,
   inject,
 } from '@angular/core';
+import { BREADCRUMB_ABOUT, PAGE_SEO } from '@core/config/seo.config';
 
-import { PAGE_SEO } from '@core/config/seo.config';
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { SeoService } from '@core/services/seo.service';
@@ -32,6 +32,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.seoService.update(PAGE_SEO['aboutMe']);
+    this.seoService.updateSchemas([BREADCRUMB_ABOUT]);
   }
 
   ngAfterViewInit(): void {

@@ -44,3 +44,79 @@ export const PAGE_SEO: Record<string, Partial<SeoConfig>> = {
     ogUrl: 'https://csrangulardeveloper.nom.es/legal',
   },
 };
+
+export const PERSON_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Cristian Salcedo Rodríguez',
+  url: 'https://csrangulardeveloper.nom.es',
+  image: 'https://csrangulardeveloper.nom.es/assets/images/avatar.webp',
+  jobTitle: 'Full Stack Developer',
+  description: 'Full Stack Developer especializado en Angular y NestJS.',
+  sameAs: [
+    'https://github.com/SA-full-stack-developer',
+    'https://www.linkedin.com/in/cristian-salcedo-fullstack/',
+    'https://www.instagram.com/huntingvg/',
+  ],
+  knowsAbout: [
+    'Angular',
+    'TypeScript',
+    'NestJS',
+    'SCSS',
+    'RxJS',
+    'Node.js',
+    'SSR',
+    'Docker',
+    'Git',
+    'Clean Code',
+  ],
+};
+
+export const WEBSITE_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Cristian Salcedo — Full Stack Developer',
+  url: 'https://csrangulardeveloper.nom.es',
+  description: 'Portfolio profesional de Cristian Salcedo. Angular, NestJS, TypeScript.',
+  author: {
+    '@type': 'Person',
+    name: 'Cristian Salcedo Rodríguez',
+  },
+};
+
+export function buildBreadcrumb(items: { name: string; url: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+}
+
+export const BREADCRUMB_HOME = buildBreadcrumb([
+  { name: 'Home', url: 'https://csrangulardeveloper.nom.es' },
+]);
+
+export const BREADCRUMB_ABOUT = buildBreadcrumb([
+  { name: 'Home', url: 'https://csrangulardeveloper.nom.es' },
+  { name: 'Sobre mí', url: 'https://csrangulardeveloper.nom.es/about-me' },
+]);
+
+export const BREADCRUMB_CONTACT = buildBreadcrumb([
+  { name: 'Home', url: 'https://csrangulardeveloper.nom.es' },
+  { name: 'Contacto', url: 'https://csrangulardeveloper.nom.es/contact' },
+]);
+
+export const BREADCRUMB_LEGAL = buildBreadcrumb([
+  { name: 'Home', url: 'https://csrangulardeveloper.nom.es' },
+  { name: 'Legal & Privacidad', url: 'https://csrangulardeveloper.nom.es/legal' },
+]);
+
+export const BREADCRUMB_LAB = buildBreadcrumb([
+  { name: 'Home', url: 'https://csrangulardeveloper.nom.es' },
+  { name: 'Lab', url: 'https://csrangulardeveloper.nom.es/lab' },
+]);

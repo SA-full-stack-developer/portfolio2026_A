@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { BREADCRUMB_LAB, PAGE_SEO } from '@core/config/seo.config';
 
-import { PAGE_SEO } from '@core/config/seo.config';
 import { SeoService } from '@core/services/seo.service';
 
 @Component({
@@ -14,5 +14,6 @@ export class LabComponent implements OnInit {
 
   ngOnInit(): void {
     this.seoService.update(PAGE_SEO['lab']);
+    this.seoService.updateSchemas([BREADCRUMB_LAB]);
   }
 }

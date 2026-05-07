@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { BREADCRUMB_LEGAL, PAGE_SEO } from '@core/config/seo.config';
 
-import { PAGE_SEO } from '@core/config/seo.config';
 import { SeoService } from '@core/services/seo.service';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -15,5 +15,6 @@ export class LegalComponent implements OnInit {
 
   ngOnInit(): void {
     this.seoService.update(PAGE_SEO['legal']);
+    this.seoService.updateSchemas([BREADCRUMB_LEGAL]);
   }
 }
