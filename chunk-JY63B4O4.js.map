@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/lab/lab.component.ts", "src/app/pages/lab/lab.component.html"],
+  "sourcesContent": ["import { Component, OnInit, inject } from '@angular/core';\n\nimport { PAGE_SEO } from '@core/config/seo.config';\nimport { SeoService } from '@core/services/seo.service';\n\n@Component({\n  selector: 'app-lab',\n  imports: [],\n  templateUrl: './lab.component.html',\n  styleUrl: './lab.component.scss',\n})\nexport class LabComponent implements OnInit {\n  private readonly seoService = inject(SeoService);\n\n  ngOnInit(): void {\n    this.seoService.update(PAGE_SEO['lab']);\n  }\n}\n", "<p>lab works!</p>\n"],
+  "mappings": "mJAWA,IAAaA,GAAY,IAAA,CAAnB,MAAOA,CAAY,CACNC,WAAaC,EAAOC,CAAU,EAE/CC,UAAQ,CACN,KAAKH,WAAWI,OAAOC,EAAS,GAAM,CACxC,4CALWN,EAAY,2BAAZA,EAAYO,UAAA,CAAA,CAAA,SAAA,CAAA,EAAAC,MAAA,EAAAC,KAAA,EAAAC,SAAA,SAAAC,EAAAC,EAAA,CAAAD,EAAA,ICXzBE,EAAA,EAAA,GAAA,EAAGC,EAAA,EAAA,YAAA,EAAUC,EAAA,6BDWAf,CAAY,GAAA",
+  "names": ["LabComponent", "seoService", "inject", "SeoService", "ngOnInit", "update", "PAGE_SEO", "selectors", "decls", "vars", "template", "rf", "ctx", "\u0275\u0275domElementStart", "\u0275\u0275text", "\u0275\u0275domElementEnd"]
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/layout/scroll-progress/scroll-progress.component.scss"],
+  "sourcesContent": ["@use '../../../styles/variables' as v;\n\n.scroll-progress {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 4px;\n  background: transparent;\n  z-index: 9999;\n\n  &__bar {\n    width: 0%;\n    height: 100%;\n    background: linear-gradient(90deg, v.$primary-hue 0%, v.$accent-color 100%);\n    box-shadow: 0 0 10px rgba(v.$primary-hue, 0.5);\n  }\n}\n"],
+  "mappings": "AAEA,CAAA,gBACE,SAAA,MACA,IAAA,EACA,KAAA,EACA,MAAA,KACA,OAAA,IACA,WAAA,YACA,QAAA,KAEA,CAAA,qBACE,MAAA,GACA,OAAA,KACA,WAAA,gBAAA,KAAA,CAAA,OAAA,CAAA,SACA,WAAA,EAAA,EAAA,KAAA",
+  "names": []
+}

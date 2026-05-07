@@ -1,2 +1,0 @@
-import './polyfills.server.mjs';
-import{a as m,b as r}from"./chunk-QYHDFG5F.mjs";import{Kb as p,Na as o,T as n,ob as i,pb as a}from"./chunk-ORQK7OIP.mjs";import"./chunk-T55IDOPT.mjs";var s=class t{seoService=n(r);ngOnInit(){this.seoService.update(m.lab)}static \u0275fac=function(e){return new(e||t)};static \u0275cmp=o({type:t,selectors:[["app-lab"]],decls:2,vars:0,template:function(e,l){e&1&&(i(0,"p"),p(1,"lab works!"),a())},encapsulation:2})};export{s as LabComponent};

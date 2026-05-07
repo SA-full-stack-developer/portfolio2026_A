@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/app.scss", "src/styles/_variables.scss"],
+  "sourcesContent": ["@use '../styles/variables' as v;\n\n.app-header {\n  position: sticky;\n  top: 0;\n  z-index: 100;\n  padding-top: 1rem;\n  padding-bottom: 1rem;\n  background: rgba(v.$bg-dark, 0.85);\n  backdrop-filter: blur(12px);\n  -webkit-backdrop-filter: blur(12px);\n  border-bottom: 1px solid v.$border-subtle;\n  color: v.$text-primary;\n}\n", "$primary-hue: #4f8ef7;\n$accent-color: #7c5cbf;\n$warn-hue: #f44336;\n$warn-orange-hue: #ffb100;\n$success-hue: #00d26a;\n$highlight: #f5c518;\n\n$bg-dark: #0d0d0d;\n$bg-surface: #161616;\n$bg-card: #1e1e1e;\n$text-primary: #f0f0f0;\n$text-secondary: #9e9e9e;\n$border-subtle: rgba(255, 255, 255, 0.08);\n"],
+  "mappings": "AAEA,CAAA,WACE,SAAA,OACA,IAAA,EACA,QAAA,IACA,YAAA,KACA,eAAA,KACA,WAAA,UACA,gBAAA,KAAA,MACA,wBAAA,KAAA,MACA,cAAA,IAAA,MAAA,KAAA,GAAA,CAAA,GAAA,CAAA,GAAA,CAAA,KACA,MCFa",
+  "names": []
+}

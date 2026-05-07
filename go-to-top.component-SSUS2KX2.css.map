@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/layout/go-to-top/go-to-top.component.scss", "src/styles/_variables.scss"],
+  "sourcesContent": ["@use '../../../styles/variables' as v;\n\n.go-to-top {\n  position: fixed;\n  bottom: 2rem;\n  right: 2rem;\n  border-radius: 50%;\n  background-color: v.$bg-card;\n  color: v.$text-primary;\n  font-size: 1rem;\n  padding: 1rem;\n  width: 52px;\n  height: 52px;\n  transition: all 0.3s ease;\n  border: solid 1px v.$bg-dark;\n  opacity: 0;\n  pointer-events: none;\n\n  &--visible {\n    opacity: 1;\n    pointer-events: auto;\n  }\n\n  &:hover {\n    transform: scale(1.1);\n  }\n}\n", "$primary-hue: #4f8ef7;\n$accent-color: #7c5cbf;\n$warn-hue: #f44336;\n$warn-orange-hue: #ffb100;\n$success-hue: #00d26a;\n$highlight: #f5c518;\n\n$bg-dark: #0d0d0d;\n$bg-surface: #161616;\n$bg-card: #1e1e1e;\n$text-primary: #f0f0f0;\n$text-secondary: #9e9e9e;\n$border-subtle: rgba(255, 255, 255, 0.08);\n"],
+  "mappings": "AAEA,CAAA,UACE,SAAA,MACA,OAAA,KACA,MAAA,KAHF,cAIE,IACA,iBCEQ,QDDR,MCEa,QDDb,UAAA,KAPF,QAQE,KACA,MAAA,KACA,OAAA,KACA,WAAA,IAAA,IAAA,KACA,OAAA,MAAA,IAAA,QACA,QAAA,EACA,eAAA,KAEA,CAAA,mBACE,QAAA,EACA,eAAA,KAGF,CArBF,SAqBE,OACE,UAAA,MAAA",
+  "names": []
+}
