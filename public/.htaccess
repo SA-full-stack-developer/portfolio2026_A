@@ -30,3 +30,7 @@
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
 </IfModule>
+
+<FilesMatch "\.txt$">
+  AddCharset UTF-8 .txt
+</FilesMatch>
