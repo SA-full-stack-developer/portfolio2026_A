@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/pages/legal/legal.component.scss", "src/styles/_variables.scss"],
-  "sourcesContent": ["@use '../../../styles/variables' as v;\n\n.legal {\n  padding-top: 5rem;\n  padding-bottom: 2rem;\n\n  strong {\n    color: v.$primary-hue;\n    font-weight: 600;\n  }\n\n  h3 {\n    margin-top: 2rem;\n    color: v.$text-primary;\n  }\n\n  p {\n    color: v.$text-secondary;\n    line-height: 1.6;\n  }\n}\n", "$primary-hue: #4f8ef7;\n$accent-color: #7c5cbf;\n$warn-hue: #f44336;\n$warn-orange-hue: #ffb100;\n$success-hue: #00d26a;\n$highlight: #f5c518;\n\n$bg-dark: #0d0d0d;\n$bg-surface: #161616;\n$bg-card: #1e1e1e;\n$text-primary: #f0f0f0;\n$text-secondary: #9e9e9e;\n$border-subtle: rgba(255, 255, 255, 0.08);\n"],
-  "mappings": "AAEA,CAAA,MACE,YAAA,KACA,eAAA,KAEA,CAJF,MAIE,OACE,MCPU,QDQV,YAAA,IAGF,CATF,MASE,GACE,WAAA,KACA,MCHW,QDMb,CAdF,MAcE,EACE,MCNa,QDOb,YAAA",
-  "names": []
-}

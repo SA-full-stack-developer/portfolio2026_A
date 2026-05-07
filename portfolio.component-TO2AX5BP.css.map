@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/pages/portfolio/portfolio.component.scss"],
-  "sourcesContent": ["@use '../../../styles/variables' as v;\n@use '../../../styles/mixins' as m;\n\n.section-placeholder {\n  width: 100%;\n  height: 600px;\n  background: linear-gradient(90deg, v.$bg-surface 25%, v.$bg-card 50%, v.$bg-surface 75%);\n  background-size: 200% 100%;\n  border-radius: 12px;\n  padding: 0 1.5rem;\n\n  -webkit-animation: shimmer 1.5s infinite;\n  animation: shimmer 1.5s infinite;\n}\n\n@keyframes shimmer {\n  0% {\n    background-position: 200% 0;\n  }\n  100% {\n    background-position: -200% 0;\n  }\n}\n"],
-  "mappings": "AAGA,CAAA,oBACE,MAAA,KACA,OAAA,MACA,WAAA,gBAAA,KAAA,CAAA,QAAA,GAAA,CAAA,OAAA,CAAA,QAAA,KACA,gBAAA,KAAA,KAJF,cAKE,KALF,QAME,EAAA,OAEA,kBAAA,QAAA,KAAA,SACA,UAAA,QAAA,KAAA,SAGF,WAHE,QAIA,GACE,oBAAA,KAAA,EAEF,GACE,oBAAA,MAAA",
-  "names": []
-}
