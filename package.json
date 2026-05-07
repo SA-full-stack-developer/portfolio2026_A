@@ -15,7 +15,8 @@
     "test:coverage": "jest --coverage",
     "test:ci": "jest --ci --coverage --watchAll=false",
     "serve:ssr:portfolio2026_A": "node dist/portfolio2026_A/server/server.mjs",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "postbuild": "node scripts/inject-font-preloads.mjs"
   },
   "private": true,
   "packageManager": "npm@10.8.2",
