@@ -31,6 +31,7 @@
   - `this.seoService.update(PAGE_SEO['<page>']);`
   - `this.seoService.updateSchemas([BREADCRUMB_<PAGE>]);` cuando exista el breadcrumb.
 - Si una página no tiene breadcrumb definido, al menos debe actualizar su SEO con `PAGE_SEO['<page>']`.
+- Si la página es nueva, añadirla también al sitemap.xml.
 
 ## Backend
 
