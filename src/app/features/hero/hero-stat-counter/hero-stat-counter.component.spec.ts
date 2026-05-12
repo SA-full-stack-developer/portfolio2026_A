@@ -8,7 +8,9 @@ import {
 } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
+import { STATS_MOCK } from '@core/mocks/stats.mock';
 import { GsapService } from '@core/services/gsap.service';
+import { PlatformService } from '@core/services/platform.service';
 import { StatsService } from '@core/services/stats.service';
 import { HeroStatCounterComponent } from './hero-stat-counter.component';
 
@@ -22,25 +24,17 @@ class MockTranslateLoader implements TranslateLoader {
   }
 }
 
-const mockStatsService = {
-  stats: signal([]),
-  loadStats: jest.fn(),
-  refresh: jest.fn(),
-};
-
-class MockGsapService {
-  gsap = {
-    set: jest.fn(),
-    to: jest.fn().mockReturnValue({ scrollTrigger: null }),
-    from: jest.fn().mockReturnValue({ scrollTrigger: null }),
-    fromTo: jest.fn().mockReturnValue({ scrollTrigger: null }),
-  };
-  init = jest.fn();
-}
-
 describe('HeroStatCounterComponent', () => {
   let component: HeroStatCounterComponent;
   let fixture: ComponentFixture<HeroStatCounterComponent>;
+  let scrollKill: jest.Mock;
+  let gsapFrom: jest.Mock;
+
+  const mockStatsService = {
+    stats: signal(STATS_MOCK),
+    loadStats: jest.fn(),
+    refresh: jest.fn(),
+  };
 
   async function createComponent(): Promise<void> {
     fixture = TestBed.createComponent(HeroStatCounterComponent);
@@ -51,6 +45,12 @@ describe('HeroStatCounterComponent', () => {
   }
 
   beforeEach(async () => {
+    scrollKill = jest.fn();
+    gsapFrom = jest.fn((_cards: unknown, opts: { scrollTrigger?: { onEnter?: () => void } }) => {
+      opts.scrollTrigger?.onEnter?.();
+      return { scrollTrigger: { kill: scrollKill } };
+    });
+
     TestBed.configureTestingModule({
       imports: [HeroStatCounterComponent],
       providers: [
@@ -59,7 +59,19 @@ describe('HeroStatCounterComponent', () => {
           loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
         }),
         { provide: StatsService, useValue: mockStatsService },
-        { provide: GsapService, useClass: MockGsapService },
+        { provide: PlatformService, useValue: { isBrowser: true } },
+        {
+          provide: GsapService,
+          useValue: {
+            gsap: {
+              set: jest.fn(),
+              to: jest.fn().mockReturnValue({ kill: jest.fn() }),
+              from: gsapFrom,
+              fromTo: jest.fn().mockReturnValue({ scrollTrigger: null }),
+            },
+            init: jest.fn(),
+          },
+        },
       ],
     });
 
@@ -72,16 +84,59 @@ describe('HeroStatCounterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have statsVisible signal initialized to false', async () => {
+  it('should pass stat card elements to gsap.from and run scrollTrigger onEnter', async () => {
     await createComponent();
-    expect(component.statsVisible()).toBeFalsy();
+
+    expect(gsapFrom).toHaveBeenCalled();
+    const [cardsArg] = gsapFrom.mock.calls[0];
+    expect(Array.isArray(cardsArg)).toBe(true);
+    expect((cardsArg as HTMLElement[]).length).toBe(STATS_MOCK.length);
+    expect(component.statsVisible()).toBe(true);
   });
 
-  it('should not animate stats on non-browser platforms', async () => {
+  it('should kill scroll trigger on destroy', async () => {
     await createComponent();
-    component['platformService'].isBrowser = false;
-    const animateStatsSpy = jest.spyOn<any>(component, 'animateStats');
-    component.ngAfterViewInit();
-    expect(animateStatsSpy).not.toHaveBeenCalled();
+    fixture.destroy();
+    expect(scrollKill).toHaveBeenCalled();
+  });
+
+  describe('when not in browser', () => {
+    beforeEach(async () => {
+      TestBed.resetTestingModule();
+      scrollKill = jest.fn();
+      gsapFrom = jest.fn(() => ({ scrollTrigger: { kill: scrollKill } }));
+
+      TestBed.configureTestingModule({
+        imports: [HeroStatCounterComponent],
+        providers: [
+          provideZonelessChangeDetection(),
+          provideTranslateService({
+            loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
+          }),
+          { provide: StatsService, useValue: mockStatsService },
+          { provide: PlatformService, useValue: { isBrowser: false } },
+          {
+            provide: GsapService,
+            useValue: {
+              gsap: {
+                set: jest.fn(),
+                to: jest.fn().mockReturnValue({ kill: jest.fn() }),
+                from: gsapFrom,
+                fromTo: jest.fn().mockReturnValue({ scrollTrigger: null }),
+              },
+              init: jest.fn(),
+            },
+          },
+        ],
+      });
+
+      const translate = TestBed.inject(TranslateService);
+      await translate.use('es').toPromise();
+    });
+
+    it('should not run GSAP animation after view init', async () => {
+      await createComponent();
+      expect(gsapFrom).not.toHaveBeenCalled();
+    });
   });
 });

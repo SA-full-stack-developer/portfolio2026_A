@@ -37,7 +37,7 @@ describe('ChatCvComponent', () => {
       providers: [
         { provide: AiService, useValue: mockAiService },
         { provide: GsapService, useValue: createMockGsapService() },
-        { provide: PlatformService, useValue: createMockPlatformService(false) },
+        { provide: PlatformService, useValue: createMockPlatformService(true) },
       ],
     }).compileComponents();
 
@@ -114,5 +114,65 @@ describe('ChatCvComponent', () => {
 
     const empty = fixture.debugElement.query(By.css('.chat-cv__empty'));
     expect(empty).toBeTruthy();
+  });
+
+  it('should animate entrance with GSAP after view init in browser', () => {
+    const gsapService = TestBed.inject(GsapService);
+    expect(gsapService.gsap.from).toHaveBeenCalled();
+    expect(gsapService.gsap.from).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({
+        opacity: 0,
+        y: 40,
+        scrollTrigger: expect.objectContaining({
+          toggleActions: 'play none none none',
+        }),
+      }),
+    );
+  });
+
+  it('should update inputText when onInput is called', () => {
+    component.onInput('hello');
+    expect(component.inputText()).toBe('hello');
+  });
+
+  it('should return early from scrollToBottom when messages container is absent', () => {
+    component['messagesContainer'] = undefined as unknown as typeof component.messagesContainer;
+    expect(() => component['scrollToBottom']()).not.toThrow();
+  });
+
+  it('should kill scroll triggers on destroy', () => {
+    const kill = jest.fn();
+    component['scrollTriggers'] = [{ kill }] as typeof component['scrollTriggers'];
+    fixture.destroy();
+    expect(kill).toHaveBeenCalled();
+  });
+
+  it('should skip entrance animation when not in browser', async () => {
+    TestBed.resetTestingModule();
+    mockAiService = createMockAiService();
+    await TestBed.configureTestingModule({
+      imports: [
+        ChatCvComponent,
+        TranslateModule.forRoot({
+          loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
+        }),
+      ],
+      providers: [
+        { provide: AiService, useValue: mockAiService },
+        { provide: GsapService, useValue: createMockGsapService() },
+        { provide: PlatformService, useValue: createMockPlatformService(false) },
+      ],
+    }).compileComponents();
+
+    const ssFixture = TestBed.createComponent(ChatCvComponent);
+    const ssComp = ssFixture.componentInstance;
+    const gsapService = TestBed.inject(GsapService);
+    jest.clearAllMocks();
+    ssFixture.detectChanges();
+    await ssFixture.whenStable();
+
+    expect(gsapService.gsap.from).not.toHaveBeenCalled();
+    ssFixture.destroy();
   });
 });

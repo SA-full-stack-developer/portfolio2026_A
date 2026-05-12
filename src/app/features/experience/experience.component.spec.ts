@@ -10,30 +10,22 @@ import { Observable, of } from 'rxjs';
 
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import { SKILLS_MOCK } from '@core/mocks/skills.mock';
 import { ResolvedExperience } from '@core/models/experience.model';
-import { Skill } from '@core/models/skill.model';
 import { ExperienceService } from '@core/services/experience.service';
 import { GsapService } from '@core/services/gsap.service';
 import { LanguageService } from '@core/services/language.service';
 import { PlatformService } from '@core/services/platform.service';
+import { COMPANIES_MOCK } from '../../core/mocks/companies.mock';
 import { EXPERIENCES_MOCK } from '../../core/mocks/experiences.mock';
+import { PROJECTS_MOCK } from '../../core/mocks/projects.mock';
 import { ExperienceComponent } from './experience.component';
-
-const MOCK_SKILL: Skill = {
-  id: '1',
-  name: 'Angular',
-  level: 3,
-  category: 'frontend',
-  icon: 'angular',
-  highlighted: true,
-  yearsOfExperience: 2,
-};
 
 const RESOLVED_EXPERIENCES_MOCK: ResolvedExperience[] = EXPERIENCES_MOCK.map((exp) => ({
   ...exp,
-  skills: [MOCK_SKILL],
-  projects: [],
-  company: undefined,
+  skills: [SKILLS_MOCK[0]], // Use first skill from mock
+  projects: PROJECTS_MOCK.filter((project) => exp.projectIds.includes(project.id)),
+  company: COMPANIES_MOCK.find((company) => company.id === exp.companyId),
 }));
 
 class MockTranslateLoader implements TranslateLoader {
@@ -51,7 +43,9 @@ class MockGsapService {
   gsap = {
     set: jest.fn(),
     to: jest.fn().mockReturnValue({ scrollTrigger: null }),
-    fromTo: jest.fn().mockReturnValue({ scrollTrigger: null }),
+    fromTo: jest.fn().mockImplementation(() => ({
+      scrollTrigger: { kill: jest.fn() },
+    })),
   };
   scrollTrigger = {
     refresh: jest.fn(),
@@ -144,8 +138,24 @@ describe('ExperienceComponent', () => {
     const gsapService = TestBed.inject(GsapService) as any;
 
     await createComponent();
-    const cards = fixture.nativeElement.querySelectorAll('.experience-card');
     component['animateCards']();
     expect(gsapService.gsap.fromTo).toHaveBeenCalled();
+  });
+
+  it('should push scrollTriggers from GSAP and kill them on destroy', async () => {
+    await createComponent();
+    if (component['scrollTriggers'].length === 0) {
+      component['animateCards']();
+    }
+
+    const triggers = component['scrollTriggers'] as { kill: jest.Mock }[];
+    expect(triggers.length).toBeGreaterThan(0);
+
+    const killMocks = triggers.map((st) => st.kill);
+    fixture.destroy();
+
+    killMocks.forEach((kill) => {
+      expect(kill).toHaveBeenCalled();
+    });
   });
 });

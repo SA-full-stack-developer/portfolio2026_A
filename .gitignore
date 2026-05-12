@@ -32,6 +32,12 @@ yarn-error.log
 # Miscellaneous
 /.angular/cache
 .sass-cache/
+
+# Sass extension output next to Angular SCSS (sources of truth are *.scss / styles.scss)
+src/app/app.css
+src/app/app.css.map
+src/app/**/*.component.css
+src/app/**/*.component.css.map
 /connect.lock
 /coverage
 /libpeerconnection.log

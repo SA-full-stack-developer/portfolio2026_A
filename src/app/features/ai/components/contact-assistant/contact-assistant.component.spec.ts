@@ -36,7 +36,7 @@ describe('ContactAssistantComponent', () => {
       providers: [
         { provide: AiService, useValue: mockAiService },
         { provide: GsapService, useValue: createMockGsapService() },
-        { provide: PlatformService, useValue: createMockPlatformService(false) },
+        { provide: PlatformService, useValue: createMockPlatformService(true) },
       ],
     }).compileComponents();
 
@@ -51,6 +51,9 @@ describe('ContactAssistantComponent', () => {
   });
 
   it('should send a message and receive a model reply', () => {
+    const container = fixture.nativeElement.querySelector('.contact-assistant__messages');
+    Object.defineProperty(container, 'scrollHeight', { value: 200, configurable: true });
+
     mockAiService.contactAssistant.mockReturnValue(of('assistant reply'));
     component.inputText.set('help');
 
@@ -66,6 +69,7 @@ describe('ContactAssistantComponent', () => {
     ]);
     expect(component.error()).toBeNull();
     expect(component.loading()).toBe(false);
+    expect(container.scrollTop).toBe(200);
   });
 
   it('should set an error when the assistant call fails', () => {
@@ -84,5 +88,85 @@ describe('ContactAssistantComponent', () => {
     component.send();
 
     expect(mockAiService.contactAssistant).not.toHaveBeenCalled();
+  });
+
+  it('should animate entrance with GSAP on root element in browser', () => {
+    const gsapService = TestBed.inject(GsapService);
+    expect(gsapService.gsap.from).toHaveBeenCalled();
+    expect(gsapService.gsap.from).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({
+        opacity: 0,
+        y: 40,
+        scrollTrigger: expect.objectContaining({
+          toggleActions: 'play none none none',
+          invalidateOnRefresh: true,
+        }),
+      }),
+    );
+  });
+
+  it('should register scrollTrigger from GSAP for teardown', () => {
+    expect(component['scrollTriggers'].length).toBeGreaterThan(0);
+  });
+
+  it('should update inputText when onInput is called', () => {
+    component.onInput('hello');
+    expect(component.inputText()).toBe('hello');
+  });
+
+  it('should send when pressing Enter without shift', () => {
+    const event = {
+      key: 'Enter',
+      shiftKey: false,
+      preventDefault: jest.fn(),
+    } as unknown as KeyboardEvent;
+
+    mockAiService.contactAssistant.mockReturnValue(of('ok'));
+    component.inputText.set('question');
+
+    component.onKeydown(event);
+
+    expect(event.preventDefault).toHaveBeenCalled();
+    expect(mockAiService.contactAssistant).toHaveBeenCalled();
+  });
+
+  it('should return early from scrollToBottom when messages container is absent', () => {
+    component['messagesContainer'] = undefined as unknown as typeof component.messagesContainer;
+    expect(() => component['scrollToBottom']()).not.toThrow();
+  });
+
+  it('should kill scroll triggers on destroy', () => {
+    const kill = jest.fn();
+    component['scrollTriggers'] = [{ kill }] as typeof component['scrollTriggers'];
+    fixture.destroy();
+    expect(kill).toHaveBeenCalled();
+  });
+
+  it('should skip GSAP setup when not in browser', async () => {
+    TestBed.resetTestingModule();
+    mockAiService = createMockAiService();
+    await TestBed.configureTestingModule({
+      imports: [
+        ContactAssistantComponent,
+        TranslateModule.forRoot({
+          loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
+        }),
+      ],
+      providers: [
+        { provide: AiService, useValue: mockAiService },
+        { provide: GsapService, useValue: createMockGsapService() },
+        { provide: PlatformService, useValue: createMockPlatformService(false) },
+      ],
+    }).compileComponents();
+
+    const ssFixture = TestBed.createComponent(ContactAssistantComponent);
+    const gsapService = TestBed.inject(GsapService);
+    jest.clearAllMocks();
+    ssFixture.detectChanges();
+    await ssFixture.whenStable();
+
+    expect(gsapService.gsap.from).not.toHaveBeenCalled();
+    ssFixture.destroy();
   });
 });

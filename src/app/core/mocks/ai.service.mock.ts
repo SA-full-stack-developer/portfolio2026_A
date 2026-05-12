@@ -22,7 +22,7 @@ export const createMockGsapService = () => {
     gsap: {
       set: fn(),
       to,
-      from: fn().mockReturnValue({ scrollTrigger: {} }),
+      from: fn().mockReturnValue({ scrollTrigger: { kill: fn() } }),
       killTweensOf: fn(),
     },
   };
