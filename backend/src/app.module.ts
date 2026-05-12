@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
 import { AiModule } from './ai/ai.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -18,7 +17,7 @@ import { StatusModule } from './status/status.module';
     ProjectsModule,
     CompaniesModule,
     StatusModule,
-    ConfigModule.forRoot({ isGlobal: true }),
+    //ConfigModule.forRoot({ isGlobal: true }),
     AiModule,
   ],
   controllers: [AppController],
