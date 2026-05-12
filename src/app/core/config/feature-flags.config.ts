@@ -101,4 +101,24 @@ export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
     label: 'Experimentos',
     visibility: 'admin',
   },
+  CHAT_MESSAGE: {
+    id: 'CHAT_MESSAGE',
+    label: 'Chat Message',
+    visibility: 'public',
+  },
+  CHAT_CV: {
+    id: 'CHAT_CV',
+    label: 'Chat sobre mi CV',
+    visibility: 'public',
+  },
+  CONTACT_ASSISTANT: {
+    id: 'CONTACT_ASSISTANT',
+    label: 'Contact Assistant',
+    visibility: 'public',
+  },
+  COVER_LETTER: {
+    id: 'COVER_LETTER',
+    label: 'Cover Letter',
+    visibility: 'public',
+  },
 };

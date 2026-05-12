@@ -43,6 +43,11 @@ export const PAGE_SEO: Record<string, Partial<SeoConfig>> = {
     description: 'Aviso legal y política de privacidad del portfolio de Cristian Salcedo.',
     ogUrl: 'https://csrangulardeveloper.nom.es/legal',
   },
+  ai: {
+    title: 'IA | Cristian Salcedo',
+    description: 'Servicios de inteligencia artificial de Cristian Salcedo.',
+    ogUrl: 'https://csrangulardeveloper.nom.es/ai',
+  },
 };
 
 export const PERSON_SCHEMA = {
@@ -119,4 +124,9 @@ export const BREADCRUMB_LEGAL = buildBreadcrumb([
 export const BREADCRUMB_LAB = buildBreadcrumb([
   { name: 'Home', url: 'https://csrangulardeveloper.nom.es' },
   { name: 'Lab', url: 'https://csrangulardeveloper.nom.es/lab' },
+]);
+
+export const BREADCRUMB_AI = buildBreadcrumb([
+  { name: 'Home', url: 'https://csrangulardeveloper.nom.es' },
+  { name: 'IA', url: 'https://csrangulardeveloper.nom.es/ai' },
 ]);

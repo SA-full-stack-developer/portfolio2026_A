@@ -30,6 +30,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/legal/legal.component').then((m) => m.LegalComponent),
   },
   {
+    path: 'ai',
+    loadComponent: () => import('./pages/ai/ai.component').then((m) => m.AiComponent),
+  },
+  {
     path: '**',
     redirectTo: 'error',
   },

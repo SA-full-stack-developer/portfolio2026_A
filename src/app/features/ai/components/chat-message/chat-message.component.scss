@@ -1,0 +1,38 @@
+@use '../../../../../styles/variables' as v;
+@use '../../../../../styles/mixins' as m;
+
+.chat-message {
+  @include m.flex(row);
+  width: 100%;
+  margin-bottom: 0.75rem;
+
+  &--user {
+    justify-content: flex-end;
+
+    .chat-message__text {
+      background: v.$primary-hue;
+      color: v.$bg-dark;
+      border-radius: 16px 16px 4px 16px;
+    }
+  }
+
+  &--model {
+    justify-content: flex-start;
+
+    .chat-message__text {
+      background: v.$bg-card;
+      color: v.$text-primary;
+      border: 1px solid v.$border-subtle;
+      border-radius: 16px 16px 16px 4px;
+    }
+  }
+
+  &__text {
+    max-width: 78%;
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}

@@ -1,14 +1,14 @@
 import { Component, inject, input, output } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { ID_EXPERIENCE, ID_SKILLS } from '@core/constants/sections.constants';
 
-import { Router } from '@angular/router';
 import { PlatformService } from '@core/services/platform.service';
 import { navScrollTo } from '@core/utils/navigation.utils';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header-nav',
-  imports: [TranslateModule],
+  imports: [TranslateModule, RouterLink],
   templateUrl: './header-nav.component.html',
   styleUrl: './header-nav.component.scss',
 })

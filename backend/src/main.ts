@@ -1,5 +1,6 @@
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
@@ -7,6 +8,13 @@ import { TransformInterceptor } from './common/interceptors/transform.intercepto
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api/v1');
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+    }),
+  );
   const config = new DocumentBuilder()
     .setTitle('CSR Angular Developer API')
     .setDescription('Documentación de los servicios del Portfolio')

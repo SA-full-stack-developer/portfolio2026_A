@@ -1,0 +1,212 @@
+@use '../../../../styles/variables' as v;
+@use '../../../../styles/mixins' as m;
+
+.ask-me-fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  @include m.flex(column);
+  align-items: flex-end;
+  gap: 0.75rem;
+
+  @include m.respond-to(sm) {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  &__btn {
+    @include m.flex-center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: v.$primary-hue;
+    color: v.$bg-dark;
+    box-shadow: 0 4px 20px rgba(v.$primary-hue, 0.4);
+    @include m.transition(transform 0.2s ease, box-shadow 0.2s ease);
+    flex-shrink: 0;
+
+    &:hover {
+      @include m.transform(scale(1.07));
+      box-shadow: 0 6px 28px rgba(v.$primary-hue, 0.55);
+    }
+
+    .material-icons {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__panel {
+    @include m.flex(column);
+    width: 340px;
+    height: 440px;
+    background: v.$bg-surface;
+    border: 1px solid v.$border-subtle;
+    border-radius: 16px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+
+    @include m.respond-to('sm') {
+      width: calc(100vw - 2rem);
+      right: 1rem;
+    }
+  }
+
+  &__panel-header {
+    @include m.flex-between;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid v.$border-subtle;
+    flex-shrink: 0;
+  }
+
+  &__panel-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: v.$text-primary;
+  }
+
+  &__close {
+    color: v.$text-secondary;
+    @include m.transition(color 0.2s ease);
+    @include m.flex-center;
+
+    &:hover {
+      color: v.$text-primary;
+    }
+    .material-icons {
+      font-size: 1.1rem;
+    }
+  }
+
+  &__messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.75rem;
+    @include m.flex(column);
+    gap: 0.5rem;
+    @include m.custom-scrollbar;
+  }
+
+  &__empty {
+    color: v.$text-secondary;
+    font-size: 0.85rem;
+    text-align: center;
+    margin: auto;
+    padding: 1rem;
+    line-height: 1.55;
+  }
+
+  &__msg {
+    padding: 0.5rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    max-width: 88%;
+    word-break: break-word;
+
+    &--user {
+      align-self: flex-end;
+      background: v.$primary-hue;
+      color: v.$bg-dark;
+      border-radius: 12px 12px 4px 12px;
+    }
+
+    &--model {
+      align-self: flex-start;
+      background: v.$bg-card;
+      color: v.$text-primary;
+      border: 1px solid v.$border-subtle;
+      border-radius: 12px 12px 12px 4px;
+    }
+  }
+
+  &__typing {
+    @include m.flex(row);
+    gap: 4px;
+    padding: 0.4rem 0.5rem;
+    align-self: flex-start;
+
+    span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: v.$primary-hue;
+      animation: typing-dot 1.2s infinite ease-in-out;
+      &:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      &:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+    }
+  }
+
+  &__error {
+    font-size: 0.75rem;
+    color: v.$warn-hue;
+    padding: 0 0.75rem;
+    flex-shrink: 0;
+  }
+
+  &__input-row {
+    @include m.flex(row);
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border-top: 1px solid v.$border-subtle;
+    flex-shrink: 0;
+  }
+
+  &__input {
+    flex: 1;
+    background: v.$bg-card;
+    border: 1px solid v.$border-subtle;
+    border-radius: 8px;
+    color: v.$text-primary;
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+    @include m.transition(border-color 0.2s ease);
+    @include m.placeholder {
+      color: v.$text-secondary;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: rgba(v.$primary-hue, 0.5);
+    }
+  }
+
+  &__send {
+    @include m.flex-center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: v.$primary-hue;
+    color: v.$bg-dark;
+    flex-shrink: 0;
+    @include m.transition(opacity 0.2s ease);
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    &:not(:disabled):hover {
+      opacity: 0.85;
+    }
+    .material-icons {
+      font-size: 1rem;
+    }
+  }
+}
+
+@keyframes typing-dot {
+  0%,
+  80%,
+  100% {
+    transform: scale(0.7);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

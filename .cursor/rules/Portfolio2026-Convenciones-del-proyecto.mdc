@@ -1,0 +1,31 @@
+---
+alwaysApply: true
+---
+
+# Portfolio2026 — Convenciones del proyecto
+
+## SCSS
+- Alias `v` para variables, `m` para mixins
+- BEM estricto
+- rem para espaciados, px para bordes
+
+## Arquitectura
+- Smart/Dumb components
+- Path aliases: @core, @shared, @features
+- SSR activo — compatibilidad servidor/cliente obligatoria
+
+## GSAP
+- No modificar lógica GSAP existente sin indicación explícita
+- ngOnDestroy obligatorio en componentes con ScrollTrigger
+- animationInitialized flag en componentes con animaciones
+
+## Tests
+- Jest — 0 fallos obligatorio
+- Mantener cobertura existente en cualquier cambio
+
+## Backend
+- NestJS en backend/
+- API: https://api.csrangulardeveloper.nom.es/api/v1
+
+## Idioma
+- Responder siempre en castellano
