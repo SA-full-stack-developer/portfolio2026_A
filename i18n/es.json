@@ -2,7 +2,8 @@
   "NAV": {
     "EXPERIENCE": "Experiencia",
     "CONTACT": "Contacto",
-    "STACK": "Stack"
+    "STACK": "Stack",
+    "IA": "Componentes IA"
   },
   "SKILLS": {
     "TITLE": "Stack Tecnológico",
@@ -172,5 +173,44 @@
   },
   "ERRORS": {
     "API": "Ha habido un error en la API"
+  },
+  "AI": {
+    "SEND": "Enviar",
+    "GENERATING": "Generando...",
+    "ERROR": {
+      "GENERIC": "Error al conectar con la IA. Inténtalo de nuevo."
+    },
+    "PAGE": {
+      "TITLE": "IA integrada",
+      "SUBTITLE": "Funcionalidades de inteligencia artificial"
+    },
+    "CHAT_CV": {
+      "TITLE": "Chat sobre mi CV",
+      "SUBTITLE": "Pregúntame sobre mi experiencia, habilidades o proyectos",
+      "PLACEHOLDER": "Empieza una conversación...",
+      "INPUT_PLACEHOLDER": "Escribe tu pregunta..."
+    },
+    "COVER_LETTER": {
+      "TITLE": "Carta de presentación",
+      "SUBTITLE": "Genera una carta personalizada para tu oferta",
+      "COMPANY": "Empresa",
+      "ROLE": "Puesto",
+      "JOB_DESCRIPTION": "Descripción del puesto (opcional)",
+      "GENERATE": "Generar carta",
+      "RESULT": "Resultado"
+    },
+    "CONTACT_ASSISTANT": {
+      "TITLE": "Asistente de contacto",
+      "SUBTITLE": "Te ayudo a ponerte en contacto conmigo",
+      "PLACEHOLDER": "¿En qué puedo ayudarte?",
+      "INPUT_PLACEHOLDER": "Escribe tu mensaje..."
+    },
+    "ASK_ME": {
+      "TITLE": "Pregúntame algo",
+      "PLACEHOLDER": "Hola 👋 Pregúntame lo que quieras sobre Cristian",
+      "INPUT_PLACEHOLDER": "Tu pregunta...",
+      "OPEN": "Abrir asistente",
+      "CLOSE": "Cerrar asistente"
+    }
   }
 }

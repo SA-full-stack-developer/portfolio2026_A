@@ -2,7 +2,8 @@
   "NAV": {
     "EXPERIENCE": "Experience",
     "CONTACT": "Contact",
-    "STACK": "Stack"
+    "STACK": "Stack",
+    "IA": "AI Components"
   },
   "SKILLS": {
     "TITLE": "Tech Stack",
@@ -172,5 +173,44 @@
   },
   "ERRORS": {
     "API": "API error"
+  },
+  "AI": {
+    "SEND": "Send",
+    "GENERATING": "Generating...",
+    "ERROR": {
+      "GENERIC": "Failed to connect to AI. Please try again."
+    },
+    "PAGE": {
+      "TITLE": "AI Features",
+      "SUBTITLE": "Artificial intelligence features"
+    },
+    "CHAT_CV": {
+      "TITLE": "Chat about my CV",
+      "SUBTITLE": "Ask me about my experience, skills or projects",
+      "PLACEHOLDER": "Start a conversation...",
+      "INPUT_PLACEHOLDER": "Type your question..."
+    },
+    "COVER_LETTER": {
+      "TITLE": "Cover letter",
+      "SUBTITLE": "Generate a personalised letter for your job offer",
+      "COMPANY": "Company",
+      "ROLE": "Role",
+      "JOB_DESCRIPTION": "Job description (optional)",
+      "GENERATE": "Generate letter",
+      "RESULT": "Result"
+    },
+    "CONTACT_ASSISTANT": {
+      "TITLE": "Contact assistant",
+      "SUBTITLE": "I'll help you get in touch with me",
+      "PLACEHOLDER": "How can I help you?",
+      "INPUT_PLACEHOLDER": "Type your message..."
+    },
+    "ASK_ME": {
+      "TITLE": "Ask me anything",
+      "PLACEHOLDER": "Hi 👋 Ask me anything about Cristian",
+      "INPUT_PLACEHOLDER": "Your question...",
+      "OPEN": "Open assistant",
+      "CLOSE": "Close assistant"
+    }
   }
 }
