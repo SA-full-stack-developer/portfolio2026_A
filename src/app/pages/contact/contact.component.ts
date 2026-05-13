@@ -137,7 +137,16 @@ export class ContactComponent implements OnInit, AfterViewInit {
         this.formData.set({ name: '', subject: '', email: '', message: '' });
         this.botTrap = '';
       } catch (error) {
-        this.snackBar.open(this.translate.instant('CONTACT.ERROR') + error, '', { duration: 1000 });
+        const errorMessage =
+          typeof error === 'string'
+            ? error
+            : error instanceof Error
+              ? error.message
+              : String(error);
+
+        this.snackBar.open(this.translate.instant('CONTACT.ERROR') + errorMessage, '', {
+          duration: 1000,
+        });
       } finally {
         this.isLoading.set(false);
       }

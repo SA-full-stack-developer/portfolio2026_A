@@ -1,3 +1,5 @@
+import * as navUtils from '@core/utils/navigation.utils';
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
   TranslateLoader,
@@ -94,12 +96,20 @@ describe('HeaderNavComponent', () => {
     platformService.isBrowser = true;
     jest.spyOn(component['router'], 'url', 'get').mockReturnValue('/other');
     jest.spyOn(component['router'], 'navigate').mockResolvedValue(true);
-    jest.spyOn(document, 'getElementById').mockReturnValue(document.createElement('div'));
+    const mockElement = document.createElement('div');
+    jest.spyOn(document, 'getElementById').mockReturnValue(mockElement);
+    const navScrollSpy = jest.spyOn(navUtils, 'navScrollTo').mockImplementation(() => {});
     jest.spyOn(component.linkClicked, 'emit');
 
+    jest.useFakeTimers();
     component.scrollTo(component.ID_SKILLS);
+    await Promise.resolve();
+    jest.advanceTimersByTime(100);
 
     expect(component['router'].navigate).toHaveBeenCalledWith(['/']);
+    expect(navScrollSpy).toHaveBeenCalledWith(mockElement);
+    expect(component.linkClicked.emit).toHaveBeenCalled();
+    jest.useRealTimers();
   });
 
   it('should scroll to element if already on home page', async () => {
@@ -109,17 +119,12 @@ describe('HeaderNavComponent', () => {
     jest.spyOn(component['router'], 'url', 'get').mockReturnValue('/');
     const mockElement = document.createElement('div');
     jest.spyOn(document, 'getElementById').mockReturnValue(mockElement);
-    const scrollToSpy = jest.spyOn(window, 'scrollTo').mockImplementation(() => {});
-    const rafSpy = jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => {
-      // Call with enough time elapsed to complete the animation in one frame
-      cb(performance.now() + 650);
-      return 1;
-    });
+    const navScrollSpy = jest.spyOn(navUtils, 'navScrollTo').mockImplementation(() => {});
     jest.spyOn(component.linkClicked, 'emit');
 
     component.scrollTo(component.ID_SKILLS);
 
-    expect(scrollToSpy).toHaveBeenCalled();
+    expect(navScrollSpy).toHaveBeenCalledWith(mockElement);
     expect(component.linkClicked.emit).toHaveBeenCalled();
   });
 

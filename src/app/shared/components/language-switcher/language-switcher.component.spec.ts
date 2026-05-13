@@ -120,4 +120,36 @@ describe('LanguageSwitcherComponent', () => {
 
     expect(component.isOpen()).toBe(false);
   });
+
+  it('should close dropdown when clicking outside the component', () => {
+    createComponent();
+    component.toggle();
+    fixture.detectChanges();
+    expect(component.isOpen()).toBe(true);
+
+    const target = {
+      closest: jest.fn().mockReturnValue(null),
+    } as unknown as HTMLElement;
+
+    component.onDocumentClick({ target } as MouseEvent);
+
+    expect(target.closest).toHaveBeenCalledWith('app-language-switcher');
+    expect(component.isOpen()).toBe(false);
+  });
+
+  it('should not close dropdown when clicking inside the component', () => {
+    createComponent();
+    component.toggle();
+    fixture.detectChanges();
+    expect(component.isOpen()).toBe(true);
+
+    const target = {
+      closest: jest.fn().mockReturnValue({} as HTMLElement),
+    } as unknown as HTMLElement;
+
+    component.onDocumentClick({ target } as MouseEvent);
+
+    expect(target.closest).toHaveBeenCalledWith('app-language-switcher');
+    expect(component.isOpen()).toBe(true);
+  });
 });
