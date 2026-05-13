@@ -11,16 +11,23 @@ export class GsapService {
 
   init(): void {
     if (!this.platformService.isBrowser || this.initialized) return;
-
     gsap.registerPlugin(ScrollTrigger);
     this.initialized = true;
   }
 
   get gsap() {
+    if (!this.platformService.isBrowser) {
+      throw new Error('GSAP is only available in the browser');
+    }
+    this.init();
     return gsap;
   }
 
   get scrollTrigger() {
+    if (!this.platformService.isBrowser) {
+      throw new Error('ScrollTrigger is only available in the browser');
+    }
+    this.init();
     return ScrollTrigger;
   }
 }

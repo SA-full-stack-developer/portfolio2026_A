@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   Injector,
@@ -23,7 +22,7 @@ import { StatCounterComponent } from '../components/stat-counter/stat-counter.co
   templateUrl: './hero-stat-counter.component.html',
   styleUrl: './hero-stat-counter.component.scss',
 })
-export class HeroStatCounterComponent implements AfterViewInit, OnDestroy {
+export class HeroStatCounterComponent implements OnDestroy {
   private readonly statsService = inject(StatsService);
   private readonly gsapService = inject(GsapService);
   private readonly platformService = inject(PlatformService);
@@ -37,17 +36,18 @@ export class HeroStatCounterComponent implements AfterViewInit, OnDestroy {
   readonly stats = this.statsService.stats;
   statsVisible = signal(false);
 
-  ngAfterViewInit(): void {
-    if (!this.platformService.isBrowser) return;
+  constructor() {
     afterNextRender(
       () => {
-        this.animateStats();
+        setTimeout(() => this.animateStats(), 0);
       },
       { injector: this.injector },
     );
   }
 
   private animateStats(): void {
+    if (!this.platformService.isBrowser) return;
+
     const gsap = this.gsapService.gsap;
     const cards = this.statCards.map((c) => c.nativeElement);
 
