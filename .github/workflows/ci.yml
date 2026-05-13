@@ -31,29 +31,29 @@ jobs:
       - run: npm run test:ci
 
   build-backend:
-  runs-on: ubuntu-latest
-  needs: test
-  steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
-    - name: Build backend
-      working-directory: backend
-      run: |
-        npm ci
-        npm run build
-        npm ci --omit=dev
-    - name: Upload backend artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: backend-dist
-        path: |
-          backend/dist/
-          backend/package.json
-          backend/package-lock.json
-          backend/node_modules/
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: Build backend
+        working-directory: backend
+        run: |
+          npm ci
+          npm run build
+          npm ci --omit=dev
+      - name: Upload backend artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-dist
+          path: |
+            backend/dist/
+            backend/package.json
+            backend/package-lock.json
+            backend/node_modules/
 
   deploy-backend:
     runs-on: ubuntu-latest
@@ -80,7 +80,6 @@ jobs:
           mkdir -p dist
           cp -r /tmp/backend-dist/dist/. dist/
           cp -r /tmp/backend-dist/node_modules/. node_modules/
-          cp /tmp/backend-dist/package-lock.json .
           node -e "
             const pkg = require('/tmp/backend-dist/package.json');
             pkg.scripts = { start: 'node dist/main.js' };
@@ -100,7 +99,6 @@ jobs:
             ],
           };
           EOF
-          echo 'node_modules/' >> .gitignore
           git add .
           git commit -m "deploy: backend $(date +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
           git push origin deploy-api
