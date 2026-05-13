@@ -11,6 +11,7 @@ import { Observable, of } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { SKILLS_MOCK } from '@core/mocks/skills.mock';
 import { GsapService } from '@core/services/gsap.service';
+import { PlatformService } from '@core/services/platform.service';
 import { SkillsService } from '@core/services/skills.service';
 import { SkillsComponent } from './skills.component';
 
@@ -43,7 +44,7 @@ class MockTranslateLoader implements TranslateLoader {
 class MockGsapService {
   gsap = {
     set: jest.fn(),
-    to: jest.fn().mockReturnValue({ scrollTrigger: null }),
+    to: jest.fn().mockReturnValue({ scrollTrigger: { kill: jest.fn() } }),
     fromTo: jest.fn().mockReturnValue({ scrollTrigger: null }),
   };
   scrollTrigger = {
@@ -51,6 +52,10 @@ class MockGsapService {
   };
   init = jest.fn();
 }
+
+const mockPlatformService = {
+  isBrowser: true,
+};
 
 class MockSkillsService {
   PAGE_SIZE = 24;
@@ -101,6 +106,7 @@ describe('SkillsComponent', () => {
   let fixture: ComponentFixture<SkillsComponent>;
   let component: SkillsComponent;
   let skillsService: SkillsService;
+  let gsapService: MockGsapService;
 
   async function createComponent(): Promise<void> {
     fixture = TestBed.createComponent(SkillsComponent);
@@ -111,6 +117,7 @@ describe('SkillsComponent', () => {
   }
 
   beforeEach(async () => {
+    mockPlatformService.isBrowser = true;
     TestBed.configureTestingModule({
       imports: [SkillsComponent],
       providers: [
@@ -120,9 +127,11 @@ describe('SkillsComponent', () => {
         }),
         { provide: SkillsService, useClass: MockSkillsService },
         { provide: GsapService, useClass: MockGsapService },
+        { provide: PlatformService, useValue: mockPlatformService },
       ],
     });
     skillsService = TestBed.inject(SkillsService);
+    gsapService = TestBed.inject(GsapService) as unknown as MockGsapService;
 
     const translate = TestBed.inject(TranslateService);
     await translate.use('es').toPromise();
@@ -279,5 +288,59 @@ describe('SkillsComponent', () => {
     jest.spyOn(skillsService, 'loadMore');
     component.onLoadMore();
     expect(skillsService.loadMore).toHaveBeenCalled();
+  });
+
+  it('should not initialize GSAP if not in browser', async () => {
+    mockPlatformService.isBrowser = false;
+    await createComponent();
+    expect(component['scrollTriggers'].length).toBe(0);
+  });
+
+  it('should push scrollTrigger from GSAP on animateCards and kill it on destroy', async () => {
+    await createComponent();
+
+    if (component['scrollTriggers'].length === 0) {
+      component['animateCards']();
+    }
+
+    expect(component['scrollTriggers'].length).toBeGreaterThan(0);
+    const trigger = component['scrollTriggers'][0] as { kill: jest.Mock };
+
+    fixture.destroy();
+
+    expect(trigger.kill).toHaveBeenCalled();
+  });
+
+  it('should update animatedIds when scrollTrigger onEnter fires', async () => {
+    await createComponent();
+    gsapService.gsap.to.mockClear();
+    component['animatedIds'].set(new Set());
+    component['lastAnimatedCount'] = 0;
+    component['scrollTriggers'] = [];
+
+    component['animateCards']();
+
+    const gsapConfig = gsapService.gsap.to.mock.calls[0][1];
+    expect(typeof gsapConfig.scrollTrigger.onEnter).toBe('function');
+
+    gsapConfig.scrollTrigger.onEnter();
+
+    expect(component.animatedIds().size).toBe(component.filteredSkills().length);
+  });
+
+  it('should set lastAnimatedCount when GSAP onComplete fires', async () => {
+    await createComponent();
+    gsapService.gsap.to.mockClear();
+    component['lastAnimatedCount'] = 0;
+    component['scrollTriggers'] = [];
+
+    component['animateCards']();
+
+    const gsapConfig = gsapService.gsap.to.mock.calls[0][1];
+    expect(typeof gsapConfig.onComplete).toBe('function');
+
+    gsapConfig.onComplete();
+
+    expect(component['lastAnimatedCount']).toBe(component.filteredSkills().length);
   });
 });

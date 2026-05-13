@@ -1,5 +1,5 @@
 import { Component, inject, input, output } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { ID_EXPERIENCE, ID_SKILLS } from '@core/constants/sections.constants';
 
 import { PlatformService } from '@core/services/platform.service';
@@ -8,7 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header-nav',
-  imports: [TranslateModule, RouterLink],
+  imports: [TranslateModule],
   templateUrl: './header-nav.component.html',
   styleUrl: './header-nav.component.scss',
 })

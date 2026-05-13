@@ -44,6 +44,7 @@ jobs:
         run: |
           npm ci
           npm run build
+          npm ci --omit=dev
       - name: Upload backend artifact
         uses: actions/upload-artifact@v4
         with:
@@ -51,6 +52,8 @@ jobs:
           path: |
             backend/dist/
             backend/package.json
+            backend/package-lock.json
+            backend/node_modules/
 
   deploy-backend:
     runs-on: ubuntu-latest
@@ -76,6 +79,7 @@ jobs:
           git rm -rf --ignore-unmatch . --quiet
           mkdir -p dist
           cp -r /tmp/backend-dist/dist/. dist/
+          cp -r /tmp/backend-dist/node_modules/. node_modules/
           node -e "
             const pkg = require('/tmp/backend-dist/package.json');
             pkg.scripts = { start: 'node dist/main.js' };
@@ -95,7 +99,6 @@ jobs:
             ],
           };
           EOF
-          echo 'node_modules/' >> .gitignore
           git add .
           git commit -m "deploy: backend $(date +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
           git push origin deploy-api

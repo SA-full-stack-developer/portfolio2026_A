@@ -106,4 +106,40 @@ describe('AskMeFabComponent', () => {
     expect(event.preventDefault).toHaveBeenCalled();
     expect(mockAiService.askMe).toHaveBeenCalled();
   });
+
+  it('should not initialize GSAP on non-browser platform', () => {
+    const platformService = TestBed.inject(PlatformService) as any;
+    platformService.isBrowser = false;
+    mockGsapService.gsap.set.mockClear();
+
+    component.ngAfterViewInit();
+
+    expect(mockGsapService.gsap.set).not.toHaveBeenCalled();
+  });
+
+  it('should update inputText when onInput is called', () => {
+    component.onInput('hello');
+    expect(component.inputText()).toBe('hello');
+  });
+
+  it('should not send when message is empty', () => {
+    component.inputText.set('   ');
+    mockAiService.askMe.mockClear();
+
+    component.send();
+
+    expect(mockAiService.askMe).not.toHaveBeenCalled();
+    expect(component.history()).toEqual([]);
+  });
+
+  it('should not send when loading is true', () => {
+    component.inputText.set('hello');
+    component.loading.set(true);
+    mockAiService.askMe.mockClear();
+
+    component.send();
+
+    expect(mockAiService.askMe).not.toHaveBeenCalled();
+    expect(component.history()).toEqual([]);
+  });
 });

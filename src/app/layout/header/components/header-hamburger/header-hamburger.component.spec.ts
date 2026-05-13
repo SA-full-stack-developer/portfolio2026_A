@@ -1,3 +1,11 @@
+jest.mock('@angular/core', () => {
+  const actual = jest.requireActual('@angular/core');
+  return {
+    ...actual,
+    afterNextRender: jest.fn((cb: () => void) => cb()),
+  };
+});
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
   TranslateLoader,
@@ -26,6 +34,8 @@ class MockTranslateLoader implements TranslateLoader {
 describe('HeaderHamburgerComponent', () => {
   let component: HeaderHamburgerComponent;
   let fixture: ComponentFixture<HeaderHamburgerComponent>;
+  let mockPlatformService: { isBrowser: boolean };
+  let mockGsapService: { gsap: { fromTo: jest.Mock } };
 
   async function createComponent(): Promise<void> {
     fixture = TestBed.createComponent(HeaderHamburgerComponent);
@@ -36,7 +46,8 @@ describe('HeaderHamburgerComponent', () => {
   }
 
   beforeEach(async () => {
-    const mockGsapService = {
+    mockPlatformService = { isBrowser: true };
+    mockGsapService = {
       gsap: {
         fromTo: jest.fn((target, from, to) => {
           if (to.onComplete) {
@@ -45,10 +56,6 @@ describe('HeaderHamburgerComponent', () => {
           return { kill: jest.fn() };
         }),
       },
-    };
-
-    const mockPlatformService = {
-      isBrowser: true,
     };
 
     TestBed.configureTestingModule({
@@ -137,5 +144,45 @@ describe('HeaderHamburgerComponent', () => {
     const translate = TestBed.inject(TranslateService);
     const translation = translate.instant('NAV.CONTACT');
     expect(translation).toBe('Contáctame');
+  });
+
+  it('should not open or call GSAP when not in browser', async () => {
+    mockPlatformService.isBrowser = false;
+    await createComponent();
+
+    component.open();
+
+    expect(document.body.style.overflow).toBe('');
+    expect(document.body.style.paddingRight).toBe('');
+    expect(mockGsapService.gsap.fromTo).not.toHaveBeenCalled();
+  });
+
+  it('should not close or call GSAP when not in browser', async () => {
+    mockPlatformService.isBrowser = false;
+    await createComponent();
+
+    component.close();
+
+    expect(mockGsapService.gsap.fromTo).not.toHaveBeenCalled();
+  });
+
+  it('should safely handle missing drawer when opening', async () => {
+    await createComponent();
+    jest.spyOn(component['el'].nativeElement, 'querySelector').mockReturnValue(null);
+    mockGsapService.gsap.fromTo.mockClear();
+
+    component.open();
+
+    expect(mockGsapService.gsap.fromTo).not.toHaveBeenCalled();
+  });
+
+  it('should safely handle missing drawer when closing', async () => {
+    await createComponent();
+    jest.spyOn(component['el'].nativeElement, 'querySelector').mockReturnValue(null);
+    mockGsapService.gsap.fromTo.mockClear();
+
+    component.close();
+
+    expect(mockGsapService.gsap.fromTo).not.toHaveBeenCalled();
   });
 });

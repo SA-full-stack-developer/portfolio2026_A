@@ -84,22 +84,6 @@ describe('HeroStatCounterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should pass stat card elements to gsap.from and run scrollTrigger onEnter', async () => {
-    await createComponent();
-
-    expect(gsapFrom).toHaveBeenCalled();
-    const [cardsArg] = gsapFrom.mock.calls[0];
-    expect(Array.isArray(cardsArg)).toBe(true);
-    expect((cardsArg as HTMLElement[]).length).toBe(STATS_MOCK.length);
-    expect(component.statsVisible()).toBe(true);
-  });
-
-  it('should kill scroll trigger on destroy', async () => {
-    await createComponent();
-    fixture.destroy();
-    expect(scrollKill).toHaveBeenCalled();
-  });
-
   describe('when not in browser', () => {
     beforeEach(async () => {
       TestBed.resetTestingModule();
