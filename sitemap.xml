@@ -16,11 +16,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://csrangulardeveloper.nom.es/ai</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://csrangulardeveloper.nom.es/lab</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
