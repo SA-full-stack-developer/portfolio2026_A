@@ -7,6 +7,5 @@ export const serverRoutes: ServerRoute[] = [
   { path: 'legal', renderMode: RenderMode.Prerender },
   { path: 'lab', renderMode: RenderMode.Prerender },
   { path: 'error', renderMode: RenderMode.Server },
-  { path: 'ai', renderMode: RenderMode.Prerender },
   { path: '**', renderMode: RenderMode.Server },
 ];
