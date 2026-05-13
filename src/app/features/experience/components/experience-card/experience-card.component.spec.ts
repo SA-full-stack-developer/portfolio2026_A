@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ResolvedExperience } from '@core/models/experience.model';
 import {
   TranslateLoader,
   TranslateService,
@@ -9,6 +8,10 @@ import {
 import { Observable, of } from 'rxjs';
 
 import { provideZonelessChangeDetection } from '@angular/core';
+import { COMPANIES_MOCK } from '@core/mocks/companies.mock';
+import { PROJECTS_MOCK } from '@core/mocks/projects.mock';
+import { SKILLS_MOCK } from '@core/mocks/skills.mock';
+import { ResolvedExperience } from '@core/models/experience.model';
 import { ExperienceCardComponent } from './experience-card.component';
 
 class MockTranslateLoader implements TranslateLoader {
@@ -32,19 +35,9 @@ const mockExperience: ResolvedExperience = {
   technologyIds: ['1', '2'],
   projectIds: ['1', '2'],
   showCompany: true,
-  company: undefined,
-  projects: [],
-  skills: [
-    {
-      id: 'skill1',
-      name: 'Test Skill',
-      level: 1,
-      category: 'tools',
-      icon: 'test-icon',
-      highlighted: false,
-      yearsOfExperience: 1,
-    },
-  ],
+  company: COMPANIES_MOCK.find((company) => company.id === '1'),
+  projects: PROJECTS_MOCK.filter((project) => ['1', '2'].includes(project.id)),
+  skills: [SKILLS_MOCK[0]],
 };
 
 describe('ExperienceCardComponent', () => {
@@ -84,5 +77,31 @@ describe('ExperienceCardComponent', () => {
   it('should create', async () => {
     await createComponent(false, mockExperience);
     expect(component).toBeTruthy();
+  });
+
+  it('should update selectedSkill when onTechClick is called', async () => {
+    const experience: ResolvedExperience = {
+      ...mockExperience,
+      skills: [SKILLS_MOCK[0], SKILLS_MOCK[1]],
+    };
+    await createComponent(true, experience);
+
+    expect(component.selectedSkill()).toEqual(SKILLS_MOCK[0]);
+
+    component.onTechClick(SKILLS_MOCK[1]);
+
+    expect(component.selectedSkill()).toEqual(SKILLS_MOCK[1]);
+  });
+
+  it('should emit projectClick when onProjectClick is called', async () => {
+    await createComponent(true, mockExperience);
+
+    const emitted: string[] = [];
+    const subscription = component.projectClick.subscribe((id) => emitted.push(id));
+
+    component.onProjectClick('1');
+
+    expect(emitted).toEqual(['1']);
+    subscription.unsubscribe();
   });
 });

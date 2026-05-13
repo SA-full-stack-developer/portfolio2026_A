@@ -36,7 +36,7 @@ describe('CoverLetterComponent', () => {
       providers: [
         { provide: AiService, useValue: mockAiService },
         { provide: GsapService, useValue: createMockGsapService() },
-        { provide: PlatformService, useValue: createMockPlatformService(false) },
+        { provide: PlatformService, useValue: createMockPlatformService(true) },
       ],
     }).compileComponents();
 
@@ -100,6 +100,21 @@ describe('CoverLetterComponent', () => {
     expect(component.loading()).toBe(false);
   });
 
+  it('should not copy when there is no result', () => {
+    const clipboardWrite = jest.fn();
+    Object.defineProperty(navigator, 'clipboard', {
+      value: { writeText: clipboardWrite },
+      configurable: true,
+    });
+
+    component.result.set(null);
+    component.copy();
+
+    expect(clipboardWrite).not.toHaveBeenCalled();
+
+    delete (navigator as any).clipboard;
+  });
+
   it('should copy the result text to clipboard and reset copied after timeout', async () => {
     jest.useFakeTimers();
     const clipboardWrite = jest.fn().mockResolvedValue(undefined);
@@ -120,5 +135,59 @@ describe('CoverLetterComponent', () => {
 
     delete (navigator as any).clipboard;
     jest.useRealTimers();
+  });
+
+  it('should animate entrance with GSAP on root element in browser', () => {
+    const gsapService = TestBed.inject(GsapService);
+    expect(gsapService.gsap.from).toHaveBeenCalled();
+    expect(gsapService.gsap.from).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({
+        opacity: 0,
+        y: 40,
+        scrollTrigger: expect.objectContaining({
+          toggleActions: 'play none none none',
+          invalidateOnRefresh: true,
+        }),
+      }),
+    );
+  });
+
+  it('should register scrollTrigger from GSAP for teardown', () => {
+    expect(component['scrollTriggers'].length).toBeGreaterThan(0);
+  });
+
+  it('should kill scroll triggers on destroy', () => {
+    const kill = jest.fn();
+    component['scrollTriggers'] = [{ kill }] as typeof component['scrollTriggers'];
+    fixture.destroy();
+    expect(kill).toHaveBeenCalled();
+  });
+
+  it('should skip GSAP setup when not in browser', async () => {
+    TestBed.resetTestingModule();
+    mockAiService = createMockAiService();
+    await TestBed.configureTestingModule({
+      imports: [
+        CoverLetterComponent,
+        TranslateModule.forRoot({
+          loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
+        }),
+      ],
+      providers: [
+        { provide: AiService, useValue: mockAiService },
+        { provide: GsapService, useValue: createMockGsapService() },
+        { provide: PlatformService, useValue: createMockPlatformService(false) },
+      ],
+    }).compileComponents();
+
+    const ssFixture = TestBed.createComponent(CoverLetterComponent);
+    const gsapService = TestBed.inject(GsapService);
+    jest.clearAllMocks();
+    ssFixture.detectChanges();
+    await ssFixture.whenStable();
+
+    expect(gsapService.gsap.from).not.toHaveBeenCalled();
+    ssFixture.destroy();
   });
 });

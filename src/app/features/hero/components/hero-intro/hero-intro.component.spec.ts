@@ -10,6 +10,7 @@ import { Observable, of } from 'rxjs';
 import { Component, provideZonelessChangeDetection } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { createMockGsapService } from '@core/mocks/ai.service.mock';
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { HeroIntroComponent } from './hero-intro.component';
@@ -131,5 +132,37 @@ describe('HeroIntroComponent', () => {
     jest.spyOn(gsapService.gsap, 'from').mockImplementation(() => ({}) as any);
     await createComponent();
     expect(gsapService.gsap.from).toHaveBeenCalled();
+  });
+
+  describe('when not in browser (SSR)', () => {
+    beforeEach(async () => {
+      TestBed.resetTestingModule();
+      TestBed.configureTestingModule({
+        imports: [
+          HeroIntroComponent,
+          RouterTestingModule.withRoutes([{ path: 'contact', component: DummyComponent }]),
+        ],
+        providers: [
+          provideZonelessChangeDetection(),
+          { provide: PlatformService, useValue: { isBrowser: false } },
+          { provide: GsapService, useValue: createMockGsapService() },
+          provideTranslateService({
+            loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
+          }),
+        ],
+      });
+
+      const translate = TestBed.inject(TranslateService);
+      await translate.use('es').toPromise();
+    });
+
+    it('should skip ngAfterViewInit animation when platform is server', async () => {
+      const gsapService = TestBed.inject(GsapService);
+      jest.spyOn(gsapService.gsap, 'from');
+
+      await createComponent();
+
+      expect(gsapService.gsap.from).not.toHaveBeenCalled();
+    });
   });
 });

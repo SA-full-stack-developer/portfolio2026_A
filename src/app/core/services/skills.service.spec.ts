@@ -67,6 +67,21 @@ describe('SkillsService', () => {
     expect(service.filteredSkills()).toHaveLength(service.PAGE_SIZE);
   });
 
+  it('should set hasMore true when filtered slice is smaller than full filtered list', () => {
+    const service = createServiceWithMocks();
+    expect(service.allFilteredSkills().length).toBeGreaterThan(service.PAGE_SIZE);
+    expect(service.hasMore()).toBe(true);
+  });
+
+  it('should increment page and reveal more skills on loadMore', () => {
+    const service = createServiceWithMocks();
+    expect(service.page()).toBe(1);
+    service.loadMore();
+    expect(service.page()).toBe(2);
+    expect(service.filteredSkills()).toHaveLength(SKILLS_MOCK.length);
+    expect(service.hasMore()).toBe(false);
+  });
+
   it('should have allFilteredSkills equal to all skills on init', () => {
     const service = createServiceWithMocks();
     expect(service.allFilteredSkills()).toHaveLength(SKILLS_MOCK.length);

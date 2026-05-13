@@ -4,9 +4,10 @@ import { Observable, of } from 'rxjs';
 import { provideHttpClient } from '@angular/common/http';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { AVAILABLE_LANGUAGES } from '@core/models/language.model';
+import { AVAILABLE_LANGUAGES, DEFAULT_LANGUAGE } from '@core/models/language.model';
 import { TranslationObject } from '@ngx-translate/core'; // ✅ TranslationObject
 import { LanguageService } from './language.service';
+import { PlatformService } from './platform.service';
 
 // Mock loader para tests - no necesita archivos JSON reales
 class MockTranslateLoader implements TranslateLoader {
@@ -76,5 +77,31 @@ describe('LanguageService', () => {
   it('should fallback to first language if currentLang is unknown', () => {
     service['_currentLang'].set('fr' as any); // forzamos un idioma no existente
     expect(service.currentLanguageOption()).toEqual(AVAILABLE_LANGUAGES[0]);
+  });
+
+  describe('when not in browser (SSR)', () => {
+    beforeEach(() => {
+      TestBed.resetTestingModule();
+      localStorage.clear();
+      TestBed.configureTestingModule({
+        providers: [
+          provideZonelessChangeDetection(),
+          provideHttpClient(),
+          provideTranslateService({
+            loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
+          }),
+          { provide: PlatformService, useValue: { isBrowser: false } },
+        ],
+      });
+      service = TestBed.inject(LanguageService);
+      jest.spyOn(service['translateService'], 'getBrowserLang').mockReturnValue('en');
+    });
+
+    it('should call setLanguage with DEFAULT_LANGUAGE on init', () => {
+      const setLanguageSpy = jest.spyOn(service, 'setLanguage');
+      service.init();
+      expect(setLanguageSpy).toHaveBeenCalledWith(DEFAULT_LANGUAGE);
+      expect(service.currentLang()).toBe(DEFAULT_LANGUAGE);
+    });
   });
 });

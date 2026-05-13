@@ -47,4 +47,13 @@ describe('StatsService', () => {
     expect(service.stats().length).toBe(4);
     expect(service.stats()).toEqual(STATS_MOCK);
   });
+
+  it('should set error signal when loadStats request fails', () => {
+    jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    service.loadStats();
+    const req = httpMock.expectOne(apiUrl);
+    req.flush('Server error', { status: 500, statusText: 'Server Error' });
+    expect(service['_error']()).toBe('ERRORS.API');
+    jest.restoreAllMocks();
+  });
 });
