@@ -1,17 +1,5 @@
-import {
-  Component,
-  ElementRef,
-  Injector,
-  OnDestroy,
-  QueryList,
-  ViewChild,
-  ViewChildren,
-  afterNextRender,
-  inject,
-  signal,
-} from '@angular/core';
+import { AfterViewInit, Component, inject, signal } from '@angular/core';
 
-import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { StatsService } from '@core/services/stats.service';
 import { StatCounterComponent } from '../components/stat-counter/stat-counter.component';
@@ -22,53 +10,16 @@ import { StatCounterComponent } from '../components/stat-counter/stat-counter.co
   templateUrl: './hero-stat-counter.component.html',
   styleUrl: './hero-stat-counter.component.scss',
 })
-export class HeroStatCounterComponent implements OnDestroy {
+export class HeroStatCounterComponent implements AfterViewInit {
   private readonly statsService = inject(StatsService);
-  private readonly gsapService = inject(GsapService);
   private readonly platformService = inject(PlatformService);
-  private readonly injector = inject(Injector);
-
-  private scrollTriggerInstance: ScrollTrigger | undefined;
-
-  @ViewChild('grid') gridRef!: ElementRef;
-  @ViewChildren('statCard') statCards!: QueryList<ElementRef>;
 
   readonly stats = this.statsService.stats;
   statsVisible = signal(false);
 
-  constructor() {
-    afterNextRender(
-      () => {
-        setTimeout(() => this.animateStats(), 0);
-      },
-      { injector: this.injector },
-    );
-  }
-
-  private animateStats(): void {
+  ngAfterViewInit(): void {
     if (!this.platformService.isBrowser) return;
 
-    const gsap = this.gsapService.gsap;
-    const cards = this.statCards.map((c) => c.nativeElement);
-
-    const st = gsap.from(cards, {
-      opacity: 0,
-      y: 30,
-      duration: 0.6,
-      stagger: 0.3,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: this.gridRef.nativeElement,
-        start: 'top 85%',
-        invalidateOnRefresh: true,
-        onEnter: () => this.statsVisible.set(true),
-      },
-    });
-
-    this.scrollTriggerInstance = st.scrollTrigger;
-  }
-
-  ngOnDestroy(): void {
-    this.scrollTriggerInstance?.kill();
+    this.statsVisible.set(true);
   }
 }
