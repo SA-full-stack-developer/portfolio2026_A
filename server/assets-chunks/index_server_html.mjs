@@ -27,10 +27,12 @@ export default `<!doctype html>
     <link rel="icon" type="image/x-icon" href="favicon.ico"/>
     <link rel="canonical" href="https://csrangulardeveloper.nom.es"/>
     <meta name="google-site-verification" content="G8hWrTDLyuC23j9IDh7j8A2N8twEHEhY3m85PqeWDS0"/>
+    <link rel="manifest" href="manifest.webmanifest"/>
+    <meta name="theme-color" content="#4f8ef7"/>
   <link rel="stylesheet" href="styles-LVZTJQBY.css"></head>
   <body><script type="text/javascript" id="ng-event-dispatch-contract">(()=>{function p(t,n,r,o,e,i,f,m){return{eventType:t,event:n,targetElement:r,eic:o,timeStamp:e,eia:i,eirp:f,eiack:m}}function u(t){let n=[],r=e=>{n.push(e)};return{c:t,q:n,et:[],etc:[],d:r,h:e=>{r(p(e.type,e,e.target,t,Date.now()))}}}function s(t,n,r){for(let o=0;o<n.length;o++){let e=n[o];(r?t.etc:t.et).push(e),t.c.addEventListener(e,t.h,r)}}function c(t,n,r,o,e=window){let i=u(t);e._ejsas||(e._ejsas={}),e._ejsas[n]=i,s(i,r),s(i,o,!0)}window.__jsaction_bootstrap=c;})();
 </script>
     <app-root></app-root>
-  <link rel="modulepreload" href="chunk-AJXDIIMK.js"><link rel="modulepreload" href="chunk-5Z2LNEZX.js"><link rel="modulepreload" href="chunk-C3UGLEYT.js"><link rel="modulepreload" href="chunk-273DGHDF.js"><link rel="modulepreload" href="chunk-5EGD2VXB.js"><link rel="modulepreload" href="chunk-THTKIPC2.js"><link rel="modulepreload" href="chunk-SGV2N3VA.js"><link rel="modulepreload" href="chunk-YCJMBZQI.js"><link rel="modulepreload" href="chunk-26W6KYGG.js"><link rel="modulepreload" href="chunk-7CGTOI24.js"><script src="main-Y6L5VPBE.js" type="module"></script></body>
+  <link rel="modulepreload" href="chunk-DSFGQH4N.js"><link rel="modulepreload" href="chunk-UUL33G3W.js"><link rel="modulepreload" href="chunk-3IWA73U5.js"><link rel="modulepreload" href="chunk-QJE2OXZZ.js"><link rel="modulepreload" href="chunk-S7MMQL67.js"><link rel="modulepreload" href="chunk-GVWG65NU.js"><link rel="modulepreload" href="chunk-NS2TFJYP.js"><link rel="modulepreload" href="chunk-TFMVFU22.js"><link rel="modulepreload" href="chunk-MUZC7CME.js"><link rel="modulepreload" href="chunk-7CGTOI24.js"><script src="main-NQUD5TN6.js" type="module"></script></body>
 </html>
 `;
