@@ -1,5 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { BREADCRUMB_HOME, PERSON_SCHEMA, WEBSITE_SCHEMA } from '@core/config/seo.config';
+import {
+  CHAT_MESSAGE,
+  COPYRIGHT,
+  FOOTER,
+  GO_TO_TOP,
+  HEADER,
+} from '@core/constants/feaute-flags.constants';
 
 import { RouterOutlet } from '@angular/router';
 import { GsapService } from '@core/services/gsap.service';
@@ -35,6 +42,11 @@ export class App {
   private readonly languageService = inject(LanguageService);
   private readonly seoService = inject(SeoService);
   private readonly gsapService = inject(GsapService);
+  readonly HEADER = HEADER;
+  readonly GO_TO_TOP = GO_TO_TOP;
+  readonly FOOTER = FOOTER;
+  readonly COPYRIGHT = COPYRIGHT;
+  readonly CHAT_MESSAGE = CHAT_MESSAGE;
 
   constructor() {
     this.languageService.init();

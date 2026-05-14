@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 
+import { HEADER_LOGO } from '@core/constants/feaute-flags.constants';
 import { StatusService } from '@core/services/status.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { LogoComponent } from '@shared/components/logo/logo.component';
@@ -16,4 +17,5 @@ export class FooterInformationComponent {
   private readonly statusService = inject(StatusService);
 
   readonly status = this.statusService.status;
+  readonly HEADER_LOGO = HEADER_LOGO;
 }

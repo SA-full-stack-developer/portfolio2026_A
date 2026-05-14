@@ -1,3 +1,10 @@
+import {
+  HEADER_HAMBURGER,
+  HEADER_LOGO,
+  HEADER_NAV,
+  LANGUAGE_SWITCHER,
+} from '@core/constants/feaute-flags.constants';
+
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -21,4 +28,9 @@ import { HeaderNavComponent } from './components/header-nav/header-nav.component
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  readonly HEADER_LOGO = HEADER_LOGO;
+  readonly HEADER_NAV = HEADER_NAV;
+  readonly LANGUAGE_SWITCHER = LANGUAGE_SWITCHER;
+  readonly HEADER_HAMBURGER = HEADER_HAMBURGER;
+}

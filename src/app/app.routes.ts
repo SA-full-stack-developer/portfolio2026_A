@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { adminGuard } from '@core/guards/admin.guard';
 
 export const routes: Routes = [
   {
@@ -28,6 +29,11 @@ export const routes: Routes = [
   {
     path: 'legal',
     loadComponent: () => import('./pages/legal/legal.component').then((m) => m.LegalComponent),
+  },
+  {
+    path: 'admin/:token',
+    canActivate: [adminGuard],
+    children: [],
   },
   {
     path: '**',

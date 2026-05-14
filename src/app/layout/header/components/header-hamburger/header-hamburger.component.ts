@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 
 import { RouterLink } from '@angular/router';
+import { HEADER_NAV } from '@core/constants/feaute-flags.constants';
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { TranslateModule } from '@ngx-translate/core';
@@ -29,6 +30,7 @@ export class HeaderHamburgerComponent implements AfterViewInit {
   private readonly injector = inject(Injector);
 
   readonly isOpen = signal<boolean>(false);
+  readonly HEADER_NAV = HEADER_NAV;
 
   ngAfterViewInit(): void {
     this.setScrollbarWidth();

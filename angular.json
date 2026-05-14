@@ -113,7 +113,10 @@
               "buildTarget": "portfolio2026_A:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "buildTarget": "portfolio2026_A:build"
+          }
         },
         "test": {
           "builder": "@angular-builders/jest:run",

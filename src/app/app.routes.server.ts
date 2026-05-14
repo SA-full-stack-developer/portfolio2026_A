@@ -7,5 +7,6 @@ export const serverRoutes: ServerRoute[] = [
   { path: 'legal', renderMode: RenderMode.Prerender },
   { path: 'lab', renderMode: RenderMode.Prerender },
   { path: 'error', renderMode: RenderMode.Server },
+  { path: 'admin/:token', renderMode: RenderMode.Server },
   { path: '**', renderMode: RenderMode.Server },
 ];
