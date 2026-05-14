@@ -25,7 +25,7 @@ describe('FeatureFlagService', () => {
   });
 
   it('should hide admin flags when not admin', () => {
-    expect(service.isVisible('EXPERIMENTS')).toBe(false);
+    expect(service.isVisible('LAB')).toBe(false);
   });
 
   it('should return false for unknown flag', () => {

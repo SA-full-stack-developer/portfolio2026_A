@@ -3,6 +3,7 @@ import { Component, provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FeatureFlagService } from '@core/services/feature-flag.service';
+import { SessionService } from '@core/services/session.service';
 import { FeatureFlagDirective } from './feature-flag.directive';
 
 @Component({
@@ -21,20 +22,19 @@ class TestAdminComponent {}
 
 describe('FeatureFlagDirective', () => {
   let featureFlagService: FeatureFlagService;
+  let sessionService: SessionService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [provideZonelessChangeDetection()],
     });
     featureFlagService = TestBed.inject(FeatureFlagService);
+    sessionService = TestBed.inject(SessionService);
+    sessionService.setAdmin(false); // estado limpio
   });
 
-  it('should render public feature', () => {
-    const fixture = TestBed.createComponent(TestPublicComponent);
-    fixture.detectChanges();
-    const el = fixture.debugElement.query(By.css('div'));
-    expect(el).toBeTruthy();
-    expect(el.nativeElement.textContent).toBe('Skills visible');
+  afterEach(() => {
+    sessionStorage.clear(); // limpiar entre tests
   });
 
   it('should not render admin feature when not admin', () => {

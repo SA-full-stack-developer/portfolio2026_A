@@ -9,7 +9,7 @@ export class FeatureFlagService {
 
   isVisible(flagId: string): boolean {
     const flag = FEATURE_FLAGS[flagId];
-    if (!flag) return true;
+    if (!flag) return false;
 
     switch (flag.visibility) {
       case 'public':
