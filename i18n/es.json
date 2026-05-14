@@ -3,7 +3,8 @@
     "EXPERIENCE": "Experiencia",
     "CONTACT": "Contacto",
     "STACK": "Stack",
-    "IA": "Componentes IA"
+    "IA": "Componentes IA",
+    "LAB": "LAB"
   },
   "SKILLS": {
     "TITLE": "Stack Tecnológico",
@@ -212,5 +213,10 @@
       "OPEN": "Abrir asistente",
       "CLOSE": "Cerrar asistente"
     }
+  },
+  "LAB": {
+    "TITLE": "LAB",
+    "SUBTITLE": "Proyectos experimentales y características en desarrollo",
+    "NO_PROJECTS": "No hay proyectos experimentales disponibles en este momento."
   }
 }
