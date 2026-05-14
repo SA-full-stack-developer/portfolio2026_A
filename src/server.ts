@@ -8,12 +8,21 @@ import express, { NextFunction, Request, Response } from 'express';
 import { join } from 'node:path';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
+const serverDistFolder = join(import.meta.dirname, '..');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
 app.use(
   express.static(browserDistFolder, {
+    maxAge: '1y',
+    index: false,
+    redirect: false,
+  }),
+);
+
+app.use(
+  express.static(serverDistFolder, {
     maxAge: '1y',
     index: false,
     redirect: false,
