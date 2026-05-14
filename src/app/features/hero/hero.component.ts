@@ -1,3 +1,5 @@
+import { HERO_INTRO, HERO_STATS } from '@core/constants/feaute-flags.constants';
+
 import { Component } from '@angular/core';
 import { FeatureFlagDirective } from '@shared/directives/feature-flag.directive';
 import { HeroIntroComponent } from './components/hero-intro/hero-intro.component';
@@ -9,4 +11,7 @@ import { HeroStatCounterComponent } from './hero-stat-counter/hero-stat-counter.
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',
 })
-export class HeroComponent {}
+export class HeroComponent {
+  readonly HERO_INTRO = HERO_INTRO;
+  readonly HERO_STATS = HERO_STATS;
+}

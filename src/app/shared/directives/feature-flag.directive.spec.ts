@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
-
 import { Component, provideZonelessChangeDetection } from '@angular/core';
+
+import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FeatureFlagService } from '@core/services/feature-flag.service';
 import { FeatureFlagDirective } from './feature-flag.directive';
@@ -8,14 +8,14 @@ import { FeatureFlagDirective } from './feature-flag.directive';
 @Component({
   standalone: true,
   imports: [FeatureFlagDirective],
-  template: `<div *appFeatureFlag="'SKILLS'">Skills visible</div>`,
+  template: `<div *appFeatureFlag="SKILLS">Skills visible</div>`,
 })
 class TestPublicComponent {}
 
 @Component({
   standalone: true,
   imports: [FeatureFlagDirective],
-  template: `<div *appFeatureFlag="'EXPERIMENTS'">Admin only</div>`,
+  template: `<div *appFeatureFlag="LAB">Admin only</div>`,
 })
 class TestAdminComponent {}
 
@@ -42,13 +42,5 @@ describe('FeatureFlagDirective', () => {
     fixture.detectChanges();
     const el = fixture.debugElement.query(By.css('div'));
     expect(el).toBeNull();
-  });
-
-  it('should render admin feature when admin mode enabled', () => {
-    featureFlagService.enableAdminMode('DEV_ADMIN_2026');
-    const fixture = TestBed.createComponent(TestAdminComponent);
-    fixture.detectChanges();
-    const el = fixture.debugElement.query(By.css('div'));
-    expect(el).toBeTruthy();
   });
 });

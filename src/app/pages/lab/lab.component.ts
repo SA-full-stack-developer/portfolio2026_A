@@ -2,10 +2,11 @@ import { Component, OnInit, inject } from '@angular/core';
 import { BREADCRUMB_LAB, PAGE_SEO } from '@core/config/seo.config';
 
 import { SeoService } from '@core/services/seo.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-lab',
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './lab.component.html',
   styleUrl: './lab.component.scss',
 })

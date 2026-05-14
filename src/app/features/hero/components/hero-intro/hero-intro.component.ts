@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 
 import { Router } from '@angular/router';
+import { HERO_AVATAR } from '@core/constants/feaute-flags.constants';
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { navScrollTo } from '@core/utils/navigation.utils';
@@ -29,6 +30,8 @@ export class HeroIntroComponent implements AfterViewInit {
   private readonly gsapService = inject(GsapService);
   private readonly platformService = inject(PlatformService);
   private readonly injector = inject(Injector);
+
+  readonly HERO_AVATAR = HERO_AVATAR;
 
   @ViewChildren('animItem') animItems!: QueryList<ElementRef>;
 

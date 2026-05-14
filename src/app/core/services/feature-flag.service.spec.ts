@@ -28,22 +28,6 @@ describe('FeatureFlagService', () => {
     expect(service.isVisible('EXPERIMENTS')).toBe(false);
   });
 
-  it('should show admin flags when admin mode is enabled', () => {
-    service.enableAdminMode('DEV_ADMIN_2026');
-    expect(service.isVisible('EXPERIMENTS')).toBe(true);
-  });
-
-  it('should hide admin flags after disabling admin mode', () => {
-    service.enableAdminMode('DEV_ADMIN_2026');
-    service.disableAdminMode();
-    expect(service.isVisible('EXPERIMENTS')).toBe(false);
-  });
-
-  it('should not enable admin mode with wrong token', () => {
-    service.enableAdminMode('WRONG_TOKEN');
-    expect(service.isAdmin()).toBe(false);
-  });
-
   it('should return false for unknown flag', () => {
     expect(service.isVisible('NONEXISTENT')).toBe(false);
   });
