@@ -1,5 +1,4 @@
 import { Directive, TemplateRef, ViewContainerRef, effect, inject, input } from '@angular/core';
-import { LAB, SKILLS } from '@core/constants/feaute-flags.constants';
 
 import { FeatureFlagService } from '@core/services/feature-flag.service';
 
@@ -13,9 +12,6 @@ export class FeatureFlagDirective {
   private readonly featureFlagService = inject(FeatureFlagService);
   private readonly templateRef = inject(TemplateRef);
   private readonly viewContainer = inject(ViewContainerRef);
-
-  readonly SKILLS = SKILLS;
-  readonly LAB = LAB;
 
   constructor() {
     effect(() => {
