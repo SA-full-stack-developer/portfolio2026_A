@@ -20,4 +20,9 @@ export class FeatureFlagService {
         return false;
     }
   }
+
+  getVisibility(flagId: string): string {
+    const flag = FEATURE_FLAGS[flagId];
+    return flag ? flag.visibility : 'hidden';
+  }
 }
