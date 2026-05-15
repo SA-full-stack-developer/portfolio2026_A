@@ -15,10 +15,11 @@ import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { SeoService } from '@core/services/seo.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { SafeHtmlPipe } from '@shared/pipes/safe-html.pipe';
 
 @Component({
   selector: 'app-about-me',
-  imports: [TranslateModule],
+  imports: [TranslateModule, SafeHtmlPipe],
   templateUrl: './about-me.component.html',
   styleUrl: './about-me.component.scss',
 })

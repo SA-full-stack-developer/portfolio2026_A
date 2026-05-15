@@ -218,5 +218,22 @@
     "TITLE": "LAB",
     "SUBTITLE": "Proyectos experimentales y características en desarrollo",
     "NO_PROJECTS": "No hay proyectos experimentales disponibles en este momento."
+  },
+  "TIME_AGO": {
+    "JUST_NOW": "ahora mismo",
+    "MINUTES_ONE": "hace 1 minuto",
+    "MINUTES_OTHER": "hace {{count}} minutos",
+    "HOURS_ONE": "hace 1 hora",
+    "HOURS_OTHER": "hace {{count}} horas",
+    "DAYS_ONE": "hace 1 día",
+    "DAYS_OTHER": "hace {{count}} días",
+    "MONTHS_ONE": "hace 1 mes",
+    "MONTHS_OTHER": "hace {{count}} meses",
+    "YEARS_ONE": "hace 1 año",
+    "YEARS_OTHER": "hace {{count}} años",
+    "YEARS_MONTHS_ONE_ONE": "hace 1 año y 1 mes",
+    "YEARS_MONTHS_ONE_OTHER": "hace 1 año y {{months}} meses",
+    "YEARS_MONTHS_OTHER_ONE": "hace {{years}} años y 1 mes",
+    "YEARS_MONTHS_OTHER_OTHER": "hace {{years}} años y {{months}} meses"
   }
 }

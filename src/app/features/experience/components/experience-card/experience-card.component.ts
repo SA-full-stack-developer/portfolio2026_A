@@ -6,10 +6,11 @@ import { Skill } from '@core/models/skill.model';
 import { LanguageService } from '@core/services/language.service';
 import { SkillCardComponent } from '@features/skills/components/skill-card/skill-card.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { TimeAgoPipe } from '@shared/pipes/time-ago.pipe';
 
 @Component({
   selector: 'app-experience-card',
-  imports: [TranslateModule, DatePipe, SkillCardComponent],
+  imports: [TranslateModule, DatePipe, SkillCardComponent, TimeAgoPipe],
   templateUrl: './experience-card.component.html',
   styleUrl: './experience-card.component.scss',
 })

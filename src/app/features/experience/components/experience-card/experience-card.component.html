@@ -3,16 +3,26 @@
     <div class="flex flex-wrap experience-card__roles">
       <div class="w-100">
         @if (experience().endDate) {
-          <span>
-            {{ experience().startDate | date: 'MMMM yyyy' : '' : currentLang() }} -
-            {{ experience().endDate | date: 'MMMM yyyy' : '' : currentLang() }}
+          <div class="w-100">
+            <span>
+              {{ experience().startDate | date: 'MMMM yyyy' : '' : currentLang() }} -
+              {{ experience().endDate | date: 'MMMM yyyy' : '' : currentLang() }}
+            </span>
+          </div>
+          <span class="experience-card__time-ago">
+            {{ experience().endDate | timeAgo }}
           </span>
         } @else if ((experience().dates?.length ?? 0) > 0) {
           <div class="flex flex-col">
             @for (date of experience().dates; track date) {
-              <span>
-                {{ date.startDate | date: 'MMMM yyyy' : '' : currentLang() }} -
-                {{ date.endDate | date: 'MMMM yyyy' : '' : currentLang() }}
+              <div class="w-100">
+                <span>
+                  {{ date.startDate | date: 'MMMM yyyy' : '' : currentLang() }} -
+                  {{ date.endDate | date: 'MMMM yyyy' : '' : currentLang() }}
+                </span>
+              </div>
+              <span class="experience-card__time-ago">
+                {{ date.endDate | timeAgo }}
               </span>
             }
           </div>
