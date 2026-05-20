@@ -14,7 +14,7 @@ import { LanguageService } from '@core/services/language.service';
 import { SeoService } from '@core/services/seo.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { FeatureFlagDirective } from '@shared/directives/feature-flag.directive';
-import { AskMeFabComponent } from 'src/app/layout/ask-me-fab/ask-me-fab.component';
+import { AskMeFabComponent } from './layout/ask-me-fab/ask-me-fab.component';
 import { FooterCopyrightComponent } from './layout/footer/components/footer-copyright/footer-copyright.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { GoToTopComponent } from './layout/go-to-top/go-to-top.component';
