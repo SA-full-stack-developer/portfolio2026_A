@@ -22,7 +22,7 @@ const ICONS = [
 ];
 
 const input = 'node_modules/@phosphor-icons/core/assets/duotone';
-const output = 'src/assets/icons';
+const output = 'apps/portfolio/src/assets/icons';
 
 mkdirSync(output, { recursive: true });
 

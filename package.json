@@ -5,7 +5,7 @@
     "build:icons": "node scripts/build-icons.mjs",
     "ng": "ng",
     "start:ng": "nx serve",
-    "start:nest": "npm run start:dev --prefix backend",
+    "start:nest": "npm run start:dev --prefix apps/backend",
     "start:all": "concurrently -n \"NG,NEST\" -c \"cyan,magenta\" \"npm run start:ng\" \"npm run start:nest\"",
     "start": "nx build:icons && serve",
     "build": "node scripts/build-icons.mjs && nx build",
