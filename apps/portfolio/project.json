@@ -119,9 +119,9 @@
       }
     },
     "lint": {
-      "executor": "@angular-eslint/builder:lint",
+      "executor": "nx:run-commands",
       "options": {
-        "lintFilePatterns": ["apps/portfolio/src/**/*.ts", "apps/portfolio/src/**/*.html"]
+        "command": "npx eslint \"apps/portfolio/src/**/*.ts\" \"apps/portfolio/src/**/*.html\""
       },
       "outputs": ["{options.outputFile}"]
     }
