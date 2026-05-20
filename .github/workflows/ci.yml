@@ -16,7 +16,7 @@ jobs:
           node-version: '20'
           cache: 'npm'
       - run: npm ci --legacy-peer-deps
-      - run: npm run lint
+      - run: npx nx lint portfolio2026_A
 
   test:
     runs-on: ubuntu-latest
@@ -28,7 +28,7 @@ jobs:
           node-version: '20'
           cache: 'npm'
       - run: npm ci --legacy-peer-deps
-      - run: npm run test:ci
+      - run: npx nx test portfolio2026_A
 
   build-backend:
     runs-on: ubuntu-latest
@@ -40,7 +40,7 @@ jobs:
           node-version: '20'
           cache: 'npm'
       - name: Build backend
-        working-directory: backend
+        working-directory: apps/backend
         run: |
           npm ci
           npm run build
@@ -50,10 +50,10 @@ jobs:
         with:
           name: backend-dist
           path: |
-            backend/dist/
-            backend/package.json
-            backend/package-lock.json
-            backend/node_modules/
+            apps/backend/dist/
+            apps/backend/package.json
+            apps/backend/package-lock.json
+            apps/backend/node_modules/
 
   deploy-backend:
     runs-on: ubuntu-latest
@@ -129,7 +129,7 @@ jobs:
       - name: Build frontend
         run: |
           npm ci --legacy-peer-deps
-          npm run build -- --configuration production
+          npx nx build portfolio2026_A --configuration production
       - name: Inject font preloads
         run: node scripts/inject-font-preloads.mjs
       - name: Upload frontend artifact
