@@ -7,7 +7,7 @@
 /bazel-out
 
 # Node
-/node_modules
+node_modules/
 npm-debug.log
 yarn-error.log
 
@@ -50,8 +50,8 @@ __screenshots__/
 Thumbs.db
 
 # Backend node_modules
-backend/node_modules/
-backend/.env
+apps/backend/node_modules/
+apps/backend/.env
 
 
 
