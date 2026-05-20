@@ -1,0 +1,28 @@
+# Cristian Salcedo Rodríguez
+
+> Full Stack Developer especializado en Angular y NestJS. Construyo aplicaciones web modernas, escalables y elegantes. Disponible para proyectos.
+
+## Sobre mí
+
+Desarrollador Full Stack con dominio experto en Angular (v21, standalone, zoneless, SSR) y NestJS. Basado en España. Trabajo en remoto. Apasionado por el código limpio, la optimización de rendimiento y las experiencias digitales de calidad.
+
+## Stack principal
+
+- Frontend: Angular, TypeScript, SCSS/SASS, RxJS, Angular Material, PrimeNG
+- Backend: NestJS, Node.js
+- DevOps: Git, Docker, CI/CD (GitHub Actions)
+- Otros: SSR, Responsive Design, Google Performance, Jira, Asana
+
+## Contacto y redes
+
+- Portfolio: https://csrangulardeveloper.nom.es
+- GitHub: https://github.com/SA-full-stack-developer
+- LinkedIn: https://www.linkedin.com/in/cristian-salcedo-fullstack/
+- Contacto: https://csrangulardeveloper.nom.es/contact
+
+## Páginas
+
+- [Home](https://csrangulardeveloper.nom.es/)
+- [Sobre mí](https://csrangulardeveloper.nom.es/about-me)
+- [Contacto](https://csrangulardeveloper.nom.es/contact)
+- [Lab](https://csrangulardeveloper.nom.es/lab)

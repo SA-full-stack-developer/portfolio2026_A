@@ -1,0 +1,38 @@
+<section class="flex flex-col flex-center gap-md about-me">
+  <article #animRow class="about-me--row about-me__title">
+    <h1 [innerHTML]="'ABOUT_ME.TITLE' | translate | safeHtml"></h1>
+  </article>
+  <article #animRow class="about-me--row about-me__title">
+    <h2 [innerHTML]="'ABOUT_ME.INTRO_TITLE' | translate | safeHtml"></h2>
+  </article>
+  <article #animRow class="about-me--row">
+    <p [innerHTML]="'ABOUT_ME.INTRO_TEXT' | translate | safeHtml"></p>
+  </article>
+  <article #animRow class="about-me--row about-me__title">
+    <h3 [innerHTML]="'ABOUT_ME.MY_PHILOSOPHY_TITLE' | translate | safeHtml"></h3>
+  </article>
+  <article #animRow class="about-me--row">
+    <p [innerHTML]="'ABOUT_ME.MY_PHILOSOPHY_TEXT' | translate | safeHtml"></p>
+  </article>
+  <article #animRow class="about-me--row about-me__title">
+    <h3 [innerHTML]="'ABOUT_ME.WHAT_I_DO_TITLE' | translate | safeHtml"></h3>
+  </article>
+  <article #animRow class="about-me--row">
+    <p [innerHTML]="'ABOUT_ME.WHAT_I_DO_TEXT' | translate | safeHtml"></p>
+  </article>
+  <article #animRow class="about-me--row about-me__title">
+    <h3 [innerHTML]="'ABOUT_ME.HOBBIES_TITLE' | translate | safeHtml"></h3>
+  </article>
+  <article #animRow class="flex flex-col gap-md about-me--row">
+    <p [innerHTML]="'ABOUT_ME.HOBBIES_TEXT' | translate | safeHtml"></p>
+    <div class="flex gap-sm">
+      <span class="tag">#Gunpla</span>
+      <span class="tag">#3DPrinting</span>
+      <span class="tag">#Gaming</span>
+      <span class="tag">#Anime</span>
+    </div>
+  </article>
+  <article #animRow class="about-me--row about-me__closing">
+    <p [innerHTML]="'ABOUT_ME.CLOSING' | translate | safeHtml"></p>
+  </article>
+</section>

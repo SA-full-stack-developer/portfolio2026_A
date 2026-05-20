@@ -1,0 +1,57 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+.contact {
+  max-width: 800px;
+  margin: auto;
+  padding-top: 3rem;
+
+  &__social {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-left: 2px solid v.$primary-hue;
+    background: rgba(v.$primary-hue, 0.05);
+
+    &-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: v.$text-secondary;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__link {
+    color: v.$primary-hue;
+    text-decoration: none;
+    font-family: 'Courier New', monospace;
+    transition: all 0.3s ease;
+
+    &:hover {
+      text-shadow: 0 0 8px v.$primary-hue;
+      transform: translateX(5px);
+    }
+
+    .contact__node {
+      font-weight: bold;
+    }
+  }
+
+  &__form {
+    margin-top: 2rem;
+  }
+
+  &__cta {
+    @include m.btn-primary;
+
+    &:disabled,
+    &[disabled] {
+      background: v.$text-secondary;
+      border-color: v.$text-secondary;
+
+      &:hover {
+        color: v.$bg-dark;
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+<section class="flex flex-center error-404">
+  <article class="terminal">
+    <div class="flex terminal__header">
+      <span class="terminal__dot red"></span>
+      <span class="terminal__dot yellow"></span>
+      <span class="terminal__dot green"></span>
+      <span class="terminal__title">bash — 404_not_found.sh</span>
+    </div>
+
+    <div class="terminal__body">
+      <p class="terminal__code">
+        <span class="terminal__prompt">></span> status_check --route="{{ currentRoute }}"
+      </p>
+
+      <p class="terminal__error">[ERROR] Route not found in production_v2.0</p>
+
+      <p class="terminal__code"><span class="terminal__prompt">></span> locate --user="guest"</p>
+
+      <p class="terminal__info">Searching for directions...</p>
+
+      @for (line of terminalLines; track $index) {
+        <p class="terminal__info">{{ line }}</p>
+      }
+
+      <p class="terminal__warning">Warning: You are in deep space.</p>
+
+      <p class="flex flex-align-center terminal__code">
+        <span class="terminal__prompt">></span>
+        <span class="terminal__cursor"></span>
+      </p>
+
+      <button (click)="fixSystem()" class="error-404__cta">sudo fix --all</button>
+    </div>
+  </article>
+</section>

@@ -1,0 +1,14 @@
+@use '../../../../../styles/variables' as v;
+
+.header-nav {
+  list-style: none;
+
+  &__link {
+    color: v.$text-primary;
+    font-size: large;
+
+    &:hover {
+      color: v.$primary-hue;
+    }
+  }
+}

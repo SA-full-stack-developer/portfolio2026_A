@@ -18,16 +18,16 @@
     "module": "preserve",
     "paths": {
       "@core/*": [
-        "src/app/core/*"
+        "apps/portfolio/src/app/core/*"
       ],
       "@shared/*": [
-        "src/app/shared/*"
+        "apps/portfolio/src/app/shared/*"
       ],
       "@features/*": [
-        "src/app/features/*"
+        "apps/portfolio/src/app/features/*"
       ],
       "@env/*": [
-        "src/environments/*"
+        "apps/portfolio/src/environments/*"
       ]
     }
   },
@@ -40,10 +40,10 @@
   "files": [],
   "references": [
     {
-      "path": "./tsconfig.app.json"
+      "path": "./apps/portfolio/tsconfig.app.json"
     },
     {
-      "path": "./tsconfig.spec.json"
+      "path": "./apps/portfolio/tsconfig.spec.json"
     }
   ]
 }

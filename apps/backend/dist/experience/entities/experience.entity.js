@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Experience = void 0;
+class Experience {
+    id;
+    companyId;
+    roles;
+    description;
+    technologyIds;
+    projectIds;
+    showCompany;
+    dates;
+    startDate;
+    endDate;
+}
+exports.Experience = Experience;
+//# sourceMappingURL=experience.entity.js.map

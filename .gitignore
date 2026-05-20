@@ -52,3 +52,8 @@ Thumbs.db
 # Backend node_modules
 backend/node_modules/
 backend/.env
+
+
+
+.nx/cache
+.nx/workspace-data

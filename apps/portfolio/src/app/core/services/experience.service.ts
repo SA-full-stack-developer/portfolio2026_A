@@ -1,0 +1,51 @@
+import { Injectable, inject, signal } from '@angular/core';
+import { catchError, map, of } from 'rxjs';
+
+import { HttpClient } from '@angular/common/http';
+import { ResolvedExperience } from '@core/models/experience.model';
+import { environment } from '@env/environment';
+import { TranslateService } from '@ngx-translate/core';
+import { PlatformService } from './platform.service';
+
+@Injectable({ providedIn: 'root' })
+export class ExperienceService {
+  private readonly http = inject(HttpClient);
+  private readonly platformService = inject(PlatformService);
+  private readonly apiUrl = `${
+    this.platformService.isBrowser ? environment.browserApiUrl : environment.apiUrl
+  }/experience`;
+  private readonly translate = inject(TranslateService);
+  private readonly _experiences = signal<ResolvedExperience[]>([]);
+  private readonly _loading = signal<boolean>(false);
+  private readonly _error = signal<string | null>(null);
+
+  readonly experiences = this._experiences.asReadonly();
+  readonly loading = this._loading.asReadonly();
+  readonly error = this._error.asReadonly();
+
+  constructor() {
+    this.fetchExperience();
+  }
+
+  private fetchExperience() {
+    this._loading.set(true);
+    this._error.set(null);
+
+    this.http
+      .get<{ data: ResolvedExperience[] }>(this.apiUrl)
+      .pipe(
+        map((res) => res.data),
+        catchError((err) => {
+          const errorMessage = this.translate.instant('ERRORS.API');
+          this._error.set(errorMessage);
+          this._loading.set(false);
+          console.error('API Error:', err);
+          return of([]);
+        }),
+      )
+      .subscribe((data) => {
+        this._experiences.set(data);
+        this._loading.set(false);
+      });
+  }
+}

@@ -1,0 +1,5 @@
+@use '../../../../styles/variables' as v;
+
+.error-container {
+  color: v.$warn-hue;
+}

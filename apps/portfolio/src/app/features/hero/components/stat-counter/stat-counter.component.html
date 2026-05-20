@@ -1,0 +1,16 @@
+<article
+  class="flex flex-col flex-center gap-md stat-counter-card"
+  role="figure"
+  [attr.aria-label]="(label() | translate) + ': ' + Math.round(displayValue())"
+>
+  <img
+    class="stat-counter-card__icon"
+    aria-hidden="true"
+    [src]="'assets/icons/' + icon()"
+    [alt]="label() | translate"
+  />
+  <span class="stat-counter-card__value" aria-live="polite">
+    {{ showPlus() ? '+' : '' }}{{ displayValue() | number: '1.0-0' }}
+  </span>
+  <span class="stat-counter-card__label flex flex-center">{{ label() | translate }}</span>
+</article>

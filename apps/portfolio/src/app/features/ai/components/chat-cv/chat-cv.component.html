@@ -1,0 +1,43 @@
+<section class="chat-cv">
+  <div class="chat-cv__header">
+    <h2 class="chat-cv__title">{{ 'AI.CHAT_CV.TITLE' | translate }}</h2>
+    <p class="chat-cv__subtitle">{{ 'AI.CHAT_CV.SUBTITLE' | translate }}</p>
+  </div>
+
+  <div class="chat-cv__messages" #messagesContainer>
+    @if (history().length === 0) {
+      <div class="chat-cv__empty">
+        <p>{{ 'AI.CHAT_CV.PLACEHOLDER' | translate }}</p>
+      </div>
+    }
+    @for (msg of history(); track $index) {
+      <app-chat-message [message]="msg" />
+    }
+    @if (loading()) {
+      <div class="chat-cv__typing"><span></span><span></span><span></span></div>
+    }
+  </div>
+
+  @if (error()) {
+    <p class="chat-cv__error">{{ error()! | translate }}</p>
+  }
+
+  <div class="chat-cv__input-row">
+    <textarea
+      class="chat-cv__textarea"
+      [placeholder]="'AI.CHAT_CV.INPUT_PLACEHOLDER' | translate"
+      [value]="inputText()"
+      (input)="onInput($any($event.target).value)"
+      (keydown)="onKeydown($event)"
+      rows="1"
+    ></textarea>
+    <button
+      class="chat-cv__send"
+      (click)="send()"
+      [disabled]="loading() || !inputText().trim()"
+      [attr.aria-label]="'AI.SEND' | translate"
+    >
+      <span class="material-icons">send</span>
+    </button>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+<section class="cover-letter">
+  <div class="cover-letter__header">
+    <h2 class="cover-letter__title">{{ 'AI.COVER_LETTER.TITLE' | translate }}</h2>
+    <p class="cover-letter__subtitle">{{ 'AI.COVER_LETTER.SUBTITLE' | translate }}</p>
+  </div>
+
+  <div class="cover-letter__form">
+    <div class="cover-letter__row">
+      <input
+        class="cover-letter__input"
+        type="text"
+        [placeholder]="'AI.COVER_LETTER.COMPANY' | translate"
+        [value]="company()"
+        (input)="company.set($any($event.target).value)"
+      />
+      <input
+        class="cover-letter__input"
+        type="text"
+        [placeholder]="'AI.COVER_LETTER.ROLE' | translate"
+        [value]="role()"
+        (input)="role.set($any($event.target).value)"
+      />
+    </div>
+    <textarea
+      class="cover-letter__textarea"
+      [placeholder]="'AI.COVER_LETTER.JOB_DESCRIPTION' | translate"
+      [value]="jobDescription()"
+      (input)="jobDescription.set($any($event.target).value)"
+      rows="20"
+    ></textarea>
+    <button
+      class="cover-letter__btn"
+      (click)="generate()"
+      [disabled]="loading() || !company().trim() || !role().trim()"
+    >
+      @if (loading()) {
+        <span class="cover-letter__spinner"></span>
+      }
+      {{ (loading() ? 'AI.GENERATING' : 'AI.COVER_LETTER.GENERATE') | translate }}
+    </button>
+  </div>
+
+  @if (error()) {
+    <p class="cover-letter__error">{{ error()! | translate }}</p>
+  }
+
+  @if (result()) {
+    <div class="cover-letter__result">
+      <div class="cover-letter__result-header">
+        <span class="cover-letter__result-label">{{ 'AI.COVER_LETTER.RESULT' | translate }}</span>
+        <button class="cover-letter__copy" (click)="copy()">
+          <span class="material-icons">{{ copied() ? 'check' : 'content_copy' }}</span>
+        </button>
+      </div>
+      <pre class="cover-letter__result-text">{{ result() }}</pre>
+    </div>
+  }
+</section>
