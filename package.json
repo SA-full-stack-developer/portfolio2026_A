@@ -4,9 +4,9 @@
   "scripts": {
     "build:icons": "node scripts/build-icons.mjs",
     "ng": "ng",
-    "start:ng": "nx serve",
+    "start:ng": "nx serve portfolio2026_A",
     "start:nest": "npm run start:dev --prefix apps/backend",
-    "start:all": "concurrently -n \"NG,NEST\" -c \"cyan,magenta\" \"npm run start:ng\" \"npm run start:nest\"",
+    "start:all": "concurrently -n \"NG,NEST\" -c \"cyan,magenta\" \"npm run start:nest\" \"npm run start:ng\"",
     "start": "nx build:icons && serve",
     "build": "node scripts/build-icons.mjs && nx build",
     "watch": "nx build --watch --configuration development",
