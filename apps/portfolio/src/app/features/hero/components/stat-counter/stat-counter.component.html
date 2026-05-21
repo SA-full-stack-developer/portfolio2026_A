@@ -10,7 +10,7 @@
     [alt]="label() | translate"
   />
   <span class="stat-counter-card__value" aria-live="polite">
-    {{ showPlus() ? '+' : '' }}{{ displayValue() | number: '1.0-0' }}
+    {{ showPlus() ? '+' : '' }}{{ formatNumber(displayValue()) }}
   </span>
   <span class="stat-counter-card__label flex flex-center">{{ label() | translate }}</span>
 </article>

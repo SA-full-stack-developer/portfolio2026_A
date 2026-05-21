@@ -8,8 +8,6 @@ import {
 } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
-import { registerLocaleData } from '@angular/common';
-import localeEs from '@angular/common/locales/es';
 import { SKILLS_MOCK } from '@core/mocks/skills.mock';
 import { ResolvedExperience } from '@core/models/experience.model';
 import { ExperienceService } from '@core/services/experience.service';
@@ -76,8 +74,6 @@ describe('ExperienceComponent', () => {
   }
 
   beforeEach(async () => {
-    registerLocaleData(localeEs);
-
     TestBed.configureTestingModule({
       imports: [ExperienceComponent],
       providers: [

@@ -1,13 +1,12 @@
 import { Component, DestroyRef, effect, inject, input, signal } from '@angular/core';
 
-import { DecimalPipe } from '@angular/common';
 import { GsapService } from '@core/services/gsap.service';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-stat-counter',
   standalone: true,
-  imports: [DecimalPipe, TranslateModule],
+  imports: [TranslateModule],
   templateUrl: './stat-counter.component.html',
   styleUrl: './stat-counter.component.scss',
 })
@@ -49,5 +48,9 @@ export class StatCounterComponent {
     });
 
     this.destroyRef.onDestroy(() => tween.kill());
+  }
+
+  formatNumber(value: number): string {
+    return Math.round(value).toLocaleString('es-ES');
   }
 }

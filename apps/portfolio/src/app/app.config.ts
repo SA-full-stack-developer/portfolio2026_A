@@ -7,15 +7,11 @@ import {
   withInMemoryScrolling,
 } from '@angular/router';
 
-import { registerLocaleData } from '@angular/common';
-import localeEs from '@angular/common/locales/es';
 import { LOCALE_ID } from '@angular/core';
 import { provideServiceWorker } from '@angular/service-worker';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { routes } from './app.routes';
-
-registerLocaleData(localeEs);
 
 export const appConfig: ApplicationConfig = {
   providers: [
