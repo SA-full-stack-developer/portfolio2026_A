@@ -1,0 +1,2 @@
+import './polyfills.server.mjs';
+import{Sa as i,V as e,bd as n}from"./chunk-5L6334CL.mjs";var a=class r{sanitizer=e(n);transform(t){return t?this.sanitizer.bypassSecurityTrustHtml(t):""}static \u0275fac=function(m){return new(m||r)};static \u0275pipe=i({name:"safeHtml",type:r,pure:!0})};export{a};
