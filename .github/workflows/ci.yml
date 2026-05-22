@@ -14,12 +14,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - run: npm ci --legacy-peer-deps
       - name: Debug
         run: |
           pwd
           ls -la
           cat package.json | head -20
-      - run: npm ci --legacy-peer-deps
+      - name: Debug lockfile
+        run: |
+          echo "--- lockfileVersion ---"
+          node -e "const f=require('./package-lock.json'); console.log('lockfileVersion:', f.lockfileVersion, '| packages count:', Object.keys(f.packages).length)"
+          echo "--- npm version ---"
+          npm --version
+          echo "--- node version ---"
+          node --version
       - run: npx nx lint portfolio2026_A
 
   test:
