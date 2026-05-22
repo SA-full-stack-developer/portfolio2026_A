@@ -72,7 +72,8 @@
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/portfolio/public"
+            "input": "apps/portfolio/public",
+            "output": "/"
           },
           {
             "glob": "**/*",

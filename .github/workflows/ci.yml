@@ -16,9 +16,12 @@ jobs:
           node-version: '22'
       - name: Clear npm cache
         run: npm cache clean --force
-      - name: npm ci
+      - name: Install dependencies
         run: npm ci --legacy-peer-deps
-          npx nx build portfolio2026_A --configuration production
+      - name: Build frontend
+        env:
+          NODE_ENV: production
+        run: npx nx build portfolio2026_A --configuration production
       - name: Inject font preloads
         run: node scripts/inject-font-preloads.mjs
       - name: Upload frontend artifact
