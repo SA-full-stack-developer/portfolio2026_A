@@ -173,7 +173,7 @@ jobs:
           git checkout deploy
           git rm -rf . --quiet
           cp -r /tmp/frontend-dist/browser/. .
-          mkdir -p server
+          mkdir -p server 
           cp -r /tmp/frontend-dist/server/. server/
           git add .
           git commit -m "deploy: frontend $(date +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
