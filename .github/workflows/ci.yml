@@ -16,6 +16,8 @@ jobs:
           node-version: '22'
           cache: 'npm'
           cache-dependency-path: package-lock.json
+      - name: Clear npm cache
+        run: npm cache clean --force
       - run: npm ci --legacy-peer-deps
       - run: npx nx lint portfolio2026_A
 
@@ -29,6 +31,8 @@ jobs:
           node-version: '22'
           cache: 'npm'
           cache-dependency-path: package-lock.json
+      - name: Clear npm cache
+        run: npm cache clean --force
       - run: npm ci --legacy-peer-deps
       - run: npx nx test portfolio2026_A
 
@@ -130,6 +134,8 @@ jobs:
           node-version: '22'
           cache: 'npm'
           cache-dependency-path: package-lock.json
+      - name: Clear npm cache
+        run: npm cache clean --force
       - name: Build frontend
         env:
           NODE_ENV: production
@@ -153,7 +159,7 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GH_TOKEN }}
-      - name: Download backend artifact
+      - name: Download frontend artifact
         uses: actions/download-artifact@v4
         with:
           name: frontend-dist
