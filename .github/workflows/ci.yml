@@ -153,7 +153,7 @@ jobs:
         env:
           NODE_ENV: production
         run: |
-          npx nx build portfolio2026_A --configuration production
+          npx nx build portfolio2026_A --configuration production --no-prerender
       - name: Inject font preloads
         run: node scripts/inject-font-preloads.mjs
       - name: Upload frontend artifact
