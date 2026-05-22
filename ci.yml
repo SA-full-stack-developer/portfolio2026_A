@@ -1,0 +1,190 @@
+name: CI + Deploy
+
+on:
+  push:
+    branches:
+      - develop
+      - 'feature/**'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+      - name: Clear npm cache
+        run: npm cache clean --force
+      - run: npm ci --legacy-peer-deps
+      - run: npx nx lint portfolio2026_A
+
+  test:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+      - name: Clear npm cache
+        run: npm cache clean --force
+      - run: npm ci --legacy-peer-deps
+      - run: npx nx test portfolio2026_A
+
+  build-backend:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: apps/backend/package-lock.json
+      - name: Build backend
+        working-directory: apps/backend
+        run: |
+          npm ci
+          npm run build
+          npm ci --omit=dev
+      - name: Upload backend artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-dist
+          path: |
+            apps/backend/dist/
+            apps/backend/package.json
+            apps/backend/package-lock.json
+            apps/backend/node_modules/
+
+  deploy-backend:
+    runs-on: ubuntu-latest
+    needs: build-backend
+    if: github.ref == 'refs/heads/develop'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_TOKEN }}
+      - name: Download backend artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: backend-dist
+          path: /tmp/backend-dist/
+      - name: Configure git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+      - name: Push backend to deploy-api branch
+        run: |
+          git checkout deploy-api
+          git rm -rf --ignore-unmatch . --quiet
+          mkdir -p dist
+          cp -r /tmp/backend-dist/dist/. dist/
+          cp -r /tmp/backend-dist/node_modules/. node_modules/
+          node -e "
+            const pkg = require('/tmp/backend-dist/package.json');
+            pkg.scripts = { start: 'node dist/main.js' };
+            require('fs').writeFileSync('package.json', JSON.stringify(pkg, null, 2));
+          "
+          cat > ecosystem.config.js << 'EOF'
+          module.exports = {
+            apps: [
+              {
+                name: 'portfolio-backend',
+                script: 'dist/main.js',
+                env: {
+                  NODE_ENV: 'production',
+                  PORT: 3000,
+                },
+              },
+            ],
+          };
+          EOF
+          git add .
+          git commit -m "deploy: backend $(date +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
+          git push origin deploy-api
+
+  wait-for-backend:
+    runs-on: ubuntu-latest
+    needs: deploy-backend
+    if: github.ref == 'refs/heads/develop'
+    steps:
+      - name: Wait for backend to restart
+        run: |
+          echo "Esperando 40 segundos para que el backend reinicie..."
+          sleep 40
+          echo "Verificando que la API responde..."
+          curl --retry 5 --retry-delay 5 --retry-connrefused \
+            https://api.csrangulardeveloper.nom.es/api/v1 || true
+
+  build-frontend:
+    runs-on: ubuntu-latest
+    needs: wait-for-backend
+    if: github.ref == 'refs/heads/develop'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Debug lockfile
+        run: |
+          echo "--- which package-lock.json uses npm ---"
+          npm config get prefix
+          echo "--- wc package-lock.json ---"
+          wc -l package-lock.json
+          echo "--- lockfileVersion ---"
+          node -e "console.log(require('./package-lock.json').lockfileVersion)"
+          echo "--- packages count ---"
+          node -e "console.log(Object.keys(require('./package-lock.json').packages).length)"
+          echo "--- name in lockfile ---"
+          node -e "console.log(require('./package-lock.json').name)"
+      - name: Clear npm cache
+        run: npm cache clean --force
+      - name: Build frontend
+        env:
+          NODE_ENV: production
+          APP_PRERENDER: 'true'
+        run: |
+          npm ci --legacy-peer-deps
+      - name: Inject font preloads
+        run: node scripts/inject-font-preloads.mjs
+      - name: Upload frontend artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-dist
+          path: dist/portfolio2026_A/
+
+  deploy-frontend:
+    runs-on: ubuntu-latest
+    needs: build-frontend
+    if: github.ref == 'refs/heads/develop'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_TOKEN }}
+      - name: Download frontend artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: frontend-dist
+          path: /tmp/frontend-dist/
+      - name: Configure git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+      - name: Push frontend to deploy branch
+        run: |
+          git checkout deploy
+          git rm -rf . --quiet
+          cp -r /tmp/frontend-dist/browser/. .
+          mkdir -p server
+          cp -r /tmp/frontend-dist/server/. server/
+          git add .
+          git commit -m "deploy: frontend $(date +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
+          git push origin deploy
