@@ -132,30 +132,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Debug pre-install
-        run: |
-          echo "--- pwd ---"
-          pwd
-          echo "--- package.json name ---"
-          node -e "console.log(require('./package.json').name)"
-          echo "--- ls root ---"
-          ls -la
-          echo "--- npm config ---"
-          npm config get prefix
-          npm config get cache
+      - name: Clear npm cache
+        run: npm cache clean --force
       - name: Build frontend
         env:
           NODE_ENV: production
           APP_PRERENDER: 'true'
         run: |
           npm ci --legacy-peer-deps
-      - name: Debug post-install
-        run: |
-          echo "--- node_modules exists ---"
-          ls -la | grep node_modules || echo "NO NODE_MODULES"
-          echo "--- lockfile used ---"
-          npm ls --depth=0 2>/dev/null | head -5
-          npx nx build portfolio2026_A --configuration production
       - name: Inject font preloads
         run: node scripts/inject-font-preloads.mjs
       - name: Upload frontend artifact
