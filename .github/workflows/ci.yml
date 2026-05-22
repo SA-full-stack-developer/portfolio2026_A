@@ -14,20 +14,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'npm'
+      - name: Debug pre-install
+        run: |
+          echo "--- package-lock packages ---"
+          node -e "const f=require('./package-lock.json'); console.log('count:', Object.keys(f.packages).length)"
       - run: npm ci --legacy-peer-deps
-      - name: Debug
+      - name: Debug post-install
         run: |
-          pwd
-          ls -la
-          cat package.json | head -20
-      - name: Debug lockfile
-        run: |
-          echo "--- lockfileVersion ---"
-          node -e "const f=require('./package-lock.json'); console.log('lockfileVersion:', f.lockfileVersion, '| packages count:', Object.keys(f.packages).length)"
-          echo "--- npm version ---"
-          npm --version
-          echo "--- node version ---"
-          node --version
+          echo "--- node_modules count ---"
+          ls node_modules | wc -l
+          echo "--- nx exists ---"
+          ls node_modules/.bin/nx || echo "NX NOT FOUND"
       - run: npx nx lint portfolio2026_A
 
   test:
@@ -109,7 +107,7 @@ jobs:
                 },
               },
             ],
-          };
+          ];
           EOF
           git add .
           git commit -m "deploy: backend $(date +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
