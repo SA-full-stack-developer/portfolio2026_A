@@ -1,0 +1,41 @@
+const { withNativeFederation, shareAll } = require('@angular-architects/native-federation/config');
+
+module.exports = withNativeFederation({
+  name: 'portfolio',
+  shared: {
+    ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+  },
+  skip: [
+    'rxjs/ajax',
+    'rxjs/fetch',
+    'rxjs/testing',
+    'rxjs/webSocket',
+    '@core/utils/navigation.utils',
+    '@shared/components/language-switcher/language-switcher.component',
+    '@shared/components/icon/icon.component',
+    '@shared/components/status-dot/status-dot.component',
+    '@shared/components/logo/logo.component',
+    '@core/services/status.service',
+    '@core/services/ai.service',
+    '@core/models/ai.model',
+    '@core/services/language.service',
+    '@shared/pipes/safe-html.pipe',
+    '@core/services/platform.service',
+    '@core/services/gsap.service',
+    '@core/models/form.model',
+    '@shared/directives/feature-flag.directive',
+    '@features/skills/skills.component',
+    '@features/hero/hero.component',
+    '@features/experience/experience.component',
+    '@core/services/session.service',
+    '@core/services/seo.service',
+    '@core/constants/sections.constants',
+    '@core/config/seo.config',
+    '@core/constants/feaute-flags.constants',
+    '@core/guards/admin.guard',
+  ],
+  features: {
+    ignoreUnusedDeps: true,
+    ignoreInternalPaths: true,
+  },
+});

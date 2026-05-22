@@ -1,0 +1,58 @@
+
+> portfolio2026-a@0.0.0 start:all
+> concurrently -n "NG,NEST" -c "cyan,magenta" "npm run start:nest" "npm run start:ng"
+
+[NG] 
+[NG] > portfolio2026-a@0.0.0 start:nest
+[NG] > npm run start:dev --prefix apps/backend
+[NG] 
+[NEST] 
+[NEST] > portfolio2026-a@0.0.0 start:ng
+[NEST] > nx serve
+[NEST] 
+[NG] 
+[NG] > backend@0.0.1 start:dev
+[NG] > nest start --watch
+[NG] 
+[NEST] 
+[NEST] [7m[1m[31m NX [39m[22m[27m  [31mBoth project and target have to be specified[39m
+[NEST] 
+[NEST] Pass --verbose to see the stacktrace.
+[NEST] 
+[NEST] npm run start:ng exited with code 1
+[NG] [2J[3J[H[[90m11:33:50[0m] Starting compilation in watch mode...
+[NG] 
+[NG] [[90m11:33:58[0m] Found 0 errors. Watching for file changes.
+[NG] 
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +7ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSkillsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCompaniesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mStatusModule dependencies initialized[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mProjectsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mStatsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mExperienceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/api/v1}:[39m[38;5;3m +464ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSkillsController {/api/v1/skills}:[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/skills, GET} route[39m[38;5;3m +2ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/skills/categories, GET} route[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mExperienceController {/api/v1/experience}:[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/experience, GET} route[39m[38;5;3m +1ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/experience/:id, GET} route[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCompaniesController {/api/v1/companies}:[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/companies, GET} route[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/companies/:id, GET} route[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mProjectsController {/api/v1/projects}:[39m[38;5;3m +1ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/projects, GET} route[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/projects/:id, GET} route[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mStatsController {/api/v1/stats}:[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/stats, GET} route[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mStatusController {/api/v1/status}:[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/status, GET} route[39m[38;5;3m +1ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/api/v1/auth}:[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/validate-token, POST} route[39m[38;5;3m +0ms[39m
+[NG] [32m[Nest] 30504  - [39m21/05/2026, 11:34:10 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +1ms[39m

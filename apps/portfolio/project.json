@@ -1,0 +1,161 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "portfolio2026_A",
+  "projectType": "application",
+  "generators": {
+    "@schematics/angular:component": {
+      "standalone": true,
+      "style": "scss",
+      "type": "component"
+    },
+    "@schematics/angular:service": {
+      "type": "service"
+    },
+    "@schematics/angular:pipe": {
+      "type": "pipe"
+    },
+    "@schematics/angular:directive": {
+      "type": "directive"
+    }
+  },
+  "sourceRoot": "apps/portfolio/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "ssr": true,
+        "federationConfig": "apps/portfolio/federation.config.ts"
+      },
+      "configurations": {
+        "production": {
+          "target": "portfolio2026_A:esbuild:production"
+        },
+        "development": {
+          "target": "portfolio2026_A:esbuild:development",
+          "dev": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "target": "portfolio2026_A:serve-original:development",
+        "federationConfig": "apps/portfolio/federation.config.ts",
+        "rebuildDelay": 500,
+        "dev": true,
+        "cacheExternalArtifacts": false,
+        "port": 0
+      },
+      "continuous": true
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/portfolio/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx eslint \"apps/portfolio/src/**/*.ts\" \"apps/portfolio/src/**/*.html\""
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "esbuild": {
+      "executor": "@angular/build:application",
+      "options": {
+        "browser": "apps/portfolio/src/main.ts",
+        "tsConfig": "apps/portfolio/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/portfolio/public",
+            "output": "/"
+          },
+          {
+            "glob": "**/*",
+            "input": "apps/portfolio/src/assets",
+            "output": "assets"
+          }
+        ],
+        "styles": [
+          "apps/portfolio/src/styles/styles.scss",
+          "flag-icons/css/flag-icons.min.css",
+          "apps/portfolio/src/assets/fonts/material-icons.css"
+        ],
+        "server": "apps/portfolio/src/main.server.ts",
+        "outputMode": "server",
+        "security": {
+          "allowedHosts": []
+        },
+        "ssr": {
+          "entry": "apps/portfolio/src/server.ts"
+        },
+        "outputPath": "dist/portfolio2026_A",
+        "polyfills": ["es-module-shims"]
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/portfolio/src/environments/environment.ts",
+              "with": "apps/portfolio/src/environments/environment.prod.ts"
+            }
+          ],
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "700kB",
+              "maximumError": "1MB"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kB",
+              "maximumError": "8kB"
+            }
+          ],
+          "outputHashing": "all",
+          "sourceMap": false,
+          "serviceWorker": "apps/portfolio/ngsw-config.json"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "outputHashing": "media"
+        },
+        "docker": {
+          "fileReplacements": [
+            {
+              "replace": "apps/portfolio/src/environments/environment.ts",
+              "with": "apps/portfolio/src/environments/environment.docker.ts"
+            }
+          ],
+          "outputHashing": "all",
+          "prerender": false
+        }
+      },
+      "defaultConfiguration": "production",
+      "outputs": ["{options.outputPath}"]
+    },
+    "serve-original": {
+      "executor": "@angular/build:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "portfolio2026_A:esbuild:production"
+        },
+        "development": {
+          "buildTarget": "portfolio2026_A:esbuild:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "portfolio2026_A:build",
+        "port": 4200
+      }
+    }
+  }
+}
