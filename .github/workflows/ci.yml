@@ -15,7 +15,8 @@ jobs:
         with:
           node-version: '22'
           cache: 'npm'
-      - run: npm ci --legacy-peer-deps
+      - name: Clean install
+        run: npm ci --legacy-peer-deps --prefer-offline=false
       - run: npx nx lint portfolio2026_A
 
   test:
