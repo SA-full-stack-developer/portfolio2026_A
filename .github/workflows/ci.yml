@@ -21,6 +21,7 @@ jobs:
       - name: Build frontend
         env:
           NODE_ENV: production
+          APP_PRERENDER: 'true'
         run: npx nx build portfolio2026_A --configuration production
       - name: Inject font preloads
         run: node scripts/inject-font-preloads.mjs
