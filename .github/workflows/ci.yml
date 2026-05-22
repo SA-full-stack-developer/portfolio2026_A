@@ -136,24 +136,13 @@ jobs:
           cache-dependency-path: package-lock.json
       - name: Clear npm cache
         run: npm cache clean --force
-      - run: npm ci --legacy-peer-deps
-      - name: Debug post-install
-        run: |
-          echo "--- packages installed ---"
-          ls node_modules | wc -l
-          echo "--- nx exists ---"
-          ls node_modules/.bin/nx || echo "NX NOT FOUND"
-          echo "--- which npm ---"
-          which npm
-          echo "--- npm root ---"
-          npm root
-          echo "--- pwd ---"
-          pwd
       - name: Build frontend
         env:
           NODE_ENV: production
+          APP_PRERENDER: 'true'
         run: |
-          npx nx build portfolio2026_A --configuration production --no-prerender
+          npm ci --legacy-peer-deps
+          npx nx build portfolio2026_A --configuration production
       - name: Inject font preloads
         run: node scripts/inject-font-preloads.mjs
       - name: Upload frontend artifact
