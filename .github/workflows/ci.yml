@@ -132,6 +132,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Debug lockfile
+        run: |
+          echo "--- which package-lock.json uses npm ---"
+          npm config get prefix
+          echo "--- wc package-lock.json ---"
+          wc -l package-lock.json
+          echo "--- lockfileVersion ---"
+          node -e "console.log(require('./package-lock.json').lockfileVersion)"
+          echo "--- packages count ---"
+          node -e "console.log(Object.keys(require('./package-lock.json').packages).length)"
+          echo "--- name in lockfile ---"
+          node -e "console.log(require('./package-lock.json').name)"
       - name: Clear npm cache
         run: npm cache clean --force
       - name: Build frontend
