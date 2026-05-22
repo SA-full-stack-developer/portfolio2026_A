@@ -14,8 +14,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'npm'
-          cache-dependency-path: package-lock.json
       - name: Clear npm cache
         run: npm cache clean --force
       - run: npm ci --legacy-peer-deps
@@ -29,8 +27,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'npm'
-          cache-dependency-path: package-lock.json
       - name: Clear npm cache
         run: npm cache clean --force
       - run: npm ci --legacy-peer-deps
