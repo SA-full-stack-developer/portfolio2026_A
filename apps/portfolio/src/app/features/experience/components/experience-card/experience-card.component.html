@@ -5,8 +5,8 @@
         @if (experience().endDate) {
           <div class="w-100">
             <span>
-              {{ experience().startDate | date: 'MMMM yyyy' : '' : currentLang() }} -
-              {{ experience().endDate | date: 'MMMM yyyy' : '' : currentLang() }}
+              {{ experience().startDate | localDate: currentLang() }} -
+              {{ experience().endDate | localDate: currentLang() }}
             </span>
           </div>
           <span class="experience-card__time-ago">
@@ -17,8 +17,8 @@
             @for (date of experience().dates; track date) {
               <div class="w-100">
                 <span>
-                  {{ date.startDate | date: 'MMMM yyyy' : '' : currentLang() }} -
-                  {{ date.endDate | date: 'MMMM yyyy' : '' : currentLang() }}
+                  {{ date.startDate | localDate: currentLang() }} -
+                  {{ date.endDate | localDate: currentLang() }}
                 </span>
               </div>
               <span class="experience-card__time-ago">
@@ -28,7 +28,7 @@
           </div>
         } @else {
           <span
-            >{{ experience().startDate | date: 'MMMM yyyy' : '' : currentLang() }} -
+            >{{ experience().startDate | localDate: currentLang() }} -
             {{ 'EXPERIENCES.CURRENT' | translate }} ⭐</span
           >
         }

@@ -24,7 +24,7 @@ export const appConfig: ApplicationConfig = {
       }),
       withEnabledBlockingInitialNavigation(),
     ),
-    provideClientHydration(withEventReplay()),
+    ...(isDevMode() ? [] : [provideClientHydration(withEventReplay())]),
     provideHttpClient(withFetch()),
     provideTranslateService({
       fallbackLang: 'en',
