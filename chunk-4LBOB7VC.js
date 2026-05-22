@@ -1,0 +1,1 @@
+import{inject as a}from"@angular/core";import{DomSanitizer as m}from"@angular/platform-browser";import*as i from"@angular/core";var e=class r{sanitizer=a(m);transform(t){return t?this.sanitizer.bypassSecurityTrustHtml(t):""}static \u0275fac=function(n){return new(n||r)};static \u0275pipe=i.\u0275\u0275definePipe({name:"safeHtml",type:r,pure:!0})};export{e as a};
