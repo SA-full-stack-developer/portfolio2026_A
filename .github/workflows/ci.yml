@@ -132,20 +132,31 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Build frontend
-        env:
-          NODE_ENV: production
-          APP_PRERENDER: 'true'
+      - name: Debug pre-install
         run: |
-          npm ci --legacy-peer-deps
-          npx nx build portfolio2026_A --configuration production
-      - name: Inject font preloads
-        run: node scripts/inject-font-preloads.mjs
-      - name: Upload frontend artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: frontend-dist
-          path: dist/portfolio2026_A/
+          echo "--- pwd ---"
+          pwd
+          echo "--- package.json name ---"
+          node -e "console.log(require('./package.json').name)"
+          echo "--- ls root ---"
+          ls -la
+          echo "--- npm config ---"
+          npm config get prefix
+          npm config get cache
+            - name: Build frontend
+              env:
+                NODE_ENV: production
+                APP_PRERENDER: 'true'
+              run: |
+                npm ci --legacy-peer-deps
+                npx nx build portfolio2026_A --configuration production
+            - name: Inject font preloads
+              run: node scripts/inject-font-preloads.mjs
+            - name: Upload frontend artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: frontend-dist
+                path: dist/portfolio2026_A/
 
   deploy-frontend:
     runs-on: ubuntu-latest
