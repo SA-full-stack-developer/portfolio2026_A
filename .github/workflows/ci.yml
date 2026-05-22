@@ -15,17 +15,8 @@ jobs:
         with:
           node-version: '22'
           cache: 'npm'
-      - name: Debug pre-install
-        run: |
-          echo "--- package-lock packages ---"
-          node -e "const f=require('./package-lock.json'); console.log('count:', Object.keys(f.packages).length)"
+          cache-dependency-path: package-lock.json
       - run: npm ci --legacy-peer-deps
-      - name: Debug post-install
-        run: |
-          echo "--- node_modules count ---"
-          ls node_modules | wc -l
-          echo "--- nx exists ---"
-          ls node_modules/.bin/nx || echo "NX NOT FOUND"
       - run: npx nx lint portfolio2026_A
 
   test:
@@ -37,6 +28,7 @@ jobs:
         with:
           node-version: '22'
           cache: 'npm'
+          cache-dependency-path: package-lock.json
       - run: npm ci --legacy-peer-deps
       - run: npx nx test portfolio2026_A
 
@@ -49,6 +41,7 @@ jobs:
         with:
           node-version: '22'
           cache: 'npm'
+          cache-dependency-path: apps/backend/package-lock.json
       - name: Build backend
         working-directory: apps/backend
         run: |
@@ -107,7 +100,7 @@ jobs:
                 },
               },
             ],
-          ];
+          };
           EOF
           git add .
           git commit -m "deploy: backend $(date +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
@@ -136,6 +129,7 @@ jobs:
         with:
           node-version: '22'
           cache: 'npm'
+          cache-dependency-path: package-lock.json
       - name: Build frontend
         env:
           NODE_ENV: production
@@ -159,7 +153,7 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GH_TOKEN }}
-      - name: Download frontend artifact
+      - name: Download backend artifact
         uses: actions/download-artifact@v4
         with:
           name: frontend-dist
