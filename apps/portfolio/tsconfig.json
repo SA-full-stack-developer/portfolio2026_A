@@ -1,5 +1,3 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -15,21 +13,7 @@
     "emitDecoratorMetadata": true,
     "importHelpers": true,
     "target": "ES2022",
-    "module": "preserve",
-    "paths": {
-      "@core/*": [
-        "apps/portfolio/src/app/core/*"
-      ],
-      "@shared/*": [
-        "apps/portfolio/src/app/shared/*"
-      ],
-      "@features/*": [
-        "apps/portfolio/src/app/features/*"
-      ],
-      "@env/*": [
-        "apps/portfolio/src/environments/*"
-      ]
-    }
+    "module": "preserve"
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

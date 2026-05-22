@@ -39,6 +39,9 @@
     "@ngx-translate/core": "^17.0.0",
     "@ngx-translate/http-loader": "^17.0.0",
     "@phosphor-icons/core": "^2.1.1",
+    "@softarc/native-federation-node": "^3.3.4",
+    "cors": "^2.8.5",
+    "es-module-shims": "^1.5.12",
     "express": "^5.1.0",
     "flag-icons": "^7.5.0",
     "gsap": "^3.14.2",
@@ -46,7 +49,9 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@angular-architects/native-federation": "^21.2.3",
     "@angular-builders/jest": "^21.0.3",
+    "@angular-devkit/build-angular": "^21.2.11",
     "@angular-devkit/core": "^21.2.11",
     "@angular-devkit/schematics": "^21.2.11",
     "@angular/build": "^21.2.11",

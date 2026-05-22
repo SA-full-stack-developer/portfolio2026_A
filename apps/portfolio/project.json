@@ -22,6 +22,48 @@
   "prefix": "app",
   "targets": {
     "build": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "ssr": true,
+        "federationConfig": "apps/portfolio/federation.config.ts"
+      },
+      "configurations": {
+        "production": {
+          "target": "portfolio2026_A:esbuild:production"
+        },
+        "development": {
+          "target": "portfolio2026_A:esbuild:development",
+          "dev": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "target": "portfolio2026_A:serve-original:development",
+        "federationConfig": "apps/portfolio/federation.config.ts",
+        "rebuildDelay": 500,
+        "dev": true,
+        "cacheExternalArtifacts": false,
+        "port": 0
+      },
+      "continuous": true
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/portfolio/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx eslint \"apps/portfolio/src/**/*.ts\" \"apps/portfolio/src/**/*.html\""
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "esbuild": {
       "executor": "@angular/build:application",
       "options": {
         "browser": "apps/portfolio/src/main.ts",
@@ -51,7 +93,8 @@
         "ssr": {
           "entry": "apps/portfolio/src/server.ts"
         },
-        "outputPath": "dist/portfolio2026_A"
+        "outputPath": "dist/portfolio2026_A",
+        "polyfills": ["es-module-shims"]
       },
       "configurations": {
         "production": {
@@ -97,33 +140,21 @@
       "defaultConfiguration": "production",
       "outputs": ["{options.outputPath}"]
     },
-    "serve": {
+    "serve-original": {
       "executor": "@angular/build:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "portfolio2026_A:build:production"
+          "buildTarget": "portfolio2026_A:esbuild:production"
         },
         "development": {
-          "buildTarget": "portfolio2026_A:build:development"
+          "buildTarget": "portfolio2026_A:esbuild:development"
         }
       },
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "portfolio2026_A:build"
+        "buildTarget": "portfolio2026_A:build",
+        "port": 4200
       }
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "options": {
-        "jestConfig": "apps/portfolio/jest.config.ts"
-      }
-    },
-    "lint": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "npx eslint \"apps/portfolio/src/**/*.ts\" \"apps/portfolio/src/**/*.html\""
-      },
-      "outputs": ["{options.outputFile}"]
     }
   }
 }

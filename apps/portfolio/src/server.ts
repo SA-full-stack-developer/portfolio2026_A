@@ -1,48 +1,15 @@
-import {
-  AngularNodeAppEngine,
-  createNodeRequestHandler,
-  writeResponseToNodeResponse,
-} from '@angular/ssr/node';
-import express, { NextFunction, Request, Response } from 'express';
-
+import { initNodeFederation } from '@softarc/native-federation-node';
 import { join } from 'node:path';
 
-const browserDistFolder = join(import.meta.dirname, '../browser');
-const serverDistFolder = join(import.meta.dirname, '..');
+const isDevMode = process.env['NODE_ENV'] !== 'production';
 
-const app = express();
-const angularApp = new AngularNodeAppEngine();
-
-app.use(
-  express.static(browserDistFolder, {
-    maxAge: '1y',
-    index: false,
-    redirect: false,
-  }),
-);
-
-app.use(
-  express.static(serverDistFolder, {
-    maxAge: '1y',
-    index: false,
-    redirect: false,
-  }),
-);
-
-app.use(async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const response = await angularApp.handle(req);
-    if (!response) return next();
-    writeResponseToNodeResponse(response, res);
-  } catch (err) {
-    next(err);
+(async () => {
+  if (!isDevMode) {
+    await initNodeFederation({
+      relBundlePath: join(import.meta.dirname, '../browser/'),
+      throwIfRemoteNotFound: false,
+    });
   }
-});
 
-const port = process.env['PORT'] || 4000;
-app.listen(port, (error) => {
-  if (error) throw error;
-  console.log(`Node Express server listening on http://localhost:${port}`);
-});
-
-export const reqHandler = createNodeRequestHandler(app);
+  await import('./bootstrap-server');
+})();

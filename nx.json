@@ -27,7 +27,7 @@
     "libsDir": "libs"
   },
   "projects": {
-    "portfolio2026_A": "apps/portfolio",
+    "portfolio": "apps/portfolio",
     "backend": "apps/backend"
   }
 }
