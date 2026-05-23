@@ -1,4 +1,4 @@
-import { Stat } from '@core/models/stat.model';
+import { Stat } from '@portfolio/shared/models';
 
 export const STATS_MOCK: Stat[] = [
   {

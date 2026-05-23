@@ -1,4 +1,4 @@
-import { Project } from '@core/models/project.model';
+import { Project } from '@portfolio/shared/models';
 
 export const PROJECTS_MOCK: Project[] = [
   {

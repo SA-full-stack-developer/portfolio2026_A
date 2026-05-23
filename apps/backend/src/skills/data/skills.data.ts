@@ -1,4 +1,4 @@
-import { Skill } from '../entities/skill.entity';
+import { Skill } from '@portfolio/shared/models';
 
 export const SKILLS_DATA: Skill[] = [
   {

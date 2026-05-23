@@ -1,4 +1,4 @@
-import { Experience } from '../entities/experience.entity';
+import { Experience } from '@portfolio/shared/models';
 
 export const EXPERIENCES_DATA: Experience[] = [
   {

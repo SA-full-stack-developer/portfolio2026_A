@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { STATUS } from './data/status.data';
-import { Status } from './entities/status.entity';
+import { Status } from '@portfolio/shared/models';
 
 @Injectable()
 export class StatusService {

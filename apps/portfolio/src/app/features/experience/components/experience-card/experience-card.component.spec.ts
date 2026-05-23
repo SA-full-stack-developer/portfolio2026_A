@@ -11,7 +11,7 @@ import { provideZonelessChangeDetection } from '@angular/core';
 import { COMPANIES_MOCK } from '@core/mocks/companies.mock';
 import { PROJECTS_MOCK } from '@core/mocks/projects.mock';
 import { SKILLS_MOCK } from '@core/mocks/skills.mock';
-import { ResolvedExperience } from '@core/models/experience.model';
+import { ResolvedExperience } from '@portfolio/shared/models';
 import { ExperienceCardComponent } from './experience-card.component';
 
 class MockTranslateLoader implements TranslateLoader {

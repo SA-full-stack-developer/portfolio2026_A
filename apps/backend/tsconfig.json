@@ -24,6 +24,11 @@
     "types": [
       "node",
       "jest"
-    ]
+    ],
+    "paths": {
+      "@portfolio/shared/models": [
+        "../../libs/shared/models/src/index.ts"
+      ]
+    }
   }
 }

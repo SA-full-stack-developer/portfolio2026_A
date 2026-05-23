@@ -1,7 +1,7 @@
 import { Component, OnInit, inject, input, output, signal } from '@angular/core';
 
-import { ResolvedExperience } from '@core/models/experience.model';
-import { Skill } from '@core/models/skill.model';
+import { ResolvedExperience } from '@portfolio/shared/models';
+import { Skill } from '@portfolio/shared/models';
 import { LanguageService } from '@core/services/language.service';
 import { SkillCardComponent } from '@features/skills/components/skill-card/skill-card.component';
 import { TranslateModule } from '@ngx-translate/core';

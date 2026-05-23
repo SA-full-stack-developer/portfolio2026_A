@@ -1,4 +1,4 @@
-import { Project } from '../entities/project.entity';
+import { Project } from '@portfolio/shared/models';
 
 export const PROJECTS_DATA: Project[] = [
   {

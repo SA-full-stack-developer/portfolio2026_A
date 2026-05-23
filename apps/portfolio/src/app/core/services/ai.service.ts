@@ -5,7 +5,7 @@ import {
   ChatCvRequest,
   ContactAssistantRequest,
   CoverLetterRequest,
-} from '@core/models/ai.model';
+} from '@portfolio/shared/models';
 import { Observable, map } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';

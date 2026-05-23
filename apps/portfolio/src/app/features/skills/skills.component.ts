@@ -12,7 +12,7 @@ import {
 
 import { MatIconModule } from '@angular/material/icon';
 import { ID_SKILLS } from '@core/constants/sections.constants';
-import { SkillFilter } from '@core/models/skill.model';
+import { SkillFilter } from '@core/models';
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';
 import { SkillsService } from '@core/services/skills.service';

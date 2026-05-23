@@ -2,7 +2,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { catchError, map, of } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
-import { Status } from '@core/models/status.model';
+import { Status } from '@portfolio/shared/models';
 import { environment } from '@env/environment';
 import { TranslateService } from '@ngx-translate/core';
 import { PlatformService } from './platform.service';

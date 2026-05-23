@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, inject, signal } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
-import { MessageDto } from '@core/models/ai.model';
+import { MessageDto } from '@portfolio/shared/models';
 import { AiService } from '@core/services/ai.service';
 import { GsapService } from '@core/services/gsap.service';
 import { PlatformService } from '@core/services/platform.service';

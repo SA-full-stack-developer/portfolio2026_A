@@ -18,7 +18,12 @@
   "namedInputs": {
     "sharedGlobals": [],
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
-    "production": ["default", "!{projectRoot}/.eslintrc.json", "!{projectRoot}/eslint.config.cjs"]
+    "production": [
+      "default",
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/eslint.config.cjs",
+      "!{projectRoot}/eslint.config.mjs"
+    ]
   },
   "neverConnectToCloud": true,
   "analytics": false,
@@ -29,5 +34,13 @@
   "projects": {
     "portfolio": "apps/portfolio",
     "backend": "apps/backend"
-  }
+  },
+  "plugins": [
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "eslint:lint"
+      }
+    }
+  ]
 }
