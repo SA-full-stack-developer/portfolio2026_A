@@ -2,7 +2,9 @@ jest.mock('@angular/core', () => {
   const actual = jest.requireActual('@angular/core');
   return {
     ...actual,
-    afterNextRender: jest.fn((cb: () => void) => cb()),
+    afterNextRender: jest.fn((cb: () => void) => {
+      Promise.resolve().then(() => cb());
+    }),
   };
 });
 
@@ -87,6 +89,8 @@ describe('HeaderHamburgerComponent', () => {
   it('should set isOpen to true when open() is called', async () => {
     await createComponent();
     component.open();
+    await fixture.whenStable();
+    fixture.detectChanges();
     expect(component.isOpen()).toBeTruthy();
   });
 
@@ -172,6 +176,8 @@ describe('HeaderHamburgerComponent', () => {
     mockGsapService.gsap.fromTo.mockClear();
 
     component.open();
+    await fixture.whenStable();
+    fixture.detectChanges();
 
     expect(mockGsapService.gsap.fromTo).not.toHaveBeenCalled();
   });
@@ -184,5 +190,21 @@ describe('HeaderHamburgerComponent', () => {
     component.close();
 
     expect(mockGsapService.gsap.fromTo).not.toHaveBeenCalled();
+  });
+
+  it('should call gsap.fromTo when opening with drawer present', async () => {
+    await createComponent();
+    const drawer = document.createElement('div');
+    drawer.classList.add('header-hamburger__drawer');
+    component['el'].nativeElement.appendChild(drawer);
+
+    component.open();
+    await fixture.whenStable();
+
+    expect(mockGsapService.gsap.fromTo).toHaveBeenCalledWith(
+      drawer,
+      { x: '100%', opacity: 0 },
+      expect.objectContaining({ x: '0%', opacity: 1, duration: 0.4, ease: 'power2.out' }),
+    );
   });
 });
