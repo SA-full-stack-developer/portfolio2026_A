@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { SKILLS_DATA } from './data/skills.data';
-import { Skill } from './entities/skill.entity';
+import { Skill } from '@portfolio/shared/models';
 
 @Injectable()
 export class SkillsService {

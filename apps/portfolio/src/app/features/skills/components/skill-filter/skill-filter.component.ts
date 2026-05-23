@@ -1,7 +1,8 @@
 import { Component, computed, input, output } from '@angular/core';
-import { SkillCategory, SkillFilter } from '@core/models/skill.model';
 
+import { SkillFilter } from '@core/models';
 import { TranslateModule } from '@ngx-translate/core';
+import { SkillCategory } from '@portfolio/shared/models';
 
 type FilterCategory = SkillCategory | 'all';
 

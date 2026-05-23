@@ -1,6 +1,9 @@
-import { Company } from '../../companies/entities/company.entity';
-import { Project } from '../entities/project.entity';
+import { Company, Project } from '@portfolio/shared/models';
 
-export class ProjectResponseDto extends Project {
+export class ProjectResponseDto implements Project {
+  id!: string;
+  name!: string;
+  description!: string;
+  companyId!: string;
   company?: Company;
 }

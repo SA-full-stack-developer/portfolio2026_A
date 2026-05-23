@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { Status } from './entities/status.entity';
+import { Status } from '@portfolio/shared/models';
 import { StatusController } from './status.controller';
 import { StatusService } from './status.service';
 

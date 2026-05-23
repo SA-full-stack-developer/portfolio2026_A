@@ -1,4 +1,4 @@
-import { Skill } from '@core/models/skill.model';
+import { Skill } from '@portfolio/shared/models';
 
 export const SKILLS_MOCK: Skill[] = [
   {

@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SkillCategory, SkillFilter } from '@core/models/skill.model';
 import {
   TranslateLoader,
   TranslateService,
@@ -10,6 +9,8 @@ import { Observable, of } from 'rxjs';
 
 import { provideZonelessChangeDetection } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { SkillFilter } from '@core/models';
+import { SkillCategory } from '@portfolio/shared/models';
 import { SkillFilterComponent } from './skill-filter.component';
 
 // Mock loader

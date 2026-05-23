@@ -1,4 +1,4 @@
-import { Experience } from '@core/models/experience.model';
+import { Experience } from '@portfolio/shared/models';
 
 export const EXPERIENCES_MOCK: Experience[] = [
   {

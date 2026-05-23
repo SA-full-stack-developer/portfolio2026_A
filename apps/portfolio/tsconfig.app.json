@@ -18,6 +18,9 @@
       ],
       "@env/*": [
         "src/environments/*"
+      ],
+      "@portfolio/shared/models": [
+        "../../libs/shared/models/src/index.ts"
       ]
     }
   },

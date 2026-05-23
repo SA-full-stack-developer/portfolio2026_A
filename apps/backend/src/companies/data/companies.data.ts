@@ -1,4 +1,4 @@
-import { Company } from '../entities/company.entity';
+import { Company } from '@portfolio/shared/models';
 
 export const COMPANIES_DATA: Company[] = [
   { id: '1', name: 'Mokens League', logo: 'mokensleague.webp' },

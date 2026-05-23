@@ -1,4 +1,4 @@
-import { Company } from '@core/models/company.model';
+import { Company } from '@portfolio/shared/models';
 
 export const COMPANIES_MOCK: Company[] = [
   { id: '1', name: 'Mokens League', logo: 'mokensleague.webp' },

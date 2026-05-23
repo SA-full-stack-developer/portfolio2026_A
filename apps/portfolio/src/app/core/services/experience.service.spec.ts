@@ -9,7 +9,7 @@ import { Observable, of } from 'rxjs';
 
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { ResolvedExperience } from '@core/models/experience.model';
+import { ResolvedExperience } from '@portfolio/shared/models';
 import { ExperienceService } from './experience.service';
 
 // Mock loader

@@ -1,8 +1,9 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
-import { Skill, SkillCategory, SkillFilter } from '@core/models/skill.model';
+import { Skill, SkillCategory } from '@portfolio/shared/models';
 import { catchError, map, of } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
+import { SkillFilter } from '@core/models';
 import { environment } from '@env/environment';
 import { TranslateService } from '@ngx-translate/core';
 import { PlatformService } from './platform.service';

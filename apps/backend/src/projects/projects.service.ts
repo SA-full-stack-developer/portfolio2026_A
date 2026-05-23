@@ -3,7 +3,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CompaniesService } from '../companies/companies.service';
 import { PROJECTS_DATA } from './data/projects.data';
 import { ProjectResponseDto } from './dto/project-response.dto';
-import { Project } from './entities/project.entity';
+import { Project } from '@portfolio/shared/models';
 
 @Injectable()
 export class ProjectsService {

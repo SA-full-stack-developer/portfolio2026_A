@@ -1,8 +1,9 @@
 import { Component, computed, input, output } from '@angular/core';
-import { Skill, getSkillLevel } from '@core/models/skill.model';
 
 import { NgOptimizedImage } from '@angular/common';
+import { getSkillLevel } from '@core/models';
 import { TranslateModule } from '@ngx-translate/core';
+import { Skill } from '@portfolio/shared/models';
 import { IconComponent } from '@shared/components/icon/icon.component';
 
 @Component({

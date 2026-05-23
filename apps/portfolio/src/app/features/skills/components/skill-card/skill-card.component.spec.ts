@@ -9,7 +9,7 @@ import { Observable, of } from 'rxjs';
 
 import { provideZonelessChangeDetection } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { Skill } from '@core/models/skill.model';
+import { Skill } from '@portfolio/shared/models';
 import { SkillCardComponent } from './skill-card.component';
 
 // Mock del loader de traducciones

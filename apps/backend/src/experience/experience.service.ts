@@ -5,7 +5,7 @@ import { ProjectsService } from '../projects/projects.service';
 import { SkillsService } from '../skills/skills.service';
 import { EXPERIENCES_DATA } from './data/experiences.data';
 import { ExperienceResponseDto } from './dto/experience-response.dto';
-import { Experience } from './entities/experience.entity';
+import { Experience } from '@portfolio/shared/models';
 
 @Injectable()
 export class ExperienceService {
