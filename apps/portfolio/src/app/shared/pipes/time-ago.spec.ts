@@ -105,4 +105,11 @@ describe('TimeAgoPipe', () => {
     const d = new Date(Date.now() - (730 + 60) * 86400000);
     expect(pipe.transform(d)).toBe('2 years and 2 months ago');
   });
+
+  it('resets lastInput when language changes', () => {
+    pipe.transform(minutesAgo(5));
+    mockTranslate.onLangChange.next({});
+    const result = pipe.transform(minutesAgo(5));
+    expect(result).toBe('5 minutes ago');
+  });
 });

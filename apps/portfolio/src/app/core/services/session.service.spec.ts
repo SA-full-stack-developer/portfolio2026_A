@@ -85,4 +85,26 @@ describe('SessionService', () => {
       expect((service.isAdmin as any).set).toBeUndefined();
     });
   });
+
+  it('should return false when sessionStorage is undefined (SSR)', () => {
+    const originalSessionStorage = global.sessionStorage;
+
+    Object.defineProperty(global, 'sessionStorage', {
+      value: undefined,
+      writable: true,
+      configurable: true,
+    });
+
+    TestBed.resetTestingModule();
+    TestBed.configureTestingModule({});
+    const ssrService = TestBed.inject(SessionService);
+
+    expect(ssrService.isAdmin()).toBe(false);
+
+    Object.defineProperty(global, 'sessionStorage', {
+      value: originalSessionStorage,
+      writable: true,
+      configurable: true,
+    });
+  });
 });
