@@ -17,7 +17,8 @@
       "options": {
         "command": "npm run start:dev",
         "cwd": "apps/backend"
-      }
+      },
+      "continuous": true
     },
     "lint": {
       "executor": "nx:run-commands",
