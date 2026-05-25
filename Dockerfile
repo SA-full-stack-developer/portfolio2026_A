@@ -21,4 +21,4 @@ RUN npm ci --legacy-peer-deps --omit=dev
 
 EXPOSE 4000
 
-CMD ["node", "dist/portfolio2026_A/server/server.mjs"]
+CMD ["node", "dist/portfolio/server/server.mjs"]

@@ -74,14 +74,14 @@ jobs:
         env:
           NODE_ENV: production
           APP_PRERENDER: 'true'
-        run: npx nx build portfolio2026_A --configuration production
+        run: npx nx build portfolio --configuration production
       - name: Inject font preloads
         run: node scripts/inject-font-preloads.mjs
       - name: Upload frontend artifact
         uses: actions/upload-artifact@v4
         with:
           name: frontend-dist
-          path: dist/portfolio2026_A/
+          path: dist/portfolio/
 
   deploy-frontend:
     runs-on: ubuntu-latest
