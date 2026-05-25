@@ -110,6 +110,9 @@ jobs:
           cp -r /tmp/frontend-dist/browser/. .
           mkdir -p server
           cp -r /tmp/frontend-dist/server/. server/
+      - name: Copy htaccess
+        run: |
+          cp /tmp/frontend-dist/browser/.htaccess . 2>/dev/null || true    
           git add .
           git commit -m "deploy: frontend $(date +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
           git push origin deploy
