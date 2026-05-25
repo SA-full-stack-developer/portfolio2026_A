@@ -205,6 +205,8 @@ jobs:
         run: npx nx build lab001 --configuration production
       - name: Copy htaccess
         run: cp apps/lab001/src/.htaccess dist/apps/lab001/browser/.htaccess
+      - name: Verify htaccess
+        run: ls -la dist/apps/lab001/browser/
       - name: Upload lab001 artifact
         uses: actions/upload-artifact@v4
         with:
