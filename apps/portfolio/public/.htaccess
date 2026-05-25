@@ -34,3 +34,10 @@
 <FilesMatch "\.txt$">
   AddCharset UTF-8 .txt
 </FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ - [QSA,L]
+</IfModule>
