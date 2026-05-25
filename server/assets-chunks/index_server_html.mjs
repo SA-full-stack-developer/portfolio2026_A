@@ -36,6 +36,6 @@ export default `<!doctype html>
 <script type="esms-options">{"shimMode":true}</script>
 
     <app-root></app-root>
-  <link rel="modulepreload" href="chunk-2NFLSA4Y.js"><script type="module" src="polyfills-G7GBCUTJ.js"></script><script type="module-shim" src="main-E5JIJJLQ.js"></script></body>
+  <link rel="modulepreload" href="chunk-R26ZRKLH.js"><link rel="modulepreload" href="chunk-2NFLSA4Y.js"><script type="module" src="polyfills-G7GBCUTJ.js"></script><script type="module-shim" src="main-4FCSOH4B.js"></script></body>
 </html>
 `;
