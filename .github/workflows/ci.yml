@@ -70,6 +70,8 @@ jobs:
         run: npm cache clean --force
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
+      - name: Use production manifest
+        run: cp apps/portfolio/src/assets/federation.manifest.prod.json apps/portfolio/src/assets/federation.manifest.json
       - name: Build frontend
         env:
           NODE_ENV: production
