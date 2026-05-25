@@ -61,25 +61,45 @@ jobs:
   build-frontend:
     runs-on: ubuntu-latest
     needs: test
+    outputs:
+      run: ${{ steps.affected.outputs.run }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Check if portfolio affected
+        id: affected
+        run: |
+          AFFECTED=$(npx --yes nx affected:projects --base=origin/develop --head=HEAD 2>/dev/null || echo "")
+          echo "Affected: $AFFECTED"
+          if echo "$AFFECTED" | grep -w "portfolio"; then
+            echo "run=true" >> $GITHUB_OUTPUT
+          else
+            echo "run=false" >> $GITHUB_OUTPUT
+          fi
       - name: Clear npm cache
+        if: steps.affected.outputs.run == 'true'
         run: npm cache clean --force
       - name: Install dependencies
+        if: steps.affected.outputs.run == 'true'
         run: npm ci --legacy-peer-deps
       - name: Use production manifest
+        if: steps.affected.outputs.run == 'true'
         run: cp apps/portfolio/src/assets/federation.manifest.prod.json apps/portfolio/src/assets/federation.manifest.json
       - name: Build frontend
+        if: steps.affected.outputs.run == 'true'
         env:
           NODE_ENV: production
           APP_PRERENDER: 'true'
         run: npx nx build portfolio --configuration production
       - name: Inject font preloads
+        if: steps.affected.outputs.run == 'true'
         run: node scripts/inject-font-preloads.mjs
       - name: Upload frontend artifact
+        if: steps.affected.outputs.run == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: frontend-dist
@@ -88,7 +108,7 @@ jobs:
   deploy-frontend:
     runs-on: ubuntu-latest
     needs: build-frontend
-    if: github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/develop' && needs.build-frontend.outputs.run == 'true'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -120,18 +140,34 @@ jobs:
   build-backend:
     runs-on: ubuntu-latest
     needs: test
+    outputs:
+      run: ${{ steps.affected.outputs.run }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Check if backend affected
+        id: affected
+        run: |
+          AFFECTED=$(npx --yes nx affected:projects --base=origin/develop --head=HEAD 2>/dev/null || echo "")
+          echo "Affected: $AFFECTED"
+          if echo "$AFFECTED" | grep -w "backend"; then
+            echo "run=true" >> $GITHUB_OUTPUT
+          else
+            echo "run=false" >> $GITHUB_OUTPUT
+          fi
       - name: Build backend
+        if: steps.affected.outputs.run == 'true'
         working-directory: apps/backend
         run: |
           npm ci
           npm run build
           npm ci --omit=dev
       - name: Upload backend artifact
+        if: steps.affected.outputs.run == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: backend-dist
@@ -144,7 +180,7 @@ jobs:
   deploy-backend:
     runs-on: ubuntu-latest
     needs: build-backend
-    if: github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/develop' && needs.build-backend.outputs.run == 'true'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -192,22 +228,39 @@ jobs:
   build-lab001:
     runs-on: ubuntu-latest
     needs: test
+    outputs:
+      run: ${{ steps.affected.outputs.run }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Check if lab001 affected
+        id: affected
+        run: |
+          AFFECTED=$(npx --yes nx affected:projects --base=origin/develop --head=HEAD 2>/dev/null || echo "")
+          echo "Affected: $AFFECTED"
+          if echo "$AFFECTED" | grep -w "lab001"; then
+            echo "run=true" >> $GITHUB_OUTPUT
+          else
+            echo "run=false" >> $GITHUB_OUTPUT
+          fi
       - name: Clear npm cache
+        if: steps.affected.outputs.run == 'true'
         run: npm cache clean --force
       - name: Install dependencies
+        if: steps.affected.outputs.run == 'true'
         run: npm ci --legacy-peer-deps
       - name: Build lab001
+        if: steps.affected.outputs.run == 'true'
         run: npx nx build lab001 --configuration production
       - name: Copy htaccess
+        if: steps.affected.outputs.run == 'true'
         run: cp apps/lab001/src/.htaccess dist/apps/lab001/browser/.htaccess
-      - name: Verify htaccess
-        run: ls -la dist/apps/lab001/browser/
       - name: Upload lab001 artifact
+        if: steps.affected.outputs.run == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: lab001-dist
@@ -217,7 +270,7 @@ jobs:
   deploy-lab001:
     runs-on: ubuntu-latest
     needs: build-lab001
-    if: github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/develop' && needs.build-lab001.outputs.run == 'true'
     steps:
       - uses: actions/checkout@v4
         with:
