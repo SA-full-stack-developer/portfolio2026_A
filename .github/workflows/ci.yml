@@ -212,6 +212,7 @@ jobs:
         with:
           name: lab001-dist
           path: dist/apps/lab001/browser/
+          include-hidden-files: true
 
   deploy-lab001:
     runs-on: ubuntu-latest
