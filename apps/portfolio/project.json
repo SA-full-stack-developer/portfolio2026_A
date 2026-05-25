@@ -99,6 +99,9 @@
       },
       "configurations": {
         "production": {
+          "prerender": {
+            "routesFile": "apps/portfolio/prerender-routes.txt"
+          },
           "fileReplacements": [
             {
               "replace": "apps/portfolio/src/environments/environment.ts",

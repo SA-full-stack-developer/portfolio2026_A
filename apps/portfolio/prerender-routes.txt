@@ -1,0 +1,6 @@
+/
+/contact
+/about-me
+/legal
+/error
+/lab
