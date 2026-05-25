@@ -200,6 +200,8 @@ jobs:
         run: npm ci --legacy-peer-deps
       - name: Build lab001
         run: npx nx build lab001 --configuration production
+      - name: Copy htaccess
+        run: cp apps/lab001/src/.htaccess dist/apps/lab001/browser/.htaccess
       - name: Upload lab001 artifact
         uses: actions/upload-artifact@v4
         with:
