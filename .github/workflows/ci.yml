@@ -19,7 +19,7 @@ jobs:
       - name: Check affected
         id: affected
         run: |
-          AFFECTED=$(npx --yes nx affected:projects --base=origin/develop --head=HEAD || echo "")
+          AFFECTED=$(npx --yes nx affected:projects --base=origin/develop --head=HEAD 2>/dev/null || echo "")
           echo "projects=$AFFECTED" >> $GITHUB_OUTPUT
           echo "Affected projects: $AFFECTED"
       - name: Clear npm cache
