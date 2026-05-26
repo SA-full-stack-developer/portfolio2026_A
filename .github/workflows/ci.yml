@@ -16,18 +16,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Clear npm cache
+        run: npm cache clean --force
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
       - name: Check affected
         id: affected
         run: |
           AFFECTED=$(npx --yes nx affected:projects --base=HEAD~1 --head=HEAD || echo "")
           echo "projects=$AFFECTED" >> $GITHUB_OUTPUT
           echo "Affected projects: $AFFECTED"
-      - name: Clear npm cache
-        if: steps.affected.outputs.projects != ''
-        run: npm cache clean --force
-      - name: Install dependencies
-        if: steps.affected.outputs.projects != ''
-        run: npm ci --legacy-peer-deps
       - name: Lint
         if: steps.affected.outputs.projects != ''
         run: npx nx affected --target=lint --base=HEAD~1 --head=HEAD
@@ -42,20 +40,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Clear npm cache
+        run: npm cache clean --force
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
       - name: Check affected
         id: affected
         run: |
           AFFECTED=$(npx --yes nx affected:projects --base=HEAD~1 --head=HEAD || echo "")
           echo "projects=$AFFECTED" >> $GITHUB_OUTPUT
           echo "Affected projects: $AFFECTED"
-      - name: Clear npm cache
-        if: steps.affected.outputs.projects != ''
-        run: npm cache clean --force
-      - name: Install dependencies
-        if: steps.affected.outputs.projects != ''
-        run: npm ci --legacy-peer-deps
       - name: Test
-        if: steps.affected.outputs.projects != ''
         run: npx nx affected --target=test --base=HEAD~1 --head=HEAD
 
   build-frontend:
@@ -70,36 +65,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Check if portfolio affected
-        id: affected
-        run: |
-          AFFECTED=$(npx --yes nx affected:projects --base=HEAD~1 --head=HEAD || echo "")
-          echo "Affected: $AFFECTED"
-          if echo "$AFFECTED" | grep -w "portfolio"; then
-            echo "run=true" >> $GITHUB_OUTPUT
-          else
-            echo "run=false" >> $GITHUB_OUTPUT
-          fi
       - name: Clear npm cache
-        if: steps.affected.outputs.run == 'true'
         run: npm cache clean --force
       - name: Install dependencies
-        if: steps.affected.outputs.run == 'true'
         run: npm ci --legacy-peer-deps
       - name: Use production manifest
-        if: steps.affected.outputs.run == 'true'
         run: cp apps/portfolio/src/assets/federation.manifest.prod.json apps/portfolio/src/assets/federation.manifest.json
       - name: Build frontend
-        if: steps.affected.outputs.run == 'true'
         env:
           NODE_ENV: production
           APP_PRERENDER: 'true'
         run: npx nx build portfolio --configuration production
       - name: Inject font preloads
-        if: steps.affected.outputs.run == 'true'
         run: node scripts/inject-font-preloads.mjs
       - name: Upload frontend artifact
-        if: steps.affected.outputs.run == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: frontend-dist
@@ -149,25 +128,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Check if backend affected
-        id: affected
-        run: |
-          AFFECTED=$(npx --yes nx affected:projects --base=HEAD~1 --head=HEAD || echo "")
-          echo "Affected: $AFFECTED"
-          if echo "$AFFECTED" | grep -w "backend"; then
-            echo "run=true" >> $GITHUB_OUTPUT
-          else
-            echo "run=false" >> $GITHUB_OUTPUT
-          fi
       - name: Build backend
-        if: steps.affected.outputs.run == 'true'
         working-directory: apps/backend
         run: |
           npm ci
           npm run build
           npm ci --omit=dev
       - name: Upload backend artifact
-        if: steps.affected.outputs.run == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: backend-dist
@@ -237,30 +204,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Check if lab001 affected
-        id: affected
-        run: |
-          AFFECTED=$(npx --yes nx affected:projects --base=HEAD~1 --head=HEAD || echo "")
-          echo "Affected: $AFFECTED"
-          if echo "$AFFECTED" | grep -w "lab001"; then
-            echo "run=true" >> $GITHUB_OUTPUT
-          else
-            echo "run=false" >> $GITHUB_OUTPUT
-          fi
       - name: Clear npm cache
-        if: steps.affected.outputs.run == 'true'
         run: npm cache clean --force
       - name: Install dependencies
-        if: steps.affected.outputs.run == 'true'
         run: npm ci --legacy-peer-deps
       - name: Build lab001
-        if: steps.affected.outputs.run == 'true'
         run: npx nx build lab001 --configuration production
       - name: Copy htaccess
-        if: steps.affected.outputs.run == 'true'
         run: cp apps/lab001/src/.htaccess dist/apps/lab001/browser/.htaccess
       - name: Upload lab001 artifact
-        if: steps.affected.outputs.run == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: lab001-dist
