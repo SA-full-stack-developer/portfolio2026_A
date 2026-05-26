@@ -1161,7 +1161,7 @@ exports.SKILLS_DATA = [
     {
         id: '10',
         name: 'Git',
-        level: 75,
+        level: 80,
         category: 'devops',
         icon: 'github.svg',
         highlighted: true,
@@ -1462,6 +1462,24 @@ exports.SKILLS_DATA = [
         category: 'frontend',
         icon: 'gsap.svg',
         highlighted: false,
+        yearsOfExperience: 1,
+    },
+    {
+        id: '50',
+        name: 'microfrontend architecture',
+        level: 75,
+        category: 'frontend',
+        icon: 'native federation.webp',
+        highlighted: true,
+        yearsOfExperience: 1,
+    },
+    {
+        id: '51',
+        name: 'native/module federation',
+        level: 75,
+        category: 'frontend',
+        icon: 'module federation.svg',
+        highlighted: true,
         yearsOfExperience: 1,
     },
 ];
