@@ -22,3 +22,4 @@ export const CHAT_MESSAGE = 'CHAT_MESSAGE';
 export const CHAT_CV = 'CHAT_CV';
 export const CONTACT_ASSISTANT = 'CONTACT_ASSISTANT';
 export const COVER_LETTER = 'COVER_LETTER';
+export const BORDER_GRADIENT = 'BORDER_GRADIENT';

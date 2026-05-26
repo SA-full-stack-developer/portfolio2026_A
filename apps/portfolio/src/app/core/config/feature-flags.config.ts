@@ -1,4 +1,5 @@
 import {
+  BORDER_GRADIENT,
   CHAT_CV,
   CHAT_MESSAGE,
   CONTACT,
@@ -24,6 +25,7 @@ import {
   PROJECTS,
   SKILLS,
 } from '@core/constants/feaute-flags.constants';
+
 import { FeatureFlag } from '@core/models/feature-flag.model';
 
 export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
@@ -146,5 +148,10 @@ export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
     id: COVER_LETTER,
     label: 'Cover Letter',
     visibility: 'hidden',
+  },
+  BORDER_GRADIENT: {
+    id: BORDER_GRADIENT,
+    label: 'Border Gradient',
+    visibility: 'public',
   },
 };

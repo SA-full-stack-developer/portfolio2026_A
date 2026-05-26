@@ -1,0 +1,36 @@
+:host {
+  --bg-color: white;
+  --linear-gradient: linear-gradient(45deg, #ff6ec4, #7873f5, #4ade80, #facc15);
+  --blur: 4px;
+  --inset: -4px;
+  --border-radius: 8px;
+  --text-color: black;
+}
+
+.glow-border {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    background: var(--linear-gradient);
+    z-index: 0;
+    filter: blur(var(--blur));
+    inset: var(--inset);
+    border-radius: var(--border-radius);
+  }
+
+  & .content {
+    position: relative;
+    z-index: 1;
+    background: var(--bg-color);
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+  }
+}
+
+// Estilos adicionales para el contenido
+.content {
+  padding: 16px;
+  text-align: center;
+}

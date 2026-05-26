@@ -4,7 +4,7 @@ module.exports = withNativeFederation({
   name: 'lab001',
 
   exposes: {
-    './Component': './apps/lab001/src/app/app.ts',
+    './BorderGradient': './apps/lab001/src/app/components/border-gradient/border-gradient.ts',
   },
 
   shared: {

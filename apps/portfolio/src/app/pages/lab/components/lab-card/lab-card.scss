@@ -1,0 +1,35 @@
+@use '../../../../../styles/variables' as v;
+@use '../../../../../styles/mixins' as m;
+
+.lab-card {
+  @include m.card-base();
+  @include m.card-interactive();
+  padding: 1rem;
+  min-width: 360px;
+
+  &__tag {
+    border-radius: 10px;
+    background-color: rgba(v.$text-secondary, 0.85);
+    font-size: 0.6rem;
+    padding: 0.25rem;
+    width: fit-content;
+  }
+
+  &__title {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: v.$primary-hue;
+
+    @include m.respond-to('md') {
+      font-size: 0.75rem;
+    }
+  }
+
+  &__bar {
+    height: 1px;
+    background: v.$border-subtle;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+}

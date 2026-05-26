@@ -1,14 +1,21 @@
-<section class="flex flex-wrap align-start mw-1200 lab">
+<section class="flex flex-wrap gap-md align-start mw-1200 lab">
   <article class="w-100 lab__header">
     <h1>{{ 'LAB.TITLE' | translate }}</h1>
     <p>{{ 'LAB.SUBTITLE' | translate }}</p>
   </article>
-  <article class="w-100 flex flex-center lab__content">
-    @if (remoteComponent()) {
-      <ng-container *ngComponentOutlet="remoteComponent()" />
-    } @else {
-      <p>Cargando lab...</p>
+  <article class="w-100 flex flex-start gap-md lab__content">
+    @for (item of remotesComponent(); track $index) {
+      <app-lab-card
+        [title]="item.title"
+        [tag]="getVisibilityName(item.tag)"
+        [component]="item.component"
+        [cssVars]="item.cssVars"
+        *appFeatureFlag="item.tag"
+      />
+    } @empty {
+      <div class="w-100 flex flex-center lab__content">
+        <p>{{ 'LAB.NO_PROJECTS' | translate }}</p>
+      </div>
     }
-    <!-- <p>{{ 'LAB.NO_PROJECTS' | translate }}</p> -->
   </article>
 </section>
