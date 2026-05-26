@@ -1,36 +1,63 @@
 :host {
   --bg-color: white;
-  --linear-gradient: linear-gradient(45deg, #ff6ec4, #7873f5, #4ade80, #facc15);
-  --blur: 4px;
-  --inset: -4px;
+  --conic-gradient: conic-gradient(#ff6ec4, #7873f5, #4ade80, #facc15, #ff6ec4);
+  --inset: 4px;
   --border-radius: 8px;
   --text-color: black;
+  --animation-time: 3s;
 }
 
 .glow-border {
   position: relative;
+  min-height: 50px;
 
-  &::before {
-    content: '';
+  &__wrapper {
     position: absolute;
-    background: var(--linear-gradient);
-    z-index: 0;
-    filter: blur(var(--blur));
-    inset: var(--inset);
+    overflow: hidden;
+    position: absolute;
+    height: 100%;
+    width: 100%;
     border-radius: var(--border-radius);
+
+    &::before {
+      content: '';
+      position: absolute;
+      background: var(--conic-gradient);
+      z-index: 0;
+      border-radius: var(--border-radius);
+      animation: conic-rotation var(--animation-time) linear infinite;
+      top: 50%;
+      left: 50%;
+      width: 200%;
+      transform: translate(-50%, -50%);
+      aspect-ratio: 1;
+    }
   }
 
-  & .content {
-    position: relative;
+  &__content {
     z-index: 1;
     background: var(--bg-color);
     border-radius: var(--border-radius);
     color: var(--text-color);
+    position: absolute;
+    inset: var(--inset);
+  }
+}
+
+@keyframes conic-rotation {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
 // Estilos adicionales para el contenido
-.content {
+.glow-border__content {
   padding: 16px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
