@@ -21,7 +21,7 @@ export class StatusService {
   private readonly _status = signal<string>('');
 
   readonly status = this._status.asReadonly();
-  //s
+  //test
   constructor() {
     this.loadStatus();
   }
