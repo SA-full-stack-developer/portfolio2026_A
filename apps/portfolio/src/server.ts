@@ -9,6 +9,8 @@ const isPrerenderBuild = process.env['APP_PRERENDER'] === 'true';
     await initNodeFederation({
       relBundlePath: join(import.meta.dirname, '../browser/'),
       throwIfRemoteNotFound: false,
+    }).catch(() => {
+      console.warn('initNodeFederation failed, continuing without federation');
     });
   }
 

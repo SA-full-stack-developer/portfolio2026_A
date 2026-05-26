@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "name": "portfolio2026_A",
+  "name": "portfolio",
   "projectType": "application",
   "generators": {
     "@schematics/angular:component": {
@@ -29,10 +29,10 @@
       },
       "configurations": {
         "production": {
-          "target": "portfolio2026_A:esbuild:production"
+          "target": "portfolio:esbuild:production"
         },
         "development": {
-          "target": "portfolio2026_A:esbuild:development",
+          "target": "portfolio:esbuild:development",
           "dev": true
         }
       },
@@ -41,7 +41,7 @@
     "serve": {
       "executor": "@angular-architects/native-federation:build",
       "options": {
-        "target": "portfolio2026_A:serve-original:development",
+        "target": "portfolio:serve-original:development",
         "federationConfig": "apps/portfolio/federation.config.ts",
         "rebuildDelay": 500,
         "dev": true,
@@ -94,11 +94,14 @@
         "ssr": {
           "entry": "apps/portfolio/src/server.ts"
         },
-        "outputPath": "dist/portfolio2026_A",
+        "outputPath": "dist/portfolio",
         "polyfills": ["es-module-shims"]
       },
       "configurations": {
         "production": {
+          "prerender": {
+            "routesFile": "apps/portfolio/prerender-routes.txt"
+          },
           "fileReplacements": [
             {
               "replace": "apps/portfolio/src/environments/environment.ts",
@@ -145,15 +148,15 @@
       "executor": "@angular/build:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "portfolio2026_A:esbuild:production"
+          "buildTarget": "portfolio:esbuild:production"
         },
         "development": {
-          "buildTarget": "portfolio2026_A:esbuild:development"
+          "buildTarget": "portfolio:esbuild:development"
         }
       },
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "portfolio2026_A:build",
+        "buildTarget": "portfolio:build",
         "port": 4200
       }
     }

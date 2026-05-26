@@ -4,6 +4,11 @@
     <p>{{ 'LAB.SUBTITLE' | translate }}</p>
   </article>
   <article class="w-100 flex flex-center lab__content">
-    <p>{{ 'LAB.NO_PROJECTS' | translate }}</p>
+    @if (remoteComponent()) {
+      <ng-container *ngComponentOutlet="remoteComponent()" />
+    } @else {
+      <p>Cargando lab...</p>
+    }
+    <!-- <p>{{ 'LAB.NO_PROJECTS' | translate }}</p> -->
   </article>
 </section>

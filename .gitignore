@@ -53,3 +53,4 @@ apps/backend/.env
 
 .nx/cache
 .nx/workspace-data
+.angular
