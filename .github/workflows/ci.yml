@@ -19,7 +19,7 @@ jobs:
       - name: Check affected
         id: affected
         run: |
-          AFFECTED=$(npx --yes nx affected:projects --base=origin/develop --head=HEAD 2>/dev/null || echo "")
+          AFFECTED=$(npx --yes nx affected:projects --base=HEAD~1 --head=HEAD || echo "")
           echo "projects=$AFFECTED" >> $GITHUB_OUTPUT
           echo "Affected projects: $AFFECTED"
       - name: Clear npm cache
@@ -30,7 +30,7 @@ jobs:
         run: npm ci --legacy-peer-deps
       - name: Lint
         if: steps.affected.outputs.projects != ''
-        run: npx nx affected --target=lint --base=origin/develop --head=HEAD
+        run: npx nx affected --target=lint --base=HEAD~1 --head=HEAD
 
   test:
     runs-on: ubuntu-latest
@@ -45,7 +45,7 @@ jobs:
       - name: Check affected
         id: affected
         run: |
-          AFFECTED=$(npx --yes nx affected:projects --base=origin/develop --head=HEAD 2>/dev/null || echo "")
+          AFFECTED=$(npx --yes nx affected:projects --base=HEAD~1 --head=HEAD || echo "")
           echo "projects=$AFFECTED" >> $GITHUB_OUTPUT
           echo "Affected projects: $AFFECTED"
       - name: Clear npm cache
@@ -56,7 +56,7 @@ jobs:
         run: npm ci --legacy-peer-deps
       - name: Test
         if: steps.affected.outputs.projects != ''
-        run: npx nx affected --target=test --base=origin/develop --head=HEAD
+        run: npx nx affected --target=test --base=HEAD~1 --head=HEAD
 
   build-frontend:
     runs-on: ubuntu-latest
@@ -73,7 +73,7 @@ jobs:
       - name: Check if portfolio affected
         id: affected
         run: |
-          AFFECTED=$(npx --yes nx affected:projects --base=origin/develop --head=HEAD 2>/dev/null || echo "")
+          AFFECTED=$(npx --yes nx affected:projects --base=HEAD~1 --head=HEAD || echo "")
           echo "Affected: $AFFECTED"
           if echo "$AFFECTED" | grep -w "portfolio"; then
             echo "run=true" >> $GITHUB_OUTPUT
@@ -152,7 +152,7 @@ jobs:
       - name: Check if backend affected
         id: affected
         run: |
-          AFFECTED=$(npx --yes nx affected:projects --base=origin/develop --head=HEAD 2>/dev/null || echo "")
+          AFFECTED=$(npx --yes nx affected:projects --base=HEAD~1 --head=HEAD || echo "")
           echo "Affected: $AFFECTED"
           if echo "$AFFECTED" | grep -w "backend"; then
             echo "run=true" >> $GITHUB_OUTPUT
@@ -240,7 +240,7 @@ jobs:
       - name: Check if lab001 affected
         id: affected
         run: |
-          AFFECTED=$(npx --yes nx affected:projects --base=origin/develop --head=HEAD 2>/dev/null || echo "")
+          AFFECTED=$(npx --yes nx affected:projects --base=HEAD~1 --head=HEAD || echo "")
           echo "Affected: $AFFECTED"
           if echo "$AFFECTED" | grep -w "lab001"; then
             echo "run=true" >> $GITHUB_OUTPUT
