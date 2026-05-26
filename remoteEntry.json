@@ -3,7 +3,7 @@
   "shared": [
     {
       "packageName": "@angular/common",
-      "outFileName": "_angular_common.1U5cO5clIt.js",
+      "outFileName": "_angular_common.s7fP9ulkHI.js",
       "requiredVersion": "^21.2.13",
       "singleton": true,
       "strictVersion": true,
@@ -11,7 +11,7 @@
     },
     {
       "packageName": "@angular/common/http",
-      "outFileName": "_angular_common_http.EUzA3oh7am.js",
+      "outFileName": "_angular_common_http._G5-MafYUf.js",
       "requiredVersion": "^21.2.13",
       "singleton": true,
       "strictVersion": true,
@@ -19,7 +19,7 @@
     },
     {
       "packageName": "@angular/core",
-      "outFileName": "_angular_core.Y12ZkkgaWZ.js",
+      "outFileName": "_angular_core.4DugZ1Guth.js",
       "requiredVersion": "^21.2.13",
       "singleton": true,
       "strictVersion": true,
@@ -27,7 +27,7 @@
     },
     {
       "packageName": "@angular/core/primitives/di",
-      "outFileName": "_angular_core_primitives_di.FR06_xx8Ee.js",
+      "outFileName": "_angular_core_primitives_di.qZQ0VfZKk4.js",
       "requiredVersion": "^21.2.13",
       "singleton": true,
       "strictVersion": true,
@@ -35,7 +35,7 @@
     },
     {
       "packageName": "@angular/core/primitives/signals",
-      "outFileName": "_angular_core_primitives_signals.Mz9NbixEND.js",
+      "outFileName": "_angular_core_primitives_signals.8j-0cY0tS9.js",
       "requiredVersion": "^21.2.13",
       "singleton": true,
       "strictVersion": true,
@@ -43,7 +43,7 @@
     },
     {
       "packageName": "@angular/platform-browser",
-      "outFileName": "_angular_platform_browser.g7-ShV4zF7.js",
+      "outFileName": "_angular_platform_browser.i_An9yDtlR.js",
       "requiredVersion": "^21.2.13",
       "singleton": true,
       "strictVersion": true,
@@ -51,7 +51,7 @@
     },
     {
       "packageName": "@angular/router",
-      "outFileName": "_angular_router.UhZlDEIEDm.js",
+      "outFileName": "_angular_router.uZ6JQxN7RN.js",
       "requiredVersion": "^21.2.13",
       "singleton": true,
       "strictVersion": true,
@@ -59,7 +59,7 @@
     },
     {
       "packageName": "rxjs",
-      "outFileName": "rxjs.7f32mOm0DH.js",
+      "outFileName": "rxjs.FC6l1UtvJG.js",
       "requiredVersion": "~7.8.0",
       "singleton": true,
       "strictVersion": true,
@@ -67,7 +67,7 @@
     },
     {
       "packageName": "rxjs/operators",
-      "outFileName": "rxjs_operators.2oEZ-4Xnw7.js",
+      "outFileName": "rxjs_operators.ePoAte51g2.js",
       "requiredVersion": "~7.8.0",
       "singleton": true,
       "strictVersion": true,
@@ -75,7 +75,7 @@
     },
     {
       "packageName": "tslib",
-      "outFileName": "tslib.9I8E-1gcEM.js",
+      "outFileName": "tslib.S4TY_XeYK5.js",
       "requiredVersion": "^2.3.0",
       "singleton": true,
       "strictVersion": true,
@@ -124,8 +124,8 @@
   ],
   "exposes": [
     {
-      "key": "./Component",
-      "outFileName": "Component-TGKWAQUO.js"
+      "key": "./BorderGradient",
+      "outFileName": "BorderGradient-XM7WAVXV.js"
     }
   ]
 }
