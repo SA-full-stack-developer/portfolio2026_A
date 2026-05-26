@@ -1,0 +1,1 @@
+import{a as o}from"./chunk-R26ZRKLH.js";import"./chunk-2NFLSA4Y.js";typeof window<"u"?o("/assets/federation.manifest.json").catch(e=>console.error(e)).then(()=>import("./chunk-OCMPZFWO.js")).catch(e=>console.error(e)):import("./chunk-OCMPZFWO.js");
