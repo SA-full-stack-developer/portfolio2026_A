@@ -16,20 +16,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Check affected
-        id: affected
-        run: |
-          AFFECTED=$(npx --yes nx affected:projects --base=origin/develop --head=HEAD 2>/dev/null || echo "")
-          echo "projects=$AFFECTED" >> $GITHUB_OUTPUT
-          echo "Affected projects: $AFFECTED"
       - name: Clear npm cache
-        if: steps.affected.outputs.projects != ''
         run: npm cache clean --force
       - name: Install dependencies
-        if: steps.affected.outputs.projects != ''
         run: npm ci --legacy-peer-deps
       - name: Lint
-        if: steps.affected.outputs.projects != ''
         run: npx nx affected --target=lint --base=origin/develop --head=HEAD
 
   test:
