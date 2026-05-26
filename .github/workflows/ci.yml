@@ -87,7 +87,7 @@ jobs:
   deploy-frontend:
     runs-on: ubuntu-latest
     needs: build-frontend
-    if: github.ref == 'refs/heads/develop' && needs.build-frontend.outputs.run == 'true'
+    if: github.ref == 'refs/heads/develop'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -147,7 +147,7 @@ jobs:
   deploy-backend:
     runs-on: ubuntu-latest
     needs: build-backend
-    if: github.ref == 'refs/heads/develop' && needs.build-backend.outputs.run == 'true'
+    if: github.ref == 'refs/heads/develop'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -222,7 +222,7 @@ jobs:
   deploy-lab001:
     runs-on: ubuntu-latest
     needs: build-lab001
-    if: github.ref == 'refs/heads/develop' && needs.build-lab001.outputs.run == 'true'
+    if: github.ref == 'refs/heads/develop'
     steps:
       - uses: actions/checkout@v4
         with:
