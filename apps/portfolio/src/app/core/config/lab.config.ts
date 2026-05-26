@@ -38,7 +38,7 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
   },
   BorderGradienttTest: {
     tag: BORDER_GRADIENT,
-    title: 'Border Gradient Blur',
+    title: 'Border Gradient Blur.',
     remoteName: 'lab001',
     exposedModule: './BorderGradient',
     exportName: 'BorderGradient',
