@@ -1,0 +1,14 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "preserve",
+    "skipLibCheck": true,
+    "paths": {
+      "@portfolio/shared/models": ["./libs/shared/models/src/index.ts"],
+      "federation-utils": ["./libs/shared/services/src/index.ts"]
+    }
+  }
+}

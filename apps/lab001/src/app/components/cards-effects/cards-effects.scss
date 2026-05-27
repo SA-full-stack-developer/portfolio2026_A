@@ -1,0 +1,20 @@
+:host {
+  --bg-color: darkgrey;
+  --text-color: black;
+  --border-radius: 10px;
+  --height: 100px;
+  --padding: 1rem;
+  --spotlight-color: white, transparent, transparent;
+}
+
+.cards-effects {
+  perspective: 1000px;
+
+  &__wrapper {
+    border-radius: var(--border-radius);
+    height: var(--height);
+    background-color: var(--bg-color);
+    padding: var(--padding);
+    color: var(--text-color);
+  }
+}

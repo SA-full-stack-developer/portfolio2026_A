@@ -1,12 +1,13 @@
 {
+  "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": "./",
+    "isolatedModules": true,
+    "moduleResolution": "bundler",
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "isolatedModules": true
+    "noFallthroughCasesInSwitch": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -15,19 +16,13 @@
     "strictTemplates": true
   },
   "files": [],
+  "include": [],
   "references": [
     {
-      "path": "./apps/portfolio/tsconfig.app.json"
+      "path": "./tsconfig.lib.json"
     },
     {
-      "path": "./apps/portfolio/tsconfig.spec.json"
-    },
-    {
-      "path": "./apps/lab001/tsconfig.app.json"
-    },
-    {
-      "path": "./apps/lab001/tsconfig.spec.json"
+      "path": "./tsconfig.spec.json"
     }
-  ],
-  "extends": "./tsconfig.base.json"
+  ]
 }
