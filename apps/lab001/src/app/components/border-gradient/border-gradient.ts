@@ -1,5 +1,7 @@
 import { Component, ElementRef, effect, inject, input } from '@angular/core';
 
+import { setCssVars } from 'federation-utils';
+
 @Component({
   selector: 'app-border-gradient',
   imports: [],
@@ -8,17 +10,10 @@ import { Component, ElementRef, effect, inject, input } from '@angular/core';
 })
 export class BorderGradient {
   cssVars = input<Record<string, string>>();
-
   private el = inject(ElementRef);
 
-  constructor() {
-    effect(() => {
-      const vars = this.cssVars();
-      if (vars) {
-        Object.entries(vars).forEach(([key, value]) => {
-          this.el.nativeElement.style.setProperty(key, value);
-        });
-      }
-    });
-  }
+  private readonly _ = effect(() => {
+    const vars = this.cssVars();
+    if (vars) setCssVars(vars, this.el);
+  });
 }

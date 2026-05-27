@@ -1,0 +1,12 @@
+<div class="cards-effects">
+  <div
+    class="cards-effects__wrapper"
+    [style.transition]="transition()"
+    (mousemove)="getCursor($event)"
+    (mouseleave)="resetCursor()"
+    [style.transform]="tilt()"
+    [style.background-image]="spotlight()"
+  >
+    card-effects works!
+  </div>
+</div>

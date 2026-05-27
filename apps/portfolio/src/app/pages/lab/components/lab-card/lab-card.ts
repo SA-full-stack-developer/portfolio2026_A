@@ -1,5 +1,6 @@
+import { Component, Type, input } from '@angular/core';
+
 import { NgComponentOutlet } from '@angular/common';
-import { Component, OnInit, Type, input } from '@angular/core';
 
 @Component({
   selector: 'app-lab-card',
@@ -7,11 +8,9 @@ import { Component, OnInit, Type, input } from '@angular/core';
   templateUrl: './lab-card.html',
   styleUrl: './lab-card.scss',
 })
-export class LabCardComponent implements OnInit {
+export class LabCardComponent {
   title = input.required<string>();
   tag = input.required<string>();
   cssVars = input<Record<string, string> | null>();
   component = input.required<Type<unknown> | null>();
-
-  ngOnInit(): void {}
 }

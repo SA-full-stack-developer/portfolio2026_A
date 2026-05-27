@@ -5,6 +5,7 @@ module.exports = withNativeFederation({
 
   exposes: {
     './BorderGradient': './apps/lab001/src/app/components/border-gradient/border-gradient.ts',
+    './CardEffects': './apps/lab001/src/app/components/cards-effects/cards-effects.ts',
   },
 
   shared: {

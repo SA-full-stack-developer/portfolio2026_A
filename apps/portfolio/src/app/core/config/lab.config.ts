@@ -38,7 +38,7 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
   },
   BorderGradienttTest: {
     tag: BORDER_GRADIENT,
-    title: 'Border Gradient Blur',
+    title: 'Border Gradient Mini',
     remoteName: 'lab001',
     exposedModule: './BorderGradient',
     exportName: 'BorderGradient',
@@ -51,6 +51,44 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
       '--border-radius': '8px',
       '--text-color': '#f0f0f0',
       '--animation-time': '3s',
+    },
+  },
+  CardEffects: {
+    tag: BORDER_GRADIENT,
+    title: 'Tilt - Spotlight Effects',
+    remoteName: 'lab001',
+    exposedModule: './CardEffects',
+    exportName: 'CardEffects',
+    component: null,
+    cssVars: {
+      '--bg-color': '#161616',
+      '--text-color': '#f0f0f0',
+    },
+  },
+  CardEffectsBlue: {
+    tag: BORDER_GRADIENT,
+    title: 'Tilt - Spotlight Effects (blue)',
+    remoteName: 'lab001',
+    exposedModule: './CardEffects',
+    exportName: 'CardEffects',
+    component: null,
+    cssVars: {
+      '--bg-color': '#161616',
+      '--text-color': '#f0f0f0',
+      '--spotlight-color': '#4f8ef7,transparent, transparent',
+    },
+  },
+  CardEffectsCenterTransparent: {
+    tag: BORDER_GRADIENT,
+    title: 'Tilt - Spotlight (center transparent)',
+    remoteName: 'lab001',
+    exposedModule: './CardEffects',
+    exportName: 'CardEffects',
+    component: null,
+    cssVars: {
+      '--bg-color': '#161616',
+      '--text-color': '#f0f0f0',
+      '--spotlight-color': 'transparent,#4f8ef7,transparent',
     },
   },
 };

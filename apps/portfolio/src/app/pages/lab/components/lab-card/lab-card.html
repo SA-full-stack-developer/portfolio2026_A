@@ -6,7 +6,7 @@
     @if (component()) {
       <ng-container
         [ngComponentOutlet]="component()"
-        [ngComponentOutletInputs]="{ cssVars: cssVars() }"
+        [ngComponentOutletInputs]="cssVars() ? { cssVars: cssVars() } : {}"
       ></ng-container>
     } @else {
       TODO: skeleton loader

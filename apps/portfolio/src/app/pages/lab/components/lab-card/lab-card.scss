@@ -5,7 +5,8 @@
   @include m.card-base();
   @include m.card-interactive();
   padding: 1rem;
-  min-width: 360px;
+  width: 300px;
+  display: block;
 
   &__tag {
     border-radius: 10px;
