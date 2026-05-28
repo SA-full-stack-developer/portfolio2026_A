@@ -1,19 +1,16 @@
-import { Component, ElementRef, effect, inject, input } from '@angular/core';
-
-import { setCssVars } from 'federation-utils';
+import { Component } from '@angular/core';
+import { CssVarsDirective } from 'federation-utils';
 
 @Component({
   selector: 'app-border-gradient',
   imports: [],
+  hostDirectives: [
+    {
+      directive: CssVarsDirective,
+      inputs: ['cssVars'],
+    },
+  ],
   templateUrl: './border-gradient.html',
   styleUrl: './border-gradient.scss',
 })
-export class BorderGradient {
-  cssVars = input<Record<string, string>>();
-  private el = inject(ElementRef);
-
-  private readonly _ = effect(() => {
-    const vars = this.cssVars();
-    if (vars) setCssVars(vars, this.el);
-  });
-}
+export class BorderGradient {}

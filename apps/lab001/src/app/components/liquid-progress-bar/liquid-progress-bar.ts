@@ -1,21 +1,18 @@
-import {
-  Component,
-  DestroyRef,
-  ElementRef,
-  computed,
-  effect,
-  inject,
-  input,
-  signal,
-} from '@angular/core';
+import { Component, DestroyRef, computed, inject, signal } from '@angular/core';
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { setCssVars } from 'federation-utils';
+import { CssVarsDirective } from 'federation-utils';
 import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-liquid-progress-bar',
   imports: [],
+  hostDirectives: [
+    {
+      directive: CssVarsDirective,
+      inputs: ['cssVars'],
+    },
+  ],
   templateUrl: './liquid-progress-bar.html',
   styleUrl: './liquid-progress-bar.scss',
 })
@@ -31,14 +28,6 @@ export class LiquidProgressBar {
       points.push(`L ${x} ${y}`);
     }
     return `M 0 20 L 0 ${base} ${points.join(' ')} L ${this.progress()} 20 Z`;
-  });
-
-  cssVars = input<Record<string, string>>();
-  el = inject(ElementRef);
-
-  private readonly _ = effect(() => {
-    const vars = this.cssVars();
-    if (vars) setCssVars(vars, this.el);
   });
 
   private readonly _interval = interval(50)

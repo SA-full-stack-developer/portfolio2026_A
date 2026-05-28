@@ -1,24 +1,24 @@
-import { Component, ElementRef, effect, inject, input, signal } from '@angular/core';
+import { Component, ElementRef, inject, signal } from '@angular/core';
 
-import { setCssVars } from 'federation-utils';
+import { CssVarsDirective } from 'federation-utils';
 
 @Component({
   selector: 'app-card-effects',
   imports: [],
+  hostDirectives: [
+    {
+      directive: CssVarsDirective,
+      inputs: ['cssVars'],
+    },
+  ],
   templateUrl: './cards-effects.html',
   styleUrl: './cards-effects.scss',
 })
 export class CardEffects {
-  cssVars = input<Record<string, string>>();
-  el = inject(ElementRef);
+  private el = inject(ElementRef);
   tilt = signal<string>('');
   transition = signal<string>('');
   spotlight = signal<string>('');
-
-  private readonly _ = effect(() => {
-    const vars = this.cssVars();
-    if (vars) setCssVars(vars, this.el);
-  });
 
   getCursor(e: MouseEvent) {
     this.transition.set('');
