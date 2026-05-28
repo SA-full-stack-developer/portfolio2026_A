@@ -15,13 +15,13 @@ function w(e) { if (g)
     return; let o = v(i), c = { producer: e, consumer: i, nextProducer: n, prevConsumer: t, lastReadVersion: e.version, nextConsumer: void 0 }; i.producersTail = c, r !== void 0 ? r.nextProducer = c : i.producers = c, o && I(e, c); }
 function U() { A++; }
 function m(e) { if (!(v(e) && !e.dirty) && !(!e.dirty && e.lastCleanEpoch === A)) {
-    if (!e.producerMustRecompute(e) && !k(e)) {
+    if (!e.producerMustRecompute(e) && !L(e)) {
         C(e);
         return;
     }
     e.producerRecomputeValue(e), C(e);
 } }
-function x(e) { if (e.consumers === void 0)
+function V(e) { if (e.consumers === void 0)
     return; let r = g; g = !0; try {
     for (let n = e.consumers; n !== void 0; n = n.nextConsumer) {
         let u = n.consumer;
@@ -31,8 +31,8 @@ function x(e) { if (e.consumers === void 0)
 finally {
     g = r;
 } }
-function L() { return i?.consumerAllowSignalWrites !== !1; }
-function G(e) { e.dirty = !0, x(e), e.consumerMarkedDirty?.(e); }
+function k() { return i?.consumerAllowSignalWrites !== !1; }
+function G(e) { e.dirty = !0, V(e), e.consumerMarkedDirty?.(e); }
 function C(e) { e.dirty = !1, e.lastCleanEpoch = A; }
 function T(e) { return e && q(e), f(e); }
 function q(e) { e.producersTail = void 0, e.recomputing = !0; }
@@ -44,7 +44,7 @@ function _(e) { e.recomputing = !1; let r = e.producersTail, n = r !== void 0 ? 
         while (n !== void 0);
     r !== void 0 ? r.nextProducer = void 0 : e.producers = void 0;
 } }
-function k(e) { for (let r = e.producers; r !== void 0; r = r.nextProducer) {
+function L(e) { for (let r = e.producers; r !== void 0; r = r.nextProducer) {
     let n = r.producer, u = r.lastReadVersion;
     if (u !== n.version || (m(n), u !== n.version))
         return !0;
@@ -77,10 +77,10 @@ function W(e, r) { let n = r.producersTail; if (n !== void 0) {
         u = u.nextProducer;
     } while (u !== void 0);
 } return !1; }
-function N(e, r) { return Object.is(e, r); }
+function R(e, r) { return Object.is(e, r); }
 function ee(e, r) { let n = Object.create($); n.computation = e, r !== void 0 && (n.equal = r); let u = () => { if (m(n), w(n), n.value === s)
     throw n.error; return n.value; }; return u[S] = n, P(n), u; }
-var l = Symbol("UNSET"), a = Symbol("COMPUTING"), s = Symbol("ERRORED"), $ = p(d({}, E), { value: l, dirty: !0, error: null, equal: N, kind: "computed", producerMustRecompute(e) { return e.value === l || e.value === a; }, producerRecomputeValue(e) { if (e.value === a)
+var l = Symbol("UNSET"), a = Symbol("COMPUTING"), s = Symbol("ERRORED"), $ = p(d({}, E), { value: l, dirty: !0, error: null, equal: R, kind: "computed", producerMustRecompute(e) { return e.value === l || e.value === a; }, producerRecomputeValue(e) { if (e.value === a)
         throw new Error(""); let r = e.value; e.value = a; let n = T(e), u, t = !1; try {
         u = e.computation(), f(null), t = r !== l && r !== s && u !== s && e.equal(r, u);
     }
@@ -98,16 +98,16 @@ var O = j;
 function F(e) { O(e); }
 function re(e) { O = e; }
 var y = null;
-function ne(e, r) { let n = Object.create(z); n.value = e, r !== void 0 && (n.equal = r); let u = () => B(n); return u[S] = n, P(n), [u, c => R(n, c), c => V(n, c)]; }
+function ne(e, r) { let n = Object.create(z); n.value = e, r !== void 0 && (n.equal = r); let u = () => B(n); return u[S] = n, P(n), [u, c => N(n, c), c => x(n, c)]; }
 function ue(e) { let r = y; return y = e, r; }
 function B(e) { return w(e), e.value; }
-function R(e, r) { L() || F(e), e.equal(e.value, r) || (e.value = r, K(e)); }
-function V(e, r) { L() || F(e), R(e, r(e.value)); }
+function N(e, r) { k() || F(e), e.equal(e.value, r) || (e.value = r, K(e)); }
+function x(e, r) { k() || F(e), N(e, r(e.value)); }
 function te(e) { y?.(e); }
-var z = p(d({}, E), { equal: N, value: void 0, kind: "signal" });
-function K(e) { e.version++, U(), x(e), y?.(e); }
+var z = p(d({}, E), { equal: R, value: void 0, kind: "signal" });
+function K(e) { e.version++, U(), V(e), y?.(e); }
 var oe = p(d({}, E), { consumerIsAlwaysLive: !0, consumerAllowSignalWrites: !0, dirty: !0, kind: "effect" });
-function ie(e) { if (e.dirty = !1, e.version > 0 && !k(e))
+function ie(e) { if (e.dirty = !1, e.version > 0 && !L(e))
     return; e.version++; let r = T(e); try {
     e.cleanup(), e.fn();
 }
@@ -116,10 +116,10 @@ finally {
 } }
 function ae(e, r, n) { let u = Object.create(H); u.source = e, u.computation = r, n != null && (u.equal = n); let o = () => { if (m(u), w(u), u.value === s)
     throw u.error; return u.value; }; return o[S] = u, P(u), o; }
-function fe(e, r) { m(e), R(e, r), C(e); }
+function fe(e, r) { m(e), N(e, r), C(e); }
 function de(e, r) { if (m(e), e.value === s)
-    throw e.error; V(e, r), C(e); }
-var H = p(d({}, E), { value: l, dirty: !0, error: null, equal: N, kind: "linkedSignal", producerMustRecompute(e) { return e.value === l || e.value === a; }, producerRecomputeValue(e) { if (e.value === a)
+    throw e.error; x(e, r), C(e); }
+var H = p(d({}, E), { value: l, dirty: !0, error: null, equal: R, kind: "linkedSignal", producerMustRecompute(e) { return e.value === l || e.value === a; }, producerRecomputeValue(e) { if (e.value === a)
         throw new Error(""); let r = e.value; e.value = a; let n = T(e), u, t = !1; try {
         let o = e.source(), c = r !== l && r !== s, b = c ? { source: e.sourceValue, value: r } : void 0;
         u = e.computation(o, b), e.sourceValue = o, f(null), t = c && u !== s && e.equal(r, u);
@@ -139,11 +139,13 @@ function pe(e) { let r = f(null); try {
 finally {
     f(r);
 } }
-export { S as a, f as b, J as c, Q as d, X as e, E as f, w as g, U as h, m as i, x as j, L as k, G as l, C as m, T as n, q as o, D as p, _ as q, k as r, Y as s, P as t, Z as u, N as v, ee as w, re as x, ne as y, ue as z, B as A, R as B, V as C, te as D, z as E, oe as F, ie as G, ae as H, fe as I, de as J, pe as K };
+function ge(e) { }
+export { S as a, f as b, J as c, Q as d, X as e, E as f, w as g, U as h, m as i, V as j, k, G as l, C as m, T as n, q as o, D as p, _ as q, L as r, Y as s, P as t, Z as u, R as v, ee as w, re as x, ne as y, ue as z, B as A, N as B, x as C, te as D, z as E, oe as F, ie as G, ae as H, fe as I, de as J, pe as K, ge as L };
 /*! Bundled license information:
 
 @angular/core/fesm2022/_effect-chunk.mjs:
 @angular/core/fesm2022/_untracked-chunk.mjs:
+@angular/core/fesm2022/_weak_ref-chunk.mjs:
   (**
    * @license Angular v21.2.13
    * (c) 2010-2026 Google LLC. https://angular.dev/
