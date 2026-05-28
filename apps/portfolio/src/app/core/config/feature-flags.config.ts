@@ -22,6 +22,7 @@ import {
   HERO_STATS,
   LAB,
   LANGUAGE_SWITCHER,
+  LIQUID_PROGRESS_BAR,
   PROJECTS,
   SKILLS,
 } from '@core/constants/feaute-flags.constants';
@@ -153,5 +154,10 @@ export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
     id: BORDER_GRADIENT,
     label: 'Border Gradient',
     visibility: 'public',
+  },
+  LIQUID_PROGRESS_BAR: {
+    id: LIQUID_PROGRESS_BAR,
+    label: 'Liquid Progress Bar',
+    visibility: 'admin',
   },
 };

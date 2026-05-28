@@ -1,4 +1,5 @@
-import { BORDER_GRADIENT } from '@core/constants';
+import { BORDER_GRADIENT, LIQUID_PROGRESS_BAR } from '@core/constants';
+
 import { LabConfig } from '@core/models/lab.model';
 
 export const LAB_CONFIG: Record<string, LabConfig> = {
@@ -89,6 +90,18 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
       '--bg-color': '#161616',
       '--text-color': '#f0f0f0',
       '--spotlight-color': 'transparent,#4f8ef7,transparent',
+    },
+  },
+  LiquidProgressBar: {
+    tag: LIQUID_PROGRESS_BAR,
+    title: 'Liquid progress bar',
+    remoteName: 'lab001',
+    exposedModule: './LiquidProgressBar',
+    exportName: 'LiquidProgressBar',
+    component: null,
+    cssVars: {
+      '--height': '100px',
+      '--fill': '#7c5cbf',
     },
   },
 };

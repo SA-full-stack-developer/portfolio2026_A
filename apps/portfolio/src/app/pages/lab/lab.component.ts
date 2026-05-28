@@ -23,7 +23,7 @@ export class LabComponent implements OnInit {
   remotesComponent = signal<LabConfig[]>(Object.values(LAB_CONFIG));
 
   async ngOnInit(): Promise<void> {
-    let tmpComponents: LabConfig[] = [];
+    const tmpComponents: LabConfig[] = [];
     this.seoService.update(PAGE_SEO['lab']);
     this.seoService.updateSchemas([BREADCRUMB_LAB]);
 
