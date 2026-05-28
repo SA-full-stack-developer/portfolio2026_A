@@ -2,7 +2,7 @@
   <div class="lab-card__tag">{{ tag() }}</div>
   <h3 class="lab-card__title">{{ title() }}</h3>
   <div class="lab-card__bar"></div>
-  <div class="lab-card__content">
+  <div class="flex flex-center lab-card__content">
     @if (component()) {
       <ng-container
         [ngComponentOutlet]="component()"

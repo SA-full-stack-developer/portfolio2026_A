@@ -1,4 +1,4 @@
-import { BORDER_GRADIENT, LIQUID_PROGRESS_BAR } from '@core/constants';
+import { BORDER_GRADIENT, FLIPCARD, LIQUID_PROGRESS_BAR } from '@core/constants';
 
 import { LabConfig } from '@core/models/lab.model';
 
@@ -104,4 +104,53 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
       '--fill': '#7c5cbf',
     },
   },
+  FlipCard: {
+    tag: FLIPCARD,
+    title: 'Flip card click',
+    remoteName: 'lab001',
+    exposedModule: './FlipCard',
+    exportName: 'FlipCard',
+    component: null,
+    cssVars: {
+      '--width': '100px',
+      '--height': '100px',
+      '--bg-color-front': '#161616',
+      '--bg-color-back': '#9e9e9e',
+      '--border-front': 'solid 2px #4f8ef7',
+      '--border-back': 'solid 2px #f44336',
+      '--border-radius': '10px',
+    },
+  },
+  FlipCardHover: {
+    tag: FLIPCARD,
+    title: 'Flip card hover',
+    remoteName: 'lab001',
+    exposedModule: './FlipCard',
+    exportName: 'FlipCard',
+    component: null,
+    cssVars: {
+      '--width': '100px',
+      '--height': '100px',
+      '--bg-color-front': '#161616',
+      '--bg-color-back': '#9e9e9e',
+      '--border-front': 'solid 2px #4f8ef7',
+      '--border-back': 'solid 2px #f44336',
+      '--border-radius': '10px',
+    },
+  },
 };
+/*
+$primary-hue: #4f8ef7;
+$accent-color: #7c5cbf;
+$warn-hue: #f44336;
+$warn-orange-hue: #ffb100;
+$success-hue: #00d26a;
+$highlight: #f5c518;
+
+$bg-dark: #0d0d0d;
+$bg-surface: #161616;
+$bg-card: #1e1e1e;
+$text-primary: #f0f0f0;
+$text-secondary: #9e9e9e;
+$border-subtle: rgba(255, 255, 255, 0.08);
+*/

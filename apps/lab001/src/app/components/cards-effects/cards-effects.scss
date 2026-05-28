@@ -5,9 +5,11 @@
   --height: 100px;
   --padding: 1rem;
   --spotlight-color: white, transparent, transparent;
+  width: 100%;
 }
 
 .cards-effects {
+  width: 100%;
   perspective: 1000px;
 
   &__wrapper {

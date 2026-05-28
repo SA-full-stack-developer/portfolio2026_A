@@ -1,0 +1,41 @@
+:host {
+  --width: 200px;
+  --height: 300px;
+  --bg-color-front: blue;
+  --bg-color-back: red;
+  --border-front: solid 2px red;
+  --border-back: solid 2px blue;
+  --border-radius: 10px;
+}
+
+.flip-card {
+  perspective: 1000px;
+
+  &__inner {
+    transform-style: preserve-3d;
+    position: relative;
+    width: var(--width);
+    height: var(--height);
+  }
+
+  &__front {
+    position: absolute;
+    backface-visibility: hidden;
+    background-color: var(--bg-color-front);
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius);
+    border: var(--border-front);
+  }
+
+  &__back {
+    position: absolute;
+    backface-visibility: hidden;
+    background-color: var(--bg-color-back);
+    transform: rotatey(180deg);
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius);
+    border: var(--border-back);
+  }
+}

@@ -7,6 +7,7 @@ import {
   COPYRIGHT,
   COVER_LETTER,
   EXPERIENCE,
+  FLIPCARD,
   FOOTER,
   FOOTER_CONTACT,
   FOOTER_INFORMATION,
@@ -159,5 +160,10 @@ export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
     id: LIQUID_PROGRESS_BAR,
     label: 'Liquid Progress Bar',
     visibility: 'admin',
+  },
+  FLIPCARD: {
+    id: FLIPCARD,
+    label: 'Flip card',
+    visibility: 'public',
   },
 };

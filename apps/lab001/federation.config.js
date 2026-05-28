@@ -8,6 +8,7 @@ module.exports = withNativeFederation({
     './CardEffects': './apps/lab001/src/app/components/cards-effects/cards-effects.ts',
     './LiquidProgressBar':
       './apps/lab001/src/app/components/liquid-progress-bar/liquid-progress-bar.ts',
+    './FlipCard': './apps/lab001/src/app/components/flip-card/flip-card.ts',
   },
 
   shared: {
