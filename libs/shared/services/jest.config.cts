@@ -1,7 +1,7 @@
 module.exports = {
   displayName: 'federation-utils',
   preset: '../../../jest.preset.js',
-  setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
+  setupFilesAfterEnv: [],
   coverageDirectory: '../../../coverage/libs/shared/services',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [

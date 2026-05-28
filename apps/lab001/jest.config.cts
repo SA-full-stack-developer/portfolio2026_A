@@ -1,7 +1,7 @@
 module.exports = {
   displayName: 'lab001',
   preset: '../../jest.preset.js',
-  setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
+  setupFilesAfterEnv: [],
   coverageDirectory: '../../coverage/apps/lab001',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
