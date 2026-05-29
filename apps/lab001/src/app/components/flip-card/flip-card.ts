@@ -64,8 +64,9 @@ export class FlipCard {
   }
 
   onMouseEnter() {
-    if (!this.isBrowser || !this.isHover()) return;
+    if (!this.platformService.isBrowser || !this.isHover()) return;
 
+    const gsap = this.gsapService.gsap;
     gsap.killTweensOf(this.inner()?.nativeElement);
 
     gsap.to(this.inner()?.nativeElement, {
@@ -76,8 +77,9 @@ export class FlipCard {
   }
 
   onMouseLeave() {
-    if (!this.isBrowser || !this.isHover()) return;
+    if (!this.platformService.isBrowser || !this.isHover()) return;
 
+    const gsap = this.gsapService.gsap;
     gsap.killTweensOf(this.inner()?.nativeElement);
 
     gsap.to(this.inner()?.nativeElement, {
