@@ -1,7 +1,7 @@
 import { Component, DestroyRef, computed, inject, signal } from '@angular/core';
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { CssVarsDirective } from 'federation-utils';
+import { CssVarsDirective } from '@shared-libs/ui';
 import { interval } from 'rxjs';
 
 @Component({

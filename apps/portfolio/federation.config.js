@@ -21,7 +21,6 @@ module.exports = withNativeFederation({
     '@core/services/language.service',
     '@shared/pipes/safe-html.pipe',
     '@core/services/platform.service',
-    '@core/services/gsap.service',
     '@core/models/form.model',
     '@shared/directives/feature-flag.directive',
     '@features/skills/skills.component',

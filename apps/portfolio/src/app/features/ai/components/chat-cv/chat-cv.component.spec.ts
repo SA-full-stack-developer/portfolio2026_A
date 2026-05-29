@@ -5,12 +5,11 @@ import {
   createMockPlatformService,
 } from '@core/mocks/ai.service.mock';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { GsapService, PlatformService } from '@shared-libs/services';
 import { Observable, of, throwError } from 'rxjs';
 
 import { By } from '@angular/platform-browser';
 import { AiService } from '@core/services/ai.service';
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import { ChatCvComponent } from './chat-cv.component';
 
 class MockTranslateLoader implements TranslateLoader {
@@ -143,7 +142,7 @@ describe('ChatCvComponent', () => {
 
   it('should kill scroll triggers on destroy', () => {
     const kill = jest.fn();
-    component['scrollTriggers'] = [{ kill }] as typeof component['scrollTriggers'];
+    component['scrollTriggers'] = [{ kill }] as (typeof component)['scrollTriggers'];
     fixture.destroy();
     expect(kill).toHaveBeenCalled();
   });

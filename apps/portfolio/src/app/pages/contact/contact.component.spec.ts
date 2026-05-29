@@ -1,10 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { createMockGsapService, createMockPlatformService } from '@core/mocks/ai.service.mock';
+import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { provideZonelessChangeDetection } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { ContactComponent } from './contact.component';
 

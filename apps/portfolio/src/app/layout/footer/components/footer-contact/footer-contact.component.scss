@@ -1,5 +1,5 @@
-@use '../../../../../styles/variables' as v;
-@use '../../../../../styles/mixins.scss' as m;
+@use 'variables' as v;
+@use 'mixins' as m;
 
 .footer-contact {
   background-color: v.$border-subtle;

@@ -5,11 +5,10 @@ import {
   createMockPlatformService,
 } from '@core/mocks/ai.service.mock';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { GsapService, PlatformService } from '@shared-libs/services';
 import { Observable, of, throwError } from 'rxjs';
 
 import { AiService } from '@core/services/ai.service';
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import { AskMeFabComponent } from './ask-me-fab.component';
 
 class MockTranslateLoader implements TranslateLoader {

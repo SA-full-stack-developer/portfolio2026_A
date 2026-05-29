@@ -1,6 +1,6 @@
 import { Component, DestroyRef, effect, inject, input, signal } from '@angular/core';
+import { GsapService } from '@shared-libs/services';
 
-import { GsapService } from '@core/services/gsap.service';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({

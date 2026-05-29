@@ -1,13 +1,13 @@
+import { AVAILABLE_LANGUAGES, DEFAULT_LANGUAGE } from '@core/models/language.model';
 import { TranslateLoader, provideTranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
 import { provideHttpClient } from '@angular/common/http';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { AVAILABLE_LANGUAGES, DEFAULT_LANGUAGE } from '@core/models/language.model';
-import { TranslationObject } from '@ngx-translate/core'; // ✅ TranslationObject
-import { LanguageService } from './language.service';
-import { PlatformService } from './platform.service';
+import { LanguageService } from '@core/services/language.service';
+import { TranslationObject } from '@ngx-translate/core';
+import { PlatformService } from '@shared-libs/services';
 
 // Mock loader para tests - no necesita archivos JSON reales
 class MockTranslateLoader implements TranslateLoader {

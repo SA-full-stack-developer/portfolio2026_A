@@ -1,6 +1,6 @@
 import { Directive, ElementRef, effect, inject, input } from '@angular/core';
 
-import { setCssVars } from 'federation-utils';
+import { setCssVars } from './css-vars.util';
 
 @Directive({
   standalone: true,

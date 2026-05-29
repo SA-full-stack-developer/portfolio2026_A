@@ -10,11 +10,10 @@ import {
   inject,
   signal,
 } from '@angular/core';
+import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { MatIconModule } from '@angular/material/icon';
 import { ExperienceService } from '@core/services/experience.service';
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { ErrorComponent } from '@shared/components/error/error.component';
 import { ExperienceCardComponent } from './components/experience-card/experience-card.component';

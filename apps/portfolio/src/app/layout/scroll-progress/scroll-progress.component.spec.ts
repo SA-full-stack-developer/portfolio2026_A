@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { GsapService, PlatformService } from '@shared-libs/services';
 
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import { ScrollProgressComponent } from './scroll-progress.component';
 
 jest.mock('@angular/core', () => {

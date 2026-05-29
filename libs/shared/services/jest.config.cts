@@ -1,7 +1,8 @@
 module.exports = {
-  displayName: 'federation-utils',
+  displayName: 'shared-services',
   preset: '../../../jest.preset.js',
-  setupFilesAfterEnv: [],
+  setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
+  testEnvironment: 'jsdom',
   coverageDirectory: '../../../coverage/libs/shared/services',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
@@ -11,6 +12,9 @@ module.exports = {
         stringifyContentPathRegex: '\\.(html|svg)$',
       },
     ],
+  },
+  moduleNameMapper: {
+    '^@shared-libs/services': '<rootDir>/src/index.ts',
   },
   transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
   snapshotSerializers: [

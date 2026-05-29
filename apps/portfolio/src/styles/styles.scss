@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
-@use './variables' as v;
-@use './mixins' as m;
-@use './flexbox';
+@use 'variables' as v;
+@use 'mixins' as m;
+@use 'flexbox';
 @use './animations';
 @use './layout';
 @import '@fontsource/inter/latin-400.css';

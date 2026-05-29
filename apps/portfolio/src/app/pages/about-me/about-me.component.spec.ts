@@ -1,8 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { createMockGsapService, createMockPlatformService } from '@core/mocks/ai.service.mock';
+import { GsapService, PlatformService } from '@shared-libs/services';
 
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { AboutMeComponent } from './about-me.component';
 

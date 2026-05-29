@@ -6,11 +6,10 @@ import {
   TranslationObject,
   provideTranslateService,
 } from '@ngx-translate/core';
+import { GsapService, PlatformService } from '@shared-libs/services';
 import { Observable, of } from 'rxjs';
 
 import { STATS_MOCK } from '@core/mocks/stats.mock';
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import { StatsService } from '@core/services/stats.service';
 import { HeroStatCounterComponent } from './hero-stat-counter.component';
 

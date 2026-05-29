@@ -1,0 +1,7 @@
+<div class="split-text">
+  @for (phrase of splitText(); track $index) {
+    <p #phrase class="split-text__phrase">{{ phrase }}</p>
+  } @empty {
+    TODO: NO hay nada
+  }
+</div>

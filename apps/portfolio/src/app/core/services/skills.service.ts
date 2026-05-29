@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { SkillFilter } from '@core/models';
 import { environment } from '@env/environment';
 import { TranslateService } from '@ngx-translate/core';
-import { PlatformService } from './platform.service';
+import { PlatformService } from '@shared-libs/services';
 
 @Injectable({ providedIn: 'root' })
 export class SkillsService {

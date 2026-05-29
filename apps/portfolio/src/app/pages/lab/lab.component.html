@@ -1,7 +1,7 @@
 <section class="flex flex-wrap gap-md align-start mw-1200 lab">
   <article class="w-100 lab__header">
     <h1>{{ 'LAB.TITLE' | translate }}</h1>
-    <p>{{ 'LAB.SUBTITLE' | translate }}</p>
+    <p [innerHTML]="'LAB.SUBTITLE' | translate"></p>
   </article>
   <article class="w-100 flex flex-center gap-md flex-wrap lab__content">
     @for (item of remotesComponent(); track $index) {

@@ -6,11 +6,10 @@ import {
   createMockPlatformService,
 } from '@core/mocks/ai.service.mock';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { GsapService, PlatformService } from '@shared-libs/services';
 import { Observable, of } from 'rxjs';
 
 import { AiService } from '@core/services/ai.service';
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import { SeoService } from '@core/services/seo.service';
 import { AiComponent } from './ai.component';
 

@@ -7,8 +7,24 @@
     "module": "preserve",
     "skipLibCheck": true,
     "paths": {
-      "@portfolio/shared/models": ["./libs/shared/models/src/index.ts"],
-      "federation-utils": ["./libs/shared/services/src/index.ts"]
+      "@portfolio/shared/models": [
+        "./libs/shared/models/src/index.ts"
+      ],
+      "@shared-libs/services": [
+        "./libs/shared/services/src/index.ts"
+      ],
+      "@shared-libs/services/*": [
+        "./libs/shared/services/src/lib/*"
+      ],
+      "@shared-libs/ui": [
+        "./libs/shared/ui/src/index.ts"
+      ],
+      "@shared-libs/ui/*": [
+        "./libs/shared/ui/src/lib/*"
+      ],
+      "@shared-libs/styles": [
+        "./libs/shared/styles/src/lib"
+      ]
     }
   }
 }

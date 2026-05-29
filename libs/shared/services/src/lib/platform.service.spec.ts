@@ -1,6 +1,6 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { PlatformService } from './platform.service';
+import { PlatformService } from '@shared-libs/services';
 
 describe('PlatformService', () => {
   let service: PlatformService;

@@ -7,11 +7,11 @@ import {
   TranslationObject,
   provideTranslateService,
 } from '@ngx-translate/core';
+import { PlatformService } from '@shared-libs/services';
 import { Observable, of } from 'rxjs';
 
 import { provideZonelessChangeDetection } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
-import { PlatformService } from '@core/services/platform.service';
 import { HeaderNavComponent } from './header-nav.component';
 
 class MockTranslateLoader implements TranslateLoader {

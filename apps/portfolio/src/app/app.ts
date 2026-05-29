@@ -7,9 +7,9 @@ import {
   GO_TO_TOP,
   HEADER,
 } from '@core/constants/feaute-flags.constants';
+import { GsapService } from '@shared-libs/services';
 
 import { RouterOutlet } from '@angular/router';
-import { GsapService } from '@core/services/gsap.service';
 import { LanguageService } from '@core/services/language.service';
 import { SeoService } from '@core/services/seo.service';
 import { TranslateModule } from '@ngx-translate/core';

@@ -1,0 +1,15 @@
+:host {
+  --bg-color: white;
+  --color: black;
+  --margin: 0.25rem;
+}
+
+.split-text {
+  background: var(--bg-color);
+
+  &__phrase {
+    display: block;
+    margin: var(--margin);
+    color: var(--color);
+  }
+}

@@ -21,7 +21,7 @@
   &__front {
     position: absolute;
     backface-visibility: hidden;
-    background-color: var(--bg-color-front);
+    background: var(--bg-color-front);
     width: 100%;
     height: 100%;
     border-radius: var(--border-radius);
@@ -31,7 +31,7 @@
   &__back {
     position: absolute;
     backface-visibility: hidden;
-    background-color: var(--bg-color-back);
+    background: var(--bg-color-back);
     transform: rotatey(180deg);
     width: 100%;
     height: 100%;

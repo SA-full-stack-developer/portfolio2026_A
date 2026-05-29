@@ -1,7 +1,6 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { GsapService } from './gsap.service';
-import { PlatformService } from './platform.service';
+import { GsapService, PlatformService } from '@shared-libs/services';
 
 describe('GsapService', () => {
   let service: GsapService;

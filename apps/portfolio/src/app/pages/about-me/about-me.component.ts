@@ -10,9 +10,8 @@ import {
   inject,
 } from '@angular/core';
 import { BREADCRUMB_ABOUT, PAGE_SEO } from '@core/config/seo.config';
+import { GsapService, PlatformService } from '@shared-libs/services';
 
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import { SeoService } from '@core/services/seo.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { SafeHtmlPipe } from '@shared/pipes/safe-html.pipe';
