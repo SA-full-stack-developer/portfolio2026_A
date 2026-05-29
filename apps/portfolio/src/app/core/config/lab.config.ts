@@ -10,14 +10,16 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
     exposedModule: './BorderGradient',
     exportName: 'BorderGradient',
     component: null,
-    cssVars: {
-      '--bg-color': '#161616',
-      '--conic-gradient':
-        'conic-gradient(#4f8ef7, #7c5cbf, #f44336, #ffb100, #00d26a, #f5c518, #4f8ef7)',
-      '--inset': '4px',
-      '--border-radius': '8px',
-      '--text-color': '#f0f0f0',
-      '--animation-time': '3s',
+    inputs: {
+      cssVars: {
+        '--bg-color': '#161616',
+        '--conic-gradient':
+          'conic-gradient(#4f8ef7, #7c5cbf, #f44336, #ffb100, #00d26a, #f5c518, #4f8ef7)',
+        '--inset': '4px',
+        '--border-radius': '8px',
+        '--text-color': '#f0f0f0',
+        '--animation-time': '3s',
+      },
     },
   },
   BorderGradientBlur: {
@@ -27,14 +29,16 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
     exposedModule: './BorderGradient',
     exportName: 'BorderGradient',
     component: null,
-    cssVars: {
-      '--bg-color': '#161616',
-      '--conic-gradient':
-        'conic-gradient(#4f8ef7, #7c5cbf, #f44336, #ffb100, transparent, #4f8ef7)',
-      '--inset': '4px',
-      '--border-radius': '8px',
-      '--text-color': '#f0f0f0',
-      '--animation-time': '1s',
+    inputs: {
+      cssVars: {
+        '--bg-color': '#161616',
+        '--conic-gradient':
+          'conic-gradient(#4f8ef7, #7c5cbf, #f44336, #ffb100, transparent, #4f8ef7)',
+        '--inset': '4px',
+        '--border-radius': '8px',
+        '--text-color': '#f0f0f0',
+        '--animation-time': '1s',
+      },
     },
   },
   BorderGradienttTest: {
@@ -44,14 +48,16 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
     exposedModule: './BorderGradient',
     exportName: 'BorderGradient',
     component: null,
-    cssVars: {
-      '--bg-color': '#161616',
-      '--conic-gradient':
-        'conic-gradient(#4f8ef7, #7c5cbf, #f44336, #ffb100, #00d26a, #f5c518, #4f8ef7)',
-      '--inset': '1px',
-      '--border-radius': '8px',
-      '--text-color': '#f0f0f0',
-      '--animation-time': '3s',
+    inputs: {
+      cssVars: {
+        '--bg-color': '#161616',
+        '--conic-gradient':
+          'conic-gradient(#4f8ef7, #7c5cbf, #f44336, #ffb100, #00d26a, #f5c518, #4f8ef7)',
+        '--inset': '1px',
+        '--border-radius': '8px',
+        '--text-color': '#f0f0f0',
+        '--animation-time': '3s',
+      },
     },
   },
   CardEffects: {
@@ -61,9 +67,11 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
     exposedModule: './CardEffects',
     exportName: 'CardEffects',
     component: null,
-    cssVars: {
-      '--bg-color': '#161616',
-      '--text-color': '#f0f0f0',
+    inputs: {
+      cssVars: {
+        '--bg-color': '#161616',
+        '--text-color': '#f0f0f0',
+      },
     },
   },
   CardEffectsBlue: {
@@ -73,10 +81,12 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
     exposedModule: './CardEffects',
     exportName: 'CardEffects',
     component: null,
-    cssVars: {
-      '--bg-color': '#161616',
-      '--text-color': '#f0f0f0',
-      '--spotlight-color': '#4f8ef7,transparent, transparent',
+    inputs: {
+      cssVars: {
+        '--bg-color': '#161616',
+        '--text-color': '#f0f0f0',
+        '--spotlight-color': '#4f8ef7,transparent, transparent',
+      },
     },
   },
   CardEffectsCenterTransparent: {
@@ -86,10 +96,12 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
     exposedModule: './CardEffects',
     exportName: 'CardEffects',
     component: null,
-    cssVars: {
-      '--bg-color': '#161616',
-      '--text-color': '#f0f0f0',
-      '--spotlight-color': 'transparent,#4f8ef7,transparent',
+    inputs: {
+      cssVars: {
+        '--bg-color': '#161616',
+        '--text-color': '#f0f0f0',
+        '--spotlight-color': 'transparent,#4f8ef7,transparent',
+      },
     },
   },
   LiquidProgressBar: {
@@ -99,9 +111,11 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
     exposedModule: './LiquidProgressBar',
     exportName: 'LiquidProgressBar',
     component: null,
-    cssVars: {
-      '--height': '100px',
-      '--fill': '#7c5cbf',
+    inputs: {
+      cssVars: {
+        '--height': '100px',
+        '--fill': '#7c5cbf',
+      },
     },
   },
   FlipCard: {
@@ -111,14 +125,16 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
     exposedModule: './FlipCard',
     exportName: 'FlipCard',
     component: null,
-    cssVars: {
-      '--width': '100px',
-      '--height': '100px',
-      '--bg-color-front': '#161616',
-      '--bg-color-back': '#9e9e9e',
-      '--border-front': 'solid 2px #4f8ef7',
-      '--border-back': 'solid 2px #f44336',
-      '--border-radius': '10px',
+    inputs: {
+      cssVars: {
+        '--width': '100px',
+        '--height': '100px',
+        '--bg-color-front': '#161616',
+        '--bg-color-back': '#9e9e9e',
+        '--border-front': 'solid 2px #4f8ef7',
+        '--border-back': 'solid 2px #f44336',
+        '--border-radius': '10px',
+      },
     },
   },
   FlipCardHover: {
@@ -128,14 +144,17 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
     exposedModule: './FlipCard',
     exportName: 'FlipCard',
     component: null,
-    cssVars: {
-      '--width': '100px',
-      '--height': '100px',
-      '--bg-color-front': '#161616',
-      '--bg-color-back': '#9e9e9e',
-      '--border-front': 'solid 2px #4f8ef7',
-      '--border-back': 'solid 2px #f44336',
-      '--border-radius': '10px',
+    inputs: {
+      cssVars: {
+        '--width': '100px',
+        '--height': '100px',
+        '--bg-color-front': '#161616',
+        '--bg-color-back': '#9e9e9e',
+        '--border-front': 'solid 2px #4f8ef7',
+        '--border-back': 'solid 2px #f44336',
+        '--border-radius': '10px',
+      },
+      isHover: true,
     },
   },
 };

@@ -7,5 +7,5 @@ export interface LabConfig {
   exposedModule: string;
   exportName: string;
   component: Type<unknown> | null;
-  cssVars?: Record<string, string>;
+  inputs?: Record<string, any>;
 }
