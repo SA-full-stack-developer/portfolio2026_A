@@ -1,6 +1,6 @@
 import { Component, ElementRef, inject, signal } from '@angular/core';
 
-import { CssVarsDirective } from '@shared-libs/services';
+import { CssVarsDirective } from '@shared-libs/ui';
 
 @Component({
   selector: 'app-card-effects',

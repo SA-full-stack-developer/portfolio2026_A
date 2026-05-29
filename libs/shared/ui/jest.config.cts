@@ -1,8 +1,7 @@
 module.exports = {
   displayName: 'shared-services',
   preset: '../../../jest.preset.js',
-  setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
-  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: [],
   coverageDirectory: '../../../coverage/libs/shared/services',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
@@ -12,9 +11,6 @@ module.exports = {
         stringifyContentPathRegex: '\\.(html|svg)$',
       },
     ],
-  },
-  moduleNameMapper: {
-    '^@shared-libs/services': '<rootDir>/src/index.ts',
   },
   transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
   snapshotSerializers: [

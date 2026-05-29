@@ -7,10 +7,10 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
+import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { isPlatformBrowser } from '@angular/common';
-import { CssVarsDirective } from '@shared-libs/services';
-import gsap from 'gsap';
+import { CssVarsDirective } from '@shared-libs/ui';
 
 @Component({
   selector: 'app-flip-card',
@@ -25,6 +25,8 @@ import gsap from 'gsap';
   styleUrl: './flip-card.scss',
 })
 export class FlipCard {
+  private readonly gsapService = inject(GsapService);
+  private readonly platformService = inject(PlatformService);
   isHover = input<boolean>(false);
   inner = viewChild<ElementRef>('inner');
   state = signal<boolean>(false);
@@ -35,9 +37,10 @@ export class FlipCard {
   private isAnimating: boolean = false;
 
   onClick() {
-    if (!this.isBrowser || this.isAnimating || this.isHover()) return;
+    if (!this.platformService.isBrowser || this.isAnimating || this.isHover()) return;
 
     this.isAnimating = true;
+    const gsap = this.gsapService.gsap;
     var timeline = gsap.timeline();
     timeline
       .to(this.inner()?.nativeElement, {

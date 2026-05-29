@@ -15,6 +15,12 @@
       ],
       "@shared-libs/services/*": [
         "./libs/shared/services/src/lib/*"
+      ],
+      "@shared-libs/ui": [
+        "./libs/shared/ui/src/index.ts"
+      ],
+      "@shared-libs/ui/*": [
+        "./libs/shared/ui/src/lib/*"
       ]
     }
   }
