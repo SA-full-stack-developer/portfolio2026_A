@@ -21,6 +21,9 @@
       ],
       "@shared-libs/ui/*": [
         "./libs/shared/ui/src/lib/*"
+      ],
+      "@shared-libs/styles": [
+        "./libs/shared/styles/src/lib"
       ]
     }
   }

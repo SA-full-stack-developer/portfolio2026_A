@@ -26,6 +26,7 @@ import {
   LIQUID_PROGRESS_BAR,
   PROJECTS,
   SKILLS,
+  SPLITTEXT,
 } from '@core/constants/feaute-flags.constants';
 
 import { FeatureFlag } from '@core/models/feature-flag.model';
@@ -164,6 +165,11 @@ export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
   FLIPCARD: {
     id: FLIPCARD,
     label: 'Flip card',
+    visibility: 'public',
+  },
+  SPLITTEXT: {
+    id: SPLITTEXT,
+    label: 'Split text',
     visibility: 'public',
   },
 };

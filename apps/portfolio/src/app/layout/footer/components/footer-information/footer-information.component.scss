@@ -1,5 +1,5 @@
-@use '../../../../../styles/_variables.scss' as v;
-@use '../../../../../styles/mixins.scss' as m;
+@use 'variables' as v;
+@use 'mixins' as m;
 
 .footer-i {
   @include m.respond-to('md') {

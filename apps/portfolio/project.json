@@ -95,7 +95,10 @@
           "entry": "apps/portfolio/src/server.ts"
         },
         "outputPath": "dist/portfolio",
-        "polyfills": ["es-module-shims"]
+        "polyfills": ["es-module-shims"],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/shared/styles/src/lib"]
+        }
       },
       "configurations": {
         "production": {

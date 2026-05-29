@@ -1,4 +1,4 @@
-import { BORDER_GRADIENT, FLIPCARD, LIQUID_PROGRESS_BAR } from '@core/constants';
+import { BORDER_GRADIENT, FLIPCARD, LIQUID_PROGRESS_BAR, SPLITTEXT } from '@core/constants';
 
 import { LabConfig } from '@core/models/lab.model';
 
@@ -155,6 +155,22 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
         '--border-radius': '10px',
       },
       isHover: true,
+    },
+  },
+  SplitText: {
+    tag: SPLITTEXT,
+    title: 'Split text',
+    remoteName: 'lab001',
+    exposedModule: './SplitTextLab',
+    exportName: 'SplitTextLab',
+    component: null,
+    inputs: {
+      cssVars: {
+        '--margin': '0.2rem',
+        '--bg-color': '#161616',
+        '--color': '#9e9e9e',
+      },
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nVivamus ut dolor nec sapien commodo laoreet sit amet eget diam.\nMauris eget arcu in elit tincidunt egestas sed id orci.\nMaecenas in elit nec quam vulputate mollis.\nNullam mollis dolor sed nulla ultricies, porta cursus magna laoreet.\nVivamus facilisis diam vitae leo maximus vestibulum.\nPraesent scelerisque nunc nec erat tincidunt pretium.\nMauris elementum justo sagittis justo lacinia, a tincidunt arcu ultrices.\nQuisque nec purus vitae velit vulputate interdum sit amet nec ligula.\nNulla nec est id sapien malesuada maximus non quis metus.\nNulla elementum velit a imperdiet luctus.\nMauris eleifend nibh in auctor pulvinar.\nNullam vitae magna vel neque finibus feugiat sit amet non eros.\nEtiam hendrerit augue eu lacus maximus, sit amet facilisis nisi ullamcorper.',
     },
   },
 };

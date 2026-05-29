@@ -21,7 +21,6 @@ module.exports = withNativeFederation({
     '@core/services/language.service',
     '@shared/pipes/safe-html.pipe',
     '@core/services/platform.service',
-    '@core/services/gsap.service',
     '@core/models/form.model',
     '@shared/directives/feature-flag.directive',
     '@features/skills/skills.component',
@@ -33,7 +32,6 @@ module.exports = withNativeFederation({
     '@core/config/seo.config',
     '@core/constants/feaute-flags.constants',
     '@core/guards/admin.guard',
-    '@shared-libs/services',
   ],
   features: {
     ignoreUnusedDeps: true,

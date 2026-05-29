@@ -9,10 +9,13 @@ module.exports = withNativeFederation({
     './LiquidProgressBar':
       './apps/lab001/src/app/components/liquid-progress-bar/liquid-progress-bar.ts',
     './FlipCard': './apps/lab001/src/app/components/flip-card/flip-card.ts',
+    './SplitTextLab': './apps/lab001/src/app/components/split-text-lab/split-text-lab.ts',
   },
 
   shared: {
     ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+    gsap: { singleton: true, strictVersion: false, requiredVersion: 'auto' },
+    'gsap/ScrollTrigger': { singleton: true, strictVersion: false, requiredVersion: 'auto' },
   },
 
   skip: ['rxjs/ajax', 'rxjs/fetch', 'rxjs/testing', 'rxjs/webSocket'],
