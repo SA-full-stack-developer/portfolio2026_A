@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { TranslateService } from '@ngx-translate/core';
 import { Status } from '@portfolio/shared/models';
-import { PlatformService } from './platform.service';
+import { PlatformService } from '@shared-libs/services';
 
 @Injectable({
   providedIn: 'root',

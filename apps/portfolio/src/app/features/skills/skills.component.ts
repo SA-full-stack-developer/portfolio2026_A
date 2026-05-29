@@ -9,12 +9,11 @@ import {
   inject,
   signal,
 } from '@angular/core';
+import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { MatIconModule } from '@angular/material/icon';
 import { ID_SKILLS } from '@core/constants/sections.constants';
 import { SkillFilter } from '@core/models';
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import { SkillsService } from '@core/services/skills.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { ErrorComponent } from '@shared/components/error/error.component';

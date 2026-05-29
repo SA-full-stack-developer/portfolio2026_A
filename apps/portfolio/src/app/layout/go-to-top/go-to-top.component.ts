@@ -1,8 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
+import { PlatformService } from '@shared-libs/services';
 import { distinctUntilChanged, fromEvent, map } from 'rxjs';
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { PlatformService } from '@core/services/platform.service';
 import { IconComponent } from '@shared/components/icon/icon.component';
 
 @Component({

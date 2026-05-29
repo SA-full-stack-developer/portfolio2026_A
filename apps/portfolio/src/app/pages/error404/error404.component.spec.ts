@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import { Error404Component } from './error404.component';
 
 describe('Error404Component', () => {

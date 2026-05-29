@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'federation-utils',
+  displayName: 'shared-services',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: [],
   coverageDirectory: '../../../coverage/libs/shared/services',

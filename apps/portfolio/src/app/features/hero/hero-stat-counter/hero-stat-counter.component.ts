@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, inject, signal } from '@angular/core';
+import { PlatformService } from '@shared-libs/services';
 
-import { PlatformService } from '@core/services/platform.service';
 import { StatsService } from '@core/services/stats.service';
 import { StatCounterComponent } from '../components/stat-counter/stat-counter.component';
 

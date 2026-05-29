@@ -8,7 +8,7 @@ import {
 } from '@core/models/language.model';
 
 import { TranslateService } from '@ngx-translate/core';
-import { PlatformService } from './platform.service';
+import { PlatformService } from '@shared-libs/services';
 
 @Injectable({ providedIn: 'root' })
 export class LanguageService {

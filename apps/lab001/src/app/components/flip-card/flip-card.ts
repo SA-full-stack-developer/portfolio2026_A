@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 
 import { isPlatformBrowser } from '@angular/common';
-import { CssVarsDirective } from 'federation-utils';
+import { CssVarsDirective } from '@shared-libs/services';
 import gsap from 'gsap';
 
 @Component({

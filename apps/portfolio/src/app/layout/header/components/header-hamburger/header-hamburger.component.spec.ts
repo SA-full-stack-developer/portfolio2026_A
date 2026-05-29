@@ -15,12 +15,11 @@ import {
   TranslationObject,
   provideTranslateService,
 } from '@ngx-translate/core';
+import { GsapService, PlatformService } from '@shared-libs/services';
 import { Observable, of } from 'rxjs';
 
 import { provideZonelessChangeDetection } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import { HeaderHamburgerComponent } from './header-hamburger.component';
 
 class MockTranslateLoader implements TranslateLoader {

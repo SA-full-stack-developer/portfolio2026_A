@@ -8,11 +8,10 @@ import {
   afterNextRender,
   inject,
 } from '@angular/core';
+import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { Router } from '@angular/router';
 import { HERO_AVATAR } from '@core/constants/feaute-flags.constants';
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import { navScrollTo } from '@core/utils/navigation.utils';
 import { TranslateModule } from '@ngx-translate/core';
 import { FeatureFlagDirective } from '@shared/directives/feature-flag.directive';

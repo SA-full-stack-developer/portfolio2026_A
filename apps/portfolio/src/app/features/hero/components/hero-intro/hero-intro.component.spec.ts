@@ -1,3 +1,4 @@
+import { Component, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
   TranslateLoader,
@@ -5,14 +6,12 @@ import {
   TranslationObject,
   provideTranslateService,
 } from '@ngx-translate/core';
+import { GsapService, PlatformService } from '@shared-libs/services';
 import { Observable, of } from 'rxjs';
 
-import { Component, provideZonelessChangeDetection } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { createMockGsapService } from '@core/mocks/ai.service.mock';
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import { HeroIntroComponent } from './hero-intro.component';
 
 @Component({ template: '' })

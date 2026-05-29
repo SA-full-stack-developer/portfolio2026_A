@@ -15,6 +15,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { BREADCRUMB_CONTACT, PAGE_SEO } from '@core/config/seo.config';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -22,8 +23,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Form } from '@core/models/form.model';
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import { SeoService } from '@core/services/seo.service';
 
 @Component({

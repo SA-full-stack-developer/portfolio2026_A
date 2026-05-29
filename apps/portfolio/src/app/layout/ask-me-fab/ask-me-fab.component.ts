@@ -1,11 +1,10 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, inject, signal } from '@angular/core';
+import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { FormsModule } from '@angular/forms';
-import { MessageDto } from '@portfolio/shared/models';
 import { AiService } from '@core/services/ai.service';
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { MessageDto } from '@portfolio/shared/models';
 
 @Component({
   selector: 'app-ask-me-fab',

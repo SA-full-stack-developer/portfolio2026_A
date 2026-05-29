@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CssVarsDirective } from 'federation-utils';
+import { CssVarsDirective } from '@shared-libs/services';
 
 @Component({
   selector: 'app-border-gradient',

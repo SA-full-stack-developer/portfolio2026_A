@@ -1,8 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { GsapService, PlatformService } from '@shared-libs/services';
 
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-error404',

@@ -21,6 +21,12 @@
       ],
       "@portfolio/shared/models": [
         "../../libs/shared/models/src/index.ts"
+      ],
+      "@shared-libs/services": [
+        "../../libs/shared/services/src/index.ts"
+      ],
+      "@shared-libs/services/*": [
+        "../../libs/shared/services/src/lib/*"
       ]
     }
   },

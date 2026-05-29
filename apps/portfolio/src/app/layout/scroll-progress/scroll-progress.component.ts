@@ -8,9 +8,8 @@ import {
   afterNextRender,
   inject,
 } from '@angular/core';
+import { GsapService, PlatformService } from '@shared-libs/services';
 
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
 @Component({

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PlatformService } from '@shared-libs/services';
 
 import { provideZonelessChangeDetection } from '@angular/core';
-import { PlatformService } from '@core/services/platform.service';
 import { GoToTopComponent } from './go-to-top.component';
 
 describe('GoToTopComponent', () => {

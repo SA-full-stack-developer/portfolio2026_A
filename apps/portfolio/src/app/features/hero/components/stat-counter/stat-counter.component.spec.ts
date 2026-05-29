@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateLoader, TranslationObject, provideTranslateService } from '@ngx-translate/core';
+import { GsapService } from '@shared-libs/services';
+import { Observable, of } from 'rxjs';
 
 import { provideZonelessChangeDetection } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { GsapService } from '@core/services/gsap.service';
 import { StatCounterComponent } from './stat-counter.component';
 
 class MockTranslateLoader implements TranslateLoader {
@@ -42,7 +42,9 @@ describe('StatCounterComponent', () => {
     }).compileComponents();
   });
 
-  async function setupInputs(options: { animate?: boolean; startDelay?: number } = {}): Promise<void> {
+  async function setupInputs(
+    options: { animate?: boolean; startDelay?: number } = {},
+  ): Promise<void> {
     const { animate = false, startDelay = 0 } = options;
     fixture = TestBed.createComponent(StatCounterComponent);
     component = fixture.componentInstance;

@@ -6,12 +6,11 @@ import {
   TranslationObject,
   provideTranslateService,
 } from '@ngx-translate/core';
+import { GsapService, PlatformService } from '@shared-libs/services';
 import { Observable, of } from 'rxjs';
 
 import { By } from '@angular/platform-browser';
 import { SKILLS_MOCK } from '@core/mocks/skills.mock';
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import { SkillsService } from '@core/services/skills.service';
 import { SkillsComponent } from './skills.component';
 

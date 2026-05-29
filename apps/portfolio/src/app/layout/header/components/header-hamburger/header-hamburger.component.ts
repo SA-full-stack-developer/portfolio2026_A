@@ -7,11 +7,10 @@ import {
   inject,
   signal,
 } from '@angular/core';
+import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { RouterLink } from '@angular/router';
 import { HEADER_NAV } from '@core/constants/feaute-flags.constants';
-import { GsapService } from '@core/services/gsap.service';
-import { PlatformService } from '@core/services/platform.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { IconComponent } from '@shared/components/icon/icon.component';
 import { FeatureFlagDirective } from '@shared/directives/feature-flag.directive';

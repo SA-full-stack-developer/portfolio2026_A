@@ -33,6 +33,7 @@ module.exports = withNativeFederation({
     '@core/config/seo.config',
     '@core/constants/feaute-flags.constants',
     '@core/guards/admin.guard',
+    '@shared-libs/services',
   ],
   features: {
     ignoreUnusedDeps: true,
