@@ -3,7 +3,7 @@
   "shared": [
     {
       "packageName": "@angular/common",
-      "outFileName": "_angular_common.9S9ap2FIAb.js",
+      "outFileName": "_angular_common.76th9QKA6L.js",
       "requiredVersion": "^21.2.13",
       "singleton": true,
       "strictVersion": true,
@@ -11,7 +11,7 @@
     },
     {
       "packageName": "@angular/common/http",
-      "outFileName": "_angular_common_http.gBdRneW9Mj.js",
+      "outFileName": "_angular_common_http.2fovtTGXfA.js",
       "requiredVersion": "^21.2.13",
       "singleton": true,
       "strictVersion": true,
@@ -19,7 +19,7 @@
     },
     {
       "packageName": "@angular/core",
-      "outFileName": "_angular_core.Rw6VJePPnl.js",
+      "outFileName": "_angular_core.jVwqKIeR5c.js",
       "requiredVersion": "^21.2.13",
       "singleton": true,
       "strictVersion": true,
@@ -27,7 +27,7 @@
     },
     {
       "packageName": "@angular/core/primitives/di",
-      "outFileName": "_angular_core_primitives_di.QhSuumHqC2.js",
+      "outFileName": "_angular_core_primitives_di.gp0sl-Gizz.js",
       "requiredVersion": "^21.2.13",
       "singleton": true,
       "strictVersion": true,
@@ -35,7 +35,7 @@
     },
     {
       "packageName": "@angular/core/primitives/signals",
-      "outFileName": "_angular_core_primitives_signals.oPPo13JdMt.js",
+      "outFileName": "_angular_core_primitives_signals.-43dXuUiFK.js",
       "requiredVersion": "^21.2.13",
       "singleton": true,
       "strictVersion": true,
@@ -43,7 +43,7 @@
     },
     {
       "packageName": "@angular/platform-browser",
-      "outFileName": "_angular_platform_browser.sk912smEWf.js",
+      "outFileName": "_angular_platform_browser.KPCIGJI6h3.js",
       "requiredVersion": "^21.2.13",
       "singleton": true,
       "strictVersion": true,
@@ -51,7 +51,7 @@
     },
     {
       "packageName": "@angular/router",
-      "outFileName": "_angular_router.R6NJNkZZYp.js",
+      "outFileName": "_angular_router.AFBYxmoy5E.js",
       "requiredVersion": "^21.2.13",
       "singleton": true,
       "strictVersion": true,
@@ -59,7 +59,7 @@
     },
     {
       "packageName": "gsap",
-      "outFileName": "gsap.JU3YiObbLg.js",
+      "outFileName": "gsap.Eg-sF8kcsX.js",
       "requiredVersion": "^3.14.2",
       "singleton": true,
       "strictVersion": true,
@@ -67,7 +67,7 @@
     },
     {
       "packageName": "rxjs",
-      "outFileName": "rxjs.C1juRLXkGz.js",
+      "outFileName": "rxjs.XyKdAG1G1i.js",
       "requiredVersion": "~7.8.0",
       "singleton": true,
       "strictVersion": true,
@@ -75,7 +75,7 @@
     },
     {
       "packageName": "rxjs/operators",
-      "outFileName": "rxjs_operators.1mkxWWNJm5.js",
+      "outFileName": "rxjs_operators.zKyJJEvtml.js",
       "requiredVersion": "~7.8.0",
       "singleton": true,
       "strictVersion": true,
@@ -83,7 +83,7 @@
     },
     {
       "packageName": "tslib",
-      "outFileName": "tslib.9aZA8-1Jvk.js",
+      "outFileName": "tslib.jXdWQek1Oc.js",
       "requiredVersion": "^2.3.0",
       "singleton": true,
       "strictVersion": true,
@@ -130,8 +130,16 @@
       "outFileName": "chunk-4CLCTAJ7.js"
     },
     {
-      "packageName": "federation-utils",
-      "outFileName": "federation_utils-B4ALPDTC.js",
+      "packageName": "@shared-libs/services",
+      "outFileName": "_shared_libs_services-5HVOVXIH.js",
+      "requiredVersion": "",
+      "singleton": true,
+      "strictVersion": false,
+      "version": ""
+    },
+    {
+      "packageName": "@shared-libs/ui",
+      "outFileName": "_shared_libs_ui-6SSV5W4T.js",
       "requiredVersion": "",
       "singleton": true,
       "strictVersion": false,
@@ -141,19 +149,19 @@
   "exposes": [
     {
       "key": "./BorderGradient",
-      "outFileName": "BorderGradient-ODJSFOSD.js"
+      "outFileName": "BorderGradient-IDHZ2ZJ4.js"
     },
     {
       "key": "./CardEffects",
-      "outFileName": "CardEffects-HHRLBRQ4.js"
+      "outFileName": "CardEffects-FGGZVTWZ.js"
     },
     {
       "key": "./LiquidProgressBar",
-      "outFileName": "LiquidProgressBar-ARISFBBA.js"
+      "outFileName": "LiquidProgressBar-QDMFTKDO.js"
     },
     {
       "key": "./FlipCard",
-      "outFileName": "FlipCard-55W6DZ67.js"
+      "outFileName": "FlipCard-SQD37WSL.js"
     }
   ]
 }
