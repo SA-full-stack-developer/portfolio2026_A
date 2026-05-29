@@ -9,7 +9,7 @@
         [title]="item.title"
         [tag]="getVisibilityName(item.tag)"
         [component]="item.component"
-        [cssVars]="item.cssVars"
+        [inputs]="item.inputs"
         *appFeatureFlag="item.tag"
       />
     } @empty {

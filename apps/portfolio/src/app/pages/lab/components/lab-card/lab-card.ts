@@ -11,6 +11,10 @@ import { NgComponentOutlet } from '@angular/common';
 export class LabCardComponent {
   title = input.required<string>();
   tag = input.required<string>();
-  cssVars = input<Record<string, string> | null>();
+  inputs = input<Record<string, any> | null>();
   component = input.required<Type<unknown> | null>();
+
+  getInputs(): Record<string, any> {
+    return this.inputs() ?? {};
+  }
 }

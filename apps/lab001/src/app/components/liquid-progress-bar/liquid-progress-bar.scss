@@ -1,0 +1,14 @@
+:host {
+  --height: 200px;
+  --fill: blue;
+  width: 100%;
+}
+
+.liquid-progress-bar {
+  width: 100%;
+  height: var(--height);
+
+  & path {
+    fill: var(--fill);
+  }
+}

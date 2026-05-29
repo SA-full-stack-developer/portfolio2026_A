@@ -7,6 +7,7 @@ import {
   COPYRIGHT,
   COVER_LETTER,
   EXPERIENCE,
+  FLIPCARD,
   FOOTER,
   FOOTER_CONTACT,
   FOOTER_INFORMATION,
@@ -22,6 +23,7 @@ import {
   HERO_STATS,
   LAB,
   LANGUAGE_SWITCHER,
+  LIQUID_PROGRESS_BAR,
   PROJECTS,
   SKILLS,
 } from '@core/constants/feaute-flags.constants';
@@ -152,6 +154,16 @@ export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
   BORDER_GRADIENT: {
     id: BORDER_GRADIENT,
     label: 'Border Gradient',
+    visibility: 'public',
+  },
+  LIQUID_PROGRESS_BAR: {
+    id: LIQUID_PROGRESS_BAR,
+    label: 'Liquid Progress Bar',
+    visibility: 'admin',
+  },
+  FLIPCARD: {
+    id: FLIPCARD,
+    label: 'Flip card',
     visibility: 'public',
   },
 };
