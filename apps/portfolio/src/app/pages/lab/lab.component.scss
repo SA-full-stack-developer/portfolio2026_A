@@ -1,9 +1,15 @@
 @use '../../../styles/mixins' as m;
 
 .lab {
+  white-space: pre-line;
+
   &__header {
     height: fit-content;
     margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  & h1 {
     margin-bottom: 1rem;
   }
 }
