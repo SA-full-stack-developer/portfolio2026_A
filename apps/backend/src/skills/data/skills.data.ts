@@ -43,7 +43,7 @@ export const SKILLS_DATA: Skill[] = [
     level: 85,
     category: 'frontend',
     icon: 'rxjs.svg',
-    highlighted: false,
+    highlighted: true,
     yearsOfExperience: 10,
   },
   {
@@ -196,7 +196,7 @@ export const SKILLS_DATA: Skill[] = [
     level: 85,
     category: 'frontend',
     icon: 'primeng.svg',
-    highlighted: false,
+    highlighted: true,
     yearsOfExperience: 10,
   },
   {
@@ -394,6 +394,15 @@ export const SKILLS_DATA: Skill[] = [
     level: 75,
     category: 'frontend',
     icon: 'module federation.svg',
+    highlighted: true,
+    yearsOfExperience: 1,
+  },
+  {
+    id: '52',
+    name: 'NgRx/NgRx Signal Store',
+    level: 75,
+    category: 'frontend',
+    icon: 'ngrx.svg',
     highlighted: true,
     yearsOfExperience: 1,
   },
