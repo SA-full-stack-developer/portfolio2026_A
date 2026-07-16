@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1780062899411,
+  "timestamp": 1784198909078,
   "index": "/index.csr.html",
   "assetGroups": [
     {
@@ -86,6 +86,7 @@
         "/assets/icons/skills/native federation.webp",
         "/assets/icons/skills/nestjs.svg",
         "/assets/icons/skills/nfts.svg",
+        "/assets/icons/skills/ngrx.svg",
         "/assets/icons/skills/nodejs.svg",
         "/assets/icons/skills/oraclesql.svg",
         "/assets/icons/skills/prestashop.svg",
@@ -696,6 +697,7 @@
     "/assets/icons/skills/native federation.webp": "34b64471fa3852b711d1899d62b9ba0770d914bb",
     "/assets/icons/skills/nestjs.svg": "b7ab27f33e6c87ae348c544da8f05aedb24c4a39",
     "/assets/icons/skills/nfts.svg": "b3c098b47dc73ad93d55fc48fb34024f33d922b5",
+    "/assets/icons/skills/ngrx.svg": "2256209579582a5e69020db9b1385b24cdd71e81",
     "/assets/icons/skills/nodejs.svg": "357875f5c806cbaa37f48a56ec1aaabe472a4536",
     "/assets/icons/skills/oraclesql.svg": "6616f0227dc3945b4525ba2149a53fdf79792f17",
     "/assets/icons/skills/prestashop.svg": "38c99cda5f25dfab3028c4a5596feeee37d9e479",
@@ -739,7 +741,7 @@
     "/chunk-WJMV4X4Q.js": "d88ef2cdfa1746b58a9a6daf9a08a27ae29b22b4",
     "/chunk-XY3VLTX2.js": "d345a018f590a65c5b450701b28cdb52f6067fa9",
     "/favicon.ico": "9484d47d30a8cdf646b0e299f571de63467473f2",
-    "/index.html": "2a22d10a26a941ae755ab8e224ec15ce33865afd",
+    "/index.html": "d241fd541902375998b62ced42dfe408a1c26ff7",
     "/main-EPLCZHBU.js": "181011913f80d39c6b2f26c352f6b0272f6cae1d",
     "/manifest.webmanifest": "f5c847d79a41489485ad94340603bcf22c70fcad",
     "/media/ad-CSZHNGVR.svg": "02ca6eb4cae07ed973e4380d85091f2ab86311bd",
