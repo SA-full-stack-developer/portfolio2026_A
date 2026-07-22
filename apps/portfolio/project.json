@@ -25,7 +25,11 @@
       "executor": "@angular-architects/native-federation:build",
       "options": {
         "ssr": true,
-        "federationConfig": "apps/portfolio/federation.config.ts"
+        "federationConfig": "apps/portfolio/federation.config.ts",
+        "entryPoints": [
+          "apps\\portfolio\\src\\main.ts"
+        ],
+        "projectName": "portfolio"
       },
       "configurations": {
         "production": {
@@ -46,7 +50,11 @@
         "rebuildDelay": 500,
         "dev": true,
         "cacheExternalArtifacts": false,
-        "port": 0
+        "port": 0,
+        "entryPoints": [
+          "apps\\portfolio\\src\\main.ts"
+        ],
+        "projectName": "portfolio"
       },
       "continuous": true
     },
@@ -61,7 +69,9 @@
       "options": {
         "command": "npx eslint \"apps/portfolio/src/**/*.ts\" \"apps/portfolio/src/**/*.html\""
       },
-      "outputs": ["{options.outputFile}"]
+      "outputs": [
+        "{options.outputFile}"
+      ]
     },
     "esbuild": {
       "executor": "@angular/build:application",
@@ -95,9 +105,13 @@
           "entry": "apps/portfolio/src/server.ts"
         },
         "outputPath": "dist/portfolio",
-        "polyfills": ["es-module-shims"],
+        "polyfills": [
+          "es-module-shims"
+        ],
         "stylePreprocessorOptions": {
-          "includePaths": ["libs/shared/styles/src/lib"]
+          "includePaths": [
+            "libs/shared/styles/src/lib"
+          ]
         }
       },
       "configurations": {
@@ -145,7 +159,9 @@
         }
       },
       "defaultConfiguration": "production",
-      "outputs": ["{options.outputPath}"]
+      "outputs": [
+        "{options.outputPath}"
+      ]
     },
     "serve-original": {
       "executor": "@angular/build:dev-server",

@@ -4,15 +4,25 @@
     "outDir": "../../dist/out-tsc",
     "rootDir": "../../",
     "types": [],
-    "ignoreDeprecations": "5.0"
+    "ignoreDeprecations": "6.0"
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "../../libs/shared/ui/src/index.ts",
+    "../../libs/shared/services/src/index.ts"
   ],
   "exclude": [
     "src/**/*.spec.ts",
     "src/**/*.test.ts",
     "jest.config.ts",
     "jest.config.cts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "extendedDiagnostics": {
+      "checks": {
+        "nullishCoalescingNotNullable": "suppress",
+        "optionalChainNotNullable": "suppress"
+      }
+    }
+  }
 }

@@ -6,6 +6,7 @@ import {
   afterNextRender,
   inject,
   signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
@@ -20,6 +21,7 @@ import { HeaderNavComponent } from '../header-nav/header-nav.component';
   selector: 'app-header-hamburger',
   imports: [TranslateModule, RouterLink, HeaderNavComponent, IconComponent, FeatureFlagDirective],
   templateUrl: './header-hamburger.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './header-hamburger.component.scss',
 })
 export class HeaderHamburgerComponent implements AfterViewInit {

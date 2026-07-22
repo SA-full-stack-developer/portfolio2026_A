@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CssVarsDirective } from '@shared-libs/ui';
 
 @Component({
@@ -11,6 +11,7 @@ import { CssVarsDirective } from '@shared-libs/ui';
     },
   ],
   templateUrl: './border-gradient.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './border-gradient.scss',
 })
 export class BorderGradient {}

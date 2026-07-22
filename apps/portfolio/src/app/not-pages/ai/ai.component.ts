@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BREADCRUMB_AI, PAGE_SEO } from '@core/config/seo.config';
 
 import { SeoService } from '@core/services/seo.service';
@@ -12,6 +12,7 @@ import { CoverLetterComponent } from '../../features/ai/components/cover-letter/
   standalone: true,
   imports: [TranslateModule, ChatCvComponent, CoverLetterComponent, ContactAssistantComponent],
   templateUrl: './ai.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './ai.component.scss',
 })
 export class AiComponent implements OnInit {

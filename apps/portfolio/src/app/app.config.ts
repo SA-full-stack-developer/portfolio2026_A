@@ -1,6 +1,6 @@
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { ApplicationConfig, isDevMode, provideZonelessChangeDetection } from '@angular/core';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { provideClientHydration, withEventReplay, withNoIncrementalHydration } from '@angular/platform-browser';
 import {
   provideRouter,
   withEnabledBlockingInitialNavigation,
@@ -24,7 +24,7 @@ export const appConfig: ApplicationConfig = {
       }),
       withEnabledBlockingInitialNavigation(),
     ),
-    ...(isDevMode() ? [] : [provideClientHydration(withEventReplay())]),
+    ...(isDevMode() ? [] : [provideClientHydration(withEventReplay(), withNoIncrementalHydration())]),
     provideHttpClient(withFetch()),
     provideTranslateService({
       fallbackLang: 'en',

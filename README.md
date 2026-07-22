@@ -18,7 +18,7 @@ El proyecto está dividido en dos grandes bloques independientes:
 
 ### Frontend
 
-- **Framework:** Angular 21+
+- **Framework:** Angular 22+
 - **Gestión de Estado:** Arquitectura basada en **Signals** para una detección de cambios eficiente.
 - **Programación Reactiva:** RxJS para el manejo de flujos de datos asíncronos.
 - **Estilos:** SASS.

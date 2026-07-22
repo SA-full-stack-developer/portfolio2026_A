@@ -2,9 +2,9 @@
 
 ## Stack
 
-- Angular 21 standalone zoneless — nunca usar NgModules
+- Angular 22 standalone zoneless — nunca usar NgModules
 - NX monorepo — estructura `apps/portfolio` (frontend) y `apps/backend` (backend)
-- Native Federation con `@angular-architects/native-federation` ^21.2.3
+- Native Federation con `@angular-architects/native-federation` 22
 - SCSS con alias `v` para variables, `m` para mixins
 - BEM, rem para espaciados, px para bordes
 - Signals y inject() — nunca constructor injection

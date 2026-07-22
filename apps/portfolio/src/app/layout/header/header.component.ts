@@ -5,7 +5,7 @@ import {
   LANGUAGE_SWITCHER,
 } from '@core/constants/feaute-flags.constants';
 
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { LanguageSwitcherComponent } from '@shared/components/language-switcher/language-switcher.component';
@@ -26,6 +26,7 @@ import { HeaderNavComponent } from './components/header-nav/header-nav.component
     TranslateModule,
   ],
   templateUrl: './header.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {

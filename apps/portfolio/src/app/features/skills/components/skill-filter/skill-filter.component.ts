@@ -1,4 +1,4 @@
-import { Component, computed, input, output } from '@angular/core';
+import { Component, computed, input, output, ChangeDetectionStrategy } from '@angular/core';
 
 import { SkillFilter } from '@core/models';
 import { TranslateModule } from '@ngx-translate/core';
@@ -11,6 +11,7 @@ type FilterCategory = SkillCategory | 'all';
   standalone: true,
   imports: [TranslateModule],
   templateUrl: './skill-filter.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './skill-filter.component.scss',
 })
 export class SkillFilterComponent {

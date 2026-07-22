@@ -6,6 +6,7 @@ import {
   input,
   signal,
   viewChild,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
@@ -22,6 +23,7 @@ import { CssVarsDirective } from '@shared-libs/ui';
     },
   ],
   templateUrl: './flip-card.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './flip-card.scss',
 })
 export class FlipCard {

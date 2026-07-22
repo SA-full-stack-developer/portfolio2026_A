@@ -1,4 +1,4 @@
-import { Component, DestroyRef, computed, inject, signal } from '@angular/core';
+import { Component, DestroyRef, computed, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CssVarsDirective } from '@shared-libs/ui';
@@ -14,6 +14,7 @@ import { interval } from 'rxjs';
     },
   ],
   templateUrl: './liquid-progress-bar.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './liquid-progress-bar.scss',
 })
 export class LiquidProgressBar {

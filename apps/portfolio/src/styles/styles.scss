@@ -54,8 +54,8 @@ $portfolio-theme: mat.define-theme(
 }
 
 html {
-  @include mat.all-component-themes($portfolio-theme);
   @include mat.core();
+  @include mat.all-component-themes($portfolio-theme);
 }
 
 // Reset

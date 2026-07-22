@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { Router } from '@angular/router';
@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   selector: 'app-error404',
   imports: [],
   templateUrl: './error404.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './error404.component.scss',
 })
 export class Error404Component implements OnInit {

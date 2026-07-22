@@ -1,4 +1,4 @@
-import { Component, Type, input } from '@angular/core';
+import { Component, Type, input, ChangeDetectionStrategy } from '@angular/core';
 
 import { NgComponentOutlet } from '@angular/common';
 
@@ -6,6 +6,7 @@ import { NgComponentOutlet } from '@angular/common';
   selector: 'app-lab-card',
   imports: [NgComponentOutlet],
   templateUrl: './lab-card.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './lab-card.scss',
 })
 export class LabCardComponent {

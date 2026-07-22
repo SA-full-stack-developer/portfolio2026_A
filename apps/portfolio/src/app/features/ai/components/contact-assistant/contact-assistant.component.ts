@@ -6,6 +6,7 @@ import {
   ViewChild,
   inject,
   signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
@@ -20,6 +21,7 @@ import { ChatMessageComponent } from '../chat-message/chat-message.component';
   standalone: true,
   imports: [FormsModule, TranslateModule, ChatMessageComponent],
   templateUrl: './contact-assistant.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './contact-assistant.component.scss',
 })
 export class ContactAssistantComponent implements AfterViewInit, OnDestroy {

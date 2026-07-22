@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { HEADER_LOGO } from '@core/constants/feaute-flags.constants';
 import { StatusService } from '@core/services/status.service';
@@ -11,6 +11,7 @@ import { FeatureFlagDirective } from '@shared/directives/feature-flag.directive'
   selector: 'app-footer-information',
   imports: [LogoComponent, FeatureFlagDirective, StatusDotComponent, TranslateModule],
   templateUrl: './footer-information.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './footer-information.component.scss',
 })
 export class FooterInformationComponent {

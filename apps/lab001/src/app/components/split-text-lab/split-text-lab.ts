@@ -8,6 +8,7 @@ import {
   input,
   viewChild,
   viewChildren,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
@@ -23,6 +24,7 @@ import { CssVarsDirective } from '@shared-libs/ui';
     },
   ],
   templateUrl: './split-text-lab.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './split-text-lab.scss',
 })
 export class SplitTextLab implements AfterViewInit, OnDestroy {

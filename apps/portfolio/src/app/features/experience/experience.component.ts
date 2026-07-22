@@ -9,6 +9,7 @@ import {
   effect,
   inject,
   signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
@@ -22,6 +23,7 @@ import { ExperienceCardComponent } from './components/experience-card/experience
   selector: 'app-experience',
   imports: [ExperienceCardComponent, TranslateModule, MatIconModule, ErrorComponent],
   templateUrl: './experience.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './experience.component.scss',
 })
 export class ExperienceComponent implements OnDestroy {

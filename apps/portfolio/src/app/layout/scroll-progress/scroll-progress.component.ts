@@ -7,6 +7,7 @@ import {
   ViewChild,
   afterNextRender,
   inject,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
@@ -16,6 +17,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
   selector: 'app-scroll-progress',
   imports: [],
   templateUrl: './scroll-progress.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './scroll-progress.component.scss',
 })
 export class ScrollProgressComponent implements AfterViewInit, OnDestroy {

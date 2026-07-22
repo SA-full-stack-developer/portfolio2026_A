@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 
 import { MessageDto } from '@portfolio/shared/models';
 
@@ -6,6 +6,7 @@ import { MessageDto } from '@portfolio/shared/models';
   selector: 'app-chat-message',
   standalone: true,
   templateUrl: './chat-message.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './chat-message.component.scss',
 })
 export class ChatMessageComponent {

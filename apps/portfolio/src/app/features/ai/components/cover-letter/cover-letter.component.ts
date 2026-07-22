@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, inject, signal } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { FormsModule } from '@angular/forms';
@@ -11,6 +11,7 @@ import { CoverLetterRequest } from '@portfolio/shared/models';
   standalone: true,
   imports: [FormsModule, TranslateModule],
   templateUrl: './cover-letter.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './cover-letter.component.scss',
 })
 export class CoverLetterComponent implements AfterViewInit, OnDestroy {

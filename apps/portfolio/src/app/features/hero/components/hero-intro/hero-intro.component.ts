@@ -7,6 +7,7 @@ import {
   ViewChildren,
   afterNextRender,
   inject,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
@@ -22,6 +23,7 @@ import { HeroAvatarComponent } from '../hero-avatar/hero-avatar.component';
   standalone: true,
   imports: [TranslateModule, HeroAvatarComponent, FeatureFlagDirective],
   templateUrl: './hero-intro.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './hero-intro.component.scss',
 })
 export class HeroIntroComponent implements AfterViewInit {

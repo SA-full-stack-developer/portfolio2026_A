@@ -8,6 +8,7 @@ import {
   effect,
   inject,
   signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
@@ -33,6 +34,7 @@ import { SkillFilterComponent } from './components/skill-filter/skill-filter.com
     ErrorComponent,
   ],
   templateUrl: './skills.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './skills.component.scss',
 })
 export class SkillsComponent implements AfterViewInit, OnDestroy {

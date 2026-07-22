@@ -1,4 +1,4 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, inject, input, output, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ID_EXPERIENCE, ID_SKILLS } from '@core/constants/sections.constants';
 
@@ -10,6 +10,7 @@ import { PlatformService } from '@shared-libs/services';
   selector: 'app-header-nav',
   imports: [TranslateModule, RouterLink],
   templateUrl: './header-nav.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './header-nav.component.scss',
 })
 export class HeaderNavComponent {

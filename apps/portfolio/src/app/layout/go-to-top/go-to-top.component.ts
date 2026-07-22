@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { PlatformService } from '@shared-libs/services';
 import { distinctUntilChanged, fromEvent, map } from 'rxjs';
 
@@ -9,6 +9,7 @@ import { IconComponent } from '@shared/components/icon/icon.component';
   selector: 'app-go-to-top',
   imports: [IconComponent],
   templateUrl: './go-to-top.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './go-to-top.component.scss',
 })
 export class GoToTopComponent {
