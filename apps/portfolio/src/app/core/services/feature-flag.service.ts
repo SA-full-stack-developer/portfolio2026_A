@@ -1,9 +1,9 @@
-import { Injectable, inject } from '@angular/core';
+import { inject, Service } from '@angular/core';
 
 import { FEATURE_FLAGS } from '@core/config/feature-flags.config';
 import { SessionService } from '@core/services/session.service';
 
-@Injectable({ providedIn: 'root' })
+@Service()
 export class FeatureFlagService {
   private readonly session = inject(SessionService);
 

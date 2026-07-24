@@ -5,6 +5,7 @@ import { GsapService } from '@shared-libs/services';
 import { Observable, of } from 'rxjs';
 
 import { StatsService } from '@core/services/stats.service';
+import { Stat } from '@portfolio/shared/models';
 import { PortfolioComponent } from './portfolio.component';
 
 class MockTranslateLoader implements TranslateLoader {
@@ -24,9 +25,9 @@ class MockGsapService {
 }
 
 const mockStatsService = {
-  stats: signal([]),
-  loadStats: jest.fn(),
-  refresh: jest.fn(),
+  stats: signal<Stat[]>([]),
+  isLoading: signal(false),
+  error: signal<string | null>(null),
 };
 
 describe('PortfolioComponent', () => {

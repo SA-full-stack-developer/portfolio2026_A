@@ -4,6 +4,7 @@ import { TranslateLoader, TranslationObject, provideTranslateService } from '@ng
 import { Observable, of } from 'rxjs';
 
 import { StatsService } from '@core/services/stats.service';
+import { Stat } from '@portfolio/shared/models';
 import { HeroComponent } from './hero.component';
 
 class MockTranslateLoader implements TranslateLoader {
@@ -12,10 +13,16 @@ class MockTranslateLoader implements TranslateLoader {
   }
 }
 
-const mockStatsService = {
+/*const mockStatsService = {
   stats: signal([]),
   loadStats: jest.fn(),
   refresh: jest.fn(),
+};*/
+
+const mockStatsService = {
+  stats: signal<Stat[]>([]),
+  isLoading: signal(false),
+  error: signal<string | null>(null),
 };
 
 describe('HeroComponent', () => {

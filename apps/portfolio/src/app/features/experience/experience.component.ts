@@ -32,7 +32,7 @@ export class ExperienceComponent implements OnDestroy {
 
   readonly resolvedExperiences = this.experienceService.experiences;
   readonly openProjectId = signal<string | null>(null);
-  readonly loading = this.experienceService.loading;
+  readonly loading = this.experienceService.isLoading;
   readonly error = this.experienceService.error;
 
   private scrollTriggers = signal<ScrollTrigger[]>([]);

@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { inject, Service } from '@angular/core';
 import {
   AiResponse,
   AskMeRequest,
@@ -6,12 +6,12 @@ import {
   ContactAssistantRequest,
   CoverLetterRequest,
 } from '@portfolio/shared/models';
-import { Observable, map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 
-@Injectable({ providedIn: 'root' })
+@Service()
 export class AiService {
   private readonly http = inject(HttpClient);
   private readonly baseUrl = `${environment.apiUrl}/ai`;

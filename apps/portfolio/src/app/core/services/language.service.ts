@@ -1,4 +1,4 @@
-import { Injectable, computed, inject, signal } from '@angular/core';
+import { computed, inject, Service, signal } from '@angular/core';
 import {
   AVAILABLE_LANGUAGES,
   DEFAULT_LANGUAGE,
@@ -10,7 +10,7 @@ import {
 import { TranslateService } from '@ngx-translate/core';
 import { PlatformService } from '@shared-libs/services';
 
-@Injectable({ providedIn: 'root' })
+@Service()
 export class LanguageService {
   private readonly translateService = inject(TranslateService);
   private readonly platformService = inject(PlatformService);

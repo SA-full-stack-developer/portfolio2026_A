@@ -1,51 +1,26 @@
-import { Injectable, inject, signal } from '@angular/core';
-import { catchError, map, of } from 'rxjs';
+import { computed, inject, Service } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { httpResource } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { TranslateService } from '@ngx-translate/core';
 import { ResolvedExperience } from '@portfolio/shared/models';
 import { PlatformService } from '@shared-libs/services';
 
-@Injectable({ providedIn: 'root' })
+@Service()
 export class ExperienceService {
-  private readonly http = inject(HttpClient);
+  private readonly translate = inject(TranslateService);
   private readonly platformService = inject(PlatformService);
   private readonly apiUrl = `${
     this.platformService.isBrowser ? environment.browserApiUrl : environment.apiUrl
   }/experience`;
-  private readonly translate = inject(TranslateService);
-  private readonly _experiences = signal<ResolvedExperience[]>([]);
-  private readonly _loading = signal<boolean>(false);
-  private readonly _error = signal<string | null>(null);
 
-  readonly experiences = this._experiences.asReadonly();
-  readonly loading = this._loading.asReadonly();
-  readonly error = this._error.asReadonly();
+  private readonly experienceResource = httpResource<{ data: ResolvedExperience[] }>(
+    () => this.apiUrl,
+  );
 
-  constructor() {
-    this.fetchExperience();
-  }
-
-  private fetchExperience() {
-    this._loading.set(true);
-    this._error.set(null);
-
-    this.http
-      .get<{ data: ResolvedExperience[] }>(this.apiUrl)
-      .pipe(
-        map((res) => res.data),
-        catchError((err) => {
-          const errorMessage = this.translate.instant('ERRORS.API');
-          this._error.set(errorMessage);
-          this._loading.set(false);
-          console.error('API Error:', err);
-          return of([]);
-        }),
-      )
-      .subscribe((data) => {
-        this._experiences.set(data);
-        this._loading.set(false);
-      });
-  }
+  readonly experiences = computed(() => this.experienceResource.value()?.data ?? []);
+  readonly isLoading = this.experienceResource.isLoading;
+  readonly error = computed(() =>
+    this.experienceResource.error() ? this.translate.instant('ERRORS.API') : null,
+  );
 }

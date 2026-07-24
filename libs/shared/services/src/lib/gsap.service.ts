@@ -1,10 +1,10 @@
-import { Injectable, inject } from '@angular/core';
+import { Service, inject } from '@angular/core';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PlatformService } from './platform.service';
 
-@Injectable({ providedIn: 'root' })
+@Service()
 export class GsapService {
   private readonly platformService = inject(PlatformService);
   private initialized = false;
