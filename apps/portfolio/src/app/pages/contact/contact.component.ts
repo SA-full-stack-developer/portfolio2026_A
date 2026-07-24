@@ -10,7 +10,6 @@ import {
   computed,
   inject,
   signal,
-  ChangeDetectionStrategy
 } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
@@ -39,7 +38,6 @@ import { SeoService } from '@core/services/seo.service';
     MatProgressSpinnerModule,
   ],
   templateUrl: './contact.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './contact.component.scss',
 })
 export class ContactComponent implements OnInit, AfterViewInit {
@@ -53,7 +51,7 @@ export class ContactComponent implements OnInit, AfterViewInit {
 
   @ViewChildren('animRow') animRows!: QueryList<ElementRef>;
 
-  botTrap = '';
+  botTrap = signal('');
   formData = signal<Form>({
     name: '',
     subject: '',
@@ -110,7 +108,7 @@ export class ContactComponent implements OnInit, AfterViewInit {
   }
 
   async onSubmit(form: NgForm) {
-    if (this.botTrap !== '') {
+    if (this.botTrap() !== '') {
       return;
     }
     if (this.isFormValid()) {
@@ -136,7 +134,7 @@ export class ContactComponent implements OnInit, AfterViewInit {
         this.snackBar.open(this.translate.instant('CONTACT.SUCCESS'), '', { duration: 1000 });
         form.resetForm();
         this.formData.set({ name: '', subject: '', email: '', message: '' });
-        this.botTrap = '';
+        this.botTrap.set('');
       } catch (error) {
         const errorMessage =
           typeof error === 'string'

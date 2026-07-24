@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ElementRef, inject, signal } from '@angular/core';
 
 import { CssVarsDirective } from '@shared-libs/ui';
 
@@ -12,7 +12,6 @@ import { CssVarsDirective } from '@shared-libs/ui';
     },
   ],
   templateUrl: './cards-effects.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './cards-effects.scss',
 })
 export class CardEffects {

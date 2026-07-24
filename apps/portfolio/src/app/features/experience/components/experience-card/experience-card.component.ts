@@ -1,10 +1,9 @@
-import { Component, OnInit, inject, input, output, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, inject, input, output, signal } from '@angular/core';
 
-import { ResolvedExperience } from '@portfolio/shared/models';
-import { Skill } from '@portfolio/shared/models';
 import { LanguageService } from '@core/services/language.service';
 import { SkillCardComponent } from '@features/skills/components/skill-card/skill-card.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { ResolvedExperience, Skill } from '@portfolio/shared/models';
 import { LocalDatePipe } from '@shared/pipes/local-date-pipe';
 import { TimeAgoPipe } from '@shared/pipes/time-ago.pipe';
 
@@ -12,7 +11,6 @@ import { TimeAgoPipe } from '@shared/pipes/time-ago.pipe';
   selector: 'app-experience-card',
   imports: [TranslateModule, LocalDatePipe, SkillCardComponent, TimeAgoPipe],
   templateUrl: './experience-card.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './experience-card.component.scss',
 })
 export class ExperienceCardComponent implements OnInit {

@@ -6,7 +6,6 @@ import {
   input,
   signal,
   viewChild,
-  ChangeDetectionStrategy
 } from '@angular/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
@@ -23,7 +22,6 @@ import { CssVarsDirective } from '@shared-libs/ui';
     },
   ],
   templateUrl: './flip-card.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './flip-card.scss',
 })
 export class FlipCard {
@@ -36,12 +34,12 @@ export class FlipCard {
   private readonly platformId = inject(PLATFORM_ID);
   readonly isBrowser = isPlatformBrowser(this.platformId);
 
-  private isAnimating: boolean = false;
+  private isAnimating = signal<boolean>(false);
 
   onClick() {
-    if (!this.platformService.isBrowser || this.isAnimating || this.isHover()) return;
+    if (!this.platformService.isBrowser || this.isAnimating() || this.isHover()) return;
 
-    this.isAnimating = true;
+    this.isAnimating.set(true);
     const gsap = this.gsapService.gsap;
     var timeline = gsap.timeline();
     timeline
@@ -60,7 +58,7 @@ export class FlipCard {
               rotationY: 0,
             });
           this.state.set(!this.state());
-          this.isAnimating = false;
+          this.isAnimating.set(false);
         },
       });
   }

@@ -1,4 +1,4 @@
-import { Component, computed, input, output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 
 import { NgOptimizedImage } from '@angular/common';
 import { getSkillLevel } from '@core/models';
@@ -11,7 +11,6 @@ import { IconComponent } from '@shared/components/icon/icon.component';
   imports: [TranslateModule, IconComponent, NgOptimizedImage],
   templateUrl: './skill-card.component.html',
   styleUrl: './skill-card.component.scss',
-  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     style: 'display: block',
   },

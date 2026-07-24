@@ -1,4 +1,4 @@
-import { Component, input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-icon',
@@ -8,7 +8,6 @@ import { Component, input, ChangeDetectionStrategy } from '@angular/core';
       <use [attr.href]="'/assets/icons/sprite.svg#ph-' + name()" />
     </svg>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       :host {

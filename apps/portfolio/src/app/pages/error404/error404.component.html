@@ -9,7 +9,7 @@
 
     <div class="terminal__body">
       <p class="terminal__code">
-        <span class="terminal__prompt">></span> status_check --route="{{ currentRoute }}"
+        <span class="terminal__prompt">></span> status_check --route="{{ currentRoute() }}"
       </p>
 
       <p class="terminal__error">[ERROR] Route not found in production_v2.0</p>
@@ -18,7 +18,7 @@
 
       <p class="terminal__info">Searching for directions...</p>
 
-      @for (line of terminalLines; track $index) {
+      @for (line of terminalLines(); track $index) {
         <p class="terminal__info">{{ line }}</p>
       }
 

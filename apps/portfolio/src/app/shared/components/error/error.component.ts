@@ -1,4 +1,4 @@
-import { Component, input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 import { MatIconModule } from '@angular/material/icon';
 
@@ -6,7 +6,6 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'app-error',
   imports: [MatIconModule],
   templateUrl: './error.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './error.component.scss',
 })
 export class ErrorComponent {

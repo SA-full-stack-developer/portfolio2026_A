@@ -1,4 +1,4 @@
-import { Component, computed, input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
   selector: 'app-skill-badge',
   standalone: true,
   imports: [CommonModule],
-  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <div class="skill-badge" [class]="badgeClass()">
       <span class="skill-name">{{ name() }}</span>

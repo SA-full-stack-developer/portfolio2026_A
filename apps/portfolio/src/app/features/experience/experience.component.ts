@@ -9,7 +9,6 @@ import {
   effect,
   inject,
   signal,
-  ChangeDetectionStrategy
 } from '@angular/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
@@ -23,7 +22,6 @@ import { ExperienceCardComponent } from './components/experience-card/experience
   selector: 'app-experience',
   imports: [ExperienceCardComponent, TranslateModule, MatIconModule, ErrorComponent],
   templateUrl: './experience.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './experience.component.scss',
 })
 export class ExperienceComponent implements OnDestroy {
@@ -37,8 +35,8 @@ export class ExperienceComponent implements OnDestroy {
   readonly loading = this.experienceService.loading;
   readonly error = this.experienceService.error;
 
-  private scrollTriggers: ScrollTrigger[] = [];
-  private animationInitialized = false;
+  private scrollTriggers = signal<ScrollTrigger[]>([]);
+  private animationInitialized = signal(false);
 
   @ViewChildren('expCard') expCards!: QueryList<ElementRef>;
 
@@ -47,8 +45,8 @@ export class ExperienceComponent implements OnDestroy {
       const experiences = this.resolvedExperiences();
       const isLoading = this.loading();
 
-      if (experiences.length > 0 && !isLoading && !this.animationInitialized) {
-        this.animationInitialized = true;
+      if (experiences.length > 0 && !isLoading && !this.animationInitialized()) {
+        this.animationInitialized.set(true);
         afterNextRender(
           () => {
             if (!this.platformService.isBrowser) return;
@@ -81,7 +79,7 @@ export class ExperienceComponent implements OnDestroy {
         },
       );
       if (st.scrollTrigger) {
-        this.scrollTriggers.push(st.scrollTrigger);
+        this.scrollTriggers.update((triggers) => [...triggers, st.scrollTrigger!]);
       }
     });
   }
@@ -95,6 +93,6 @@ export class ExperienceComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.scrollTriggers.forEach((st) => st.kill());
+    this.scrollTriggers().forEach((st) => st.kill());
   }
 }

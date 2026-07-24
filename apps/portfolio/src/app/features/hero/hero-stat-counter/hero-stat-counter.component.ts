@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, Component, inject, signal } from '@angular/core';
 import { PlatformService } from '@shared-libs/services';
 
 import { StatsService } from '@core/services/stats.service';
@@ -8,7 +8,6 @@ import { StatCounterComponent } from '../components/stat-counter/stat-counter.co
   selector: 'app-hero-stat-counter',
   imports: [StatCounterComponent],
   templateUrl: './hero-stat-counter.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './hero-stat-counter.component.scss',
 })
 export class HeroStatCounterComponent implements AfterViewInit {

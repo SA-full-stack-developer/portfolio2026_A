@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { EXPERIENCE, HERO, SKILLS } from '@core/constants/feaute-flags.constants';
 
 import { PAGE_SEO } from '@core/config/seo.config';
@@ -14,7 +14,6 @@ import { FeatureFlagDirective } from '@shared/directives/feature-flag.directive'
   selector: 'app-portfolio',
   imports: [SkillsComponent, FeatureFlagDirective, HeroComponent, ExperienceComponent],
   templateUrl: './portfolio.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './portfolio.component.scss',
 })
 export class PortfolioComponent implements OnInit {

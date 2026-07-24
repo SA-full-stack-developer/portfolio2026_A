@@ -6,7 +6,6 @@ import {
   ViewChild,
   inject,
   signal,
-  ChangeDetectionStrategy
 } from '@angular/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
@@ -21,7 +20,6 @@ import { ChatMessageComponent } from '../chat-message/chat-message.component';
   standalone: true,
   imports: [FormsModule, TranslateModule, ChatMessageComponent],
   templateUrl: './chat-cv.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './chat-cv.component.scss',
 })
 export class ChatCvComponent implements AfterViewInit, OnDestroy {
@@ -37,7 +35,7 @@ export class ChatCvComponent implements AfterViewInit, OnDestroy {
   readonly loading = signal(false);
   readonly error = signal<string | null>(null);
 
-  private scrollTriggers: ScrollTrigger[] = [];
+  private scrollTriggers = signal<ScrollTrigger[]>([]);
 
   ngAfterViewInit(): void {
     if (!this.platformService.isBrowser) return;
@@ -104,7 +102,7 @@ export class ChatCvComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.scrollTriggers.forEach((st) => st.kill());
-    this.scrollTriggers = [];
+    this.scrollTriggers().forEach((st) => st.kill());
+    this.scrollTriggers.set([]);
   }
 }

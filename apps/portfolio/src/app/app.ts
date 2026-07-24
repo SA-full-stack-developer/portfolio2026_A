@@ -1,4 +1,4 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BREADCRUMB_HOME, PERSON_SCHEMA, WEBSITE_SCHEMA } from '@core/config/seo.config';
 import {
   CHAT_MESSAGE,
@@ -36,7 +36,6 @@ import { ScrollProgressComponent } from './layout/scroll-progress/scroll-progres
     AskMeFabComponent,
   ],
   templateUrl: './app.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './app.scss',
 })
 export class App {

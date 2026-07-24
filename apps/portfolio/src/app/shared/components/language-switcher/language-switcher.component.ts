@@ -1,4 +1,4 @@
-import { Component, HostListener, computed, inject, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, HostListener, computed, inject, signal } from '@angular/core';
 
 import { Language } from '@core/models/language.model';
 import { LanguageService } from '@core/services/language.service';
@@ -8,7 +8,6 @@ import { LanguageService } from '@core/services/language.service';
   standalone: true,
   imports: [],
   templateUrl: './language-switcher.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './language-switcher.component.scss',
 })
 export class LanguageSwitcherComponent {

@@ -1,4 +1,4 @@
-import { Component, DestroyRef, effect, inject, input, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, DestroyRef, effect, inject, input, signal } from '@angular/core';
 import { GsapService } from '@shared-libs/services';
 
 import { TranslateModule } from '@ngx-translate/core';
@@ -8,7 +8,6 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule],
   templateUrl: './stat-counter.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './stat-counter.component.scss',
 })
 export class StatCounterComponent {

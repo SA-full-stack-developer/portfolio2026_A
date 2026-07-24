@@ -130,7 +130,12 @@
     </div>
 
     <div style="display: none">
-      <input type="text" name="bot_trap" [(ngModel)]="botTrap" />
+      <input
+        type="text"
+        name="bot_trap"
+        [ngModel]="botTrap()"
+        (ngModelChange)="botTrap.set($event)"
+      />
     </div>
 
     <div #animRows class="flex flex-center contact--row">

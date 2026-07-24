@@ -8,7 +8,6 @@ import {
   ViewChildren,
   afterNextRender,
   inject,
-  ChangeDetectionStrategy
 } from '@angular/core';
 import { BREADCRUMB_ABOUT, PAGE_SEO } from '@core/config/seo.config';
 import { GsapService, PlatformService } from '@shared-libs/services';
@@ -21,7 +20,6 @@ import { SafeHtmlPipe } from '@shared/pipes/safe-html.pipe';
   selector: 'app-about-me',
   imports: [TranslateModule, SafeHtmlPipe],
   templateUrl: './about-me.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './about-me.component.scss',
 })
 export class AboutMeComponent implements OnInit, AfterViewInit {

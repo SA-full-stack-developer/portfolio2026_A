@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { BREADCRUMB_LAB, PAGE_SEO } from '@core/config/seo.config';
 
 import { loadRemoteModule } from '@angular-architects/native-federation';
@@ -14,7 +14,6 @@ import { LabCardComponent } from './components/lab-card/lab-card';
   selector: 'app-lab',
   imports: [TranslateModule, LabCardComponent, FeatureFlagDirective],
   templateUrl: './lab.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './lab.component.scss',
 })
 export class LabComponent implements OnInit {

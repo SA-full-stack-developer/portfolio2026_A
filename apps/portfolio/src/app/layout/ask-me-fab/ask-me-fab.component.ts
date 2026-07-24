@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, inject, signal, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, inject, signal } from '@angular/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { FormsModule } from '@angular/forms';
@@ -11,7 +11,6 @@ import { MessageDto } from '@portfolio/shared/models';
   standalone: true,
   imports: [FormsModule, TranslateModule],
   templateUrl: './ask-me-fab.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './ask-me-fab.component.scss',
 })
 export class AskMeFabComponent implements AfterViewInit, OnDestroy {

@@ -1,4 +1,4 @@
-import { Component, effect, input, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, effect, input, signal } from '@angular/core';
 import {
   OFFLINE,
   OFFLINE_COLOR,
@@ -11,7 +11,6 @@ import {
   selector: 'app-status-dot',
   imports: [],
   templateUrl: './status-dot.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './status-dot.component.scss',
 })
 export class StatusDotComponent {
