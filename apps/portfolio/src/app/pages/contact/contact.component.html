@@ -13,31 +13,32 @@
     </a>
   </div>
 
-  <form
-    class="flex flex-col gap-md contact__form"
-    #contactForm="ngForm"
-    (submit)="onSubmit(contactForm); $event.preventDefault()"
-  >
+  <form class="flex flex-col gap-md contact__form" (submit)="onSubmit($event)">
     <div #animRow class="contact--row">
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>{{ 'CONTACT.NAME' | translate }}</mat-label>
         <input
           matInput
-          name="name"
-          [ngModel]="formData().name"
-          (ngModelChange)="updateField('name', $event)"
+          [formField]="contactForm.name"
           [placeholder]="'CONTACT.NAME_PLACEHOLDER' | translate"
-          minlength="3"
-          #nameInput="ngModel"
-          required
         />
         <mat-icon matSuffix>person</mat-icon>
-        @if (nameInput.invalid && (nameInput.dirty || nameInput.touched)) {
+        @if (contactForm.name().invalid() && contactForm.name().touched()) {
           <mat-error>
-            @if (nameInput.errors?.['required']) {
+            @if (
+              contactForm
+                .name()
+                .errors()
+                .some((e) => e.kind === 'required')
+            ) {
               {{ 'CONTACT.ERRORS.REQUIRED' | translate }}
             }
-            @if (nameInput.errors?.['minlength']) {
+            @if (
+              contactForm
+                .name()
+                .errors()
+                .some((e) => e.kind === 'minLength')
+            ) {
               {{ 'CONTACT.ERRORS.MIN_3' | translate }}
             }
           </mat-error>
@@ -50,21 +51,26 @@
         <mat-label>{{ 'CONTACT.SUBJECT' | translate }}</mat-label>
         <input
           matInput
-          name="subject"
-          [ngModel]="formData().subject"
-          (ngModelChange)="updateField('subject', $event)"
+          [formField]="contactForm.subject"
           [placeholder]="'CONTACT.SUBJECT_PLACEHOLDER' | translate"
-          required
-          #subjectInput="ngModel"
-          minlength="3"
         />
         <mat-icon matSuffix>topic</mat-icon>
-        @if (subjectInput.invalid && (subjectInput.dirty || subjectInput.touched)) {
+        @if (contactForm.subject().invalid() && contactForm.subject().touched()) {
           <mat-error>
-            @if (subjectInput.errors?.['required']) {
+            @if (
+              contactForm
+                .subject()
+                .errors()
+                .some((e) => e.kind === 'required')
+            ) {
               {{ 'CONTACT.ERRORS.REQUIRED' | translate }}
             }
-            @if (subjectInput.errors?.['minlength']) {
+            @if (
+              contactForm
+                .subject()
+                .errors()
+                .some((e) => e.kind === 'minLength')
+            ) {
               {{ 'CONTACT.ERRORS.MIN_3' | translate }}
             }
           </mat-error>
@@ -75,25 +81,24 @@
     <div #animRow class="contact--row">
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>{{ 'CONTACT.EMAIL' | translate }}</mat-label>
-        <input
-          matInput
-          type="email"
-          name="email"
-          [ngModel]="formData().email"
-          (ngModelChange)="updateField('email', $event)"
-          placeholder="...@correo.com"
-          required
-          email
-          #emailInput="ngModel"
-        />
+        <input matInput type="email" [formField]="contactForm.email" placeholder="...@correo.com" />
         <mat-icon matSuffix>email</mat-icon>
-
-        @if (emailInput.invalid && (emailInput.dirty || emailInput.touched)) {
+        @if (contactForm.email().invalid() && contactForm.email().touched()) {
           <mat-error>
-            @if (emailInput.errors?.['required']) {
+            @if (
+              contactForm
+                .email()
+                .errors()
+                .some((e) => e.kind === 'required')
+            ) {
               {{ 'CONTACT.ERRORS.REQUIRED' | translate }}
             }
-            @if (emailInput.errors?.['email']) {
+            @if (
+              contactForm
+                .email()
+                .errors()
+                .some((e) => e.kind === 'email')
+            ) {
               {{ 'CONTACT.ERRORS.EMAIL' | translate }}
             }
           </mat-error>
@@ -106,22 +111,26 @@
         <mat-label>{{ 'CONTACT.MESSAGE' | translate }}</mat-label>
         <textarea
           matInput
-          name="message"
           rows="5"
-          [ngModel]="formData().message"
-          (ngModelChange)="updateField('message', $event)"
+          [formField]="contactForm.message"
           [placeholder]="'CONTACT.MESSAGE_PLACEHOLDER' | translate"
-          required
-          #messageInput="ngModel"
-          minlength="10"
         ></textarea>
-
-        @if (messageInput.invalid && (messageInput.dirty || messageInput.touched)) {
+        @if (contactForm.message().invalid() && contactForm.message().touched()) {
           <mat-error>
-            @if (messageInput.errors?.['required']) {
+            @if (
+              contactForm
+                .message()
+                .errors()
+                .some((e) => e.kind === 'required')
+            ) {
               {{ 'CONTACT.ERRORS.REQUIRED' | translate }}
             }
-            @if (messageInput.errors?.['minlength']) {
+            @if (
+              contactForm
+                .message()
+                .errors()
+                .some((e) => e.kind === 'minLength')
+            ) {
               {{ 'CONTACT.ERRORS.MIN_10' | translate }}
             }
           </mat-error>
@@ -130,21 +139,16 @@
     </div>
 
     <div style="display: none">
-      <input
-        type="text"
-        name="bot_trap"
-        [ngModel]="botTrap()"
-        (ngModelChange)="botTrap.set($event)"
-      />
+      <input type="text" [value]="botTrap()" (input)="botTrap.set($any($event.target).value)" />
     </div>
 
     <div #animRows class="flex flex-center contact--row">
       <button
         class="flex flex-center gap-sm contact__cta"
-        [disabled]="!isFormValid() || isLoading()"
+        [disabled]="!contactForm().valid() || contactForm().submitting()"
         type="submit"
       >
-        @if (isLoading()) {
+        @if (contactForm().submitting()) {
           <span>{{ 'CONTACT.SENDING' | translate }}</span>
           <mat-spinner diameter="20" class="mr-2"></mat-spinner>
         } @else {

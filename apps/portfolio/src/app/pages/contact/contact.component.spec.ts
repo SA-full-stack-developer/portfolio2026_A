@@ -1,138 +1,195 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { createMockGsapService, createMockPlatformService } from '@core/mocks/ai.service.mock';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SeoService } from '@core/services/seo.service';
+import { TranslateModule } from '@ngx-translate/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
-import { provideZonelessChangeDetection } from '@angular/core';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateModule } from '@ngx-translate/core';
 import { ContactComponent } from './contact.component';
 
-// Mock emailjs para evitar llamadas reales
 jest.mock('@emailjs/browser', () => ({
-  __esModule: true,
-  default: {
-    send: jest.fn().mockResolvedValue({ status: 200 }),
-  },
+  default: { send: jest.fn() },
 }));
 
 describe('ContactComponent', () => {
   let component: ContactComponent;
   let fixture: ComponentFixture<ContactComponent>;
-  let mockPlatformService: ReturnType<typeof createMockPlatformService>;
-  let mockGsapService: ReturnType<typeof createMockGsapService>;
-  let mockSnackBar: { open: jest.Mock };
+  let snackBar: { open: jest.Mock };
 
   beforeEach(async () => {
-    jest.clearAllMocks();
-    mockPlatformService = createMockPlatformService(true);
-    mockGsapService = createMockGsapService();
-    mockSnackBar = { open: jest.fn() };
+    snackBar = { open: jest.fn() };
 
     await TestBed.configureTestingModule({
-      imports: [ContactComponent, TranslateModule.forRoot(), NoopAnimationsModule],
+      imports: [ContactComponent, TranslateModule.forRoot()],
       providers: [
-        provideZonelessChangeDetection(),
-        { provide: PlatformService, useValue: mockPlatformService },
-        { provide: GsapService, useValue: mockGsapService },
+        { provide: MatSnackBar, useValue: snackBar },
+        { provide: SeoService, useValue: { update: jest.fn(), updateSchemas: jest.fn() } },
+        { provide: GsapService, useValue: { gsap: { from: jest.fn() } } },
+        { provide: PlatformService, useValue: { isBrowser: false } },
       ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ContactComponent);
     component = fixture.componentInstance;
-    component['snackBar'] = mockSnackBar;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize with empty form data', () => {
-    const initialData = component.formData();
-    expect(initialData).toEqual({ name: '', subject: '', email: '', message: '' });
+  it('should be invalid when all fields are empty', () => {
+    expect(component.contactForm().valid()).toBe(false);
   });
 
-  it('should be invalid when form is empty', () => {
-    expect(component.isFormValid()).toBeFalsy();
+  it('should mark name as required', () => {
+    component.contactModel.update((m) => ({ ...m, name: '' }));
+    fixture.detectChanges();
+    expect(
+      component.contactForm
+        .name()
+        .errors()
+        .some((e) => e.kind === 'required'),
+    ).toBe(true);
   });
 
-  it('should be valid when all fields are correct', () => {
-    component.updateField('name', 'Gundam Pilot');
-    component.updateField('email', 'test@domain.com');
-    component.updateField('subject', 'Project Alpha');
-    component.updateField('message', 'This is a long enough message for testing.');
-    expect(component.isFormValid()).toBeTruthy();
+  it('should mark name invalid below minLength', () => {
+    component.contactModel.update((m) => ({ ...m, name: 'ab' }));
+    fixture.detectChanges();
+    expect(
+      component.contactForm
+        .name()
+        .errors()
+        .some((e) => e.kind === 'minLength'),
+    ).toBe(true);
   });
 
-  it('should invalidate incorrect email format', () => {
-    component.updateField('name', 'Valid Name');
-    component.updateField('email', 'invalid-email');
-    component.updateField('subject', 'Valid Subject');
-    component.updateField('message', 'Valid message long enough');
-    expect(component.isFormValid()).toBeFalsy();
+  it('should mark email invalid with a bad format', () => {
+    component.contactModel.update((m) => ({ ...m, email: 'not-an-email' }));
+    fixture.detectChanges();
+    expect(
+      component.contactForm
+        .email()
+        .errors()
+        .some((e) => e.kind === 'email'),
+    ).toBe(true);
   });
 
-  it('should not run GSAP animation on non-browser platform', async () => {
-    mockPlatformService.isBrowser = false;
-    mockGsapService.gsap.from.mockClear();
+  it('should be valid with correct data', () => {
+    component.contactModel.set({
+      name: 'Kriz',
+      subject: 'Hola',
+      email: 'kriz@example.com',
+      message: 'Este es un mensaje de prueba.',
+    });
+    fixture.detectChanges();
+    expect(component.contactForm().valid()).toBe(true);
+  });
 
-    fixture = TestBed.createComponent(ContactComponent);
-    component = fixture.componentInstance;
+  it('should not submit when the form is invalid', async () => {
+    const emailjs = (await import('@emailjs/browser')).default;
+
+    component.contactModel.set({ name: '', subject: '', email: '', message: '' });
     fixture.detectChanges();
 
-    expect(mockGsapService.gsap.from).not.toHaveBeenCalled();
+    await component.onSubmit(new Event('submit'));
+
+    expect(emailjs.send).not.toHaveBeenCalled();
   });
 
-  it('should submit the form and reset on success', async () => {
-    component.updateField('name', 'Valid Name');
-    component.updateField('email', 'test@example.com');
-    component.updateField('subject', 'Hello');
-    component.updateField('message', 'This message is long enough');
+  it('should not submit when the honeypot is filled', async () => {
+    const emailjs = (await import('@emailjs/browser')).default;
 
-    const mockForm = { resetForm: jest.fn() } as unknown as any;
-    await component.onSubmit(mockForm);
-
-    expect(mockForm.resetForm).toHaveBeenCalled();
-    expect(component.formData()).toEqual({ name: '', subject: '', email: '', message: '' });
-    expect(component.isLoading()).toBe(false);
-  });
-
-  it('should show error snackbar when emailjs send fails', async () => {
-    component.updateField('name', 'Valid Name');
-    component.updateField('email', 'test@example.com');
-    component.updateField('subject', 'Hello');
-    component.updateField('message', 'This message is long enough');
-
-    expect(component.formData().name).toBe('Valid Name');
-    expect(component.formData().email).toBe('test@example.com');
-    expect(component.isFormValid()).toBe(true);
-
-    const mockForm = { resetForm: jest.fn() } as unknown as any;
-    const emailjs = await import('@emailjs/browser');
-    emailjs.default.send.mockClear();
-    emailjs.default.send.mockRejectedValueOnce(new Error('Network issue'));
-
-    await component.onSubmit(mockForm);
-
-    expect(emailjs.default.send).toHaveBeenCalledTimes(1);
-    expect(mockForm.resetForm).not.toHaveBeenCalled();
-    expect(component.isLoading()).toBe(false);
-    expect(mockSnackBar.open).toHaveBeenCalledWith(expect.stringContaining('CONTACT.ERROR'), '', {
-      duration: 1000,
+    component.contactModel.set({
+      name: 'Kriz',
+      subject: 'Hola',
+      email: 'kriz@example.com',
+      message: 'Este es un mensaje de prueba.',
     });
+    component.botTrap.set('spam');
+    fixture.detectChanges();
+
+    await component.onSubmit(new Event('submit'));
+
+    expect(emailjs.send).not.toHaveBeenCalled();
   });
 
-  it('should not submit when botTrap is filled', async () => {
-    component.botTrap = 'spam';
-    component.updateField('name', 'Valid Name');
-    component.updateField('email', 'test@example.com');
-    component.updateField('subject', 'Hello');
-    component.updateField('message', 'This message is long enough');
+  it('should send the email and reset the form on success', async () => {
+    const emailjs = (await import('@emailjs/browser')).default;
+    (emailjs.send as jest.Mock).mockResolvedValue({ status: 200 });
 
-    const mockForm = { resetForm: jest.fn() } as unknown as any;
-    await component.onSubmit(mockForm);
+    component.contactModel.set({
+      name: 'Kriz',
+      subject: 'Hola',
+      email: 'kriz@example.com',
+      message: 'Este es un mensaje de prueba.',
+    });
+    fixture.detectChanges();
 
-    expect(mockForm.resetForm).not.toHaveBeenCalled();
-    expect(component.isLoading()).toBe(false);
+    await component.onSubmit(new Event('submit'));
+
+    expect(emailjs.send).toHaveBeenCalledWith(
+      'service_tsklp4n',
+      'template_4p83km7',
+      expect.objectContaining({ from_name: 'Kriz', from_email: 'kriz@example.com' }),
+      '3EljapeH9l5XEDoNi',
+    );
+    expect(snackBar.open).toHaveBeenCalledWith(
+      expect.any(String),
+      '',
+      expect.objectContaining({ duration: 1000 }),
+    );
+    expect(component.contactModel()).toEqual({ name: '', subject: '', email: '', message: '' });
+    expect(component.botTrap()).toBe('');
+  });
+
+  it('should show an error snackbar when the send fails', async () => {
+    const emailjs = (await import('@emailjs/browser')).default;
+    (emailjs.send as jest.Mock).mockRejectedValue(new Error('Network error'));
+
+    component.contactModel.set({
+      name: 'Kriz',
+      subject: 'Hola',
+      email: 'kriz@example.com',
+      message: 'Este es un mensaje de prueba.',
+    });
+    fixture.detectChanges();
+
+    await component.onSubmit(new Event('submit'));
+
+    expect(snackBar.open).toHaveBeenCalledWith(
+      expect.stringContaining('Network error'),
+      '',
+      expect.objectContaining({ duration: 1000 }),
+    );
+  });
+
+  it('submitting() should be true while sending and false after', async () => {
+    const emailjs = (await import('@emailjs/browser')).default;
+    let resolveSend!: () => void;
+    (emailjs.send as jest.Mock).mockReturnValue(
+      new Promise<void>((resolve) => {
+        resolveSend = () => resolve();
+      }),
+    );
+
+    component.contactModel.set({
+      name: 'Kriz',
+      subject: 'Hola',
+      email: 'kriz@example.com',
+      message: 'Este es un mensaje de prueba.',
+    });
+    fixture.detectChanges();
+
+    const submitPromise = component.onSubmit(new Event('submit'));
+    expect(component.contactForm().submitting()).toBe(true);
+
+    resolveSend();
+    await submitPromise;
+
+    expect(component.contactForm().submitting()).toBe(false);
   });
 });
