@@ -1,0 +1,39 @@
+<!-- lab-detail.component.html -->
+@if (labConfig(); as config) {
+  <article class="flex flex-col gap-md lab-detail">
+    <h1>{{ config.title }}</h1>
+
+    <div class="lab-detail__category">
+      @switch (config.tag) {
+        @case (BORDER_GRADIENT) {
+          <span class="lab-detail__badge">{{ 'LAB.CATEGORIES.BORDER_GRADIENT' | translate }}</span>
+        }
+        @case (CARD_EFFECT) {
+          <span class="lab-detail__badge">{{ 'LAB.CATEGORIES.CARD_EFFECT' | translate }}</span>
+        }
+        @case (LIQUID_PROGRESS_BAR) {
+          <span class="lab-detail__badge">{{
+            'LAB.CATEGORIES.LIQUID_PROGRESS_BAR' | translate
+          }}</span>
+        }
+        @case (FLIPCARD) {
+          <span class="lab-detail__badge">{{ 'LAB.CATEGORIES.FLIPCARD' | translate }}</span>
+        }
+        @case (SPLITTEXT) {
+          <span class="lab-detail__badge">{{ 'LAB.CATEGORIES.SPLITTEXT' | translate }}</span>
+        }
+        @default {
+          <span class="lab-detail__badge">{{ config.tag }}</span>
+        }
+      }
+    </div>
+
+    @if (loadedComponent(); as loaded) {
+      <ng-container *ngComponentOutlet="loaded.component; inputs: loaded.inputs" />
+    } @else {
+      <div class="lab-detail__loading">{{ 'LAB.LOADING' | translate }}</div>
+    }
+  </article>
+} @else {
+  <p>{{ 'LAB.NOT_FOUND' | translate }}</p>
+}

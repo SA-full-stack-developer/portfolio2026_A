@@ -23,6 +23,7 @@ export const CHAT_CV = 'CHAT_CV';
 export const CONTACT_ASSISTANT = 'CONTACT_ASSISTANT';
 export const COVER_LETTER = 'COVER_LETTER';
 export const BORDER_GRADIENT = 'BORDER_GRADIENT';
+export const CARD_EFFECT = 'CARD_EFFECT';
 export const LIQUID_PROGRESS_BAR = 'LIQUID_PROGRESS_BAR';
 export const FLIPCARD = 'FLIPCARD';
 export const SPLITTEXT = 'SPLITTEXT';

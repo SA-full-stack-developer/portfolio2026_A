@@ -4,8 +4,9 @@
     <p [innerHTML]="'LAB.SUBTITLE' | translate"></p>
   </article>
   <article class="w-100 flex flex-center gap-md flex-wrap lab__content">
-    @for (item of remotesComponent(); track $index) {
+    @for (item of remotesComponent(); track item.id) {
       <app-lab-card
+        [id]="item.id"
         [title]="item.title"
         [tag]="getVisibilityName(item.tag)"
         [component]="item.component"

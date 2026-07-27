@@ -1,5 +1,6 @@
 import {
   BORDER_GRADIENT,
+  CARD_EFFECT,
   CHAT_CV,
   CHAT_MESSAGE,
   CONTACT,
@@ -155,6 +156,11 @@ export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
   BORDER_GRADIENT: {
     id: BORDER_GRADIENT,
     label: 'Border Gradient',
+    visibility: 'public',
+  },
+  CARD_EFFECT: {
+    id: CARD_EFFECT,
+    label: 'Card Effect',
     visibility: 'public',
   },
   LIQUID_PROGRESS_BAR: {

@@ -3,6 +3,7 @@ import { ApplicationConfig, isDevMode, provideZonelessChangeDetection } from '@a
 import { provideClientHydration } from '@angular/platform-browser';
 import {
   provideRouter,
+  withComponentInputBinding,
   withEnabledBlockingInitialNavigation,
   withInMemoryScrolling,
 } from '@angular/router';
@@ -24,6 +25,7 @@ export const appConfig: ApplicationConfig = {
         anchorScrolling: 'enabled',
       }),
       withEnabledBlockingInitialNavigation(),
+      withComponentInputBinding(),
     ),
     ...(isDevMode() ? [] : [provideClientHydration()]),
     provideHttpClient(withInterceptors([apiErrorLoggingInterceptor])),

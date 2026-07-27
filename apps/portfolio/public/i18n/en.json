@@ -217,7 +217,16 @@
   "LAB": {
     "TITLE": "LAB",
     "SUBTITLE": "<strong>The Lab is a space for experiments</strong>: microcomponents I'm building, testing, or throwing away. <mark>Nothing here is final.</mark> Some are half-baked ideas, others are prototypes that went nowhere — <em>and that's kind of the point</em>.<br><br><strong>Nothing ships in the main bundle</strong>; each piece is resolved independently and dynamically. Components are loaded at runtime from a remote using <span class='principal-color'><strong>Native Federation</strong></span>.<br><br>Some components <u>only visible with an admin role</u>. If you want to see them, visit <span class='principal-color'><strong>/admin/theblack</strong></span> in the browser — this simulates the authentication flow a real app would have and grants that role across the whole site. <mark>There's no database or sensitive data involved</mark>; it's an intentional mechanism to <strong>separate what's ready from what isn't</strong>.",
-    "NO_PROJECTS": "No experimental projects available at the moment."
+    "NO_PROJECTS": "No experimental projects available at the moment.",
+    "LOADING": "Loading...",
+    "NOT_FOUND": "Experiment not found.",
+    "CATEGORIES": {
+      "BORDER_GRADIENT": "Gradient border",
+      "CARD_EFFECT": "Card effect",
+      "LIQUID_PROGRESS_BAR": "Liquid progress bar",
+      "FLIPCARD": "Interactive flip card",
+      "SPLITTEXT": "Text animation"
+    }
   },
   "TIME_AGO": {
     "JUST_NOW": "just now",
