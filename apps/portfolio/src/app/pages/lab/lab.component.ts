@@ -20,8 +20,6 @@ export class LabComponent implements OnInit {
   private readonly seoService = inject(SeoService);
   private readonly featureFlagService = inject(FeatureFlagService);
 
-  //remotesComponent = signal<LabConfig[]>(Object.values(LAB_CONFIG));
-
   remotesComponent = signal<(LabConfig & { id: string })[]>(
     Object.entries(LAB_CONFIG).map(([id, config]) => ({ ...config, id })),
   );

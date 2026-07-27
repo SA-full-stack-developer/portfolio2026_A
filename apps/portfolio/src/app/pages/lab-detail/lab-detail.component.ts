@@ -33,7 +33,6 @@ export class LabDetailComponent implements OnInit {
 
   labConfig = computed<LabConfig | undefined>(() => {
     const id = this.labId();
-    console.log(LAB_CONFIG);
     return id ? LAB_CONFIG[id] : undefined;
   });
 
