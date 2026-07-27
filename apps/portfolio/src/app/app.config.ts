@@ -1,10 +1,6 @@
-import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, isDevMode, provideZonelessChangeDetection } from '@angular/core';
-import {
-  provideClientHydration,
-  withEventReplay,
-  withNoIncrementalHydration,
-} from '@angular/platform-browser';
+import { provideClientHydration } from '@angular/platform-browser';
 import {
   provideRouter,
   withEnabledBlockingInitialNavigation,
@@ -29,10 +25,8 @@ export const appConfig: ApplicationConfig = {
       }),
       withEnabledBlockingInitialNavigation(),
     ),
-    ...(isDevMode()
-      ? []
-      : [provideClientHydration(withEventReplay(), withNoIncrementalHydration())]),
-    provideHttpClient(withFetch(), withInterceptors([apiErrorLoggingInterceptor])),
+    ...(isDevMode() ? [] : [provideClientHydration()]),
+    provideHttpClient(withInterceptors([apiErrorLoggingInterceptor])),
     provideTranslateService({
       fallbackLang: 'en',
     }),
