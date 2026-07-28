@@ -25,7 +25,8 @@
     "types": ["node", "jest"],
     "paths": {
       "@portfolio/shared/models": ["../../libs/shared/models/src/index.ts"]
-    }
+    },
+    "rootDir": "../.."
   },
   "exclude": ["node_modules", "dist", "**/*.spec.ts"]
 }
