@@ -3,7 +3,7 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { provideHttpClient } from '@angular/common/http';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { EXPERIENCE_MOCK } from '@core/mocks/experience.mock';
+import { EXPERIENCES_MOCK } from '@core/mocks/experiences.mock';
 import { environment } from '@env/environment';
 import { TranslateService } from '@ngx-translate/core';
 import { ExperienceService } from './experience.service';
@@ -29,7 +29,7 @@ describe('ExperienceService', () => {
 
     httpMock = TestBed.inject(HttpTestingController);
     service = TestBed.inject(ExperienceService);
-    TestBed.tick(); // fuerza la petición reactiva inicial del httpResource
+    TestBed.tick();
   });
 
   afterEach(() => {
@@ -42,16 +42,19 @@ describe('ExperienceService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should load experiences correctly on initialization', () => {
+  it('should load experiences correctly on initialization', async () => {
     const req = httpMock.expectOne(apiUrl);
     expect(req.request.method).toBe('GET');
-    req.flush({ data: EXPERIENCE_MOCK });
-    expect(service.experiences()).toEqual(EXPERIENCE_MOCK);
+    req.flush({ data: EXPERIENCES_MOCK });
+    await Promise.resolve();
+    TestBed.tick();
+    expect(service.experiences()).toEqual(EXPERIENCES_MOCK);
   });
 
-  it('should set error signal when the request fails', () => {
+  it('should set error signal when the request fails', async () => {
     const req = httpMock.expectOne(apiUrl);
     req.flush('Server error', { status: 500, statusText: 'Server Error' });
+    await Promise.resolve();
     TestBed.tick();
     expect(service.error()).toBe('ERRORS.API');
   });

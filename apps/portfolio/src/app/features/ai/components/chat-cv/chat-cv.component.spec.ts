@@ -1,3 +1,4 @@
+import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
   createMockAiService,
@@ -142,7 +143,7 @@ describe('ChatCvComponent', () => {
 
   it('should kill scroll triggers on destroy', () => {
     const kill = jest.fn();
-    component['scrollTriggers'] = [{ kill }] as (typeof component)['scrollTriggers'];
+    component['scrollTriggers'] = signal([{ kill }]) as (typeof component)['scrollTriggers'];
     fixture.destroy();
     expect(kill).toHaveBeenCalled();
   });

@@ -41,17 +41,20 @@ describe('StatusService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should set error signal when the request fails', () => {
+  it('should set error signal when the request fails', async () => {
     const req = httpMock.expectOne(apiUrl);
     req.flush('Server error', { status: 500, statusText: 'Server Error' });
+    await Promise.resolve();
     TestBed.tick();
     expect(service.error()).toBe('ERRORS.API');
   });
 
-  it('should load status correctly on initialization', () => {
+  it('should load status correctly on initialization', async () => {
     const req = httpMock.expectOne(apiUrl);
     expect(req.request.method).toBe('GET');
     req.flush({ data: { status: 'Online' } });
+    await Promise.resolve();
+    TestBed.tick();
     expect(service.status()).toBe('Online');
   });
 });

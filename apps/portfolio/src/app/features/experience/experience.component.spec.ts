@@ -56,7 +56,7 @@ class MockPlatformService {
 
 class MockExperienceService {
   experiences = signal(RESOLVED_EXPERIENCES_MOCK);
-  loading = signal(false);
+  isLoading = signal(false);
   error = signal(null);
 }
 
@@ -139,11 +139,9 @@ describe('ExperienceComponent', () => {
 
   it('should push scrollTriggers from GSAP and kill them on destroy', async () => {
     await createComponent();
-    if (component['scrollTriggers'].length === 0) {
-      component['animateCards']();
-    }
+    component['animateCards']();
 
-    const triggers = component['scrollTriggers'] as { kill: jest.Mock }[];
+    const triggers = component['scrollTriggers']();
     expect(triggers.length).toBeGreaterThan(0);
 
     const killMocks = triggers.map((st) => st.kill);

@@ -3,10 +3,12 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { provideHttpClient } from '@angular/common/http';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { SKILLS_MOCK, SKILL_CATEGORIES_MOCK } from '@core/mocks/skills.mock';
+import { SKILLS_MOCK } from '@core/mocks/skills.mock';
 import { environment } from '@env/environment';
 import { TranslateService } from '@ngx-translate/core';
 import { SkillsService } from './skills.service';
+
+const SKILL_CATEGORIES_MOCK = ['frontend', 'backend', 'devops', 'tools', 'soft'] as const;
 
 class MockTranslateService {
   instant = jest.fn((key: string) => key);
@@ -42,13 +44,18 @@ describe('SkillsService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should load skills and categories on initialization', () => {
+  it('should load skills and categories on initialization', async () => {
     const skillsReq = httpMock.expectOne((req) => req.url === apiUrl);
     expect(skillsReq.request.params.get('onlyHighlighted')).toBe('false');
     skillsReq.flush({ data: SKILLS_MOCK });
 
     const categoriesReq = httpMock.expectOne(categoriesUrl);
     categoriesReq.flush({ data: SKILL_CATEGORIES_MOCK });
+
+    await Promise.resolve();
+    TestBed.tick();
+    await Promise.resolve();
+    TestBed.tick();
 
     expect(service.skills().length).toBe(SKILLS_MOCK.length);
     expect(service.categories()).toEqual(SKILL_CATEGORIES_MOCK);
@@ -68,9 +75,12 @@ describe('SkillsService', () => {
     expect(service.filter().category).toBe('frontend');
   });
 
-  it('should set error signal when the request fails', () => {
-    const req = httpMock.expectOne(apiUrl);
-    req.flush('Server error', { status: 500, statusText: 'Server Error' });
+  it('should set error signal when the request fails', async () => {
+    const skillsReq = httpMock.expectOne((req) => req.url === apiUrl);
+    const categoriesReq = httpMock.expectOne(categoriesUrl);
+    skillsReq.flush('Server error', { status: 500, statusText: 'Server Error' });
+    categoriesReq.flush({ data: [] });
+    await Promise.resolve();
     TestBed.tick();
     expect(service.error()).toBe('ERRORS.API');
   });

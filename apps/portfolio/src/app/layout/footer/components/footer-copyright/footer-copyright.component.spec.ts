@@ -55,7 +55,7 @@ describe('FooterCopyrightComponent', () => {
 
   it('should expose the current year', async () => {
     await createComponent();
-    expect(component.currentYear).toBe(new Date().getFullYear());
+    expect(component.currentYear()).toBe(new Date().getFullYear());
   });
 
   it('should render the legal router link and translated text', async () => {
