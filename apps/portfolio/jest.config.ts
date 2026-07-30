@@ -22,6 +22,7 @@ const config: Config = {
     '^@portfolio/shared/models': '<rootDir>/../../libs/shared/models/src/index.ts',
     '^@shared-libs/services': '<rootDir>/../../libs/shared/services/src/index.ts',
     '^@shared-libs/services/*': '<rootDir>/../../libs/shared/services/src/lib/*',
+    '^@emailjs/browser$': '<rootDir>/__mocks__/@emailjs/browser.ts',
   },
   collectCoverageFrom: [
     'src/app/**/*.ts',

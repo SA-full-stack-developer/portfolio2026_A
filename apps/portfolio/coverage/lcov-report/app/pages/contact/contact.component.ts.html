@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">69.64% </span>
+                <span class="strong">91.07% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>39/56</span>
+                <span class='fraction'>51/56</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">62.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/8</span>
+                <span class='fraction'>5/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/8</span>
+                <span class='fraction'>6/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">69.81% </span>
+                <span class="strong">92.45% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>37/53</span>
+                <span class='fraction'>49/53</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -315,42 +315,42 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -468,14 +468,14 @@ export class ContactComponent implements OnInit, AfterViewInit {
       return;
     }
 &nbsp;
-    await submit(this.contactForm, <span class="fstat-no" title="function not covered" >async </span>() =&gt; {
-      const { default: emailjs } = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >await import('</span>@emailjs/browser');</span>
+    await submit(this.contactForm, async () =&gt; {
+      const { default: emailjs } = await import('@emailjs/browser');
 &nbsp;
-      const serviceID = <span class="cstat-no" title="statement not covered" >'service_tsklp4n';</span>
-      const templateID = <span class="cstat-no" title="statement not covered" >'template_4p83km7';</span>
-      const publicKey = <span class="cstat-no" title="statement not covered" >'3EljapeH9l5XEDoNi';</span>
+      const serviceID = 'service_tsklp4n';
+      const templateID = 'template_4p83km7';
+      const publicKey = '3EljapeH9l5XEDoNi';
 &nbsp;
-      const templateParams = <span class="cstat-no" title="statement not covered" >{</span>
+      const templateParams = {
         from_name: this.contactModel().name,
         from_email: this.contactModel().email,
         subject: this.contactModel().subject,
@@ -483,21 +483,21 @@ export class ContactComponent implements OnInit, AfterViewInit {
         to_name: 'Cristian',
       };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      try {</span>
-<span class="cstat-no" title="statement not covered" >        await emailjs.send(serviceID, templateID, templateParams, publicKey);</span>
+      try {
+        await emailjs.send(serviceID, templateID, templateParams, publicKey);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.snackBar.open(this.translate.instant('CONTACT.SUCCESS'), '', { duration: 1000 });</span>
-<span class="cstat-no" title="statement not covered" >        this.contactModel.set({ name: '', subject: '', email: '', message: '' });</span>
-<span class="cstat-no" title="statement not covered" >        this.botTrap.set('');</span>
+        this.snackBar.open(this.translate.instant('CONTACT.SUCCESS'), '', { duration: 1000 });
+        this.contactModel.set({ name: '', subject: '', email: '', message: '' });
+        this.botTrap.set('');
       } catch (error) {
         const errorMessage =
-<span class="cstat-no" title="statement not covered" >          typeof error === 'string'</span>
-            ? error
+          typeof error === 'string'
+            ? <span class="branch-0 cbranch-no" title="branch not covered" >error</span>
             : error instanceof Error
               ? error.message
-              : String(error);
+              : <span class="branch-1 cbranch-no" title="branch not covered" >String(error);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.snackBar.open(this.translate.instant('CONTACT.ERROR') + errorMessage, '', {</span>
+        this.snackBar.open(this.translate.instant('CONTACT.ERROR') + errorMessage, '', {
           duration: 1000,
         });
       }
@@ -511,7 +511,7 @@ export class ContactComponent implements OnInit, AfterViewInit {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-07-28T09:25:12.430Z
+                at 2026-07-29T08:41:58.956Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

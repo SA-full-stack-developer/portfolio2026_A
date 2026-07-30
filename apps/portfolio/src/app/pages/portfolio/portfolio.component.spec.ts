@@ -5,7 +5,9 @@ import { GsapService } from '@shared-libs/services';
 import { Observable, of } from 'rxjs';
 
 import { StatsService } from '@core/services/stats.service';
-import { Stat } from '@portfolio/shared/models';
+import { Experience, Skill, Stat } from '@portfolio/shared/models';
+import { ExperienceService } from '../../core/services/experience.service';
+import { SkillsService } from '../../core/services/skills.service';
 import { PortfolioComponent } from './portfolio.component';
 
 class MockTranslateLoader implements TranslateLoader {
@@ -26,6 +28,28 @@ class MockGsapService {
 
 const mockStatsService = {
   stats: signal<Stat[]>([]),
+  isLoading: signal(false),
+  error: signal<string | null>(null),
+};
+
+const mockSkillsService = {
+  skills: signal<Skill[]>([]),
+  allFilteredSkills: signal<Skill[]>([]),
+  filteredSkills: signal<Skill[]>([]),
+  categories: signal<string[]>([]),
+  filter: signal({ category: 'all', onlyHighlighted: false }),
+  highlightedCount: signal(0),
+  totalSkills: signal(0),
+  hasMore: signal(false),
+  loading: signal(false),
+  error: signal<string | null>(null),
+  setFilter: jest.fn(),
+  resetFilter: jest.fn(),
+  loadMore: jest.fn(),
+};
+
+const mockExperienceService = {
+  experience: signal<Experience[]>([]),
   isLoading: signal(false),
   error: signal<string | null>(null),
 };
@@ -58,6 +82,8 @@ describe('PortfolioComponent', () => {
         }),
         { provide: GsapService, useClass: MockGsapService },
         { provide: StatsService, useValue: mockStatsService },
+        { provide: SkillsService, useValue: mockSkillsService },
+        { provide: ExperienceService, useValue: mockExperienceService },
       ],
     });
   });

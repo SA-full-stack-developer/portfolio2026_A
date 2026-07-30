@@ -7,7 +7,9 @@ import { GsapService, PlatformService } from '@shared-libs/services';
 import { ContactComponent } from './contact.component';
 
 jest.mock('@emailjs/browser', () => ({
+  __esModule: true,
   default: { send: jest.fn() },
+  send: jest.fn(),
 }));
 
 describe('ContactComponent', () => {
@@ -21,12 +23,13 @@ describe('ContactComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ContactComponent, TranslateModule.forRoot()],
       providers: [
-        { provide: MatSnackBar, useValue: snackBar },
         { provide: SeoService, useValue: { update: jest.fn(), updateSchemas: jest.fn() } },
         { provide: GsapService, useValue: { gsap: { from: jest.fn() } } },
         { provide: PlatformService, useValue: { isBrowser: false } },
       ],
-    }).compileComponents();
+    })
+      .overrideProvider(MatSnackBar, { useValue: snackBar })
+      .compileComponents();
 
     fixture = TestBed.createComponent(ContactComponent);
     component = fixture.componentInstance;
@@ -129,7 +132,20 @@ describe('ContactComponent', () => {
     });
     fixture.detectChanges();
 
+    console.log('DEBUG valid', component.contactForm().valid(), 'botTrap', component.botTrap());
+    console.log('DEBUG component snackBar is mock', (component as any).snackBar === snackBar);
+    console.log(
+      'DEBUG emailjs.send',
+      typeof emailjs.send,
+      emailjs.send.mock?.name || 'no mock name',
+    );
+    console.log('DEBUG snackBar open calls before', snackBar.open.mock.calls.length);
+
     await component.onSubmit(new Event('submit'));
+
+    console.log('DEBUG emailjs.send calls', (emailjs.send as jest.Mock).mock.calls.length);
+    console.log('DEBUG snackBar open calls after', snackBar.open.mock.calls.length);
+    console.log('DEBUG snackBar open args', snackBar.open.mock.calls);
 
     expect(emailjs.send).toHaveBeenCalledWith(
       'service_tsklp4n',

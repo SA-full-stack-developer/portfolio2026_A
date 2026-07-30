@@ -16,7 +16,7 @@ export class StatusService {
 
   private readonly statusResource = httpResource<{ data: Status }>(() => this.apiUrl);
 
-  readonly status = computed(() => this.statusResource.value()?.data.status ?? '');
+  readonly status = computed(() => this.statusResource.value()?.data?.status ?? '');
   readonly isLoading = this.statusResource.isLoading;
   readonly error = computed(() =>
     this.statusResource.error() ? this.translate.instant('ERRORS.API') : null,

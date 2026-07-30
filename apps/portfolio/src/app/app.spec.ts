@@ -6,6 +6,8 @@ import {
 } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
+import { provideHttpClient } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -48,6 +50,7 @@ const mockSeoService = {
 
 describe('App', () => {
   let languageService: LanguageService;
+  let httpMock: HttpTestingController;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -55,6 +58,8 @@ describe('App', () => {
       providers: [
         provideZonelessChangeDetection(),
         provideRouter([]),
+        provideHttpClient(),
+        provideHttpClientTesting(),
         provideTranslateService({
           loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
         }),
@@ -63,32 +68,42 @@ describe('App', () => {
     }).compileComponents();
 
     languageService = TestBed.inject(LanguageService);
+    httpMock = TestBed.inject(HttpTestingController);
     const translate = TestBed.inject(TranslateService);
     await translate.use('es').toPromise();
   });
 
+  afterEach(() => {
+    httpMock.verify();
+  });
+
+  function createStableFixture() {
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+    httpMock.match(() => true).forEach((req) => req.flush({ data: { status: 'Online' } }));
+    return fixture;
+  }
+
   // Creación
   it('should create the app', async () => {
-    const fixture = TestBed.createComponent(App);
+    const fixture = createStableFixture();
     await fixture.whenStable();
     expect(fixture.componentInstance).toBeTruthy();
   });
 
   // Inicialización del idioma
   it('should set a valid language after init', async () => {
-    const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
+    createStableFixture();
     expect(['es', 'en']).toContain(languageService.currentLang());
   });
 
   it('should persist language in localStorage after init', async () => {
-    const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
+    createStableFixture();
     expect(localStorage.getItem('lang')).not.toBeNull();
   });
 
   it('should render router outlet', async () => {
-    const fixture = TestBed.createComponent(App);
+    const fixture = createStableFixture();
     await fixture.whenStable();
     fixture.detectChanges();
     const outlet = fixture.debugElement.query(By.css('router-outlet'));

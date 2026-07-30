@@ -41,16 +41,19 @@ describe('StatsService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should set error signal when the request fails', () => {
+  it('should set error signal when the request fails', async () => {
     const req = httpMock.expectOne(apiUrl);
     req.flush('Server error', { status: 500, statusText: 'Server Error' });
+    await Promise.resolve();
     TestBed.tick();
     expect(service.error()).toBe('ERRORS.API');
   });
 
-  it('should load stats and update the signal', () => {
+  it('should load stats and update the signal', async () => {
     const req = httpMock.expectOne(apiUrl);
     req.flush({ data: STATS_MOCK });
+    await Promise.resolve();
+    TestBed.tick();
     expect(service.stats().length).toBe(4);
     expect(service.stats()).toEqual(STATS_MOCK);
   });
