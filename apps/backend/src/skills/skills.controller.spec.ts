@@ -5,7 +5,6 @@ import { SkillsService } from './skills.service';
 
 describe('SkillsController', () => {
   let controller: SkillsController;
-  let service: SkillsService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -21,7 +20,6 @@ describe('SkillsController', () => {
     }).compile();
 
     controller = module.get<SkillsController>(SkillsController);
-    service = module.get<SkillsService>(SkillsService);
   });
 
   it('should be defined', () => {

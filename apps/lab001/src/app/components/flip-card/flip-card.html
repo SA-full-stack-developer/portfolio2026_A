@@ -2,9 +2,12 @@
   <div
     #inner
     (click)="onClick()"
+    (keyup.enter)="onClick()"
     (mouseenter)="onMouseEnter()"
     (mouseleave)="onMouseLeave()"
     class="flip-card__inner"
+    tabindex="0"
+    role="button"
   >
     <div class="flip-card__front"></div>
     <div class="flip-card__back"></div>

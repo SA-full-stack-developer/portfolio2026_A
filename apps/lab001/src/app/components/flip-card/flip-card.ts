@@ -41,7 +41,7 @@ export class FlipCard {
 
     this.isAnimating.set(true);
     const gsap = this.gsapService.gsap;
-    var timeline = gsap.timeline();
+    const timeline = gsap.timeline();
     timeline
       .to(this.inner()?.nativeElement, {
         rotationY: this.state() ? 270 : 90,

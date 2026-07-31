@@ -14,17 +14,15 @@ describe('StatsController', () => {
         {
           provide: StatsService,
           useValue: {
-            findAll: jest
-              .fn()
-              .mockReturnValue([
-                {
-                  id: '1',
-                  label: 'Test',
-                  value: 10,
-                  showPlus: true,
-                  icon: 'icon',
-                },
-              ]),
+            findAll: jest.fn().mockReturnValue([
+              {
+                id: '1',
+                label: 'Test',
+                value: 10,
+                showPlus: true,
+                icon: 'icon',
+              },
+            ]),
           },
         },
       ],
