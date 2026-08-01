@@ -26,9 +26,7 @@
       "options": {
         "ssr": true,
         "federationConfig": "apps/portfolio/federation.config.ts",
-        "entryPoints": [
-          "apps\\portfolio\\src\\main.ts"
-        ],
+        "entryPoints": ["apps\\portfolio\\src\\main.ts"],
         "projectName": "portfolio"
       },
       "configurations": {
@@ -51,9 +49,7 @@
         "dev": true,
         "cacheExternalArtifacts": false,
         "port": 0,
-        "entryPoints": [
-          "apps\\portfolio\\src\\main.ts"
-        ],
+        "entryPoints": ["apps\\portfolio\\src\\main.ts"],
         "projectName": "portfolio"
       },
       "continuous": true
@@ -69,9 +65,7 @@
       "options": {
         "command": "npx eslint \"apps/portfolio/src/**/*.ts\" \"apps/portfolio/src/**/*.html\""
       },
-      "outputs": [
-        "{options.outputFile}"
-      ]
+      "outputs": ["{options.outputFile}"]
     },
     "esbuild": {
       "executor": "@angular/build:application",
@@ -105,13 +99,9 @@
           "entry": "apps/portfolio/src/server.ts"
         },
         "outputPath": "dist/portfolio",
-        "polyfills": [
-          "es-module-shims"
-        ],
+        "polyfills": ["es-module-shims"],
         "stylePreprocessorOptions": {
-          "includePaths": [
-            "libs/shared/styles/src/lib"
-          ]
+          "includePaths": ["libs/shared/styles/src/lib"]
         }
       },
       "configurations": {
@@ -145,7 +135,10 @@
           "optimization": false,
           "extractLicenses": false,
           "sourceMap": true,
-          "outputHashing": "media"
+          "outputHashing": "media",
+          "outputMode": "static",
+          "server": false,
+          "ssr": false
         },
         "docker": {
           "fileReplacements": [
@@ -159,9 +152,7 @@
         }
       },
       "defaultConfiguration": "production",
-      "outputs": [
-        "{options.outputPath}"
-      ]
+      "outputs": ["{options.outputPath}"]
     },
     "serve-original": {
       "executor": "@angular/build:dev-server",
