@@ -9,10 +9,13 @@ Cristian Salcedo Rodríguez es un Full Stack Developer con sede en España, espe
 ## Habilidades técnicas destacadas
 
 ### Frontend
-- Angular 21 (standalone components, zoneless, SSR con Angular Universal)
+- Angular 22 (standalone components, zoneless, SSR con hidratación incremental)
+- Arquitectura de micro-frontends con Native Federation (monorepo Nx, host + remote)
+- Signals como modelo de reactividad principal (`signal`, `computed`, `effect`, `httpResource` para datos asíncronos)
+- Signal Forms + Submission API para formularios reactivos
 - TypeScript — nivel experto
 - SCSS / SASS — nivel experto
-- RxJS — nivel experto
+- RxJS — nivel experto (uso puntual junto a Signals para casos no reactivos)
 - Angular Material, PrimeNG, PrimeFaces
 - HTML5, CSS3, Responsive Design
 - Optimización de rendimiento web (Lighthouse 100 desktop, 92 mobile)
@@ -20,9 +23,11 @@ Cristian Salcedo Rodríguez es un Full Stack Developer con sede en España, espe
 ### Backend
 - NestJS
 - Node.js
+- Integración de IA generativa (Google Gemini API) para funcionalidades conversacionales: chat sobre el CV, generación de cartas de presentación, asistente de contacto
 - Java (nivel intermedio)
 
 ### DevOps y herramientas
+- Nx (monorepos, gestión de proyectos afectados en CI)
 - Git / GitHub
 - Docker, Docker Compose
 - CI/CD con GitHub Actions
@@ -41,8 +46,10 @@ URL: https://www.livingmanga.com/
 ## Portfolio técnico
 
 Este portfolio está construido con:
-- Angular 21 + SSR + zoneless change detection
-- NestJS como backend
+- Monorepo Nx: Angular 22 (host + micro-frontend vía Native Federation) + NestJS como backend independiente
+- Standalone, zoneless change detection, SSR con hidratación incremental (`@defer` + `hydrate on viewport`)
+- Signals de extremo a extremo: `httpResource` para queries HTTP, Signal Forms para formularios
+- Backend con IA generativa (Google Gemini API) para chat sobre el CV y generación de contenido
 - GSAP para animaciones
 - Self-hosted Inter font con preloads optimizados
 - CI/CD automatizado con GitHub Actions
