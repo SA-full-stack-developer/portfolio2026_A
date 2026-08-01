@@ -26,7 +26,7 @@
       "options": {
         "ssr": true,
         "federationConfig": "apps/portfolio/federation.config.ts",
-        "entryPoints": ["apps\\portfolio\\src\\main.ts"],
+        "entryPoints": ["apps/portfolio/src/main.ts"],
         "projectName": "portfolio"
       },
       "configurations": {
@@ -49,7 +49,7 @@
         "dev": true,
         "cacheExternalArtifacts": false,
         "port": 0,
-        "entryPoints": ["apps\\portfolio\\src\\main.ts"],
+        "entryPoints": ["apps/portfolio/src/main.ts"],
         "projectName": "portfolio"
       },
       "continuous": true
