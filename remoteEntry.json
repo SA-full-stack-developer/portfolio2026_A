@@ -1,101 +1,118 @@
 {
+  "$version": "v4",
   "name": "lab001",
   "shared": [
     {
       "packageName": "@angular/common",
-      "outFileName": "_angular_common.JVGy0Pd4_i.js",
-      "requiredVersion": "^21.2.13",
+      "outFileName": "_angular_common.W5RhHKTxYO.js",
+      "requiredVersion": "22.0.7",
       "singleton": true,
       "strictVersion": true,
-      "version": "21.2.13"
-    },
-    {
-      "packageName": "@angular/common/http",
-      "outFileName": "_angular_common_http.35ZZfChqz8.js",
-      "requiredVersion": "^21.2.13",
-      "singleton": true,
-      "strictVersion": true,
-      "version": "21.2.13"
+      "version": "22.0.7"
     },
     {
       "packageName": "@angular/core",
-      "outFileName": "_angular_core.ifQimAU6IL.js",
-      "requiredVersion": "^21.2.13",
+      "outFileName": "_angular_core.-dQ83TceMd.js",
+      "requiredVersion": "22.0.7",
       "singleton": true,
       "strictVersion": true,
-      "version": "21.2.13"
+      "version": "22.0.7"
     },
     {
       "packageName": "@angular/core/primitives/di",
-      "outFileName": "_angular_core_primitives_di.5vHyl8vk5_.js",
-      "requiredVersion": "^21.2.13",
+      "outFileName": "_angular_core_primitives_di.RRgXYqJu3Z.js",
+      "requiredVersion": "22.0.7",
       "singleton": true,
       "strictVersion": true,
-      "version": "21.2.13"
+      "version": "22.0.7"
     },
     {
       "packageName": "@angular/core/primitives/signals",
-      "outFileName": "_angular_core_primitives_signals.RZXyOH4xsM.js",
-      "requiredVersion": "^21.2.13",
+      "outFileName": "_angular_core_primitives_signals.2pphOf-u6A.js",
+      "requiredVersion": "22.0.7",
       "singleton": true,
       "strictVersion": true,
-      "version": "21.2.13"
+      "version": "22.0.7"
     },
     {
-      "packageName": "@angular/platform-browser",
-      "outFileName": "_angular_platform_browser.2gwuW0aAj-.js",
-      "requiredVersion": "^21.2.13",
+      "packageName": "@angular/core/rxjs-interop",
+      "outFileName": "_angular_core_rxjs_interop.v_AMkT78lC.js",
+      "requiredVersion": "22.0.7",
       "singleton": true,
       "strictVersion": true,
-      "version": "21.2.13"
-    },
-    {
-      "packageName": "@angular/router",
-      "outFileName": "_angular_router.79W9qZ81oO.js",
-      "requiredVersion": "^21.2.13",
-      "singleton": true,
-      "strictVersion": true,
-      "version": "21.2.13"
+      "version": "22.0.7"
     },
     {
       "packageName": "gsap",
-      "outFileName": "gsap.UkzS1syKZy.js",
+      "outFileName": "gsap.G8Sfj7nxtz.js",
       "requiredVersion": "auto",
       "singleton": true,
       "strictVersion": false,
-      "version": "3.14.2"
+      "version": "3.15.0"
     },
     {
       "packageName": "rxjs",
-      "outFileName": "rxjs.ero33Ud4_k.js",
-      "requiredVersion": "~7.8.0",
+      "outFileName": "rxjs.OmqFGSEpPT.js",
+      "requiredVersion": "^7.8.2",
       "singleton": true,
       "strictVersion": true,
       "version": "7.8.2"
     },
     {
       "packageName": "rxjs/operators",
-      "outFileName": "rxjs_operators.gWRquiUMVD.js",
-      "requiredVersion": "~7.8.0",
+      "outFileName": "rxjs_operators.Q7SXB0StdO.js",
+      "requiredVersion": "^7.8.2",
       "singleton": true,
       "strictVersion": true,
       "version": "7.8.2"
     },
     {
       "packageName": "tslib",
-      "outFileName": "tslib.hwL93XKvYx.js",
-      "requiredVersion": "^2.3.0",
+      "outFileName": "tslib.kV7_nIcaWL.js",
+      "requiredVersion": "^2.8.1",
       "singleton": true,
       "strictVersion": true,
       "version": "2.8.1"
     },
     {
       "packageName": "gsap/ScrollTrigger",
-      "outFileName": "gsap_ScrollTrigger.U63PTjrJL3.js",
+      "outFileName": "gsap_ScrollTrigger.2g6O4ltPtD.js",
       "requiredVersion": "auto",
       "singleton": true,
       "strictVersion": false,
-      "version": "3.14.2"
+      "version": "3.15.0"
+    },
+    {
+      "singleton": false,
+      "strictVersion": false,
+      "version": "0.0.0",
+      "requiredVersion": "0.0.0",
+      "packageName": "@nf-internal/chunk-CO263U2P",
+      "outFileName": "chunk-CO263U2P.js"
+    },
+    {
+      "singleton": false,
+      "strictVersion": false,
+      "version": "0.0.0",
+      "requiredVersion": "0.0.0",
+      "packageName": "@nf-internal/chunk-SZM3HKGC",
+      "outFileName": "chunk-SZM3HKGC.js"
+    },
+    {
+      "singleton": false,
+      "strictVersion": false,
+      "version": "0.0.0",
+      "requiredVersion": "0.0.0",
+      "packageName": "@nf-internal/chunk-X4HXWS2T",
+      "outFileName": "chunk-X4HXWS2T.js"
+    },
+    {
+      "singleton": false,
+      "strictVersion": false,
+      "version": "0.0.0",
+      "requiredVersion": "0.0.0",
+      "packageName": "@nf-internal/chunk-7WWWU6KK",
+      "outFileName": "chunk-7WWWU6KK.js"
     },
     {
       "singleton": false,
@@ -110,48 +127,24 @@
       "strictVersion": false,
       "version": "0.0.0",
       "requiredVersion": "0.0.0",
-      "packageName": "@nf-internal/chunk-ETFAYQJI",
-      "outFileName": "chunk-ETFAYQJI.js"
-    },
-    {
-      "singleton": false,
-      "strictVersion": false,
-      "version": "0.0.0",
-      "requiredVersion": "0.0.0",
-      "packageName": "@nf-internal/chunk-CIXSH7WF",
-      "outFileName": "chunk-CIXSH7WF.js"
-    },
-    {
-      "singleton": false,
-      "strictVersion": false,
-      "version": "0.0.0",
-      "requiredVersion": "0.0.0",
-      "packageName": "@nf-internal/chunk-6ON3HIBT",
-      "outFileName": "chunk-6ON3HIBT.js"
-    },
-    {
-      "singleton": false,
-      "strictVersion": false,
-      "version": "0.0.0",
-      "requiredVersion": "0.0.0",
-      "packageName": "@nf-internal/chunk-4CLCTAJ7",
-      "outFileName": "chunk-4CLCTAJ7.js"
-    },
-    {
-      "packageName": "@shared-libs/services",
-      "outFileName": "_shared_libs_services-5HVOVXIH.js",
-      "requiredVersion": "",
-      "singleton": true,
-      "strictVersion": false,
-      "version": ""
+      "packageName": "@nf-internal/chunk-PZNONLPT",
+      "outFileName": "chunk-PZNONLPT.js"
     },
     {
       "packageName": "@shared-libs/ui",
       "outFileName": "_shared_libs_ui-6SSV5W4T.js",
-      "requiredVersion": "",
+      "requiredVersion": "~0.0.0",
       "singleton": true,
-      "strictVersion": false,
-      "version": ""
+      "strictVersion": true,
+      "version": "0.0.0"
+    },
+    {
+      "packageName": "@shared-libs/services",
+      "outFileName": "_shared_libs_services-ARJU6XDA.js",
+      "requiredVersion": "~0.0.0",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "0.0.0"
     }
   ],
   "exposes": [
@@ -165,11 +158,11 @@
     },
     {
       "key": "./LiquidProgressBar",
-      "outFileName": "LiquidProgressBar-QDMFTKDO.js"
+      "outFileName": "LiquidProgressBar-7KFROJJI.js"
     },
     {
       "key": "./FlipCard",
-      "outFileName": "FlipCard-ZT3UDIPE.js"
+      "outFileName": "FlipCard-VVFLI66C.js"
     },
     {
       "key": "./SplitTextLab",
