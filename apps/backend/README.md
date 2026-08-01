@@ -1,98 +1,84 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Portfolio Backend API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+API REST en **NestJS** que da servicio al [portfolio profesional](https://csrangulardeveloper.nom.es), gestionando la persistencia de datos (skills, experiencia, empresas, proyectos, estadísticas) y funcionalidades de **IA generativa** (chat sobre el CV, generación de cartas de presentación, asistente de contacto).
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+📄 Documentación interactiva (Swagger/OpenAPI): **https://api.csrangulardeveloper.nom.es/api/v1/docs**
 
-## Description
+> Este proyecto es una app independiente dentro de un **monorepo Nx** (`apps/backend`), con su propio `package.json`/lockfile/`node_modules` — no comparte dependencias con el frontend (`apps/portfolio`, `apps/lab001`).
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Módulos
 
-## Project setup
+| Módulo       | Descripción                                                                                                                                                  |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `skills`     | Listado de habilidades técnicas, con filtro por categoría y por destacadas (`onlyHighlighted`)                                                               |
+| `companies`  | Empresas asociadas a la experiencia profesional                                                                                                              |
+| `experience` | Experiencia profesional, con empresa y skills resueltas (relaciones pobladas en la respuesta)                                                                |
+| `projects`   | Proyectos del portfolio                                                                                                                                      |
+| `stats`      | Estadísticas calculadas dinámicamente (ej. años de experiencia, contador de cafés) a partir de una configuración interna                                     |
+| `status`     | Estado actual del sistema/disponibilidad                                                                                                                     |
+| `auth`       | Validación de tokens para rutas administrativas                                                                                                              |
+| `ai`         | Integración con la API de **Gemini** (`@google/generative-ai`): chat sobre el CV, generación de cartas de presentación, asistente de contacto conversacional |
+
+## Setup del proyecto
 
 ```bash
-$ npm install
+npm install
 ```
 
-## Compile and run the project
+## Compilar y ejecutar
 
 ```bash
-# development
-$ npm run start
+# desarrollo (watch mode)
+npm run start:dev
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+# producción
+npm run start:prod
 ```
 
-## Run tests
+> En Windows, `start:dev` requiere comillas dobles en el flag `--exec` (`cmd.exe` no interpreta comillas simples como agrupador) — ya está así en el script del `package.json`.
+
+## Tests
 
 ```bash
-# unit tests
-$ npm run test
+# unitarios
+npm run test
 
-# e2e tests
-$ npm run test:e2e
+# unitarios con cobertura
+npm run test:cov
 
-# test coverage
-$ npm run test:cov
+# end-to-end (supertest contra la app real)
+npm run test:e2e
+
+# lint
+npm run lint
 ```
 
-## Deployment
+Los tests unitarios (`*.spec.ts`) están incluidos en el `tsconfig.json` base (para que ESLint y el editor los reconozcan con tipado completo); la exclusión de specs para el build de producción vive por separado en `tsconfig.build.json`, siguiendo el patrón estándar de Nest.
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+## Variables de entorno
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+| Variable         | Descripción                                                                                                  |
+| ---------------- | ------------------------------------------------------------------------------------------------------------ |
+| `GEMINI_API_KEY` | API key de Google Generative AI, usada por el módulo `ai`                                                    |
+| `GEMINI_MODEL`   | Modelo de Gemini a usar (ej. `gemini-pro`)                                                                   |
+| `PORT`           | Puerto de escucha (por defecto `3000` en desarrollo; `3000` también en producción vía `ecosystem.config.js`) |
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+## Arquitectura y convenciones
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+- **Prefijo global de API:** `/api/v1`
+- **Validación:** `ValidationPipe` global con `whitelist` + `forbidNonWhitelisted` + `transform`, aplicado a todos los DTOs de entrada
+- **Respuestas normalizadas:** `TransformInterceptor` global envuelve toda respuesta exitosa en `{ data, timestamp }`
+- **CORS:** restringido a los orígenes conocidos de producción y desarrollo local
+- **Documentación:** generada automáticamente con `@nestjs/swagger` a partir de los DTOs y controladores, servida en `/api/v1/docs`
+- **Tipado estricto:** sin `any` — los datos con forma variable (ej. la configuración de cada stat calculada) se modelan con uniones discriminadas por una propiedad `kind`
 
-## Resources
+## Despliegue
 
-Check out a few resources that may come in handy when working with NestJS:
+El backend se despliega de forma independiente desde GitHub Actions (`build-backend` → `deploy-backend`) a la rama `deploy-api`, servido en producción con PM2 (`ecosystem.config.js`). El despliegue solo se dispara en la rama `develop`. Ver el [README principal del monorepo](../../README.md) para el detalle completo del pipeline de CI/CD.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## Stack
 
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+- [NestJS](https://nestjs.com/) sobre Node.js 22
+- TypeScript fijado a una versión concreta en todo el workspace (compartida con el frontend)
+- Swagger/OpenAPI para documentación de la API
+- Jest + Supertest para tests unitarios y e2e

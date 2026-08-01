@@ -1,34 +1,38 @@
 import {
+  afterNextRender,
   AfterViewInit,
   Component,
   ElementRef,
+  inject,
   Injector,
   OnInit,
   QueryList,
-  ViewChildren,
-  afterNextRender,
-  computed,
-  inject,
   signal,
+  ViewChildren,
 } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { BREADCRUMB_CONTACT, PAGE_SEO } from '@core/config/seo.config';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { GsapService, PlatformService } from '@shared-libs/services';
-
+import { email, form, FormField, minLength, required, submit } from '@angular/forms/signals';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { Form } from '@core/models/form.model';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { BREADCRUMB_CONTACT, PAGE_SEO } from '@core/config/seo.config';
 import { SeoService } from '@core/services/seo.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { GsapService, PlatformService } from '@shared-libs/services';
+
+interface ContactForm {
+  name: string;
+  subject: string;
+  email: string;
+  message: string;
+}
 
 @Component({
   selector: 'app-contact',
   imports: [
-    FormsModule,
+    FormField,
     TranslateModule,
     MatFormFieldModule,
     MatInputModule,
@@ -43,7 +47,6 @@ import { SeoService } from '@core/services/seo.service';
 export class ContactComponent implements OnInit, AfterViewInit {
   private readonly seoService = inject(SeoService);
   private readonly gsapService = inject(GsapService);
-  private readonly el = inject(ElementRef);
   private readonly platformService = inject(PlatformService);
   private readonly translate = inject(TranslateService);
   private snackBar = inject(MatSnackBar);
@@ -51,31 +54,27 @@ export class ContactComponent implements OnInit, AfterViewInit {
 
   @ViewChildren('animRow') animRows!: QueryList<ElementRef>;
 
-  botTrap = '';
-  formData = signal<Form>({
+  botTrap = signal('');
+
+  contactModel = signal<ContactForm>({
     name: '',
     subject: '',
     email: '',
     message: '',
   });
 
-  isLoading = signal(false);
+  contactForm = form(this.contactModel, (schema) => {
+    required(schema.name);
+    minLength(schema.name, 3);
 
-  isFormValid = computed(() => {
-    const data = this.formData();
-    const name = data?.name ?? '';
-    const email = data?.email ?? '';
-    const subject = data?.subject ?? '';
-    const message = data?.message ?? '';
+    required(schema.subject);
+    minLength(schema.subject, 3);
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    required(schema.email);
+    email(schema.email);
 
-    return (
-      name.trim().length >= 3 &&
-      emailRegex.test(email) &&
-      subject.trim().length >= 3 &&
-      message.trim().length >= 10
-    );
+    required(schema.message);
+    minLength(schema.message, 10);
   });
 
   ngOnInit(): void {
@@ -103,17 +102,14 @@ export class ContactComponent implements OnInit, AfterViewInit {
     );
   }
 
-  updateField(field: string, value: string) {
-    this.formData.update((prev) => ({ ...prev, [field]: value }));
-  }
+  async onSubmit(event: Event) {
+    event.preventDefault();
 
-  async onSubmit(form: NgForm) {
-    if (this.botTrap !== '') {
+    if (this.botTrap() !== '') {
       return;
     }
-    if (this.isFormValid()) {
-      this.isLoading.set(true);
 
+    await submit(this.contactForm, async () => {
       const { default: emailjs } = await import('@emailjs/browser');
 
       const serviceID = 'service_tsklp4n';
@@ -121,10 +117,10 @@ export class ContactComponent implements OnInit, AfterViewInit {
       const publicKey = '3EljapeH9l5XEDoNi';
 
       const templateParams = {
-        from_name: this.formData().name,
-        from_email: this.formData().email,
-        subject: this.formData().subject,
-        message: this.formData().message,
+        from_name: this.contactModel().name,
+        from_email: this.contactModel().email,
+        subject: this.contactModel().subject,
+        message: this.contactModel().message,
         to_name: 'Cristian',
       };
 
@@ -132,9 +128,8 @@ export class ContactComponent implements OnInit, AfterViewInit {
         await emailjs.send(serviceID, templateID, templateParams, publicKey);
 
         this.snackBar.open(this.translate.instant('CONTACT.SUCCESS'), '', { duration: 1000 });
-        form.resetForm();
-        this.formData.set({ name: '', subject: '', email: '', message: '' });
-        this.botTrap = '';
+        this.contactModel.set({ name: '', subject: '', email: '', message: '' });
+        this.botTrap.set('');
       } catch (error) {
         const errorMessage =
           typeof error === 'string'
@@ -146,9 +141,7 @@ export class ContactComponent implements OnInit, AfterViewInit {
         this.snackBar.open(this.translate.instant('CONTACT.ERROR') + errorMessage, '', {
           duration: 1000,
         });
-      } finally {
-        this.isLoading.set(false);
       }
-    }
+    });
   }
 }

@@ -11,13 +11,13 @@
   &__tag {
     border-radius: 10px;
     background-color: rgba(v.$text-secondary, 0.85);
+    margin-bottom: 0.75rem;
     font-size: 0.6rem;
     padding: 0.25rem;
     width: fit-content;
   }
 
   &__title {
-    margin-top: 0.75rem;
     font-size: 0.95rem;
     font-weight: 700;
     color: v.$primary-hue;

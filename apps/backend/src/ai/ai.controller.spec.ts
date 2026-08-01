@@ -9,7 +9,6 @@ import { CoverLetterDto } from './dto/cover-letter.dto';
 
 describe('AiController', () => {
   let controller: AiController;
-  let aiService: AiService;
 
   const mockAiService = {
     chatWithCv: jest.fn(),
@@ -30,7 +29,6 @@ describe('AiController', () => {
     }).compile();
 
     controller = module.get<AiController>(AiController);
-    aiService = module.get<AiService>(AiService);
   });
 
   it('should be defined', () => {

@@ -25,7 +25,9 @@
       "executor": "@angular-architects/native-federation:build",
       "options": {
         "ssr": true,
-        "federationConfig": "apps/portfolio/federation.config.ts"
+        "federationConfig": "apps/portfolio/federation.config.ts",
+        "entryPoints": ["apps/portfolio/src/main.ts"],
+        "projectName": "portfolio"
       },
       "configurations": {
         "production": {
@@ -46,7 +48,9 @@
         "rebuildDelay": 500,
         "dev": true,
         "cacheExternalArtifacts": false,
-        "port": 0
+        "port": 0,
+        "entryPoints": ["apps/portfolio/src/main.ts"],
+        "projectName": "portfolio"
       },
       "continuous": true
     },
@@ -131,7 +135,10 @@
           "optimization": false,
           "extractLicenses": false,
           "sourceMap": true,
-          "outputHashing": "media"
+          "outputHashing": "media",
+          "outputMode": "static",
+          "server": false,
+          "ssr": false
         },
         "docker": {
           "fileReplacements": [

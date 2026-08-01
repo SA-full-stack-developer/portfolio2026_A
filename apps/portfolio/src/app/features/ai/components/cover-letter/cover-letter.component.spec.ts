@@ -8,6 +8,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 import { Observable, of, throwError } from 'rxjs';
 
+import { signal } from '@angular/core';
 import { AiService } from '@core/services/ai.service';
 import { CoverLetterComponent } from './cover-letter.component';
 
@@ -153,12 +154,12 @@ describe('CoverLetterComponent', () => {
   });
 
   it('should register scrollTrigger from GSAP for teardown', () => {
-    expect(component['scrollTriggers'].length).toBeGreaterThan(0);
+    expect(component['scrollTriggers']().length).toBeGreaterThan(0);
   });
 
   it('should kill scroll triggers on destroy', () => {
     const kill = jest.fn();
-    component['scrollTriggers'] = [{ kill }] as (typeof component)['scrollTriggers'];
+    component['scrollTriggers'] = signal([{ kill }]) as (typeof component)['scrollTriggers'];
     fixture.destroy();
     expect(kill).toHaveBeenCalled();
   });

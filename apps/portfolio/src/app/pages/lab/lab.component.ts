@@ -20,10 +20,12 @@ export class LabComponent implements OnInit {
   private readonly seoService = inject(SeoService);
   private readonly featureFlagService = inject(FeatureFlagService);
 
-  remotesComponent = signal<LabConfig[]>(Object.values(LAB_CONFIG));
+  remotesComponent = signal<(LabConfig & { id: string })[]>(
+    Object.entries(LAB_CONFIG).map(([id, config]) => ({ ...config, id })),
+  );
 
   async ngOnInit(): Promise<void> {
-    const tmpComponents: LabConfig[] = [];
+    const tmpComponents: (LabConfig & { id: string })[] = [];
     this.seoService.update(PAGE_SEO['lab']);
     this.seoService.updateSchemas([BREADCRUMB_LAB]);
 
@@ -33,7 +35,7 @@ export class LabComponent implements OnInit {
         exposedModule: lab.exposedModule,
       });
 
-      const tmpComponent: LabConfig = {
+      const tmpComponent: LabConfig & { id: string } = {
         ...lab,
         component: m[lab.exportName],
       };

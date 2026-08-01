@@ -9,8 +9,8 @@ import {
 import { GsapService, PlatformService } from '@shared-libs/services';
 import { Observable, of } from 'rxjs';
 
-import { STATS_MOCK } from '@core/mocks/stats.mock';
 import { StatsService } from '@core/services/stats.service';
+import { Stat } from '@portfolio/shared/models';
 import { HeroStatCounterComponent } from './hero-stat-counter.component';
 
 class MockTranslateLoader implements TranslateLoader {
@@ -30,9 +30,9 @@ describe('HeroStatCounterComponent', () => {
   let gsapFrom: jest.Mock;
 
   const mockStatsService = {
-    stats: signal(STATS_MOCK),
-    loadStats: jest.fn(),
-    refresh: jest.fn(),
+    stats: signal<Stat[]>([]),
+    isLoading: signal(false),
+    error: signal<string | null>(null),
   };
 
   async function createComponent(): Promise<void> {

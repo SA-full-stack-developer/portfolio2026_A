@@ -27,6 +27,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/lab/lab.component').then((m) => m.LabComponent),
   },
   {
+    path: 'lab/:labId',
+    loadComponent: () =>
+      import('./pages/lab-detail/lab-detail.component').then((m) => m.LabDetailComponent),
+  },
+  {
     path: 'legal',
     loadComponent: () => import('./pages/legal/legal.component').then((m) => m.LegalComponent),
   },

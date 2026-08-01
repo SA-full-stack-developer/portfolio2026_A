@@ -52,7 +52,7 @@ describe('Error404Component', () => {
   });
 
   it('should display the current failing route in the terminal', () => {
-    expect(component.currentRoute).toBe('/ruta-inexistente');
+    expect(component.currentRoute()).toBe('/ruta-inexistente');
 
     const debugElement = fixture.debugElement.query(By.css('.terminal__code'));
     expect(debugElement.nativeElement.textContent).toContain('/ruta-inexistente');

@@ -4,6 +4,44 @@ import { INestApplication } from '@nestjs/common';
 import request from 'supertest';
 import { AppModule } from '../src/app.module';
 
+interface SkillResponse {
+  id: string;
+  name: string;
+  category: string;
+  highlighted?: boolean;
+}
+
+interface CompanyResponse {
+  id: string;
+  name: string;
+}
+
+interface ExperienceResponse {
+  id: string;
+  companyId: string;
+  company?: { name: string };
+  skills?: { name: string }[];
+}
+
+interface ProjectResponse {
+  id: string;
+  name: string;
+}
+
+interface StatResponse {
+  id: string;
+  label: string;
+  value: number;
+  showPlus: boolean;
+  icon: string;
+  stat?: unknown;
+  kind?: unknown;
+}
+
+interface StatusResponse {
+  status: string;
+}
+
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
@@ -23,11 +61,12 @@ describe('AppController (e2e)', () => {
         .get('/skills')
         .expect(200)
         .expect((res) => {
-          expect(Array.isArray(res.body)).toBe(true);
-          expect(res.body.length).toBeGreaterThan(0);
-          expect(res.body[0]).toHaveProperty('id');
-          expect(res.body[0]).toHaveProperty('name');
-          expect(res.body[0]).toHaveProperty('category');
+          const body = res.body as SkillResponse[];
+          expect(Array.isArray(body)).toBe(true);
+          expect(body.length).toBeGreaterThan(0);
+          expect(body[0]).toHaveProperty('id');
+          expect(body[0]).toHaveProperty('name');
+          expect(body[0]).toHaveProperty('category');
         });
     });
 
@@ -36,8 +75,9 @@ describe('AppController (e2e)', () => {
         .get('/skills?category=frontend')
         .expect(200)
         .expect((res) => {
-          expect(Array.isArray(res.body)).toBe(true);
-          res.body.forEach((skill) => {
+          const body = res.body as SkillResponse[];
+          expect(Array.isArray(body)).toBe(true);
+          body.forEach((skill) => {
             expect(skill.category).toBe('frontend');
           });
         });
@@ -48,8 +88,9 @@ describe('AppController (e2e)', () => {
         .get('/skills?onlyHighlighted=true')
         .expect(200)
         .expect((res) => {
-          expect(Array.isArray(res.body)).toBe(true);
-          res.body.forEach((skill) => {
+          const body = res.body as SkillResponse[];
+          expect(Array.isArray(body)).toBe(true);
+          body.forEach((skill) => {
             expect(skill.highlighted).toBe(true);
           });
         });
@@ -60,9 +101,10 @@ describe('AppController (e2e)', () => {
         .get('/skills/categories')
         .expect(200)
         .expect((res) => {
-          expect(Array.isArray(res.body)).toBe(true);
-          expect(res.body.length).toBeGreaterThan(0);
-          expect(res.body).toContain('frontend');
+          const body = res.body as string[];
+          expect(Array.isArray(body)).toBe(true);
+          expect(body.length).toBeGreaterThan(0);
+          expect(body).toContain('frontend');
         });
     });
   });
@@ -74,10 +116,11 @@ describe('AppController (e2e)', () => {
         .get('/companies')
         .expect(200)
         .expect((res) => {
-          expect(Array.isArray(res.body)).toBe(true);
-          expect(res.body.length).toBeGreaterThan(0);
-          expect(res.body[0]).toHaveProperty('id');
-          expect(res.body[0]).toHaveProperty('name');
+          const body = res.body as CompanyResponse[];
+          expect(Array.isArray(body)).toBe(true);
+          expect(body.length).toBeGreaterThan(0);
+          expect(body[0]).toHaveProperty('id');
+          expect(body[0]).toHaveProperty('name');
         });
     });
 
@@ -86,9 +129,10 @@ describe('AppController (e2e)', () => {
         .get('/companies/1')
         .expect(200)
         .expect((res) => {
-          expect(res.body).toHaveProperty('id');
-          expect(res.body).toHaveProperty('name');
-          expect(res.body.id).toBe('1');
+          const body = res.body as CompanyResponse;
+          expect(body).toHaveProperty('id');
+          expect(body).toHaveProperty('name');
+          expect(body.id).toBe('1');
         });
     });
   });
@@ -100,10 +144,11 @@ describe('AppController (e2e)', () => {
         .get('/experience')
         .expect(200)
         .expect((res) => {
-          expect(Array.isArray(res.body)).toBe(true);
-          expect(res.body.length).toBeGreaterThan(0);
-          expect(res.body[0]).toHaveProperty('id');
-          expect(res.body[0]).toHaveProperty('companyId');
+          const body = res.body as ExperienceResponse[];
+          expect(Array.isArray(body)).toBe(true);
+          expect(body.length).toBeGreaterThan(0);
+          expect(body[0]).toHaveProperty('id');
+          expect(body[0]).toHaveProperty('companyId');
         });
     });
 
@@ -112,9 +157,10 @@ describe('AppController (e2e)', () => {
         .get('/experience/1')
         .expect(200)
         .expect((res) => {
-          expect(res.body).toHaveProperty('id');
-          expect(res.body).toHaveProperty('companyId');
-          expect(res.body.id).toBe('1');
+          const body = res.body as ExperienceResponse;
+          expect(body).toHaveProperty('id');
+          expect(body).toHaveProperty('companyId');
+          expect(body.id).toBe('1');
         });
     });
 
@@ -123,13 +169,14 @@ describe('AppController (e2e)', () => {
         .get('/experience')
         .expect(200)
         .expect((res) => {
-          const experience = res.body[0];
+          const body = res.body as ExperienceResponse[];
+          const experience = body[0];
           expect(experience.company).toBeDefined();
           expect(typeof experience.company).toBe('object');
           expect(experience.company).toHaveProperty('name');
 
           expect(Array.isArray(experience.skills)).toBe(true);
-          if (experience.skills.length > 0) {
+          if (experience.skills && experience.skills.length > 0) {
             expect(experience.skills[0]).toHaveProperty('name');
           }
         });
@@ -143,10 +190,11 @@ describe('AppController (e2e)', () => {
         .get('/projects')
         .expect(200)
         .expect((res) => {
-          expect(Array.isArray(res.body)).toBe(true);
-          expect(res.body.length).toBeGreaterThan(0);
-          expect(res.body[0]).toHaveProperty('id');
-          expect(res.body[0]).toHaveProperty('name');
+          const body = res.body as ProjectResponse[];
+          expect(Array.isArray(body)).toBe(true);
+          expect(body.length).toBeGreaterThan(0);
+          expect(body[0]).toHaveProperty('id');
+          expect(body[0]).toHaveProperty('name');
         });
     });
 
@@ -155,9 +203,10 @@ describe('AppController (e2e)', () => {
         .get('/projects/1')
         .expect(200)
         .expect((res) => {
-          expect(res.body).toHaveProperty('id');
-          expect(res.body).toHaveProperty('name');
-          expect(res.body.id).toBe('1');
+          const body = res.body as ProjectResponse;
+          expect(body).toHaveProperty('id');
+          expect(body).toHaveProperty('name');
+          expect(body.id).toBe('1');
         });
     });
 
@@ -172,10 +221,11 @@ describe('AppController (e2e)', () => {
         .get('/stats')
         .expect(200)
         .expect((res) => {
-          expect(Array.isArray(res.body)).toBe(true);
-          expect(res.body.length).toBe(4);
+          const body = res.body as StatResponse[];
+          expect(Array.isArray(body)).toBe(true);
+          expect(body.length).toBe(4);
 
-          const stat = res.body[0];
+          const stat = body[0];
           expect(stat).toHaveProperty('id');
           expect(stat).toHaveProperty('label');
           expect(stat).toHaveProperty('value');
@@ -198,11 +248,12 @@ describe('AppController (e2e)', () => {
         .get('/status')
         .expect(200)
         .expect((res) => {
-          expect(res.body).toHaveProperty('status');
-          expect(typeof res.body.status).toBe('string');
+          const body = res.body as StatusResponse;
+          expect(body).toHaveProperty('status');
+          expect(typeof body.status).toBe('string');
 
           const validStatuses = ['Online', 'Offline', 'Maintenance'];
-          expect(validStatuses).toContain(res.body.status);
+          expect(validStatuses).toContain(body.status);
         });
     });
 
@@ -211,7 +262,8 @@ describe('AppController (e2e)', () => {
         .get('/status')
         .expect(200)
         .expect((res) => {
-          expect(res.body.status.length).toBeGreaterThan(0);
+          const body = res.body as StatusResponse;
+          expect(body.status.length).toBeGreaterThan(0);
         });
     });
   });

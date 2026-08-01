@@ -1,4 +1,10 @@
-import { BORDER_GRADIENT, FLIPCARD, LIQUID_PROGRESS_BAR, SPLITTEXT } from '@core/constants';
+import {
+  BORDER_GRADIENT,
+  CARD_EFFECT,
+  FLIPCARD,
+  LIQUID_PROGRESS_BAR,
+  SPLITTEXT,
+} from '@core/constants';
 
 import { LabConfig } from '@core/models/lab.model';
 
@@ -61,7 +67,7 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
     },
   },
   CardEffects: {
-    tag: BORDER_GRADIENT,
+    tag: CARD_EFFECT,
     title: 'Tilt - Spotlight Effects',
     remoteName: 'lab001',
     exposedModule: './CardEffects',
@@ -75,7 +81,7 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
     },
   },
   CardEffectsBlue: {
-    tag: BORDER_GRADIENT,
+    tag: CARD_EFFECT,
     title: 'Tilt - Spotlight Effects (blue)',
     remoteName: 'lab001',
     exposedModule: './CardEffects',
@@ -90,7 +96,7 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
     },
   },
   CardEffectsCenterTransparent: {
-    tag: BORDER_GRADIENT,
+    tag: CARD_EFFECT,
     title: 'Tilt - Spotlight (center transparent)',
     remoteName: 'lab001',
     exposedModule: './CardEffects',

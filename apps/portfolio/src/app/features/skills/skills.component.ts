@@ -55,18 +55,18 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
 
   readonly animatedIds = signal<Set<string>>(new Set());
 
-  private lastAnimatedCount = 0;
-  private scrollTriggers: ScrollTrigger[] = [];
+  private lastAnimatedCount = signal(0);
+  private scrollTriggers = signal<ScrollTrigger[]>([]);
 
   constructor() {
     effect(() => {
       const skills = this.filteredSkills();
 
       if (skills.length <= 24) {
-        this.lastAnimatedCount = 0;
+        this.lastAnimatedCount.set(0);
       }
 
-      if (this.lastAnimatedCount > 0 || skills.length > 0) {
+      if (this.lastAnimatedCount() > 0 || skills.length > 0) {
         afterNextRender(
           () => {
             if (this.platformService.isBrowser) {
@@ -89,7 +89,7 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
     const allCards = Array.from(
       this.el.nativeElement.querySelectorAll('app-skill-card'),
     ) as HTMLElement[];
-    const newCards = allCards.slice(this.lastAnimatedCount);
+    const newCards = allCards.slice(this.lastAnimatedCount());
 
     if (newCards.length === 0) return;
 
@@ -107,7 +107,7 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
         toggleActions: 'play none none none',
         invalidateOnRefresh: true,
         onEnter: () => {
-          const currentFrom = this.lastAnimatedCount;
+          const currentFrom = this.lastAnimatedCount();
           const newIds = this.filteredSkills()
             .slice(currentFrom)
             .map((s) => s.id);
@@ -119,17 +119,17 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
         },
       },
       onComplete: () => {
-        this.lastAnimatedCount = allCards.length;
+        this.lastAnimatedCount.set(allCards.length);
       },
     });
 
     if (st.scrollTrigger) {
-      this.scrollTriggers.push(st.scrollTrigger);
+      this.scrollTriggers.update((triggers) => [...triggers, st.scrollTrigger!]);
     }
   }
 
   onFilterChange(changes: Partial<SkillFilter>): void {
-    this.lastAnimatedCount = 0;
+    this.lastAnimatedCount.set(0);
     this.skillsService.setFilter(changes);
   }
 
@@ -138,7 +138,7 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.scrollTriggers.forEach((st) => st.kill());
-    this.scrollTriggers = [];
+    this.scrollTriggers().forEach((st) => st.kill());
+    this.scrollTriggers.set([]);
   }
 }

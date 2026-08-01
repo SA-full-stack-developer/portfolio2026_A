@@ -35,7 +35,7 @@ export class ChatCvComponent implements AfterViewInit, OnDestroy {
   readonly loading = signal(false);
   readonly error = signal<string | null>(null);
 
-  private scrollTriggers: ScrollTrigger[] = [];
+  private scrollTriggers = signal<ScrollTrigger[]>([]);
 
   ngAfterViewInit(): void {
     if (!this.platformService.isBrowser) return;
@@ -102,7 +102,7 @@ export class ChatCvComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.scrollTriggers.forEach((st) => st.kill());
-    this.scrollTriggers = [];
+    this.scrollTriggers().forEach((st) => st.kill());
+    this.scrollTriggers.set([]);
   }
 }

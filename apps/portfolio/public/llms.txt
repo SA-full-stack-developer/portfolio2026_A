@@ -4,12 +4,13 @@
 
 ## Sobre mí
 
-Desarrollador Full Stack con dominio experto en Angular (v21, standalone, zoneless, SSR) y NestJS. Basado en España. Trabajo en remoto. Apasionado por el código limpio, la optimización de rendimiento y las experiencias digitales de calidad.
+Desarrollador Full Stack con dominio experto en Angular (v22, standalone, zoneless, SSR, Signals) y NestJS. Basado en España. Trabajo en remoto. Apasionado por el código limpio, la optimización de rendimiento y las experiencias digitales de calidad.
 
 ## Stack principal
 
-- Frontend: Angular, TypeScript, SCSS/SASS, RxJS, Angular Material, PrimeNG
-- Backend: NestJS, Node.js
+- Frontend: Angular, TypeScript, SCSS/SASS, Signals, RxJS, Angular Material, PrimeNG
+- Backend: NestJS, Node.js, integración de IA generativa (Google Gemini API)
+- Arquitectura: monorepo Nx, micro-frontends con Native Federation
 - DevOps: Git, Docker, CI/CD (GitHub Actions)
 - Otros: SSR, Responsive Design, Google Performance, Jira, Asana
 

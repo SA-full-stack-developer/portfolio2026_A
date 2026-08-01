@@ -8,7 +8,10 @@ import { ContactAssistantDto } from './dto/contact-assistant.dto';
 import { CoverLetterDto } from './dto/cover-letter.dto';
 
 const mockSendMessage = jest.fn();
-const mockGenerateContent = jest.fn();
+const mockGenerateContent = jest.fn<
+  Promise<{ response: { text: () => string } }>,
+  [string]
+>();
 const mockGetGenerativeModel = jest.fn();
 
 const mockGoogleGenerativeAI = {

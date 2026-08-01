@@ -17,7 +17,7 @@ Contact & Links:
 - Portfolio: https://csrangulardeveloper.nom.es
 
 PROFESSIONAL PROFILE:
-Specialized in Angular from its earliest versions up to v21. Deep knowledge of the framework, capable of modernizing legacy projects, implementing scalable architectures and starting projects from scratch. Experience leading frontend evolution of a multi-site Angular system at Memondo (migrated v9 to v18), adopting Angular Signals, implementing SSR with prerendering, lazy loading and Core Web Vitals optimization. Also experienced with React, CI/CD with GitHub Actions and Docker. Currently expanding with NestJS and Flutter.
+Specialized in Angular from its earliest versions up to v22. Deep knowledge of the framework, capable of modernizing legacy projects, implementing scalable architectures and starting projects from scratch. Experience leading frontend evolution of a multi-site Angular system at Memondo (migrated v9 to v18), adopting Angular Signals, implementing SSR with prerendering, lazy loading and Core Web Vitals optimization. Also experienced with React, CI/CD with GitHub Actions and Docker. Currently expanding with NestJS and Flutter.
 
 TECH STACK:
 Main: Angular · TypeScript · Signals · RxJS · SASS · SSR · Docker · NestJS · GitHub Actions
@@ -61,7 +61,7 @@ PERSONAL PROJECTS:
    - Stack: AngularJS · WordPress · HTML5 · CSS3 · JavaScript · PHP
 
 EDUCATION:
-- Self-taught: Angular 21 · NestJS · Flutter · Full-stack with Symfony 3 and Angular 2 · TypeScript
+- Self-taught: Angular 22 · NestJS · Flutter · Full-stack with Symfony 3 and Angular 2 · TypeScript
 - CFGS Desarrollo de Aplicaciones Web — I.E.S. Nicolau Copernic (2015–2016)
 - CFGS Desarrollo de Aplicaciones Multiplataforma — I.E.F.P.S. Elorrieta-Erreka Mari (2011–2013)
 `;

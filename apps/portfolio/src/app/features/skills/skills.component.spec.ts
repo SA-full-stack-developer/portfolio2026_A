@@ -292,18 +292,18 @@ describe('SkillsComponent', () => {
   it('should not initialize GSAP if not in browser', async () => {
     mockPlatformService.isBrowser = false;
     await createComponent();
-    expect(component['scrollTriggers'].length).toBe(0);
+    expect(component['scrollTriggers']().length).toBe(0);
   });
 
   it('should push scrollTrigger from GSAP on animateCards and kill it on destroy', async () => {
     await createComponent();
 
-    if (component['scrollTriggers'].length === 0) {
+    if (component['scrollTriggers']().length === 0) {
       component['animateCards']();
     }
 
-    expect(component['scrollTriggers'].length).toBeGreaterThan(0);
-    const trigger = component['scrollTriggers'][0] as { kill: jest.Mock };
+    expect(component['scrollTriggers']().length).toBeGreaterThan(0);
+    const trigger = component['scrollTriggers']()[0] as { kill: jest.Mock };
 
     fixture.destroy();
 
@@ -314,8 +314,8 @@ describe('SkillsComponent', () => {
     await createComponent();
     gsapService.gsap.to.mockClear();
     component['animatedIds'].set(new Set());
-    component['lastAnimatedCount'] = 0;
-    component['scrollTriggers'] = [];
+    component['lastAnimatedCount'].set(0);
+    component['scrollTriggers'].set([]);
 
     component['animateCards']();
 
@@ -330,8 +330,8 @@ describe('SkillsComponent', () => {
   it('should set lastAnimatedCount when GSAP onComplete fires', async () => {
     await createComponent();
     gsapService.gsap.to.mockClear();
-    component['lastAnimatedCount'] = 0;
-    component['scrollTriggers'] = [];
+    component['lastAnimatedCount'].set(0);
+    component['scrollTriggers'].set([]);
 
     component['animateCards']();
 
@@ -340,6 +340,6 @@ describe('SkillsComponent', () => {
 
     gsapConfig.onComplete();
 
-    expect(component['lastAnimatedCount']).toBe(component.filteredSkills().length);
+    expect(component['lastAnimatedCount']()).toBe(component.filteredSkills().length);
   });
 });

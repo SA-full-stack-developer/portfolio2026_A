@@ -27,7 +27,7 @@ export class CoverLetterComponent implements AfterViewInit, OnDestroy {
   readonly error = signal<string | null>(null);
   readonly copied = signal(false);
 
-  private scrollTriggers: ScrollTrigger[] = [];
+  private scrollTriggers = signal<ScrollTrigger[]>([]);
 
   ngAfterViewInit(): void {
     if (!this.platformService.isBrowser) return;
@@ -44,7 +44,8 @@ export class CoverLetterComponent implements AfterViewInit, OnDestroy {
         invalidateOnRefresh: true,
       },
     });
-    if (st?.scrollTrigger) this.scrollTriggers.push(st.scrollTrigger);
+    if (st?.scrollTrigger)
+      this.scrollTriggers.update((triggers) => [...triggers, st.scrollTrigger!]);
   }
 
   generate(): void {
@@ -81,7 +82,7 @@ export class CoverLetterComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.scrollTriggers.forEach((st) => st.kill());
-    this.scrollTriggers = [];
+    this.scrollTriggers().forEach((st) => st.kill());
+    this.scrollTriggers.set([]);
   }
 }

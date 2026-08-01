@@ -22,6 +22,9 @@ const config: Config = {
     '^@portfolio/shared/models': '<rootDir>/../../libs/shared/models/src/index.ts',
     '^@shared-libs/services': '<rootDir>/../../libs/shared/services/src/index.ts',
     '^@shared-libs/services/*': '<rootDir>/../../libs/shared/services/src/lib/*',
+    '^@angular-architects/native-federation$':
+      '<rootDir>/__mocks__/@angular-architects/native-federation.ts',
+    '^@emailjs/browser$': '<rootDir>/__mocks__/@emailjs/browser.ts',
   },
   collectCoverageFrom: [
     'src/app/**/*.ts',

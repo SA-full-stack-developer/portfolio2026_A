@@ -9,6 +9,7 @@ import { Observable, of } from 'rxjs';
 
 import { provideZonelessChangeDetection } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
+import { StatusService } from '@core/services/status.service';
 import { FooterComponent } from './footer.component';
 
 class MockTranslateLoader implements TranslateLoader {
@@ -51,6 +52,7 @@ describe('FooterComponent', () => {
         provideTranslateService({
           loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
         }),
+        { provide: StatusService, useValue: { status: () => 'Online' } },
       ],
     }).compileComponents();
 

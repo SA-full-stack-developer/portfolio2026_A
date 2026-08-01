@@ -5,12 +5,9 @@
     "rootDir": ".",
     "module": "commonjs",
     "target": "es2016",
-    "types": [
-      "jest",
-      "node"
-    ],
+    "types": ["jest", "node"],
     "moduleResolution": "node10",
-    "ignoreDeprecations": "5.0",
+    "ignoreDeprecations": "6.0"
   },
   "files": [],
   "include": [
@@ -19,5 +16,13 @@
     "src/**/*.test.ts",
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "extendedDiagnostics": {
+      "checks": {
+        "nullishCoalescingNotNullable": "suppress",
+        "optionalChainNotNullable": "suppress"
+      }
+    }
+  }
 }

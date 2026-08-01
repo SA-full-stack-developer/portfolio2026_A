@@ -1,6 +1,6 @@
-import { Injectable, signal } from '@angular/core';
+import { Service, signal } from '@angular/core';
 
-@Injectable({ providedIn: 'root' })
+@Service()
 export class SessionService {
   private readonly ADMIN_KEY = 'admin_session';
   private readonly _isAdmin = signal<boolean>(this.loadFromStorage());

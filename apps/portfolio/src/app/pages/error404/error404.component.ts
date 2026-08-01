@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { Router } from '@angular/router';
@@ -14,16 +14,16 @@ export class Error404Component implements OnInit {
   private readonly gsapService = inject(GsapService);
   private readonly platformService = inject(PlatformService);
 
-  public currentRoute = '';
-  public terminalLines: string[] = [
+  public currentRoute = signal<string>('');
+  public terminalLines = signal<string[]>([
     'Initializing system recovery...',
     'Scanning local host for missing routes...',
     'Checking database integrity... [OK]',
     'Warning: Resource not found in sector 404.',
-  ];
+  ]);
 
   ngOnInit(): void {
-    this.currentRoute = this.router.url;
+    this.currentRoute.set(this.router.url);
   }
 
   public fixSystem(): void {

@@ -2,38 +2,29 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
+    "ignoreDeprecations": "6.0",
     "baseUrl": "./",
     "paths": {
-      "@core/*": [
-        "src/app/core/*"
-      ],
-      "@shared/*": [
-        "src/app/shared/*"
-      ],
-      "@features/*": [
-        "src/app/features/*"
-      ],
-      "@env/*": [
-        "src/environments/*"
-      ],
-      "@portfolio/shared/models": [
-        "../../libs/shared/models/src/index.ts"
-      ],
-      "@shared-libs/services": [
-        "../../libs/shared/services/src/index.ts"
-      ],
-      "@shared-libs/services/*": [
-        "../../libs/shared/services/src/lib/*"
-      ]
+      "@core/*": ["src/app/core/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@features/*": ["src/app/features/*"],
+      "@env/*": ["src/environments/*"],
+      "@portfolio/shared/models": ["../../libs/shared/models/src/index.ts"],
+      "@shared-libs/services": ["../../libs/shared/services/src/index.ts"],
+      "@shared-libs/services/*": ["../../libs/shared/services/src/lib/*"]
     }
   },
-  "include": [
-    "src/**/*.ts"
-  ],
+  "include": ["src/**/*.ts"],
   "exclude": [
     "src/**/*.spec.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "extendedDiagnostics": {
+      "checks": {
+        "nullishCoalescingNotNullable": "suppress",
+        "optionalChainNotNullable": "suppress"
+      }
+    }
+  }
 }

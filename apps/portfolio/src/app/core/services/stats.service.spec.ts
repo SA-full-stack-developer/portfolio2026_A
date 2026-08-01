@@ -28,8 +28,7 @@ describe('StatsService', () => {
     });
     httpMock = TestBed.inject(HttpTestingController);
     service = TestBed.inject(StatsService);
-    const req = httpMock.expectOne(apiUrl);
-    req.flush({ data: [] });
+    TestBed.tick(); // fuerza la petición reactiva inicial del httpResource
   });
 
   afterEach(() => {
@@ -37,23 +36,25 @@ describe('StatsService', () => {
   });
 
   it('should be created', () => {
+    const req = httpMock.expectOne(apiUrl);
+    req.flush({ data: [] });
     expect(service).toBeTruthy();
   });
 
-  it('should load stats and update the signal', () => {
-    service.loadStats();
-    const req = httpMock.expectOne(apiUrl);
-    req.flush({ data: STATS_MOCK });
-    expect(service.stats().length).toBe(4);
-    expect(service.stats()).toEqual(STATS_MOCK);
-  });
-
-  it('should set error signal when loadStats request fails', () => {
-    jest.spyOn(console, 'error').mockImplementation(() => undefined);
-    service.loadStats();
+  it('should set error signal when the request fails', async () => {
     const req = httpMock.expectOne(apiUrl);
     req.flush('Server error', { status: 500, statusText: 'Server Error' });
-    expect(service['_error']()).toBe('ERRORS.API');
-    jest.restoreAllMocks();
+    await Promise.resolve();
+    TestBed.tick();
+    expect(service.error()).toBe('ERRORS.API');
+  });
+
+  it('should load stats and update the signal', async () => {
+    const req = httpMock.expectOne(apiUrl);
+    req.flush({ data: STATS_MOCK });
+    await Promise.resolve();
+    TestBed.tick();
+    expect(service.stats().length).toBe(4);
+    expect(service.stats()).toEqual(STATS_MOCK);
   });
 });

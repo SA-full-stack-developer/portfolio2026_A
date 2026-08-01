@@ -34,14 +34,14 @@ export class FlipCard {
   private readonly platformId = inject(PLATFORM_ID);
   readonly isBrowser = isPlatformBrowser(this.platformId);
 
-  private isAnimating: boolean = false;
+  private isAnimating = signal<boolean>(false);
 
   onClick() {
-    if (!this.platformService.isBrowser || this.isAnimating || this.isHover()) return;
+    if (!this.platformService.isBrowser || this.isAnimating() || this.isHover()) return;
 
-    this.isAnimating = true;
+    this.isAnimating.set(true);
     const gsap = this.gsapService.gsap;
-    var timeline = gsap.timeline();
+    const timeline = gsap.timeline();
     timeline
       .to(this.inner()?.nativeElement, {
         rotationY: this.state() ? 270 : 90,
@@ -58,14 +58,15 @@ export class FlipCard {
               rotationY: 0,
             });
           this.state.set(!this.state());
-          this.isAnimating = false;
+          this.isAnimating.set(false);
         },
       });
   }
 
   onMouseEnter() {
-    if (!this.isBrowser || !this.isHover()) return;
+    if (!this.platformService.isBrowser || !this.isHover()) return;
 
+    const gsap = this.gsapService.gsap;
     gsap.killTweensOf(this.inner()?.nativeElement);
 
     gsap.to(this.inner()?.nativeElement, {
@@ -76,8 +77,9 @@ export class FlipCard {
   }
 
   onMouseLeave() {
-    if (!this.isBrowser || !this.isHover()) return;
+    if (!this.platformService.isBrowser || !this.isHover()) return;
 
+    const gsap = this.gsapService.gsap;
     gsap.killTweensOf(this.inner()?.nativeElement);
 
     gsap.to(this.inner()?.nativeElement, {

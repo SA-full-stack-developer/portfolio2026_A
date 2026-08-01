@@ -1,7 +1,7 @@
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
-import { Injectable, PLATFORM_ID, inject } from '@angular/core';
+import { PLATFORM_ID, Service, inject } from '@angular/core';
 
-@Injectable({ providedIn: 'root' })
+@Service()
 export class PlatformService {
   private readonly platformId = inject(PLATFORM_ID);
 

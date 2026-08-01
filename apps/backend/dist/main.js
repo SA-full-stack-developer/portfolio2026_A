@@ -1128,7 +1128,7 @@ exports.SKILLS_DATA = [
         level: 85,
         category: 'frontend',
         icon: 'rxjs.svg',
-        highlighted: false,
+        highlighted: true,
         yearsOfExperience: 10,
     },
     {
@@ -1281,7 +1281,7 @@ exports.SKILLS_DATA = [
         level: 85,
         category: 'frontend',
         icon: 'primeng.svg',
-        highlighted: false,
+        highlighted: true,
         yearsOfExperience: 10,
     },
     {
@@ -1479,6 +1479,15 @@ exports.SKILLS_DATA = [
         level: 75,
         category: 'frontend',
         icon: 'module federation.svg',
+        highlighted: true,
+        yearsOfExperience: 1,
+    },
+    {
+        id: '52',
+        name: 'NgRx/NgRx Signal Store',
+        level: 75,
+        category: 'frontend',
+        icon: 'ngrx.svg',
         highlighted: true,
         yearsOfExperience: 1,
     },
@@ -1824,11 +1833,12 @@ let StatsService = class StatsService {
         switch (stat.kind) {
             case stat_constants_1.StatKind.STATIC:
                 return stat.value;
-            case stat_constants_1.StatKind.DYNAMIC:
+            case stat_constants_1.StatKind.DYNAMIC: {
                 const diff = stat.calculation === stat_constants_1.StatCalculation.YEARS
                     ? this.diffInYears(stat.startDate)
                     : this.diffInDays(stat.startDate);
                 return diff * multiplier;
+            }
             case stat_constants_1.StatKind.SERVICE:
                 return this.skillsService.getHighlightedCount() * multiplier;
             default:
@@ -2137,7 +2147,7 @@ async function bootstrap() {
     });
     await app.listen(process.env.PORT || 3000);
 }
-bootstrap();
+void bootstrap();
 
 })();
 

@@ -106,7 +106,7 @@ describe('ContactAssistantComponent', () => {
   });
 
   it('should register scrollTrigger from GSAP for teardown', () => {
-    expect(component['scrollTriggers'].length).toBeGreaterThan(0);
+    expect(component['scrollTriggers']().length).toBeGreaterThan(0);
   });
 
   it('should update inputText when onInput is called', () => {
@@ -137,7 +137,7 @@ describe('ContactAssistantComponent', () => {
 
   it('should kill scroll triggers on destroy', () => {
     const kill = jest.fn();
-    component['scrollTriggers'] = [{ kill }] as (typeof component)['scrollTriggers'];
+    component['scrollTriggers'].set([{ kill } as any]);
     fixture.destroy();
     expect(kill).toHaveBeenCalled();
   });

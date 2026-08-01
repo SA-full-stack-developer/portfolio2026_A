@@ -4,11 +4,40 @@ import { Injectable } from '@nestjs/common';
 import { SkillsService } from '../skills/skills.service';
 import { StatResponseDto } from './dto/stat-response.dto';
 
+interface BaseStat {
+  showPlus?: boolean;
+  multiplier?: number;
+}
+
+interface StaticStat extends BaseStat {
+  kind: StatKind.STATIC;
+  value: number;
+}
+
+interface DynamicStat extends BaseStat {
+  kind: StatKind.DYNAMIC;
+  startDate: Date;
+  calculation: StatCalculation;
+}
+
+interface ServiceStat extends BaseStat {
+  kind: StatKind.SERVICE;
+}
+
+interface StatDefinition {
+  id: string;
+  label: string;
+  icon: string;
+  stat: Stat;
+}
+
+type Stat = StaticStat | DynamicStat | ServiceStat;
+
 @Injectable()
 export class StatsService {
   constructor(private readonly skillsService: SkillsService) {}
 
-  private readonly rawStats = [
+  private readonly rawStats: StatDefinition[] = [
     {
       id: 'experience',
       label: 'STATS.EXPERIENCE',
@@ -60,19 +89,20 @@ export class StatsService {
     }));
   }
 
-  private calculateFinalValue(stat: any): number {
+  private calculateFinalValue(stat: Stat): number {
     const multiplier = stat.multiplier ?? 1;
 
     switch (stat.kind) {
       case StatKind.STATIC:
         return stat.value;
 
-      case StatKind.DYNAMIC:
+      case StatKind.DYNAMIC: {
         const diff =
           stat.calculation === StatCalculation.YEARS
             ? this.diffInYears(stat.startDate)
             : this.diffInDays(stat.startDate);
         return diff * multiplier;
+      }
 
       case StatKind.SERVICE:
         return this.skillsService.getHighlightedCount() * multiplier;
@@ -82,7 +112,7 @@ export class StatsService {
     }
   }
 
-  private shouldShowPlus(stat: any): boolean {
+  private shouldShowPlus(stat: Stat): boolean {
     return stat.showPlus ?? false;
   }
 

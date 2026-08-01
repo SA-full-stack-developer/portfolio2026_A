@@ -28,6 +28,7 @@ describe('StatusService', () => {
 
     httpMock = TestBed.inject(HttpTestingController);
     service = TestBed.inject(StatusService);
+    TestBed.tick(); // fuerza la petición reactiva inicial del httpResource
   });
 
   afterEach(() => {
@@ -40,27 +41,20 @@ describe('StatusService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should load status correctly on initialization', () => {
+  it('should set error signal when the request fails', async () => {
+    const req = httpMock.expectOne(apiUrl);
+    req.flush('Server error', { status: 500, statusText: 'Server Error' });
+    await Promise.resolve();
+    TestBed.tick();
+    expect(service.error()).toBe('ERRORS.API');
+  });
+
+  it('should load status correctly on initialization', async () => {
     const req = httpMock.expectOne(apiUrl);
     expect(req.request.method).toBe('GET');
     req.flush({ data: { status: 'Online' } });
+    await Promise.resolve();
+    TestBed.tick();
     expect(service.status()).toBe('Online');
-  });
-
-  it('should handle error and set default status', () => {
-    const req = httpMock.expectOne(apiUrl);
-    req.flush('Error de servidor', { status: 500, statusText: 'Server Error' });
-    expect(service.status()).toBe('');
-  });
-
-  it('should call loadStatus manually if needed', () => {
-    const req1 = httpMock.expectOne(apiUrl);
-    req1.flush({ data: { status: 'Online' } });
-
-    service.loadStatus();
-    const req2 = httpMock.expectOne(apiUrl);
-    req2.flush({ data: { status: 'Offline' } });
-
-    expect(service.status()).toBe('Offline');
   });
 });

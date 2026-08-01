@@ -33,13 +33,7 @@ export class LiquidProgressBar {
   private readonly _interval = interval(50)
     .pipe(takeUntilDestroyed(this.destroyRef))
     .subscribe(() => {
-      this.progress.update((val: number) => {
-        if (val < 100) {
-          return ++val;
-        } else {
-          return 0;
-        }
-      });
+      this.progress.update((val: number) => (val < 100 ? val + 1 : 0));
       this.phase.update((val) => val + 0.1);
     });
 }

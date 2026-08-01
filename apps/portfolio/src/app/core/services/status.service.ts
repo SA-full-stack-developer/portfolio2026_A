@@ -1,45 +1,24 @@
-import { Injectable, inject, signal } from '@angular/core';
-import { catchError, map, of } from 'rxjs';
+import { Service, computed, inject } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { httpResource } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { TranslateService } from '@ngx-translate/core';
 import { Status } from '@portfolio/shared/models';
 import { PlatformService } from '@shared-libs/services';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class StatusService {
-  private readonly http = inject(HttpClient);
   private readonly translate = inject(TranslateService);
   private readonly platformService = inject(PlatformService);
   private readonly apiUrl = `${
     this.platformService.isBrowser ? environment.browserApiUrl : environment.apiUrl
   }/status`;
-  private readonly _error = signal<string | null>(null);
-  private readonly _status = signal<string>('');
 
-  readonly status = this._status.asReadonly();
-  //s
-  constructor() {
-    this.loadStatus();
-  }
+  private readonly statusResource = httpResource<{ data: Status }>(() => this.apiUrl);
 
-  loadStatus() {
-    this.http
-      .get<{ data: Status }>(this.apiUrl)
-      .pipe(
-        map((res) => res.data),
-        catchError((err) => {
-          const errorMessage = this.translate.instant('ERRORS.API');
-          this._error.set(errorMessage);
-          console.error('API Error:', err);
-          return of({ status: '' });
-        }),
-      )
-      .subscribe((data) => {
-        this._status.set(data.status);
-      });
-  }
+  readonly status = computed(() => this.statusResource.value()?.data?.status ?? '');
+  readonly isLoading = this.statusResource.isLoading;
+  readonly error = computed(() =>
+    this.statusResource.error() ? this.translate.instant('ERRORS.API') : null,
+  );
 }
