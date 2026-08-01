@@ -1709,11 +1709,12 @@ let StatsService = class StatsService {
         switch (stat.kind) {
             case stat_constants_1.StatKind.STATIC:
                 return stat.value;
-            case stat_constants_1.StatKind.DYNAMIC:
+            case stat_constants_1.StatKind.DYNAMIC: {
                 const diff = stat.calculation === stat_constants_1.StatCalculation.YEARS
                     ? this.diffInYears(stat.startDate)
                     : this.diffInDays(stat.startDate);
                 return diff * multiplier;
+            }
             case stat_constants_1.StatKind.SERVICE:
                 return this.skillsService.getHighlightedCount() * multiplier;
             default:
@@ -1977,7 +1978,7 @@ async function bootstrap() {
     });
     await app.listen(process.env.PORT || 3000);
 }
-bootstrap();
+void bootstrap();
 
 })();
 
