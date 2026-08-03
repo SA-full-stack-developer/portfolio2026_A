@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
-import { TimeAgoPipe } from './time-ago.pipe';
+import { TimeAgoPipe } from './time-ago';
 
 const mockTranslate = {
   instant: (key: string, params?: { count?: number; years?: number; months?: number }) => {

@@ -10,7 +10,7 @@ import {
 
 import { LOCALE_ID } from '@angular/core';
 import { provideServiceWorker } from '@angular/service-worker';
-import { apiErrorLoggingInterceptor } from '@core/interceptors/api-error-logging.interceptor';
+import { apiErrorLoggingInterceptor } from '@core/interceptors/api-error-logging';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { routes } from './app.routes';
