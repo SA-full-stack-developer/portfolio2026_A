@@ -132,7 +132,7 @@
     },
     {
       "packageName": "@shared-libs/ui",
-      "outFileName": "_shared_libs_ui-6SSV5W4T.js",
+      "outFileName": "_shared_libs_ui-MZ24UTZY.js",
       "requiredVersion": "~0.0.0",
       "singleton": true,
       "strictVersion": true,
@@ -140,7 +140,7 @@
     },
     {
       "packageName": "@shared-libs/services",
-      "outFileName": "_shared_libs_services-ARJU6XDA.js",
+      "outFileName": "_shared_libs_services-2LGZ6DUF.js",
       "requiredVersion": "~0.0.0",
       "singleton": true,
       "strictVersion": true,
