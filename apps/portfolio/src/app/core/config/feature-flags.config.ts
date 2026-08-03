@@ -28,6 +28,7 @@ import {
   PROJECTS,
   SKILLS,
   SPLITTEXT,
+  TAG_SELECTOR,
 } from '@core/constants/feaute-flags.constants';
 
 import { FeatureFlag } from '@core/models/feature-flag.model';
@@ -176,6 +177,11 @@ export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
   SPLITTEXT: {
     id: SPLITTEXT,
     label: 'Split text',
+    visibility: 'public',
+  },
+  TAG_SELECTOR: {
+    id: TAG_SELECTOR,
+    label: 'Tag Selector',
     visibility: 'public',
   },
 };

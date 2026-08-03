@@ -1,4 +1,5 @@
-import { withNativeFederation, shareAll } from '@angular-architects/native-federation/config';
+import { shareAll, withNativeFederation } from '@angular-architects/native-federation/config';
+
 export default withNativeFederation({
   name: 'lab001',
 
@@ -9,6 +10,7 @@ export default withNativeFederation({
       './apps/lab001/src/app/components/liquid-progress-bar/liquid-progress-bar.ts',
     './FlipCard': './apps/lab001/src/app/components/flip-card/flip-card.ts',
     './SplitTextLab': './apps/lab001/src/app/components/split-text-lab/split-text-lab.ts',
+    './TagSelector': './apps/lab001/src/app/components/tag-selector/tag-selector.ts',
   },
 
   shared: {

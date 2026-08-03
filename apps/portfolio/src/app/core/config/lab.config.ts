@@ -4,6 +4,7 @@ import {
   FLIPCARD,
   LIQUID_PROGRESS_BAR,
   SPLITTEXT,
+  TAG_SELECTOR,
 } from '@core/constants';
 
 import { LabConfig } from '@core/models/lab.model';
@@ -179,19 +180,20 @@ export const LAB_CONFIG: Record<string, LabConfig> = {
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nVivamus ut dolor nec sapien commodo laoreet sit amet eget diam.\nMauris eget arcu in elit tincidunt egestas sed id orci.\nMaecenas in elit nec quam vulputate mollis.\nNullam mollis dolor sed nulla ultricies, porta cursus magna laoreet.\nVivamus facilisis diam vitae leo maximus vestibulum.\nPraesent scelerisque nunc nec erat tincidunt pretium.\nMauris elementum justo sagittis justo lacinia, a tincidunt arcu ultrices.\nQuisque nec purus vitae velit vulputate interdum sit amet nec ligula.\nNulla nec est id sapien malesuada maximus non quis metus.\nNulla elementum velit a imperdiet luctus.\nMauris eleifend nibh in auctor pulvinar.\nNullam vitae magna vel neque finibus feugiat sit amet non eros.\nEtiam hendrerit augue eu lacus maximus, sit amet facilisis nisi ullamcorper.',
     },
   },
+  TagSelector: {
+    tag: TAG_SELECTOR,
+    title: 'Tag Selector',
+    remoteName: 'lab001',
+    exposedModule: './TagSelector',
+    exportName: 'TagSelector',
+    component: null,
+    inputs: {
+      cssVars: {
+        '--color-border': '#ccc',
+        '--color-accent': '#6366f1',
+        '--color-on-accent': '#fff',
+      },
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nVivamus ut dolor nec sapien commodo laoreet sit amet eget diam.\nMauris eget arcu in elit tincidunt egestas sed id orci.\nMaecenas in elit nec quam vulputate mollis.\nNullam mollis dolor sed nulla ultricies, porta cursus magna laoreet.\nVivamus facilisis diam vitae leo maximus vestibulum.\nPraesent scelerisque nunc nec erat tincidunt pretium.\nMauris elementum justo sagittis justo lacinia, a tincidunt arcu ultrices.\nQuisque nec purus vitae velit vulputate interdum sit amet nec ligula.\nNulla nec est id sapien malesuada maximus non quis metus.\nNulla elementum velit a imperdiet luctus.\nMauris eleifend nibh in auctor pulvinar.\nNullam vitae magna vel neque finibus feugiat sit amet non eros.\nEtiam hendrerit augue eu lacus maximus, sit amet facilisis nisi ullamcorper.',
+    },
+  },
 };
-/*
-$primary-hue: #4f8ef7;
-$accent-color: #7c5cbf;
-$warn-hue: #f44336;
-$warn-orange-hue: #ffb100;
-$success-hue: #00d26a;
-$highlight: #f5c518;
-
-$bg-dark: #0d0d0d;
-$bg-surface: #161616;
-$bg-card: #1e1e1e;
-$text-primary: #f0f0f0;
-$text-secondary: #9e9e9e;
-$border-subtle: rgba(255, 255, 255, 0.08);
-*/
