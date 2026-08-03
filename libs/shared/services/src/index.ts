@@ -1,2 +1,2 @@
-export * from './lib/gsap.service';
-export * from './lib/platform.service';
+export * from './lib/gsap';
+export * from './lib/platform';

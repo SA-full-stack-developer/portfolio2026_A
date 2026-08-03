@@ -12,8 +12,8 @@ import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
-import { LanguageService } from '@core/services/language.service';
-import { SeoService } from '@core/services/seo.service';
+import { LanguageService } from '@core/services/language';
+import { SeoService } from '@core/services/seo';
 import { App } from './app';
 
 // Mock loader

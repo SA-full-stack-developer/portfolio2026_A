@@ -10,16 +10,16 @@ import {
 import { GsapService } from '@shared-libs/services';
 
 import { RouterOutlet } from '@angular/router';
-import { LanguageService } from '@core/services/language.service';
-import { SeoService } from '@core/services/seo.service';
+import { LanguageService } from '@core/services/language';
+import { SeoService } from '@core/services/seo';
 import { TranslateModule } from '@ngx-translate/core';
-import { FeatureFlagDirective } from '@shared/directives/feature-flag.directive';
-import { AskMeFabComponent } from './layout/ask-me-fab/ask-me-fab.component';
-import { FooterCopyrightComponent } from './layout/footer/components/footer-copyright/footer-copyright.component';
-import { FooterComponent } from './layout/footer/footer.component';
-import { GoToTopComponent } from './layout/go-to-top/go-to-top.component';
-import { HeaderComponent } from './layout/header/header.component';
-import { ScrollProgressComponent } from './layout/scroll-progress/scroll-progress.component';
+import { FeatureFlagDirective } from '@shared/directives/feature-flag';
+import { AskMeFabComponent } from './layout/ask-me-fab/ask-me-fab';
+import { FooterCopyrightComponent } from './layout/footer/components/footer-copyright/footer-copyright';
+import { FooterComponent } from './layout/footer/footer';
+import { GoToTopComponent } from './layout/go-to-top/go-to-top';
+import { HeaderComponent } from './layout/header/header';
+import { ScrollProgressComponent } from './layout/scroll-progress/scroll-progress';
 
 @Component({
   selector: 'app-root',

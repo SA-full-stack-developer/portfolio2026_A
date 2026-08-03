@@ -1,39 +1,39 @@
 import { Routes } from '@angular/router';
-import { adminGuard } from '@core/guards/admin.guard';
+import { adminGuard } from '@core/guards/admin';
 
 export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./pages/portfolio/portfolio.component').then((m) => m.PortfolioComponent),
+      import('./pages/portfolio/portfolio').then((m) => m.PortfolioComponent),
   },
   {
     path: 'contact',
     loadComponent: () =>
-      import('./pages/contact/contact.component').then((m) => m.ContactComponent),
+      import('./pages/contact/contact').then((m) => m.ContactComponent),
   },
   {
     path: 'about-me',
     loadComponent: () =>
-      import('./pages/about-me/about-me.component').then((m) => m.AboutMeComponent),
+      import('./pages/about-me/about-me').then((m) => m.AboutMeComponent),
   },
   {
     path: 'error',
     loadComponent: () =>
-      import('./pages/error404/error404.component').then((m) => m.Error404Component),
+      import('./pages/error404/error404').then((m) => m.Error404Component),
   },
   {
     path: 'lab',
-    loadComponent: () => import('./pages/lab/lab.component').then((m) => m.LabComponent),
+    loadComponent: () => import('./pages/lab/lab').then((m) => m.LabComponent),
   },
   {
     path: 'lab/:labId',
     loadComponent: () =>
-      import('./pages/lab-detail/lab-detail.component').then((m) => m.LabDetailComponent),
+      import('./pages/lab-detail/lab-detail').then((m) => m.LabDetailComponent),
   },
   {
     path: 'legal',
-    loadComponent: () => import('./pages/legal/legal.component').then((m) => m.LegalComponent),
+    loadComponent: () => import('./pages/legal/legal').then((m) => m.LegalComponent),
   },
   {
     path: 'admin/:token',

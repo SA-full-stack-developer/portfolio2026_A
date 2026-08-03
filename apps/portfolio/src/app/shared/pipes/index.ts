@@ -1,2 +1,2 @@
-export * from './safe-html.pipe';
-export * from './time-ago.pipe';
+export * from './safe-html';
+export * from './time-ago';
