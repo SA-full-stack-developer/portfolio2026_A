@@ -1,0 +1,24 @@
+<div class="skill-filter">
+  <ul
+    ngListbox
+    orientation="horizontal"
+    aria-label="Filtrar habilidades por categoría"
+    [value]="categorySelection()"
+    (valueChange)="onCategorySelectionChange($event)"
+    class="skill-filter__list"
+  >
+    @for (cat of allCategories(); track cat) {
+      <li ngOption [value]="cat" [label]="getLabelFor(cat) | translate" class="skill-filter__btn">
+        {{ getLabelFor(cat) | translate }}
+      </li>
+    }
+  </ul>
+
+  <button
+    class="skill-filter__btn skill-filter__btn--highlight"
+    [class.skill-filter__btn--active]="activeFilter().onlyHighlighted"
+    (click)="toggleHighlighted()"
+  >
+    ⭐ {{ 'SKILLS.FILTER.HIGHLIGHTED' | translate }}
+  </button>
+</div>

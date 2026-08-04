@@ -27,3 +27,6 @@ export const CARD_EFFECT = 'CARD_EFFECT';
 export const LIQUID_PROGRESS_BAR = 'LIQUID_PROGRESS_BAR';
 export const FLIPCARD = 'FLIPCARD';
 export const SPLITTEXT = 'SPLITTEXT';
+export const TAG_SELECTOR = 'TAG_SELECTOR';
+export const COUNTRY_SEARCH = 'COUNTRY_SEARCH';
+export const QR_GENERATOR = 'QR_GENERATOR';

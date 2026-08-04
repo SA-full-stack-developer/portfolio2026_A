@@ -1,0 +1,35 @@
+<div class="country-search">
+  <input
+    type="text"
+    class="country-search__input"
+    placeholder="Busca un país (mín. 2 letras)"
+    [value]="query()"
+    (input)="onInput($any($event.target).value)"
+  />
+
+  @if (results.isLoading()) {
+    <p class="country-search__status">Searching…</p>
+  }
+
+  @if (results.error()) {
+    <p class="country-search__status country-search__status--error">
+      No country found with that name.
+    </p>
+  }
+
+  @if (results.value(); as countries) {
+    <ul class="country-search__list">
+      @for (country of countries; track country.name.common) {
+        <li class="country-search__item">
+          <img [src]="country.flags.svg" class="country-search__flag" [alt]="country.name.common" />
+          <div>
+            <strong>{{ country.name.common }}</strong>
+            <span class="country-search__meta">
+              {{ country.capital?.[0] ?? 'Sin capital' }} · {{ country.population | number }} hab.
+            </span>
+          </div>
+        </li>
+      }
+    </ul>
+  }
+</div>

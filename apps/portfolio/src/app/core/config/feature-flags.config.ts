@@ -6,6 +6,7 @@ import {
   CONTACT,
   CONTACT_ASSISTANT,
   COPYRIGHT,
+  COUNTRY_SEARCH,
   COVER_LETTER,
   EXPERIENCE,
   FLIPCARD,
@@ -26,8 +27,10 @@ import {
   LANGUAGE_SWITCHER,
   LIQUID_PROGRESS_BAR,
   PROJECTS,
+  QR_GENERATOR,
   SKILLS,
   SPLITTEXT,
+  TAG_SELECTOR,
 } from '@core/constants/feaute-flags.constants';
 
 import { FeatureFlag } from '@core/models/feature-flag.model';
@@ -176,6 +179,21 @@ export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
   SPLITTEXT: {
     id: SPLITTEXT,
     label: 'Split text',
+    visibility: 'public',
+  },
+  TAG_SELECTOR: {
+    id: TAG_SELECTOR,
+    label: 'Tag Selector',
+    visibility: 'public',
+  },
+  COUNTRY_SEARCH: {
+    id: COUNTRY_SEARCH,
+    label: 'Country Search',
+    visibility: 'public',
+  },
+  QR_GENERATOR: {
+    id: QR_GENERATOR,
+    label: 'QR Generator',
     visibility: 'public',
   },
 };

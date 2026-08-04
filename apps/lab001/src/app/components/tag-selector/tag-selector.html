@@ -1,0 +1,20 @@
+<div class="tag-selector">
+  <ul
+    ngListbox
+    orientation="horizontal"
+    [value]="activeTagSelection()"
+    (valueChange)="onListboxSelectionChange($event)"
+    class="tag-selector__list"
+  >
+    @for (tag of tags(); track tag) {
+      <li ngOption [value]="tag" [label]="tag" class="tag-selector__item">
+        {{ tag }}
+      </li>
+    }
+  </ul>
+
+  <form class="tag-selector__form" (submit)="onAddTag($event)">
+    <input #newTagInput type="text" class="tag-selector__input" placeholder="New tag" />
+    <button type="submit" class="tag-selector__submit">Add</button>
+  </form>
+</div>

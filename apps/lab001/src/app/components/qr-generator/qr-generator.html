@@ -1,0 +1,17 @@
+<div class="qr-generator">
+  <input
+    class="qr-generator__input"
+    [value]="text()"
+    (input)="text.set($any($event.target).value)"
+    placeholder="Texto o URL"
+  />
+  <button class="qr-generator__button" (click)="generate()" [disabled]="loading()">
+    {{ loading() ? 'Creating…' : 'Create QR' }}
+  </button>
+
+  @if (qrDataUrl()) {
+    <div class="qr-generator__preview-container">
+      <img class="qr-generator__preview" [src]="qrDataUrl()" alt="Code QR generated" />
+    </div>
+  }
+</div>
