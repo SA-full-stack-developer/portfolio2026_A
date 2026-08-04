@@ -8,6 +8,7 @@ import {
   effect,
   inject,
   signal,
+  untracked,
 } from '@angular/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
@@ -66,7 +67,8 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
         this.lastAnimatedCount.set(0);
       }
 
-      if (this.lastAnimatedCount() > 0 || skills.length > 0) {
+      const alreadyAnimated = untracked(() => this.lastAnimatedCount());
+      if (alreadyAnimated > 0 || skills.length > 0) {
         afterNextRender(
           () => {
             if (this.platformService.isBrowser) {

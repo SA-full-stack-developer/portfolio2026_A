@@ -2,6 +2,20 @@
 @use 'mixins' as m;
 
 .skill-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
   &__btn {
     padding: 6px 1rem;
     border-radius: 20px;
@@ -10,6 +24,7 @@
     color: v.$text-secondary;
     background: v.$bg-card;
     border: 1px solid v.$border-subtle;
+    cursor: pointer;
     @include m.transition(all 0.2s ease);
 
     &:hover {
@@ -17,7 +32,13 @@
       border-color: rgba(v.$primary-hue, 0.4);
     }
 
-    &--active {
+    &:focus-visible {
+      outline: 2px solid v.$primary-hue;
+      outline-offset: 2px;
+    }
+
+    &--active,
+    &[aria-selected='true'] {
       color: v.$primary-hue;
       border-color: v.$primary-hue;
       background: rgba(v.$primary-hue, 0.1);

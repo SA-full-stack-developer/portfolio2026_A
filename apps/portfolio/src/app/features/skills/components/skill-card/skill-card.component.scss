@@ -2,6 +2,7 @@
 @use 'mixins' as m;
 
 .skill-card {
+  min-height: 120px;
   @include m.card-base();
   @include m.card-interactive();
 
@@ -12,6 +13,7 @@
     justify-content: flex-end;
     padding: 0.5rem;
     touch-action: pan-y;
+    min-height: 80px;
   }
 
   &--expert {

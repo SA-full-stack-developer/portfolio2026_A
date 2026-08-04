@@ -1,15 +1,14 @@
 <div class="tag-selector">
-  <ul class="tag-selector__list">
+  <ul
+    ngListbox
+    orientation="horizontal"
+    [value]="activeTagSelection()"
+    (valueChange)="onListboxSelectionChange($event)"
+    class="tag-selector__list"
+  >
     @for (tag of tags(); track tag) {
-      <li class="tag-selector__item">
-        <button
-          type="button"
-          class="tag-selector__button"
-          [class.tag-selector__button--active]="tag === activeTag()"
-          (click)="selectTag(tag)"
-        >
-          {{ tag }}
-        </button>
+      <li ngOption [value]="tag" [label]="tag" class="tag-selector__item">
+        {{ tag }}
       </li>
     }
   </ul>

@@ -119,28 +119,29 @@ describe('SkillFilterComponent', () => {
     expect(buttons[0].nativeElement.textContent.trim()).toBe('Todos');
   });
 
-  // Clase activa
-  it('should mark all button as active when filter is all', async () => {
+  // Selección de categoría (antes: clase --active, ahora: aria-selected del ngOption)
+  it('should mark all option as selected when filter is all', async () => {
     await createComponent(mockCategories, filterAll);
     const buttons = fixture.debugElement.queryAll(By.css('.skill-filter__btn'));
-    expect(buttons[0].classes['skill-filter__btn--active']).toBe(true);
+    expect(buttons[0].attributes['aria-selected']).toBe('true');
   });
 
-  it('should mark frontend button as active when filter is frontend', async () => {
+  it('should mark frontend option as selected when filter is frontend', async () => {
     await createComponent(mockCategories, filterFrontend);
     const buttons = fixture.debugElement.queryAll(By.css('.skill-filter__btn'));
     // índice 1 = frontend (índice 0 es 'all')
-    expect(buttons[1].classes['skill-filter__btn--active']).toBe(true);
+    expect(buttons[1].attributes['aria-selected']).toBe('true');
   });
 
-  it('should not mark other buttons as active when frontend is selected', async () => {
+  it('should not mark other options as selected when frontend is selected', async () => {
     await createComponent(mockCategories, filterFrontend);
     const buttons = fixture.debugElement.queryAll(By.css('.skill-filter__btn'));
-    // índice 0 = all, índice 2 = backend - ninguno debe estar activo
-    expect(buttons[0].classes['skill-filter__btn--active']).toBeFalsy();
-    expect(buttons[2].classes['skill-filter__btn--active']).toBeFalsy();
+    // índice 0 = all, índice 2 = backend - ninguno debe estar seleccionado
+    expect(buttons[0].attributes['aria-selected']).not.toBe('true');
+    expect(buttons[2].attributes['aria-selected']).not.toBe('true');
   });
 
+  // Clase activa (el botón de destacados no cambió: sigue siendo un <button> normal)
   it('should mark highlighted button as active when onlyHighlighted is true', async () => {
     await createComponent(mockCategories, filterHighlighted);
     const highlightBtn = fixture.debugElement.query(By.css('.skill-filter__btn--highlight'));
@@ -154,7 +155,7 @@ describe('SkillFilterComponent', () => {
   });
 
   // Output: filterChange al seleccionar categoría
-  it('should emit category when category button is clicked', async () => {
+  it('should emit category when category option is clicked', async () => {
     await createComponent(mockCategories, filterAll);
     let emitted: Partial<SkillFilter> | undefined;
     component.filterChange.subscribe((f: Partial<SkillFilter>) => (emitted = f));
@@ -165,7 +166,7 @@ describe('SkillFilterComponent', () => {
     expect(emitted).toEqual({ category: 'frontend' });
   });
 
-  it('should emit all when all button is clicked', async () => {
+  it('should emit all when all option is clicked', async () => {
     await createComponent(mockCategories, filterFrontend);
     let emitted: Partial<SkillFilter> | undefined;
     component.filterChange.subscribe((f: Partial<SkillFilter>) => (emitted = f));

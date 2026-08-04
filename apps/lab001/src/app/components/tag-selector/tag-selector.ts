@@ -1,7 +1,9 @@
+import { Listbox, Option } from '@angular/aria/listbox';
 import { Component, linkedSignal, signal } from '@angular/core';
 
 @Component({
   selector: 'app-tag-selector',
+  imports: [Listbox, Option],
   templateUrl: './tag-selector.html',
   styleUrl: './tag-selector.scss',
 })
@@ -21,8 +23,13 @@ export class TagSelector {
     },
   });
 
-  selectTag(tag: string) {
-    this.activeTag.set(tag);
+  readonly activeTagSelection = linkedSignal<string[]>(() => [this.activeTag()]);
+
+  onListboxSelectionChange(selection: string[]) {
+    const [first] = selection;
+    if (first !== undefined) {
+      this.activeTag.set(first);
+    }
   }
 
   onAddTag(event: SubmitEvent) {
@@ -30,7 +37,7 @@ export class TagSelector {
     const input = (event.target as HTMLFormElement).querySelector('input');
     const value = input?.value.trim();
     if (value) {
-      this.selectTag(value);
+      this.activeTag.set(value);
       input ? (input.value = '') : null;
     }
   }

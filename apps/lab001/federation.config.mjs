@@ -11,6 +11,8 @@ export default withNativeFederation({
     './FlipCard': './apps/lab001/src/app/components/flip-card/flip-card.ts',
     './SplitTextLab': './apps/lab001/src/app/components/split-text-lab/split-text-lab.ts',
     './TagSelector': './apps/lab001/src/app/components/tag-selector/tag-selector.ts',
+    './CountrySearch': './apps/lab001/src/app/components/country-search/country-search.ts',
+    './QrGenerator': './apps/lab001/src/app/components/qr-generator/qr-generator.ts',
   },
 
   shared: {
@@ -19,7 +21,7 @@ export default withNativeFederation({
     'gsap/ScrollTrigger': { singleton: true, strictVersion: false, requiredVersion: 'auto' },
   },
 
-  skip: ['rxjs/ajax', 'rxjs/fetch', 'rxjs/testing', 'rxjs/webSocket'],
+  skip: ['qrcode', 'rxjs/ajax', 'rxjs/fetch', 'rxjs/testing', 'rxjs/webSocket'],
 
   features: {
     ignoreUnusedDeps: true,
