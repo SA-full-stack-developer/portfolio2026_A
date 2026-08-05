@@ -7,8 +7,8 @@ import { TranslateModule } from '@ngx-translate/core';
   selector: 'app-stat-counter',
   standalone: true,
   imports: [TranslateModule],
-  templateUrl: './stat-counter.component.html',
-  styleUrl: './stat-counter.component.scss',
+  templateUrl: './stat-counter.html',
+  styleUrl: './stat-counter.scss',
 })
 export class StatCounterComponent {
   private readonly gsapService = inject(GsapService);

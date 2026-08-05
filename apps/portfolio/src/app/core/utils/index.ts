@@ -1,2 +1,2 @@
-export * from './date.utils';
-export * from './navigation.utils';
+export * from './date';
+export * from './navigation';

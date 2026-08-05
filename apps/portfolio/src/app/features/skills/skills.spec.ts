@@ -10,7 +10,7 @@ import { GsapService, PlatformService } from '@shared-libs/services';
 import { Observable, of } from 'rxjs';
 
 import { By } from '@angular/platform-browser';
-import { SKILLS_MOCK } from '@core/mocks/skills.mock';
+import { SKILLS_MOCK } from '@core/mocks/skills';
 import { SkillsService } from '@core/services/skills';
 import { SkillsComponent } from './skills';
 

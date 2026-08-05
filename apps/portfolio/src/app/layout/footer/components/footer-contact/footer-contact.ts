@@ -5,7 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-footer-contact',
   imports: [RouterLink, TranslateModule],
-  templateUrl: './footer-contact.component.html',
-  styleUrl: './footer-contact.component.scss',
+  templateUrl: './footer-contact.html',
+  styleUrl: './footer-contact.scss',
 })
 export class FooterContactComponent {}

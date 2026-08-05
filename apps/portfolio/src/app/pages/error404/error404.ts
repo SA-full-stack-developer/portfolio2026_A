@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-error404',
   imports: [],
-  templateUrl: './error404.component.html',
-  styleUrl: './error404.component.scss',
+  templateUrl: './error404.html',
+  styleUrl: './error404.scss',
 })
 export class Error404Component implements OnInit {
   private readonly router = inject(Router);

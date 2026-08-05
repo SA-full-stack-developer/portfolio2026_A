@@ -3,7 +3,7 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { provideHttpClient } from '@angular/common/http';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { STATS_MOCK } from '@core/mocks/stats.mock';
+import { STATS_MOCK } from '@core/mocks/stats';
 import { environment } from '@env/environment';
 import { TranslateService } from '@ngx-translate/core';
 import { StatsService } from './stats';

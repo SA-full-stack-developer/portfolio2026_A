@@ -8,8 +8,8 @@ import { IconComponent } from '@shared/components/icon/icon';
 @Component({
   selector: 'app-go-to-top',
   imports: [IconComponent],
-  templateUrl: './go-to-top.component.html',
-  styleUrl: './go-to-top.component.scss',
+  templateUrl: './go-to-top.html',
+  styleUrl: './go-to-top.scss',
 })
 export class GoToTopComponent {
   private readonly platformService = inject(PlatformService);

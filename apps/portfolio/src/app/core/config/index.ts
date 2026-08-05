@@ -1,2 +1,2 @@
-export * from './feature-flags.config';
-export * from './seo.config';
+export * from './feature-flags';
+export * from './seo';

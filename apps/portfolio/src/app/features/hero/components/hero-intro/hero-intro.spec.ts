@@ -11,7 +11,7 @@ import { Observable, of } from 'rxjs';
 
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { createMockGsapService } from '@core/mocks/ai.service.mock';
+import { createMockGsapService } from '@core/mocks/ai.service';
 import { HeroIntroComponent } from './hero-intro';
 
 @Component({ template: '' })

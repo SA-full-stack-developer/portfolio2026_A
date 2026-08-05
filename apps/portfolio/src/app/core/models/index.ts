@@ -1,7 +1,7 @@
 export * from '@portfolio/shared/models';
-export * from './feature-flag.model';
-export * from './form.model';
-export * from './language.model';
-export * from './seo.model';
-export type { SkillFilter, SkillLevel } from './skill.model';
-export { getSkillLevel, SKILL_LEVEL_LABEL } from './skill.model';
+export * from './feature-flag';
+export * from './form';
+export * from './language';
+export * from './seo';
+export type { SkillFilter, SkillLevel } from './skill';
+export { getSkillLevel, SKILL_LEVEL_LABEL } from './skill';

@@ -7,8 +7,8 @@ import { StatCounterComponent } from '../components/stat-counter/stat-counter';
 @Component({
   selector: 'app-hero-stat-counter',
   imports: [StatCounterComponent],
-  templateUrl: './hero-stat-counter.component.html',
-  styleUrl: './hero-stat-counter.component.scss',
+  templateUrl: './hero-stat-counter.html',
+  styleUrl: './hero-stat-counter.scss',
 })
 export class HeroStatCounterComponent implements AfterViewInit {
   private readonly statsService = inject(StatsService);

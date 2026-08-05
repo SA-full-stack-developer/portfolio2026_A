@@ -21,8 +21,8 @@ import { ExperienceCardComponent } from './components/experience-card/experience
 @Component({
   selector: 'app-experience',
   imports: [ExperienceCardComponent, TranslateModule, MatIconModule, ErrorComponent],
-  templateUrl: './experience.component.html',
-  styleUrl: './experience.component.scss',
+  templateUrl: './experience.html',
+  styleUrl: './experience.scss',
 })
 export class ExperienceComponent implements OnDestroy {
   private readonly experienceService = inject(ExperienceService);

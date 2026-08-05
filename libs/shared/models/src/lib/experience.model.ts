@@ -1,6 +1,6 @@
-import { Company } from './company.model';
-import { Project } from './project.model';
-import { Skill } from './skill.model';
+import { Company } from './company';
+import { Project } from './project';
+import { Skill } from './skill';
 
 export interface Dates {
   startDate: Date;

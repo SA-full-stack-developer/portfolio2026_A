@@ -1,6 +1,6 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { DEFAULT_SEO } from '@core/config/seo.config';
+import { DEFAULT_SEO } from '@core/config/seo';
 import { SeoService } from './seo';
 
 describe('SeoService', () => {

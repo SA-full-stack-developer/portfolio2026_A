@@ -1,4 +1,4 @@
-import { navScrollTo } from './navigation.utils';
+import { navScrollTo } from './navigation';
 
 describe('NavigationUtils', () => {
   beforeEach(() => {

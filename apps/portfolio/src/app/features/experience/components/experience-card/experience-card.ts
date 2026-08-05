@@ -10,8 +10,8 @@ import { TimeAgoPipe } from '@shared/pipes/time-ago';
 @Component({
   selector: 'app-experience-card',
   imports: [TranslateModule, LocalDatePipe, SkillCardComponent, TimeAgoPipe],
-  templateUrl: './experience-card.component.html',
-  styleUrl: './experience-card.component.scss',
+  templateUrl: './experience-card.html',
+  styleUrl: './experience-card.scss',
 })
 export class ExperienceCardComponent implements OnInit {
   private readonly languageService = inject(LanguageService);

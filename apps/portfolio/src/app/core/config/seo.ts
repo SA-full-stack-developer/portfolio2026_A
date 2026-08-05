@@ -1,4 +1,4 @@
-import { SeoConfig } from '@core/models/seo.model';
+import { SeoConfig } from '@core/models/seo';
 
 export const DEFAULT_SEO: SeoConfig = {
   title: 'Cristian Salcedo - Full Stack Developer',

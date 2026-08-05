@@ -5,8 +5,8 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-error',
   imports: [MatIconModule],
-  templateUrl: './error.component.html',
-  styleUrl: './error.component.scss',
+  templateUrl: './error.html',
+  styleUrl: './error.scss',
 })
 export class ErrorComponent {
   readonly error = input<string | null>();

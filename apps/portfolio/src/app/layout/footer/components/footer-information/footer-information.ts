@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 
-import { HEADER_LOGO } from '@core/constants/feaute-flags.constants';
+import { HEADER_LOGO } from '@core/constants/feature-flags';
 import { StatusService } from '@core/services/status';
 import { TranslateModule } from '@ngx-translate/core';
 import { LogoComponent } from '@shared/components/logo/logo';
@@ -10,8 +10,8 @@ import { FeatureFlagDirective } from '@shared/directives/feature-flag';
 @Component({
   selector: 'app-footer-information',
   imports: [LogoComponent, FeatureFlagDirective, StatusDotComponent, TranslateModule],
-  templateUrl: './footer-information.component.html',
-  styleUrl: './footer-information.component.scss',
+  templateUrl: './footer-information.html',
+  styleUrl: './footer-information.scss',
 })
 export class FooterInformationComponent {
   private readonly statusService = inject(StatusService);

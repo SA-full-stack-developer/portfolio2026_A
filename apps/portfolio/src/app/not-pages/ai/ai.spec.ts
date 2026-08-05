@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BREADCRUMB_AI, PAGE_SEO } from '@core/config/seo.config';
+import { BREADCRUMB_AI, PAGE_SEO } from '@core/config/seo';
 import {
   createMockAiService,
   createMockGsapService,
   createMockPlatformService,
-} from '@core/mocks/ai.service.mock';
+} from '@core/mocks/ai.service';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 import { Observable, of } from 'rxjs';

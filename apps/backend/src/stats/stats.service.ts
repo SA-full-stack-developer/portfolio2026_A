@@ -1,4 +1,4 @@
-import { StatCalculation, StatKind } from './constants/stat.constants';
+import { StatCalculation, StatKind } from './constants/stat';
 
 import { Injectable } from '@nestjs/common';
 import { SkillsService } from '../skills/skills.service';

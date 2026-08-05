@@ -1,4 +1,4 @@
-import { Company } from './company.model';
+import { Company } from './company';
 
 export interface Project {
   id: string;

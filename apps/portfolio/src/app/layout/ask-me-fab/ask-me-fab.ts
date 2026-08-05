@@ -10,8 +10,8 @@ import { MessageDto } from '@portfolio/shared/models';
   selector: 'app-ask-me-fab',
   standalone: true,
   imports: [FormsModule, TranslateModule],
-  templateUrl: './ask-me-fab.component.html',
-  styleUrl: './ask-me-fab.component.scss',
+  templateUrl: './ask-me-fab.html',
+  styleUrl: './ask-me-fab.scss',
 })
 export class AskMeFabComponent implements AfterViewInit, OnDestroy {
   private readonly aiService = inject(AiService);

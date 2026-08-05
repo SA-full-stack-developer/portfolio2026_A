@@ -11,8 +11,8 @@ import {
 import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { Router } from '@angular/router';
-import { HERO_AVATAR } from '@core/constants/feaute-flags.constants';
-import { navScrollTo } from '@core/utils/navigation.utils';
+import { HERO_AVATAR } from '@core/constants/feature-flags';
+import { navScrollTo } from '@core/utils/navigation';
 import { TranslateModule } from '@ngx-translate/core';
 import { FeatureFlagDirective } from '@shared/directives/feature-flag';
 import { HeroAvatarComponent } from '../hero-avatar/hero-avatar';
@@ -21,8 +21,8 @@ import { HeroAvatarComponent } from '../hero-avatar/hero-avatar';
   selector: 'app-hero-intro',
   standalone: true,
   imports: [TranslateModule, HeroAvatarComponent, FeatureFlagDirective],
-  templateUrl: './hero-intro.component.html',
-  styleUrl: './hero-intro.component.scss',
+  templateUrl: './hero-intro.html',
+  styleUrl: './hero-intro.scss',
 })
 export class HeroIntroComponent implements AfterViewInit {
   private readonly router = inject(Router);

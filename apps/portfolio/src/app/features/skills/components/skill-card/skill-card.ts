@@ -9,8 +9,8 @@ import { IconComponent } from '@shared/components/icon/icon';
 @Component({
   selector: 'app-skill-card',
   imports: [TranslateModule, IconComponent, NgOptimizedImage],
-  templateUrl: './skill-card.component.html',
-  styleUrl: './skill-card.component.scss',
+  templateUrl: './skill-card.html',
+  styleUrl: './skill-card.scss',
   host: {
     style: 'display: block',
   },
