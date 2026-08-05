@@ -31,9 +31,9 @@ import {
   SKILLS,
   SPLITTEXT,
   TAG_SELECTOR,
-} from '@core/constants/feaute-flags.constants';
+} from '@core/constants/feature-flags';
 
-import { FeatureFlag } from '@core/models/feature-flag.model';
+import { FeatureFlag } from '@core/models/feature-flag';
 
 export const FEATURE_FLAGS: Record<string, FeatureFlag> = {
   HEADER: {

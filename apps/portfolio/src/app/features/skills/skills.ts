@@ -13,7 +13,7 @@ import {
 import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { MatIconModule } from '@angular/material/icon';
-import { ID_SKILLS } from '@core/constants/sections.constants';
+import { ID_SKILLS } from '@core/constants/sections';
 import { SkillFilter } from '@core/models';
 import { SkillsService } from '@core/services/skills';
 import { TranslateModule } from '@ngx-translate/core';
@@ -33,8 +33,8 @@ import { SkillFilterComponent } from './components/skill-filter/skill-filter';
     MatIconModule,
     ErrorComponent,
   ],
-  templateUrl: './skills.component.html',
-  styleUrl: './skills.component.scss',
+  templateUrl: './skills.html',
+  styleUrl: './skills.scss',
 })
 export class SkillsComponent implements AfterViewInit, OnDestroy {
   private readonly skillsService = inject(SkillsService);

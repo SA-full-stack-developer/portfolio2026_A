@@ -1,4 +1,4 @@
-import { AVAILABLE_LANGUAGES, DEFAULT_LANGUAGE } from '@core/models/language.model';
+import { AVAILABLE_LANGUAGES, DEFAULT_LANGUAGE } from '@core/models/language';
 import { TranslateLoader, provideTranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 

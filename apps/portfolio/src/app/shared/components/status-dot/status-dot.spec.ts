@@ -5,7 +5,7 @@ import {
   OFFLINE_OFFSET_COLOR,
   ONLINE_COLOR,
   ONLINE_OFFSET_COLOR,
-} from '@core/constants/status.constants';
+} from '@core/constants/status';
 
 import { StatusDotComponent } from './status-dot';
 

@@ -5,8 +5,8 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-footer-copyright',
   imports: [RouterLink, TranslateModule],
-  templateUrl: './footer-copyright.component.html',
-  styleUrl: './footer-copyright.component.scss',
+  templateUrl: './footer-copyright.html',
+  styleUrl: './footer-copyright.scss',
 })
 export class FooterCopyrightComponent {
   public currentYear = signal<number>(new Date().getFullYear());

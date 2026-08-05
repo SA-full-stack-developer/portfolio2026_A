@@ -5,8 +5,8 @@ import { MessageDto } from '@portfolio/shared/models';
 @Component({
   selector: 'app-chat-message',
   standalone: true,
-  templateUrl: './chat-message.component.html',
-  styleUrl: './chat-message.component.scss',
+  templateUrl: './chat-message.html',
+  styleUrl: './chat-message.scss',
 })
 export class ChatMessageComponent {
   message = input.required<MessageDto>();

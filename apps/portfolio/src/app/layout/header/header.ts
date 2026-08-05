@@ -3,7 +3,7 @@ import {
   HEADER_LOGO,
   HEADER_NAV,
   LANGUAGE_SWITCHER,
-} from '@core/constants/feaute-flags.constants';
+} from '@core/constants/feature-flags';
 
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -25,8 +25,8 @@ import { HeaderNavComponent } from './components/header-nav/header-nav';
     RouterLink,
     TranslateModule,
   ],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+  templateUrl: './header.html',
+  styleUrl: './header.scss',
 })
 export class HeaderComponent {
   readonly HEADER_LOGO = HEADER_LOGO;

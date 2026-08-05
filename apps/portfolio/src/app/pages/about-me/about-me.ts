@@ -9,7 +9,7 @@ import {
   afterNextRender,
   inject,
 } from '@angular/core';
-import { BREADCRUMB_ABOUT, PAGE_SEO } from '@core/config/seo.config';
+import { BREADCRUMB_ABOUT, PAGE_SEO } from '@core/config/seo';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { SeoService } from '@core/services/seo';
@@ -19,8 +19,8 @@ import { SafeHtmlPipe } from '@shared/pipes/safe-html';
 @Component({
   selector: 'app-about-me',
   imports: [TranslateModule, SafeHtmlPipe],
-  templateUrl: './about-me.component.html',
-  styleUrl: './about-me.component.scss',
+  templateUrl: './about-me.html',
+  styleUrl: './about-me.scss',
 })
 export class AboutMeComponent implements OnInit, AfterViewInit {
   private readonly seoService = inject(SeoService);

@@ -19,8 +19,8 @@ import { ChatMessageComponent } from '../chat-message/chat-message';
   selector: 'app-contact-assistant',
   standalone: true,
   imports: [FormsModule, TranslateModule, ChatMessageComponent],
-  templateUrl: './contact-assistant.component.html',
-  styleUrl: './contact-assistant.component.scss',
+  templateUrl: './contact-assistant.html',
+  styleUrl: './contact-assistant.scss',
 })
 export class ContactAssistantComponent implements AfterViewInit, OnDestroy {
   private readonly aiService = inject(AiService);

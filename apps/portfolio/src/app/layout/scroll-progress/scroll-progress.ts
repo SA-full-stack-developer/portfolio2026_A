@@ -15,8 +15,8 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 @Component({
   selector: 'app-scroll-progress',
   imports: [],
-  templateUrl: './scroll-progress.component.html',
-  styleUrl: './scroll-progress.component.scss',
+  templateUrl: './scroll-progress.html',
+  styleUrl: './scroll-progress.scss',
 })
 export class ScrollProgressComponent implements AfterViewInit, OnDestroy {
   private readonly gsapService = inject(GsapService);

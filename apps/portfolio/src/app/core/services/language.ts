@@ -5,7 +5,7 @@ import {
   FALLBACK_LANGUAGE,
   Language,
   LanguageOption,
-} from '@core/models/language.model';
+} from '@core/models/language';
 
 import { TranslateService } from '@ngx-translate/core';
 import { PlatformService } from '@shared-libs/services';

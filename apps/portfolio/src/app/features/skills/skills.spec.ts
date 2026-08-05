@@ -10,7 +10,8 @@ import { GsapService, PlatformService } from '@shared-libs/services';
 import { Observable, of } from 'rxjs';
 
 import { By } from '@angular/platform-browser';
-import { SKILLS_MOCK } from '@core/mocks/skills.mock';
+import { SKILLS_MOCK } from '@core/mocks/skills';
+import { SkillFilter } from '@core/models';
 import { SkillsService } from '@core/services/skills';
 import { SkillsComponent } from './skills';
 
@@ -64,7 +65,14 @@ class MockSkillsService {
   private _page = signal(1);
   private _loading = signal(false);
   private _error = signal(null);
-  private _availableCategories = signal(['frontend', 'backend', 'mobile', 'devops', 'tools']);
+  private _availableCategories = signal([
+    'frontend',
+    'backend',
+    'mobile',
+    'devops',
+    'tools',
+    'soft',
+  ]);
 
   skills = this._skills.asReadonly();
   filter = this._filter.asReadonly();
@@ -88,8 +96,9 @@ class MockSkillsService {
   totalSkills = computed(() => this._skills().length);
   highlightedCount = computed(() => this._skills().filter((s) => s.highlighted).length);
 
-  setFilter(filter: any) {
-    this._filter.set(filter);
+  setFilter(filter: Partial<SkillFilter>) {
+    this._filter.update((current) => ({ ...current, ...filter }));
+    this._page.set(1);
   }
 
   resetFilter() {

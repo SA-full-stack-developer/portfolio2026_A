@@ -8,9 +8,9 @@ import {
 import { Observable, of } from 'rxjs';
 
 import { provideZonelessChangeDetection } from '@angular/core';
-import { COMPANIES_MOCK } from '@core/mocks/companies.mock';
-import { PROJECTS_MOCK } from '@core/mocks/projects.mock';
-import { SKILLS_MOCK } from '@core/mocks/skills.mock';
+import { COMPANIES_MOCK } from '@core/mocks/companies';
+import { PROJECTS_MOCK } from '@core/mocks/projects';
+import { SKILLS_MOCK } from '@core/mocks/skills';
 import { ResolvedExperience } from '@portfolio/shared/models';
 import { ExperienceCardComponent } from './experience-card';
 

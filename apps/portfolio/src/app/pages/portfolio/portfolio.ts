@@ -1,8 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { EXPERIENCE, HERO, SKILLS } from '@core/constants/feaute-flags.constants';
+import { EXPERIENCE, HERO, SKILLS } from '@core/constants/feature-flags';
 
-import { PAGE_SEO } from '@core/config/seo.config';
-import { ID_EXPERIENCE } from '@core/constants/sections.constants';
+import { PAGE_SEO } from '@core/config/seo';
+import { ID_EXPERIENCE } from '@core/constants/sections';
 import { SeoService } from '@core/services/seo';
 import { SessionService } from '@core/services/session';
 import { ExperienceComponent } from '@features/experience/experience';
@@ -13,8 +13,8 @@ import { FeatureFlagDirective } from '@shared/directives/feature-flag';
 @Component({
   selector: 'app-portfolio',
   imports: [SkillsComponent, FeatureFlagDirective, HeroComponent, ExperienceComponent],
-  templateUrl: './portfolio.component.html',
-  styleUrl: './portfolio.component.scss',
+  templateUrl: './portfolio.html',
+  styleUrl: './portfolio.scss',
 })
 export class PortfolioComponent implements OnInit {
   private readonly seoService = inject(SeoService);

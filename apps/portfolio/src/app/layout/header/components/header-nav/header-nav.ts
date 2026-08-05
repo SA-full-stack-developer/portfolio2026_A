@@ -1,16 +1,16 @@
 import { Component, inject, input, output } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { ID_EXPERIENCE, ID_SKILLS } from '@core/constants/sections.constants';
+import { ID_EXPERIENCE, ID_SKILLS } from '@core/constants/sections';
 
-import { navScrollTo } from '@core/utils/navigation.utils';
+import { navScrollTo } from '@core/utils/navigation';
 import { TranslateModule } from '@ngx-translate/core';
 import { PlatformService } from '@shared-libs/services';
 
 @Component({
   selector: 'app-header-nav',
   imports: [TranslateModule, RouterLink],
-  templateUrl: './header-nav.component.html',
-  styleUrl: './header-nav.component.scss',
+  templateUrl: './header-nav.html',
+  styleUrl: './header-nav.scss',
 })
 export class HeaderNavComponent {
   private readonly platformService = inject(PlatformService);

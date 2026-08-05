@@ -1,14 +1,14 @@
 import { Component, HostListener, computed, inject, signal } from '@angular/core';
 
-import { Language } from '@core/models/language.model';
+import { Language } from '@core/models/language';
 import { LanguageService } from '@core/services/language';
 
 @Component({
   selector: 'app-language-switcher',
   standalone: true,
   imports: [],
-  templateUrl: './language-switcher.component.html',
-  styleUrl: './language-switcher.component.scss',
+  templateUrl: './language-switcher.html',
+  styleUrl: './language-switcher.scss',
 })
 export class LanguageSwitcherComponent {
   private readonly languageService = inject(LanguageService);

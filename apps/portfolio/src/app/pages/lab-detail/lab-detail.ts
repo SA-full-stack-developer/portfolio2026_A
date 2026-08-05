@@ -2,7 +2,7 @@ import { loadRemoteModule } from '@angular-architects/native-federation';
 import { NgComponentOutlet } from '@angular/common';
 import { Component, computed, inject, input, OnInit, signal } from '@angular/core';
 import { BREADCRUMB_LAB, PAGE_SEO } from '@core/config';
-import { LAB_CONFIG } from '@core/config/lab.config';
+import { LAB_CONFIG } from '@core/config/lab';
 import {
   BORDER_GRADIENT,
   CARD_EFFECT,
@@ -10,15 +10,15 @@ import {
   LIQUID_PROGRESS_BAR,
   SPLITTEXT,
 } from '@core/constants';
-import { LabConfig } from '@core/models/lab.model';
+import { LabConfig } from '@core/models/lab';
 import { SeoService } from '@core/services';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-lab-detail',
   imports: [TranslateModule, NgComponentOutlet],
-  templateUrl: './lab-detail.component.html',
-  styleUrl: './lab-detail.component.scss',
+  templateUrl: './lab-detail.html',
+  styleUrl: './lab-detail.scss',
 })
 export class LabDetailComponent implements OnInit {
   protected readonly BORDER_GRADIENT = BORDER_GRADIENT;

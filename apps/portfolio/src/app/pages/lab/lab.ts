@@ -1,9 +1,9 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
-import { BREADCRUMB_LAB, PAGE_SEO } from '@core/config/seo.config';
+import { BREADCRUMB_LAB, PAGE_SEO } from '@core/config/seo';
 
 import { loadRemoteModule } from '@angular-architects/native-federation';
-import { LAB_CONFIG } from '@core/config/lab.config';
-import { LabConfig } from '@core/models/lab.model';
+import { LAB_CONFIG } from '@core/config/lab';
+import { LabConfig } from '@core/models/lab';
 import { FeatureFlagService } from '@core/services';
 import { SeoService } from '@core/services/seo';
 import { TranslateModule } from '@ngx-translate/core';
@@ -13,8 +13,8 @@ import { LabCardComponent } from './components/lab-card/lab-card';
 @Component({
   selector: 'app-lab',
   imports: [TranslateModule, LabCardComponent, FeatureFlagDirective],
-  templateUrl: './lab.component.html',
-  styleUrl: './lab.component.scss',
+  templateUrl: './lab.html',
+  styleUrl: './lab.scss',
 })
 export class LabComponent implements OnInit {
   private readonly seoService = inject(SeoService);

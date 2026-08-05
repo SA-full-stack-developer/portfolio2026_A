@@ -9,7 +9,7 @@ import {
   TAG_SELECTOR,
 } from '@core/constants';
 
-import { LabConfig } from '@core/models/lab.model';
+import { LabConfig } from '@core/models/lab';
 
 export const LAB_CONFIG: Record<string, LabConfig> = {
   TagSelector: {

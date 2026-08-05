@@ -10,8 +10,8 @@ import { CoverLetterRequest } from '@portfolio/shared/models';
   selector: 'app-cover-letter',
   standalone: true,
   imports: [FormsModule, TranslateModule],
-  templateUrl: './cover-letter.component.html',
-  styleUrl: './cover-letter.component.scss',
+  templateUrl: './cover-letter.html',
+  styleUrl: './cover-letter.scss',
 })
 export class CoverLetterComponent implements AfterViewInit, OnDestroy {
   private readonly aiService = inject(AiService);

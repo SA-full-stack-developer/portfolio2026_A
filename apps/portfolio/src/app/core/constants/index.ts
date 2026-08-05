@@ -1,3 +1,3 @@
-export * from './feaute-flags.constants';
-export * from './sections.constants';
-export * from './status.constants';
+export * from './feature-flags';
+export * from './sections';
+export * from './status';

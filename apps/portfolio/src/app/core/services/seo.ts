@@ -1,8 +1,8 @@
 import { DOCUMENT, inject, Service } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
-import { DEFAULT_SEO } from '@core/config/seo.config';
-import { SeoConfig } from '@core/models/seo.model';
+import { DEFAULT_SEO } from '@core/config/seo';
+import { SeoConfig } from '@core/models/seo';
 
 @Service()
 export class SeoService {

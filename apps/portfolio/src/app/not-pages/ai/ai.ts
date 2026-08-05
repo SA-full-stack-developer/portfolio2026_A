@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { BREADCRUMB_AI, PAGE_SEO } from '@core/config/seo.config';
+import { BREADCRUMB_AI, PAGE_SEO } from '@core/config/seo';
 
 import { SeoService } from '@core/services/seo';
 import { TranslateModule } from '@ngx-translate/core';
@@ -11,8 +11,8 @@ import { CoverLetterComponent } from '../../features/ai/components/cover-letter/
   selector: 'app-ai',
   standalone: true,
   imports: [TranslateModule, ChatCvComponent, CoverLetterComponent, ContactAssistantComponent],
-  templateUrl: './ai.component.html',
-  styleUrl: './ai.component.scss',
+  templateUrl: './ai.html',
+  styleUrl: './ai.scss',
 })
 export class AiComponent implements OnInit {
   private readonly seoService = inject(SeoService);

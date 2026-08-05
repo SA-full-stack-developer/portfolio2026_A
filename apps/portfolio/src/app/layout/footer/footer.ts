@@ -1,8 +1,4 @@
-import {
-  FOOTER_CONTACT,
-  FOOTER_INFORMATION,
-  FOOTER_LINKS,
-} from '@core/constants/feaute-flags.constants';
+import { FOOTER_CONTACT, FOOTER_INFORMATION, FOOTER_LINKS } from '@core/constants/feature-flags';
 
 import { Component } from '@angular/core';
 import { FeatureFlagDirective } from '@shared/directives/feature-flag';
@@ -18,8 +14,8 @@ import { FooterLinksComponent } from './components/footer-links/footer-links';
     FooterContactComponent,
     FeatureFlagDirective,
   ],
-  templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss',
+  templateUrl: './footer.html',
+  styleUrl: './footer.scss',
 })
 export class FooterComponent {
   readonly FOOTER_INFORMATION = FOOTER_INFORMATION;

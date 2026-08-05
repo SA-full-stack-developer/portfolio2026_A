@@ -9,13 +9,13 @@ import {
 import { GsapService, PlatformService } from '@shared-libs/services';
 import { Observable, of } from 'rxjs';
 
-import { SKILLS_MOCK } from '@core/mocks/skills.mock';
+import { SKILLS_MOCK } from '@core/mocks/skills';
 import { ExperienceService } from '@core/services/experience';
 import { LanguageService } from '@core/services/language';
 import { ResolvedExperience } from '@portfolio/shared/models';
-import { COMPANIES_MOCK } from '../../core/mocks/companies.mock';
-import { EXPERIENCES_MOCK } from '../../core/mocks/experiences.mock';
-import { PROJECTS_MOCK } from '../../core/mocks/projects.mock';
+import { COMPANIES_MOCK } from '../../core/mocks/companies';
+import { EXPERIENCES_MOCK } from '../../core/mocks/experiences';
+import { PROJECTS_MOCK } from '../../core/mocks/projects';
 import { ExperienceComponent } from './experience';
 
 const RESOLVED_EXPERIENCES_MOCK: ResolvedExperience[] = EXPERIENCES_MOCK.map((exp) => ({

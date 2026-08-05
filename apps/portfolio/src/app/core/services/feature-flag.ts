@@ -1,6 +1,6 @@
 import { inject, Service } from '@angular/core';
 
-import { FEATURE_FLAGS } from '@core/config/feature-flags.config';
+import { FEATURE_FLAGS } from '@core/config/feature-flags';
 import { SessionService } from '@core/services/session';
 
 @Service()

@@ -17,7 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { BREADCRUMB_CONTACT, PAGE_SEO } from '@core/config/seo.config';
+import { BREADCRUMB_CONTACT, PAGE_SEO } from '@core/config/seo';
 import { SeoService } from '@core/services/seo';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
@@ -41,8 +41,8 @@ interface ContactForm {
     MatSnackBarModule,
     MatProgressSpinnerModule,
   ],
-  templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss',
+  templateUrl: './contact.html',
+  styleUrl: './contact.scss',
 })
 export class ContactComponent implements OnInit, AfterViewInit {
   private readonly seoService = inject(SeoService);

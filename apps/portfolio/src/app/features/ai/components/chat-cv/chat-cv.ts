@@ -19,8 +19,8 @@ import { ChatMessageComponent } from '../chat-message/chat-message';
   selector: 'app-chat-cv',
   standalone: true,
   imports: [FormsModule, TranslateModule, ChatMessageComponent],
-  templateUrl: './chat-cv.component.html',
-  styleUrl: './chat-cv.component.scss',
+  templateUrl: './chat-cv.html',
+  styleUrl: './chat-cv.scss',
 })
 export class ChatCvComponent implements AfterViewInit, OnDestroy {
   private readonly aiService = inject(AiService);
