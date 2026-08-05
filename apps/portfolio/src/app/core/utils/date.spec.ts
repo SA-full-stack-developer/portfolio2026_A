@@ -1,4 +1,4 @@
-import { calculateDaysBetweenDates, calculateYearsBetweenDates } from './date.utils';
+import { calculateDaysBetweenDates, calculateYearsBetweenDates } from './date';
 
 describe('DateUtils', () => {
   it('should calculate years between dates correctly', () => {

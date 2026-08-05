@@ -7,6 +7,9 @@ import {
 } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
+import { ListboxHarness } from '@angular/aria/listbox/testing';
+import { HarnessLoader } from '@angular/cdk/testing';
+import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { SkillFilter } from '@core/models';
@@ -42,6 +45,7 @@ const filterHighlighted: SkillFilter = { category: 'backend', onlyHighlighted: t
 describe('SkillFilterComponent', () => {
   let fixture: ComponentFixture<SkillFilterComponent>;
   let component: SkillFilterComponent;
+  let loader: HarnessLoader;
 
   async function createComponent(
     categories: SkillCategory[],
@@ -54,6 +58,7 @@ describe('SkillFilterComponent', () => {
     fixture.detectChanges();
     await fixture.whenStable();
     fixture.detectChanges();
+    loader = TestbedHarnessEnvironment.loader(fixture); // <-- añadido
   }
 
   beforeEach(async () => {
@@ -160,8 +165,9 @@ describe('SkillFilterComponent', () => {
     let emitted: Partial<SkillFilter> | undefined;
     component.filterChange.subscribe((f: Partial<SkillFilter>) => (emitted = f));
 
-    const buttons = fixture.debugElement.queryAll(By.css('.skill-filter__btn'));
-    buttons[1].triggerEventHandler('click');
+    const listbox = await loader.getHarness(ListboxHarness);
+    const options = await listbox.getOptions();
+    await options[1].click();
 
     expect(emitted).toEqual({ category: 'frontend' });
   });
@@ -171,8 +177,9 @@ describe('SkillFilterComponent', () => {
     let emitted: Partial<SkillFilter> | undefined;
     component.filterChange.subscribe((f: Partial<SkillFilter>) => (emitted = f));
 
-    const buttons = fixture.debugElement.queryAll(By.css('.skill-filter__btn'));
-    buttons[0].triggerEventHandler('click');
+    const listbox = await loader.getHarness(ListboxHarness);
+    const options = await listbox.getOptions();
+    await options[0].click();
 
     expect(emitted).toEqual({ category: 'all' });
   });

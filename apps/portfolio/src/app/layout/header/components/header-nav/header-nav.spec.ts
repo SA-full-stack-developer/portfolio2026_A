@@ -1,4 +1,4 @@
-import * as navUtils from '@core/utils/navigation.utils';
+import * as navUtils from '@core/utils/navigation';
 
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
@@ -7,11 +7,11 @@ import {
   TranslationObject,
   provideTranslateService,
 } from '@ngx-translate/core';
-import { PlatformService } from '@shared-libs/services';
 import { Observable, of } from 'rxjs';
 
 import { provideZonelessChangeDetection } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
+import { PlatformService } from '@shared-libs/services';
 import { HeaderNavComponent } from './header-nav';
 
 class MockTranslateLoader implements TranslateLoader {
