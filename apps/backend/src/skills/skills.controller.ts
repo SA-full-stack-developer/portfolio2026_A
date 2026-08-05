@@ -5,7 +5,7 @@ import { SkillsService } from './skills.service';
 
 @Controller('skills')
 export class SkillsController {
-  constructor(public readonly skillsService: SkillsService) {}
+  constructor(readonly skillsService: SkillsService) {}
 
   @Get()
   @ApiOperation({ summary: 'Obtener listado completo de habilidades' })
