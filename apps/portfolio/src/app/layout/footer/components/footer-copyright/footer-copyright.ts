@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -9,5 +10,5 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './footer-copyright.scss',
 })
 export class FooterCopyrightComponent {
-  public currentYear = signal<number>(new Date().getFullYear());
+  currentYear = signal<number>(new Date().getFullYear());
 }

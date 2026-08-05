@@ -14,8 +14,8 @@ export class Error404Component implements OnInit {
   private readonly gsapService = inject(GsapService);
   private readonly platformService = inject(PlatformService);
 
-  public currentRoute = signal<string>('');
-  public terminalLines = signal<string[]>([
+  currentRoute = signal<string>('');
+  terminalLines = signal<string[]>([
     'Initializing system recovery...',
     'Scanning local host for missing routes...',
     'Checking database integrity... [OK]',
@@ -26,7 +26,7 @@ export class Error404Component implements OnInit {
     this.currentRoute.set(this.router.url);
   }
 
-  public fixSystem(): void {
+  fixSystem(): void {
     if (!this.platformService.isBrowser) return;
 
     const gsap = this.gsapService.gsap;
