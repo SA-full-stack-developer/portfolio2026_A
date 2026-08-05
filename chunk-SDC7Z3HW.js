@@ -139,7 +139,7 @@ export { S as a, f as b, H as c, J as d, Q as e, y as f, h as g, U as h, v as i,
 @angular/core/fesm2022/_effect-chunk.mjs:
 @angular/core/fesm2022/_untracked-chunk.mjs:
   (**
-   * @license Angular v22.0.7
+   * @license Angular v22.1.0
    * (c) 2010-2026 Google LLC. https://angular.dev/
    * License: MIT
    *)
