@@ -22,13 +22,13 @@
     border-radius: 50%;
     background: v.$primary-hue;
     color: v.$bg-dark;
-    box-shadow: 0 4px 20px rgba(v.$primary-hue, 0.4);
+    box-shadow: 0 4px 20px color-mix(in srgb, v.$primary-hue 40%, transparent);
     @include m.transition(transform 0.2s ease, box-shadow 0.2s ease);
     flex-shrink: 0;
 
     &:hover {
       @include m.transform(scale(1.07));
-      box-shadow: 0 6px 28px rgba(v.$primary-hue, 0.55);
+      box-shadow: 0 6px 28px color-mix(in srgb, v.$primary-hue 55%, transparent);
     }
 
     .material-icons {
@@ -43,7 +43,7 @@
     background: v.$bg-surface;
     border: 1px solid v.$border-subtle;
     border-radius: 16px;
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 8px 40px color-mix(in srgb, rgba(0, 0, 0, 0.45) 100%, transparent);
     overflow: hidden;
 
     @include m.respond-to('sm') {
@@ -171,7 +171,7 @@
 
     &:focus {
       outline: none;
-      border-color: rgba(v.$primary-hue, 0.5);
+      border-color: color-mix(in srgb, v.$primary-hue 50%, transparent);
     }
   }
 

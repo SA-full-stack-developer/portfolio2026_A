@@ -92,7 +92,7 @@
 
     &:focus {
       outline: none;
-      border-color: rgba(v.$primary-hue, 0.5);
+      border-color: color-mix(in srgb, v.$primary-hue 50%, transparent);
     }
 
     @include m.placeholder {
@@ -116,7 +116,7 @@
     }
 
     &:not(:disabled):hover {
-      background: rgba(v.$primary-hue, 0.8);
+      background: color-mix(in srgb, v.$primary-hue 80%, transparent);
     }
 
     .material-icons {

@@ -26,6 +26,17 @@ $portfolio-theme: mat.define-theme(
 );
 
 :root {
+  @include mat.theme-overrides(
+    (
+      primary: v.$primary-hue,
+      tertiary: v.$accent-color,
+      error: v.$warn-hue,
+      surface: v.$bg-dark,
+      on-surface: v.$text-primary,
+      on-surface-variant: v.$text-secondary,
+    )
+  );
+
   @include mat.form-field-overrides(
     (
       error-focus-trailing-icon-color: v.$warn-hue,
@@ -187,11 +198,11 @@ input:-internal-autofill-selected {
   width: 100%;
   height: 2px;
   background: linear-gradient(90deg, v.$primary-hue 0%, v.$accent-color 100%);
-  box-shadow: 0 0 10px rgba(v.$primary-hue, 0.5);
+  box-shadow: 0 0 10px color-mix(in srgb, v.$primary-hue 50%, transparent);
 }
 
 .footer-copy-app {
-  background-color: rgba(black, 1);
+  background-color: color-mix(in srgb, black 100%, transparent);
   border-top: solid 1px v.$bg-card;
 }
 
@@ -201,14 +212,14 @@ input:-internal-autofill-selected {
   border-radius: 20px;
   font-size: 0.8rem;
   color: v.$primary-hue;
-  background: rgba(v.$primary-hue, 0.1);
-  box-shadow: 0 0 5px rgba(v.$primary-hue, 0.2);
+  background: color-mix(in srgb, v.$primary-hue 10%, transparent);
+  box-shadow: 0 0 5px color-mix(in srgb, v.$primary-hue 20%, transparent);
   transition: all 0.3s ease;
 
   &:hover {
     background: v.$primary-hue;
     color: white;
-    box-shadow: 0 0 15px rgba(v.$primary-hue, 0.6);
+    box-shadow: 0 0 15px color-mix(in srgb, v.$primary-hue 60%, transparent);
     cursor: default;
   }
 }
