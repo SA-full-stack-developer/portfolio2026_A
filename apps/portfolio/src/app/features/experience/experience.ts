@@ -56,8 +56,6 @@ export class ExperienceComponent implements OnDestroy {
         );
       }
     });
-
-    //test
   }
 
   private animateCards() {
