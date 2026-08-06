@@ -3,13 +3,13 @@ import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { FormsModule } from '@angular/forms';
 import { AiService } from '@core/services/ai';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { MessageDto } from '@portfolio/shared/models';
 
 @Component({
   selector: 'app-ask-me-fab',
   standalone: true,
-  imports: [FormsModule, TranslateModule],
+  imports: [FormsModule, TranslatePipe],
   templateUrl: './ask-me-fab.html',
   styleUrl: './ask-me-fab.scss',
 })

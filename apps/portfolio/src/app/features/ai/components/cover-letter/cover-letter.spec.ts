@@ -4,7 +4,7 @@ import {
   createMockGsapService,
   createMockPlatformService,
 } from '@core/mocks/ai.service';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, provideTranslateService } from '@ngx-translate/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 import { Observable, of, throwError } from 'rxjs';
 
@@ -28,16 +28,16 @@ describe('CoverLetterComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [
-        CoverLetterComponent,
-        TranslateModule.forRoot({
-          loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
-        }),
+        CoverLetterComponent
       ],
       providers: [
         { provide: AiService, useValue: mockAiService },
         { provide: GsapService, useValue: createMockGsapService() },
         { provide: PlatformService, useValue: createMockPlatformService(true) },
-      ],
+          provideTranslateService({
+                    loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
+                  })
+    ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CoverLetterComponent);
@@ -169,16 +169,16 @@ describe('CoverLetterComponent', () => {
     mockAiService = createMockAiService();
     await TestBed.configureTestingModule({
       imports: [
-        CoverLetterComponent,
-        TranslateModule.forRoot({
-          loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
-        }),
+        CoverLetterComponent
       ],
       providers: [
         { provide: AiService, useValue: mockAiService },
         { provide: GsapService, useValue: createMockGsapService() },
         { provide: PlatformService, useValue: createMockPlatformService(false) },
-      ],
+          provideTranslateService({
+                    loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
+                  })
+    ],
     }).compileComponents();
 
     const ssFixture = TestBed.createComponent(CoverLetterComponent);

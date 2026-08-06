@@ -2,14 +2,14 @@ import { Component, OnInit, inject, input, output, signal } from '@angular/core'
 
 import { LanguageService } from '@core/services/language';
 import { SkillCardComponent } from '@features/skills/components/skill-card/skill-card';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ResolvedExperience, Skill } from '@portfolio/shared/models';
 import { LocalDatePipe } from '@shared/pipes/local-date-pipe';
 import { TimeAgoPipe } from '@shared/pipes/time-ago';
 
 @Component({
   selector: 'app-experience-card',
-  imports: [TranslateModule, LocalDatePipe, SkillCardComponent, TimeAgoPipe],
+  imports: [TranslatePipe, LocalDatePipe, SkillCardComponent, TimeAgoPipe],
   templateUrl: './experience-card.html',
   styleUrl: './experience-card.scss',
 })

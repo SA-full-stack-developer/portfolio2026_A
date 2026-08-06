@@ -14,13 +14,13 @@ import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { MatIconModule } from '@angular/material/icon';
 import { ExperienceService } from '@core/services/experience';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ErrorComponent } from '@shared/components/error/error';
 import { ExperienceCardComponent } from './components/experience-card/experience-card';
 
 @Component({
   selector: 'app-experience',
-  imports: [ExperienceCardComponent, TranslateModule, MatIconModule, ErrorComponent],
+  imports: [ExperienceCardComponent, TranslatePipe, MatIconModule, ErrorComponent],
   templateUrl: './experience.html',
   styleUrl: './experience.scss',
 })

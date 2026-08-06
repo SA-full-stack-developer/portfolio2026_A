@@ -1,5 +1,5 @@
 import { Listbox, Option } from '@angular/aria/listbox';
-import { Component, linkedSignal, signal } from '@angular/core';
+import { Component, Input, linkedSignal, signal } from '@angular/core';
 
 @Component({
   selector: 'app-tag-selector',
@@ -8,6 +8,7 @@ import { Component, linkedSignal, signal } from '@angular/core';
   styleUrl: './tag-selector.scss',
 })
 export class TagSelector {
+  @Input() text?: string;
   readonly tags = signal<string[]>(['angular', 'nestjs', 'rxjs']);
   private readonly selectedTag = signal(this.tags()[0]);
   readonly activeTag = linkedSignal<string, string>({
@@ -38,7 +39,9 @@ export class TagSelector {
     const value = input?.value.trim();
     if (value) {
       this.activeTag.set(value);
-      input ? (input.value = '') : null;
+      if (input) {
+        input.value = '';
+      }
     }
   }
 }

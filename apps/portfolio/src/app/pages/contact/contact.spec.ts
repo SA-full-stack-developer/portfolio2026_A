@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SeoService } from '@core/services/seo';
-import { TranslateModule } from '@ngx-translate/core';
+import { provideTranslateService } from '@ngx-translate/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { ContactComponent } from './contact';
@@ -21,12 +21,13 @@ describe('ContactComponent', () => {
     snackBar = { open: jest.fn() };
 
     await TestBed.configureTestingModule({
-      imports: [ContactComponent, TranslateModule.forRoot()],
+      imports: [ContactComponent],
       providers: [
         { provide: SeoService, useValue: { update: jest.fn(), updateSchemas: jest.fn() } },
         { provide: GsapService, useValue: { gsap: { from: jest.fn() } } },
         { provide: PlatformService, useValue: { isBrowser: false } },
-      ],
+          provideTranslateService({})
+    ],
     })
       .overrideProvider(MatSnackBar, { useValue: snackBar })
       .compileComponents();

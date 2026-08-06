@@ -2,13 +2,13 @@ import { Component, computed, input, output } from '@angular/core';
 
 import { NgOptimizedImage } from '@angular/common';
 import { getSkillLevel } from '@core/models';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { Skill } from '@portfolio/shared/models';
 import { IconComponent } from '@shared/components/icon/icon';
 
 @Component({
   selector: 'app-skill-card',
-  imports: [TranslateModule, IconComponent, NgOptimizedImage],
+  imports: [TranslatePipe, IconComponent, NgOptimizedImage],
   templateUrl: './skill-card.html',
   styleUrl: './skill-card.scss',
   host: {

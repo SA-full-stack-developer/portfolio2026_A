@@ -5,7 +5,6 @@ import { CHAT_MESSAGE, COPYRIGHT, FOOTER, GO_TO_TOP, HEADER } from '@core/consta
 import { RouterOutlet } from '@angular/router';
 import { LanguageService } from '@core/services/language';
 import { SeoService } from '@core/services/seo';
-import { TranslateModule } from '@ngx-translate/core';
 import { GsapService } from '@shared-libs/services';
 import { FeatureFlagDirective } from '@shared/directives/feature-flag';
 import { AskMeFabComponent } from './layout/ask-me-fab/ask-me-fab';
@@ -19,7 +18,6 @@ import { ScrollProgressComponent } from './layout/scroll-progress/scroll-progres
   selector: 'app-root',
   standalone: true,
   imports: [
-    TranslateModule,
     RouterOutlet,
     HeaderComponent,
     FeatureFlagDirective,

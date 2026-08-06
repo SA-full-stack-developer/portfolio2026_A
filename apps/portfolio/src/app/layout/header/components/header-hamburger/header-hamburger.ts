@@ -11,14 +11,14 @@ import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { RouterLink } from '@angular/router';
 import { HEADER_NAV } from '@core/constants/feature-flags';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { IconComponent } from '@shared/components/icon/icon';
 import { FeatureFlagDirective } from '@shared/directives/feature-flag';
 import { HeaderNavComponent } from '../header-nav/header-nav';
 
 @Component({
   selector: 'app-header-hamburger',
-  imports: [TranslateModule, RouterLink, HeaderNavComponent, IconComponent, FeatureFlagDirective],
+  imports: [TranslatePipe, RouterLink, HeaderNavComponent, IconComponent, FeatureFlagDirective],
   templateUrl: './header-hamburger.html',
   styleUrl: './header-hamburger.scss',
 })

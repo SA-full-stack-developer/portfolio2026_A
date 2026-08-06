@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-footer-links',
-  imports: [RouterLink, TranslateModule],
+  imports: [RouterLink, TranslatePipe],
   templateUrl: './footer-links.html',
   styleUrl: './footer-links.scss',
 })

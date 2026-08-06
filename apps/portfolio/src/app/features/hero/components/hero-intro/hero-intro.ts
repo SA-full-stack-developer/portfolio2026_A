@@ -13,14 +13,14 @@ import { GsapService, PlatformService } from '@shared-libs/services';
 import { Router } from '@angular/router';
 import { HERO_AVATAR } from '@core/constants/feature-flags';
 import { navScrollTo } from '@core/utils/navigation';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { FeatureFlagDirective } from '@shared/directives/feature-flag';
 import { HeroAvatarComponent } from '../hero-avatar/hero-avatar';
 
 @Component({
   selector: 'app-hero-intro',
   standalone: true,
-  imports: [TranslateModule, HeroAvatarComponent, FeatureFlagDirective],
+  imports: [TranslatePipe, HeroAvatarComponent, FeatureFlagDirective],
   templateUrl: './hero-intro.html',
   styleUrl: './hero-intro.scss',
 })

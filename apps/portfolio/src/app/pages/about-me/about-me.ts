@@ -13,12 +13,12 @@ import { BREADCRUMB_ABOUT, PAGE_SEO } from '@core/config/seo';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { SeoService } from '@core/services/seo';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { SafeHtmlPipe } from '@shared/pipes/safe-html';
 
 @Component({
   selector: 'app-about-me',
-  imports: [TranslateModule, SafeHtmlPipe],
+  imports: [TranslatePipe, SafeHtmlPipe],
   templateUrl: './about-me.html',
   styleUrl: './about-me.scss',
 })
