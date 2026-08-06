@@ -11,14 +11,14 @@ import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { FormsModule } from '@angular/forms';
 import { AiService } from '@core/services/ai';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { MessageDto } from '@portfolio/shared/models';
 import { ChatMessageComponent } from '../chat-message/chat-message';
 
 @Component({
   selector: 'app-chat-cv',
   standalone: true,
-  imports: [FormsModule, TranslateModule, ChatMessageComponent],
+  imports: [FormsModule, TranslatePipe, ChatMessageComponent],
   templateUrl: './chat-cv.html',
   styleUrl: './chat-cv.scss',
 })

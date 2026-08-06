@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { createMockGsapService, createMockPlatformService } from '@core/mocks/ai.service';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
-import { TranslateModule } from '@ngx-translate/core';
+import { provideTranslateService } from '@ngx-translate/core';
 import { AboutMeComponent } from './about-me';
 
 describe('AboutMeComponent', () => {
@@ -16,11 +16,12 @@ describe('AboutMeComponent', () => {
     mockGsapService = createMockGsapService();
 
     await TestBed.configureTestingModule({
-      imports: [AboutMeComponent, TranslateModule.forRoot()],
+      imports: [AboutMeComponent],
       providers: [
         { provide: PlatformService, useValue: mockPlatformService },
         { provide: GsapService, useValue: mockGsapService },
-      ],
+          provideTranslateService({})
+    ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AboutMeComponent);

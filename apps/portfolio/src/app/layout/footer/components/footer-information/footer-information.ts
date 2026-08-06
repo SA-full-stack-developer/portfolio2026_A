@@ -2,14 +2,14 @@ import { Component, inject } from '@angular/core';
 
 import { HEADER_LOGO } from '@core/constants/feature-flags';
 import { StatusService } from '@core/services/status';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { LogoComponent } from '@shared/components/logo/logo';
 import { StatusDotComponent } from '@shared/components/status-dot/status-dot';
 import { FeatureFlagDirective } from '@shared/directives/feature-flag';
 
 @Component({
   selector: 'app-footer-information',
-  imports: [LogoComponent, FeatureFlagDirective, StatusDotComponent, TranslateModule],
+  imports: [LogoComponent, FeatureFlagDirective, StatusDotComponent, TranslatePipe],
   templateUrl: './footer-information.html',
   styleUrl: './footer-information.scss',
 })

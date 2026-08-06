@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, provideTranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
 import { LabDetailComponent } from './lab-detail';
@@ -17,11 +17,11 @@ describe('LabDetailComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        LabDetailComponent,
-        TranslateModule.forRoot({
-          loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
-        }),
+        LabDetailComponent
       ],
+        providers: [provideTranslateService({
+                      loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
+                    })]
     }).compileComponents();
 
     fixture = TestBed.createComponent(LabDetailComponent);

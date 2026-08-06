@@ -2,7 +2,7 @@
 
 .hero-avatar {
   border-radius: 50%;
-  box-shadow: 0 0 24px 4px rgba(v.$primary-hue, 0.3);
+  box-shadow: 0 0 24px 4px color-mix(in srgb, v.$primary-hue 30%, transparent);
   border: solid 2px v.$primary-hue;
   height: clamp(80px, 20vw, 150px);
   width: clamp(80px, 20vw, 150px);

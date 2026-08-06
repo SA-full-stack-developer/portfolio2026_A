@@ -16,7 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ID_SKILLS } from '@core/constants/sections';
 import { SkillFilter } from '@core/models';
 import { SkillsService } from '@core/services/skills';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ErrorComponent } from '@shared/components/error/error';
 import { IconComponent } from '@shared/components/icon/icon';
 import { SkillCardComponent } from './components/skill-card/skill-card';
@@ -28,7 +28,7 @@ import { SkillFilterComponent } from './components/skill-filter/skill-filter';
   imports: [
     SkillCardComponent,
     SkillFilterComponent,
-    TranslateModule,
+    TranslatePipe,
     IconComponent,
     MatIconModule,
     ErrorComponent,

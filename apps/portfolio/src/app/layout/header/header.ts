@@ -7,7 +7,7 @@ import {
 
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { LanguageSwitcherComponent } from '@shared/components/language-switcher/language-switcher';
 import { FeatureFlagDirective } from '@shared/directives/feature-flag';
 import { LogoComponent } from '../../shared/components/logo/logo';
@@ -23,7 +23,7 @@ import { HeaderNavComponent } from './components/header-nav/header-nav';
     LanguageSwitcherComponent,
     FeatureFlagDirective,
     RouterLink,
-    TranslateModule,
+    TranslatePipe,
   ],
   templateUrl: './header.html',
   styleUrl: './header.scss',

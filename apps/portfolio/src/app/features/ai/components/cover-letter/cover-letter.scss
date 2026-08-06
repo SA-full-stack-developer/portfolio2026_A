@@ -50,7 +50,7 @@
 
     &:focus {
       outline: none;
-      border-color: rgba(v.$primary-hue, 0.5);
+      border-color: color-mix(in srgb, v.$primary-hue 50%, transparent);
     }
   }
 
@@ -81,7 +81,7 @@
   &__spinner {
     width: 14px;
     height: 14px;
-    border: 2px solid rgba(v.$bg-dark, 0.3);
+    border: 2px solid color-mix(in srgb, v.$bg-dark 30%, transparent);
     border-top-color: v.$bg-dark;
     border-radius: 50%;
     animation: spin 0.7s linear infinite;

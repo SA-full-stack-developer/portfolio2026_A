@@ -11,7 +11,7 @@
 
   &__tag {
     border-radius: 10px;
-    background-color: rgba(v.$text-secondary, 0.85);
+    background-color: color-mix(in srgb, v.$text-secondary 85%, transparent);
     margin-bottom: 0.75rem;
     font-size: 0.6rem;
     padding: 0.25rem;

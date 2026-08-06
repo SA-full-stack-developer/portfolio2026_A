@@ -6,13 +6,13 @@ import { LAB_CONFIG } from '@core/config/lab';
 import { LabConfig } from '@core/models/lab';
 import { FeatureFlagService } from '@core/services';
 import { SeoService } from '@core/services/seo';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { FeatureFlagDirective } from '@shared/directives';
 import { LabCardComponent } from './components/lab-card/lab-card';
 
 @Component({
   selector: 'app-lab',
-  imports: [TranslateModule, LabCardComponent, FeatureFlagDirective],
+  imports: [TranslatePipe, LabCardComponent, FeatureFlagDirective],
   templateUrl: './lab.html',
   styleUrl: './lab.scss',
 })

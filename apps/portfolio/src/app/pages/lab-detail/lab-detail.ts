@@ -12,11 +12,11 @@ import {
 } from '@core/constants';
 import { LabConfig } from '@core/models/lab';
 import { SeoService } from '@core/services';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-lab-detail',
-  imports: [TranslateModule, NgComponentOutlet],
+  imports: [TranslatePipe, NgComponentOutlet],
   templateUrl: './lab-detail.html',
   styleUrl: './lab-detail.scss',
 })

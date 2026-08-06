@@ -5,7 +5,7 @@ import {
   createMockGsapService,
   createMockPlatformService,
 } from '@core/mocks/ai.service';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, provideTranslateService } from '@ngx-translate/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 import { Observable, of } from 'rxjs';
 
@@ -31,17 +31,17 @@ describe('AiComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        AiComponent,
-        TranslateModule.forRoot({
-          loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
-        }),
+        AiComponent
       ],
       providers: [
         { provide: SeoService, useValue: mockSeoService },
         { provide: AiService, useValue: createMockAiService() },
         { provide: GsapService, useValue: createMockGsapService() },
         { provide: PlatformService, useValue: createMockPlatformService(false) },
-      ],
+          provideTranslateService({
+                    loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
+                  })
+    ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AiComponent);

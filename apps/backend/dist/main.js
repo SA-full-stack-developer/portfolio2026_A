@@ -1,39 +1,27 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ({
+/******/ 	var __webpack_modules__ = ([
+/* 0 */,
+/* 1 */
+/***/ ((module) => {
 
-/***/ "./src/app.controller.ts"
-/*!*******************************!*\
-  !*** ./src/app.controller.ts ***!
-  \*******************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+module.exports = require("@nestjs/swagger");
 
+/***/ }),
+/* 2 */
+/***/ ((module) => {
 
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AppController = void 0;
-__webpack_require__(/*! reflect-metadata */ "reflect-metadata");
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-let AppController = class AppController {
-};
-exports.AppController = AppController;
-exports.AppController = AppController = __decorate([
-    (0, common_1.Controller)()
-], AppController);
+module.exports = require("@nestjs/common");
 
+/***/ }),
+/* 3 */
+/***/ ((module) => {
 
-/***/ },
+module.exports = require("@nestjs/core");
 
-/***/ "./src/app.module.ts"
-/*!***************************!*\
-  !*** ./src/app.module.ts ***!
-  \***************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ }),
+/* 4 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -44,17 +32,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AppModule = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const config_1 = __webpack_require__(/*! @nestjs/config */ "@nestjs/config");
-const app_controller_1 = __webpack_require__(/*! ./app.controller */ "./src/app.controller.ts");
-const app_service_1 = __webpack_require__(/*! ./app.service */ "./src/app.service.ts");
-const auth_module_1 = __webpack_require__(/*! ./auth/auth.module */ "./src/auth/auth.module.ts");
-const companies_module_1 = __webpack_require__(/*! ./companies/companies.module */ "./src/companies/companies.module.ts");
-const experience_module_1 = __webpack_require__(/*! ./experience/experience.module */ "./src/experience/experience.module.ts");
-const projects_module_1 = __webpack_require__(/*! ./projects/projects.module */ "./src/projects/projects.module.ts");
-const skills_module_1 = __webpack_require__(/*! ./skills/skills.module */ "./src/skills/skills.module.ts");
-const stats_module_1 = __webpack_require__(/*! ./stats/stats.module */ "./src/stats/stats.module.ts");
-const status_module_1 = __webpack_require__(/*! ./status/status.module */ "./src/status/status.module.ts");
+const common_1 = __webpack_require__(2);
+const config_1 = __webpack_require__(5);
+const app_controller_1 = __webpack_require__(6);
+const app_service_1 = __webpack_require__(8);
+const auth_module_1 = __webpack_require__(9);
+const companies_module_1 = __webpack_require__(14);
+const experience_module_1 = __webpack_require__(18);
+const projects_module_1 = __webpack_require__(19);
+const skills_module_1 = __webpack_require__(23);
+const stats_module_1 = __webpack_require__(30);
+const status_module_1 = __webpack_require__(34);
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -79,13 +67,44 @@ exports.AppModule = AppModule = __decorate([
 ], AppModule);
 
 
-/***/ },
+/***/ }),
+/* 5 */
+/***/ ((module) => {
 
-/***/ "./src/app.service.ts"
-/*!****************************!*\
-  !*** ./src/app.service.ts ***!
-  \****************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+module.exports = require("@nestjs/config");
+
+/***/ }),
+/* 6 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AppController = void 0;
+__webpack_require__(7);
+const common_1 = __webpack_require__(2);
+let AppController = class AppController {
+};
+exports.AppController = AppController;
+exports.AppController = AppController = __decorate([
+    (0, common_1.Controller)()
+], AppController);
+
+
+/***/ }),
+/* 7 */
+/***/ ((module) => {
+
+module.exports = require("reflect-metadata");
+
+/***/ }),
+/* 8 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -96,7 +115,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AppService = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const common_1 = __webpack_require__(2);
 let AppService = class AppService {
 };
 exports.AppService = AppService;
@@ -105,13 +124,38 @@ exports.AppService = AppService = __decorate([
 ], AppService);
 
 
-/***/ },
+/***/ }),
+/* 9 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-/***/ "./src/auth/auth.controller.ts"
-/*!*************************************!*\
-  !*** ./src/auth/auth.controller.ts ***!
-  \*************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AuthModule = void 0;
+const common_1 = __webpack_require__(2);
+const config_1 = __webpack_require__(5);
+const auth_controller_1 = __webpack_require__(10);
+const auth_service_1 = __webpack_require__(11);
+let AuthModule = class AuthModule {
+};
+exports.AuthModule = AuthModule;
+exports.AuthModule = AuthModule = __decorate([
+    (0, common_1.Module)({
+        imports: [config_1.ConfigModule],
+        controllers: [auth_controller_1.AuthController],
+        providers: [auth_service_1.AuthService],
+    })
+], AuthModule);
+
+
+/***/ }),
+/* 10 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -129,9 +173,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AuthController = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const auth_service_1 = __webpack_require__(/*! ./auth.service */ "./src/auth/auth.service.ts");
-const validate_token_dto_1 = __webpack_require__(/*! ./dto/validate-token.dto */ "./src/auth/dto/validate-token.dto.ts");
+const common_1 = __webpack_require__(2);
+const auth_service_1 = __webpack_require__(11);
+const validate_token_dto_1 = __webpack_require__(12);
 let AuthController = class AuthController {
     authService;
     constructor(authService) {
@@ -155,46 +199,9 @@ exports.AuthController = AuthController = __decorate([
 ], AuthController);
 
 
-/***/ },
-
-/***/ "./src/auth/auth.module.ts"
-/*!*********************************!*\
-  !*** ./src/auth/auth.module.ts ***!
-  \*********************************/
-(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AuthModule = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const config_1 = __webpack_require__(/*! @nestjs/config */ "@nestjs/config");
-const auth_controller_1 = __webpack_require__(/*! ./auth.controller */ "./src/auth/auth.controller.ts");
-const auth_service_1 = __webpack_require__(/*! ./auth.service */ "./src/auth/auth.service.ts");
-let AuthModule = class AuthModule {
-};
-exports.AuthModule = AuthModule;
-exports.AuthModule = AuthModule = __decorate([
-    (0, common_1.Module)({
-        imports: [config_1.ConfigModule],
-        controllers: [auth_controller_1.AuthController],
-        providers: [auth_service_1.AuthService],
-    })
-], AuthModule);
-
-
-/***/ },
-
-/***/ "./src/auth/auth.service.ts"
-/*!**********************************!*\
-  !*** ./src/auth/auth.service.ts ***!
-  \**********************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ }),
+/* 11 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -209,8 +216,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AuthService = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const config_1 = __webpack_require__(/*! @nestjs/config */ "@nestjs/config");
+const common_1 = __webpack_require__(2);
+const config_1 = __webpack_require__(5);
 let AuthService = class AuthService {
     config;
     constructor(config) {
@@ -228,13 +235,9 @@ exports.AuthService = AuthService = __decorate([
 ], AuthService);
 
 
-/***/ },
-
-/***/ "./src/auth/dto/validate-token.dto.ts"
-/*!********************************************!*\
-  !*** ./src/auth/dto/validate-token.dto.ts ***!
-  \********************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ }),
+/* 12 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -248,7 +251,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ValidateTokenDto = void 0;
-const class_validator_1 = __webpack_require__(/*! class-validator */ "class-validator");
+const class_validator_1 = __webpack_require__(13);
 class ValidateTokenDto {
     token;
 }
@@ -260,13 +263,15 @@ __decorate([
 ], ValidateTokenDto.prototype, "token", void 0);
 
 
-/***/ },
+/***/ }),
+/* 13 */
+/***/ ((module) => {
 
-/***/ "./src/common/interceptors/transform.interceptor.ts"
-/*!**********************************************************!*\
-  !*** ./src/common/interceptors/transform.interceptor.ts ***!
-  \**********************************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+module.exports = require("class-validator");
+
+/***/ }),
+/* 14 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -276,30 +281,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TransformInterceptor = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const rxjs_1 = __webpack_require__(/*! rxjs */ "rxjs");
-let TransformInterceptor = class TransformInterceptor {
-    intercept(context, next) {
-        return next.handle().pipe((0, rxjs_1.map)((data) => ({
-            data,
-            timestamp: new Date().toISOString(),
-        })));
-    }
+exports.CompaniesModule = void 0;
+const common_1 = __webpack_require__(2);
+const companies_controller_1 = __webpack_require__(15);
+const companies_service_1 = __webpack_require__(16);
+let CompaniesModule = class CompaniesModule {
 };
-exports.TransformInterceptor = TransformInterceptor;
-exports.TransformInterceptor = TransformInterceptor = __decorate([
-    (0, common_1.Injectable)()
-], TransformInterceptor);
+exports.CompaniesModule = CompaniesModule;
+exports.CompaniesModule = CompaniesModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [companies_controller_1.CompaniesController],
+        providers: [companies_service_1.CompaniesService],
+        exports: [companies_service_1.CompaniesService],
+    })
+], CompaniesModule);
 
 
-/***/ },
-
-/***/ "./src/companies/companies.controller.ts"
-/*!***********************************************!*\
-  !*** ./src/companies/companies.controller.ts ***!
-  \***********************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ }),
+/* 15 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -317,9 +317,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.CompaniesController = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const companies_service_1 = __webpack_require__(/*! ./companies.service */ "./src/companies/companies.service.ts");
+const common_1 = __webpack_require__(2);
+const swagger_1 = __webpack_require__(1);
+const companies_service_1 = __webpack_require__(16);
 let CompaniesController = class CompaniesController {
     companiesService;
     constructor(companiesService) {
@@ -354,45 +354,9 @@ exports.CompaniesController = CompaniesController = __decorate([
 ], CompaniesController);
 
 
-/***/ },
-
-/***/ "./src/companies/companies.module.ts"
-/*!*******************************************!*\
-  !*** ./src/companies/companies.module.ts ***!
-  \*******************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CompaniesModule = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const companies_controller_1 = __webpack_require__(/*! ./companies.controller */ "./src/companies/companies.controller.ts");
-const companies_service_1 = __webpack_require__(/*! ./companies.service */ "./src/companies/companies.service.ts");
-let CompaniesModule = class CompaniesModule {
-};
-exports.CompaniesModule = CompaniesModule;
-exports.CompaniesModule = CompaniesModule = __decorate([
-    (0, common_1.Module)({
-        controllers: [companies_controller_1.CompaniesController],
-        providers: [companies_service_1.CompaniesService],
-        exports: [companies_service_1.CompaniesService],
-    })
-], CompaniesModule);
-
-
-/***/ },
-
-/***/ "./src/companies/companies.service.ts"
-/*!********************************************!*\
-  !*** ./src/companies/companies.service.ts ***!
-  \********************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ }),
+/* 16 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -403,8 +367,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.CompaniesService = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const companies_data_1 = __webpack_require__(/*! ./data/companies.data */ "./src/companies/data/companies.data.ts");
+const common_1 = __webpack_require__(2);
+const companies_data_1 = __webpack_require__(17);
 let CompaniesService = class CompaniesService {
     companies = companies_data_1.COMPANIES_DATA;
     findAll() {
@@ -420,13 +384,9 @@ exports.CompaniesService = CompaniesService = __decorate([
 ], CompaniesService);
 
 
-/***/ },
-
-/***/ "./src/companies/data/companies.data.ts"
-/*!**********************************************!*\
-  !*** ./src/companies/data/companies.data.ts ***!
-  \**********************************************/
-(__unused_webpack_module, exports) {
+/***/ }),
+/* 17 */
+/***/ ((__unused_webpack_module, exports) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
@@ -441,200 +401,70 @@ exports.COMPANIES_DATA = [
 ];
 
 
-/***/ },
-
-/***/ "./src/experience/data/experiences.data.ts"
-/*!*************************************************!*\
-  !*** ./src/experience/data/experiences.data.ts ***!
-  \*************************************************/
-(__unused_webpack_module, exports) {
+/***/ }),
+/* 18 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.EXPERIENCES_DATA = void 0;
-exports.EXPERIENCES_DATA = [
-    {
-        id: '1',
-        companyId: '1',
-        showCompany: true,
-        roles: [
-            'EXPERIENCES.ROLES.FRONTEND_DEV',
-            'EXPERIENCES.ROLES.GAME_INTERFACES_DEV',
-        ],
-        startDate: new Date('2024-10'),
-        endDate: new Date('2026-01'),
-        description: 'EXPERIENCES.DESCRIPTIONS.MOKENS_LEAGUE',
-        technologyIds: [
-            '1',
-            '2',
-            '5',
-            '3',
-            '13',
-            '14',
-            '10',
-            '15',
-            '24',
-            '30',
-            '17',
-            '7',
-            '33',
-            '4',
-            '42',
-            '20',
-            '9',
-            '18',
-            '23',
-            '25',
-            '21',
-            '22',
-        ],
-        projectIds: ['1', '2'],
-    },
-    {
-        id: '2',
-        companyId: '2',
-        showCompany: true,
-        roles: ['EXPERIENCES.ROLES.FRONTEND_DEV'],
-        startDate: new Date('2020-04'),
-        endDate: new Date('2024-10'),
-        description: 'EXPERIENCES.DESCRIPTIONS.MEMONDO',
-        technologyIds: [
-            '1',
-            '2',
-            '3',
-            '26',
-            '5',
-            '7',
-            '28',
-            '14',
-            '10',
-            '15',
-            '30',
-            '24',
-            '31',
-            '32',
-            '4',
-            '42',
-        ],
-        projectIds: ['3'],
-    },
-    {
-        id: '3',
-        companyId: '3',
-        showCompany: true,
-        roles: ['EXPERIENCES.ROLES.FULLSTACK_DEV'],
-        startDate: new Date('2016-09'),
-        endDate: new Date('2020-04'),
-        description: 'EXPERIENCES.DESCRIPTIONS.EVERIS',
-        technologyIds: [
-            '1',
-            '34',
-            '2',
-            '3',
-            '5',
-            '7',
-            '10',
-            '24',
-            '15',
-            '29',
-            '28',
-            '14',
-            '35',
-            '33',
-            '37',
-            '38',
-            '39',
-            '4',
-            '42',
-        ],
-        projectIds: ['4', '5', '6'],
-    },
-    {
-        id: '4',
-        companyId: '6',
-        showCompany: true,
-        roles: ['EXPERIENCES.ROLES.FULLSTACK_DEV'],
-        dates: [
-            {
-                startDate: new Date('2013-09'),
-                endDate: new Date('2014-08'),
-            },
-            {
-                startDate: new Date('2015-10'),
-                endDate: new Date('2017-01'),
-            },
-            {
-                startDate: new Date('2023-08'),
-                endDate: new Date('2024-12'),
-            },
-        ],
-        description: 'EXPERIENCES.DESCRIPTIONS.FREELANCE',
-        technologyIds: [
-            '1',
-            '14',
-            '28',
-            '2',
-            '5',
-            '26',
-            '7',
-            '3',
-            '24',
-            '15',
-            '30',
-            '40',
-            '10',
-            '41',
-            '42',
-            '43',
-            '44',
-            '4',
-            '6',
-            '8',
-            '32',
-        ],
-        projectIds: [
-            '9',
-            '10',
-            '11',
-            '12',
-            '13',
-            '14',
-            '15',
-            '16',
-            '17',
-            '18',
-            '19',
-        ],
-    },
-    {
-        id: '5',
-        companyId: '6',
-        showCompany: false,
-        roles: ['EXPERIENCES.ROLES.FULLSTACK_DEV'],
-        dates: [
-            {
-                startDate: new Date('2013-03'),
-                endDate: new Date('2013-06'),
-            },
-            {
-                startDate: new Date('2015-12'),
-                endDate: new Date('2016-06'),
-            },
-        ],
-        description: 'EXPERIENCES.DESCRIPTIONS.PRACTICES',
-        technologyIds: ['4', '44', '45'],
-        projectIds: ['7', '8'],
-    },
-];
+exports.ExperienceModule = void 0;
+const common_1 = __webpack_require__(2);
+const companies_module_1 = __webpack_require__(14);
+const projects_module_1 = __webpack_require__(19);
+const skills_module_1 = __webpack_require__(23);
+const experience_controller_1 = __webpack_require__(27);
+const experience_service_1 = __webpack_require__(28);
+let ExperienceModule = class ExperienceModule {
+};
+exports.ExperienceModule = ExperienceModule;
+exports.ExperienceModule = ExperienceModule = __decorate([
+    (0, common_1.Module)({
+        imports: [companies_module_1.CompaniesModule, projects_module_1.ProjectsModule, skills_module_1.SkillsModule],
+        controllers: [experience_controller_1.ExperienceController],
+        providers: [experience_service_1.ExperienceService],
+    })
+], ExperienceModule);
 
 
-/***/ },
+/***/ }),
+/* 19 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-/***/ "./src/experience/experience.controller.ts"
-/*!*************************************************!*\
-  !*** ./src/experience/experience.controller.ts ***!
-  \*************************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ProjectsModule = void 0;
+const common_1 = __webpack_require__(2);
+const companies_module_1 = __webpack_require__(14);
+const projects_controller_1 = __webpack_require__(20);
+const projects_service_1 = __webpack_require__(21);
+let ProjectsModule = class ProjectsModule {
+};
+exports.ProjectsModule = ProjectsModule;
+exports.ProjectsModule = ProjectsModule = __decorate([
+    (0, common_1.Module)({
+        imports: [companies_module_1.CompaniesModule],
+        controllers: [projects_controller_1.ProjectsController],
+        providers: [projects_service_1.ProjectsService],
+        exports: [projects_service_1.ProjectsService],
+    })
+], ProjectsModule);
+
+
+/***/ }),
+/* 20 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -651,88 +481,47 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ExperienceController = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const experience_service_1 = __webpack_require__(/*! ./experience.service */ "./src/experience/experience.service.ts");
-let ExperienceController = class ExperienceController {
-    experienceService;
-    constructor(experienceService) {
-        this.experienceService = experienceService;
+exports.ProjectsController = void 0;
+const common_1 = __webpack_require__(2);
+const swagger_1 = __webpack_require__(1);
+const projects_service_1 = __webpack_require__(21);
+let ProjectsController = class ProjectsController {
+    projectsService;
+    constructor(projectsService) {
+        this.projectsService = projectsService;
     }
     findAll() {
-        return this.experienceService.findAll();
+        return this.projectsService.findAll();
     }
     findOne(id) {
-        return this.experienceService.findOne(id);
+        return this.projectsService.findOne(id);
     }
 };
-exports.ExperienceController = ExperienceController;
+exports.ProjectsController = ProjectsController;
 __decorate([
     (0, common_1.Get)(),
-    (0, swagger_1.ApiOperation)({ summary: 'Listar toda la trayectoria profesional' }),
+    (0, swagger_1.ApiOperation)({ summary: 'Listar todos los proyectos del portfolio' }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], ExperienceController.prototype, "findAll", null);
+], ProjectsController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Obtener detalles de una experiencia específica por ID',
-    }),
+    (0, swagger_1.ApiOperation)({ summary: 'Obtener la ficha técnica de un proyecto por ID' }),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], ExperienceController.prototype, "findOne", null);
-exports.ExperienceController = ExperienceController = __decorate([
-    (0, common_1.Controller)('experience'),
-    __metadata("design:paramtypes", [typeof (_a = typeof experience_service_1.ExperienceService !== "undefined" && experience_service_1.ExperienceService) === "function" ? _a : Object])
-], ExperienceController);
+], ProjectsController.prototype, "findOne", null);
+exports.ProjectsController = ProjectsController = __decorate([
+    (0, common_1.Controller)('projects'),
+    __metadata("design:paramtypes", [typeof (_a = typeof projects_service_1.ProjectsService !== "undefined" && projects_service_1.ProjectsService) === "function" ? _a : Object])
+], ProjectsController);
 
 
-/***/ },
-
-/***/ "./src/experience/experience.module.ts"
-/*!*********************************************!*\
-  !*** ./src/experience/experience.module.ts ***!
-  \*********************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ExperienceModule = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const companies_module_1 = __webpack_require__(/*! ../companies/companies.module */ "./src/companies/companies.module.ts");
-const projects_module_1 = __webpack_require__(/*! ../projects/projects.module */ "./src/projects/projects.module.ts");
-const skills_module_1 = __webpack_require__(/*! ../skills/skills.module */ "./src/skills/skills.module.ts");
-const experience_controller_1 = __webpack_require__(/*! ./experience.controller */ "./src/experience/experience.controller.ts");
-const experience_service_1 = __webpack_require__(/*! ./experience.service */ "./src/experience/experience.service.ts");
-let ExperienceModule = class ExperienceModule {
-};
-exports.ExperienceModule = ExperienceModule;
-exports.ExperienceModule = ExperienceModule = __decorate([
-    (0, common_1.Module)({
-        imports: [companies_module_1.CompaniesModule, projects_module_1.ProjectsModule, skills_module_1.SkillsModule],
-        controllers: [experience_controller_1.ExperienceController],
-        providers: [experience_service_1.ExperienceService],
-    })
-], ExperienceModule);
-
-
-/***/ },
-
-/***/ "./src/experience/experience.service.ts"
-/*!**********************************************!*\
-  !*** ./src/experience/experience.service.ts ***!
-  \**********************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ }),
+/* 21 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -744,58 +533,52 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var _a, _b, _c;
+var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ExperienceService = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const companies_service_1 = __webpack_require__(/*! ../companies/companies.service */ "./src/companies/companies.service.ts");
-const projects_service_1 = __webpack_require__(/*! ../projects/projects.service */ "./src/projects/projects.service.ts");
-const skills_service_1 = __webpack_require__(/*! ../skills/skills.service */ "./src/skills/skills.service.ts");
-const experiences_data_1 = __webpack_require__(/*! ./data/experiences.data */ "./src/experience/data/experiences.data.ts");
-let ExperienceService = class ExperienceService {
+exports.ProjectsService = void 0;
+const common_1 = __webpack_require__(2);
+const companies_service_1 = __webpack_require__(16);
+const projects_data_1 = __webpack_require__(22);
+let ProjectsService = class ProjectsService {
     companiesService;
-    projectsService;
-    skillsService;
-    constructor(companiesService, projectsService, skillsService) {
+    constructor(companiesService) {
         this.companiesService = companiesService;
-        this.projectsService = projectsService;
-        this.skillsService = skillsService;
     }
-    experiences = experiences_data_1.EXPERIENCES_DATA;
+    projects = projects_data_1.PROJECTS_DATA;
     findAll() {
-        return this.experiences.map((experience) => {
-            return this.getExperienceResponseDto(experience);
+        return this.projects.map((project) => {
+            return this.getProjectResponseDto(project);
         });
     }
     findOne(id) {
-        const experience = this.experiences.find((e) => e.id === id);
-        if (!experience)
-            throw new common_1.NotFoundException(`Experience ${id} not found`);
-        return this.getExperienceResponseDto(experience);
+        const project = this.projects.find((p) => p.id === id);
+        if (!project)
+            throw new common_1.NotFoundException(`Project ${id} not found`);
+        return this.getProjectResponseDto(project);
     }
-    getExperienceResponseDto(experience) {
+    findByIds(ids) {
+        const projects = this.projects.filter((p) => ids.includes(p.id));
+        return projects.map((project) => {
+            return this.getProjectResponseDto(project);
+        });
+    }
+    getProjectResponseDto(project) {
         return {
-            ...experience,
-            projects: this.projectsService.findByIds(experience.projectIds) ?? [],
-            company: this.companiesService.findOne(experience.companyId),
-            skills: this.skillsService.findByIds(experience.technologyIds) ?? [],
+            ...project,
+            company: this.companiesService.findOne(project.companyId),
         };
     }
 };
-exports.ExperienceService = ExperienceService;
-exports.ExperienceService = ExperienceService = __decorate([
+exports.ProjectsService = ProjectsService;
+exports.ProjectsService = ProjectsService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof companies_service_1.CompaniesService !== "undefined" && companies_service_1.CompaniesService) === "function" ? _a : Object, typeof (_b = typeof projects_service_1.ProjectsService !== "undefined" && projects_service_1.ProjectsService) === "function" ? _b : Object, typeof (_c = typeof skills_service_1.SkillsService !== "undefined" && skills_service_1.SkillsService) === "function" ? _c : Object])
-], ExperienceService);
+    __metadata("design:paramtypes", [typeof (_a = typeof companies_service_1.CompaniesService !== "undefined" && companies_service_1.CompaniesService) === "function" ? _a : Object])
+], ProjectsService);
 
 
-/***/ },
-
-/***/ "./src/projects/data/projects.data.ts"
-/*!********************************************!*\
-  !*** ./src/projects/data/projects.data.ts ***!
-  \********************************************/
-(__unused_webpack_module, exports) {
+/***/ }),
+/* 22 */
+/***/ ((__unused_webpack_module, exports) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
@@ -918,13 +701,37 @@ exports.PROJECTS_DATA = [
 ];
 
 
-/***/ },
+/***/ }),
+/* 23 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-/***/ "./src/projects/projects.controller.ts"
-/*!*********************************************!*\
-  !*** ./src/projects/projects.controller.ts ***!
-  \*********************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SkillsModule = void 0;
+const common_1 = __webpack_require__(2);
+const skills_controller_1 = __webpack_require__(24);
+const skills_service_1 = __webpack_require__(25);
+let SkillsModule = class SkillsModule {
+};
+exports.SkillsModule = SkillsModule;
+exports.SkillsModule = SkillsModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [skills_controller_1.SkillsController],
+        providers: [skills_service_1.SkillsService],
+        exports: [skills_service_1.SkillsService],
+    })
+], SkillsModule);
+
+
+/***/ }),
+/* 24 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -941,51 +748,51 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ProjectsController = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const projects_service_1 = __webpack_require__(/*! ./projects.service */ "./src/projects/projects.service.ts");
-let ProjectsController = class ProjectsController {
-    projectsService;
-    constructor(projectsService) {
-        this.projectsService = projectsService;
+exports.SkillsController = void 0;
+const common_1 = __webpack_require__(2);
+const swagger_1 = __webpack_require__(1);
+const skills_service_1 = __webpack_require__(25);
+let SkillsController = class SkillsController {
+    skillsService;
+    constructor(skillsService) {
+        this.skillsService = skillsService;
     }
-    findAll() {
-        return this.projectsService.findAll();
+    findAll(category, onlyHighlighted) {
+        const highlighted = onlyHighlighted === 'true';
+        return this.skillsService.findAll(category, highlighted);
     }
-    findOne(id) {
-        return this.projectsService.findOne(id);
+    findAllCategories() {
+        return this.skillsService.getCategories();
     }
 };
-exports.ProjectsController = ProjectsController;
+exports.SkillsController = SkillsController;
 __decorate([
     (0, common_1.Get)(),
-    (0, swagger_1.ApiOperation)({ summary: 'Listar todos los proyectos del portfolio' }),
+    (0, swagger_1.ApiOperation)({ summary: 'Obtener listado completo de habilidades' }),
+    __param(0, (0, common_1.Query)('category')),
+    __param(1, (0, common_1.Query)('onlyHighlighted')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:returntype", void 0)
+], SkillsController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('categories'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Obtener las categorías de habilidades (Frontend, Backend, etc.)',
+    }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], ProjectsController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Get)(':id'),
-    (0, swagger_1.ApiOperation)({ summary: 'Obtener la ficha técnica de un proyecto por ID' }),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], ProjectsController.prototype, "findOne", null);
-exports.ProjectsController = ProjectsController = __decorate([
-    (0, common_1.Controller)('projects'),
-    __metadata("design:paramtypes", [typeof (_a = typeof projects_service_1.ProjectsService !== "undefined" && projects_service_1.ProjectsService) === "function" ? _a : Object])
-], ProjectsController);
+], SkillsController.prototype, "findAllCategories", null);
+exports.SkillsController = SkillsController = __decorate([
+    (0, common_1.Controller)('skills'),
+    __metadata("design:paramtypes", [typeof (_a = typeof skills_service_1.SkillsService !== "undefined" && skills_service_1.SkillsService) === "function" ? _a : Object])
+], SkillsController);
 
 
-/***/ },
-
-/***/ "./src/projects/projects.module.ts"
-/*!*****************************************!*\
-  !*** ./src/projects/projects.module.ts ***!
-  \*****************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ }),
+/* 25 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -995,92 +802,45 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ProjectsModule = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const companies_module_1 = __webpack_require__(/*! ../companies/companies.module */ "./src/companies/companies.module.ts");
-const projects_controller_1 = __webpack_require__(/*! ./projects.controller */ "./src/projects/projects.controller.ts");
-const projects_service_1 = __webpack_require__(/*! ./projects.service */ "./src/projects/projects.service.ts");
-let ProjectsModule = class ProjectsModule {
-};
-exports.ProjectsModule = ProjectsModule;
-exports.ProjectsModule = ProjectsModule = __decorate([
-    (0, common_1.Module)({
-        imports: [companies_module_1.CompaniesModule],
-        controllers: [projects_controller_1.ProjectsController],
-        providers: [projects_service_1.ProjectsService],
-        exports: [projects_service_1.ProjectsService],
-    })
-], ProjectsModule);
-
-
-/***/ },
-
-/***/ "./src/projects/projects.service.ts"
-/*!******************************************!*\
-  !*** ./src/projects/projects.service.ts ***!
-  \******************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ProjectsService = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const companies_service_1 = __webpack_require__(/*! ../companies/companies.service */ "./src/companies/companies.service.ts");
-const projects_data_1 = __webpack_require__(/*! ./data/projects.data */ "./src/projects/data/projects.data.ts");
-let ProjectsService = class ProjectsService {
-    companiesService;
-    constructor(companiesService) {
-        this.companiesService = companiesService;
-    }
-    projects = projects_data_1.PROJECTS_DATA;
-    findAll() {
-        return this.projects.map((project) => {
-            return this.getProjectResponseDto(project);
+exports.SkillsService = void 0;
+const common_1 = __webpack_require__(2);
+const skills_data_1 = __webpack_require__(26);
+let SkillsService = class SkillsService {
+    skills = skills_data_1.SKILLS_DATA;
+    findAll(category, onlyHighlighted) {
+        let filtered = [...this.skills];
+        if (category && category !== 'all') {
+            filtered = filtered.filter((s) => s.category === category);
+        }
+        if (onlyHighlighted) {
+            filtered = filtered.filter((s) => s.highlighted);
+        }
+        return filtered.sort((a, b) => {
+            if (a.highlighted !== b.highlighted)
+                return a.highlighted ? -1 : 1;
+            return b.level - a.level;
         });
     }
-    findOne(id) {
-        const project = this.projects.find((p) => p.id === id);
-        if (!project)
-            throw new common_1.NotFoundException(`Project ${id} not found`);
-        return this.getProjectResponseDto(project);
+    getCategories() {
+        const categories = this.skills.map((s) => s.category);
+        return [...new Set(categories)];
     }
     findByIds(ids) {
-        const projects = this.projects.filter((p) => ids.includes(p.id));
-        return projects.map((project) => {
-            return this.getProjectResponseDto(project);
-        });
+        return this.skills.filter((s) => ids.includes(s.id));
     }
-    getProjectResponseDto(project) {
-        return {
-            ...project,
-            company: this.companiesService.findOne(project.companyId),
-        };
+    getHighlightedCount() {
+        return this.skills.filter((s) => s.highlighted).length;
     }
 };
-exports.ProjectsService = ProjectsService;
-exports.ProjectsService = ProjectsService = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof companies_service_1.CompaniesService !== "undefined" && companies_service_1.CompaniesService) === "function" ? _a : Object])
-], ProjectsService);
+exports.SkillsService = SkillsService;
+exports.SkillsService = SkillsService = __decorate([
+    (0, common_1.Injectable)()
+], SkillsService);
 
 
-/***/ },
-
-/***/ "./src/skills/data/skills.data.ts"
-/*!****************************************!*\
-  !*** ./src/skills/data/skills.data.ts ***!
-  \****************************************/
-(__unused_webpack_module, exports) {
+/***/ }),
+/* 26 */
+/***/ ((__unused_webpack_module, exports) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
@@ -1494,13 +1254,9 @@ exports.SKILLS_DATA = [
 ];
 
 
-/***/ },
-
-/***/ "./src/skills/skills.controller.ts"
-/*!*****************************************!*\
-  !*** ./src/skills/skills.controller.ts ***!
-  \*****************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ }),
+/* 27 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1517,87 +1273,49 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.SkillsController = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const skills_service_1 = __webpack_require__(/*! ./skills.service */ "./src/skills/skills.service.ts");
-let SkillsController = class SkillsController {
-    skillsService;
-    constructor(skillsService) {
-        this.skillsService = skillsService;
+exports.ExperienceController = void 0;
+const common_1 = __webpack_require__(2);
+const swagger_1 = __webpack_require__(1);
+const experience_service_1 = __webpack_require__(28);
+let ExperienceController = class ExperienceController {
+    experienceService;
+    constructor(experienceService) {
+        this.experienceService = experienceService;
     }
-    findAll(category, onlyHighlighted) {
-        const highlighted = onlyHighlighted === 'true';
-        return this.skillsService.findAll(category, highlighted);
+    findAll() {
+        return this.experienceService.findAll();
     }
-    findAllCategories() {
-        return this.skillsService.getCategories();
+    findOne(id) {
+        return this.experienceService.findOne(id);
     }
 };
-exports.SkillsController = SkillsController;
+exports.ExperienceController = ExperienceController;
 __decorate([
     (0, common_1.Get)(),
-    (0, swagger_1.ApiOperation)({ summary: 'Obtener listado completo de habilidades' }),
-    __param(0, (0, common_1.Query)('category')),
-    __param(1, (0, common_1.Query)('onlyHighlighted')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String]),
-    __metadata("design:returntype", void 0)
-], SkillsController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Get)('categories'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Obtener las categorías de habilidades (Frontend, Backend, etc.)',
-    }),
+    (0, swagger_1.ApiOperation)({ summary: 'Listar toda la trayectoria profesional' }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], SkillsController.prototype, "findAllCategories", null);
-exports.SkillsController = SkillsController = __decorate([
-    (0, common_1.Controller)('skills'),
-    __metadata("design:paramtypes", [typeof (_a = typeof skills_service_1.SkillsService !== "undefined" && skills_service_1.SkillsService) === "function" ? _a : Object])
-], SkillsController);
+], ExperienceController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Obtener detalles de una experiencia específica por ID',
+    }),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], ExperienceController.prototype, "findOne", null);
+exports.ExperienceController = ExperienceController = __decorate([
+    (0, common_1.Controller)('experience'),
+    __metadata("design:paramtypes", [typeof (_a = typeof experience_service_1.ExperienceService !== "undefined" && experience_service_1.ExperienceService) === "function" ? _a : Object])
+], ExperienceController);
 
 
-/***/ },
-
-/***/ "./src/skills/skills.module.ts"
-/*!*************************************!*\
-  !*** ./src/skills/skills.module.ts ***!
-  \*************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.SkillsModule = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const skills_controller_1 = __webpack_require__(/*! ./skills.controller */ "./src/skills/skills.controller.ts");
-const skills_service_1 = __webpack_require__(/*! ./skills.service */ "./src/skills/skills.service.ts");
-let SkillsModule = class SkillsModule {
-};
-exports.SkillsModule = SkillsModule;
-exports.SkillsModule = SkillsModule = __decorate([
-    (0, common_1.Module)({
-        controllers: [skills_controller_1.SkillsController],
-        providers: [skills_service_1.SkillsService],
-        exports: [skills_service_1.SkillsService],
-    })
-], SkillsModule);
-
-
-/***/ },
-
-/***/ "./src/skills/skills.service.ts"
-/*!**************************************!*\
-  !*** ./src/skills/skills.service.ts ***!
-  \**************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ }),
+/* 28 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1606,74 +1324,269 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.SkillsService = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const skills_data_1 = __webpack_require__(/*! ./data/skills.data */ "./src/skills/data/skills.data.ts");
-let SkillsService = class SkillsService {
-    skills = skills_data_1.SKILLS_DATA;
-    findAll(category, onlyHighlighted) {
-        let filtered = [...this.skills];
-        if (category && category !== 'all') {
-            filtered = filtered.filter((s) => s.category === category);
-        }
-        if (onlyHighlighted) {
-            filtered = filtered.filter((s) => s.highlighted);
-        }
-        return filtered.sort((a, b) => {
-            if (a.highlighted !== b.highlighted)
-                return a.highlighted ? -1 : 1;
-            return b.level - a.level;
+exports.ExperienceService = void 0;
+const common_1 = __webpack_require__(2);
+const companies_service_1 = __webpack_require__(16);
+const projects_service_1 = __webpack_require__(21);
+const skills_service_1 = __webpack_require__(25);
+const experiences_data_1 = __webpack_require__(29);
+let ExperienceService = class ExperienceService {
+    companiesService;
+    projectsService;
+    skillsService;
+    constructor(companiesService, projectsService, skillsService) {
+        this.companiesService = companiesService;
+        this.projectsService = projectsService;
+        this.skillsService = skillsService;
+    }
+    experiences = experiences_data_1.EXPERIENCES_DATA;
+    findAll() {
+        return this.experiences.map((experience) => {
+            return this.getExperienceResponseDto(experience);
         });
     }
-    getCategories() {
-        const categories = this.skills.map((s) => s.category);
-        return [...new Set(categories)];
+    findOne(id) {
+        const experience = this.experiences.find((e) => e.id === id);
+        if (!experience)
+            throw new common_1.NotFoundException(`Experience ${id} not found`);
+        return this.getExperienceResponseDto(experience);
     }
-    findByIds(ids) {
-        return this.skills.filter((s) => ids.includes(s.id));
-    }
-    getHighlightedCount() {
-        return this.skills.filter((s) => s.highlighted).length;
+    getExperienceResponseDto(experience) {
+        return {
+            ...experience,
+            projects: this.projectsService.findByIds(experience.projectIds) ?? [],
+            company: this.companiesService.findOne(experience.companyId),
+            skills: this.skillsService.findByIds(experience.technologyIds) ?? [],
+        };
     }
 };
-exports.SkillsService = SkillsService;
-exports.SkillsService = SkillsService = __decorate([
-    (0, common_1.Injectable)()
-], SkillsService);
+exports.ExperienceService = ExperienceService;
+exports.ExperienceService = ExperienceService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof companies_service_1.CompaniesService !== "undefined" && companies_service_1.CompaniesService) === "function" ? _a : Object, typeof (_b = typeof projects_service_1.ProjectsService !== "undefined" && projects_service_1.ProjectsService) === "function" ? _b : Object, typeof (_c = typeof skills_service_1.SkillsService !== "undefined" && skills_service_1.SkillsService) === "function" ? _c : Object])
+], ExperienceService);
 
 
-/***/ },
-
-/***/ "./src/stats/constants/stat.constants.ts"
-/*!***********************************************!*\
-  !*** ./src/stats/constants/stat.constants.ts ***!
-  \***********************************************/
-(__unused_webpack_module, exports) {
+/***/ }),
+/* 29 */
+/***/ ((__unused_webpack_module, exports) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.StatCalculation = exports.StatKind = void 0;
-var StatKind;
-(function (StatKind) {
-    StatKind["STATIC"] = "static";
-    StatKind["DYNAMIC"] = "dynamic";
-    StatKind["SERVICE"] = "service";
-})(StatKind || (exports.StatKind = StatKind = {}));
-var StatCalculation;
-(function (StatCalculation) {
-    StatCalculation["YEARS"] = "years";
-    StatCalculation["DAYS"] = "days";
-})(StatCalculation || (exports.StatCalculation = StatCalculation = {}));
+exports.EXPERIENCES_DATA = void 0;
+exports.EXPERIENCES_DATA = [
+    {
+        id: '1',
+        companyId: '1',
+        showCompany: true,
+        roles: [
+            'EXPERIENCES.ROLES.FRONTEND_DEV',
+            'EXPERIENCES.ROLES.GAME_INTERFACES_DEV',
+        ],
+        startDate: new Date('2024-10'),
+        endDate: new Date('2026-01'),
+        description: 'EXPERIENCES.DESCRIPTIONS.MOKENS_LEAGUE',
+        technologyIds: [
+            '1',
+            '2',
+            '5',
+            '3',
+            '13',
+            '14',
+            '10',
+            '15',
+            '24',
+            '30',
+            '17',
+            '7',
+            '33',
+            '4',
+            '42',
+            '20',
+            '9',
+            '18',
+            '23',
+            '25',
+            '21',
+            '22',
+        ],
+        projectIds: ['1', '2'],
+    },
+    {
+        id: '2',
+        companyId: '2',
+        showCompany: true,
+        roles: ['EXPERIENCES.ROLES.FRONTEND_DEV'],
+        startDate: new Date('2020-04'),
+        endDate: new Date('2024-10'),
+        description: 'EXPERIENCES.DESCRIPTIONS.MEMONDO',
+        technologyIds: [
+            '1',
+            '2',
+            '3',
+            '26',
+            '5',
+            '7',
+            '28',
+            '14',
+            '10',
+            '15',
+            '30',
+            '24',
+            '31',
+            '32',
+            '4',
+            '42',
+        ],
+        projectIds: ['3'],
+    },
+    {
+        id: '3',
+        companyId: '3',
+        showCompany: true,
+        roles: ['EXPERIENCES.ROLES.FULLSTACK_DEV'],
+        startDate: new Date('2016-09'),
+        endDate: new Date('2020-04'),
+        description: 'EXPERIENCES.DESCRIPTIONS.EVERIS',
+        technologyIds: [
+            '1',
+            '34',
+            '2',
+            '3',
+            '5',
+            '7',
+            '10',
+            '24',
+            '15',
+            '29',
+            '28',
+            '14',
+            '35',
+            '33',
+            '37',
+            '38',
+            '39',
+            '4',
+            '42',
+        ],
+        projectIds: ['4', '5', '6'],
+    },
+    {
+        id: '4',
+        companyId: '6',
+        showCompany: true,
+        roles: ['EXPERIENCES.ROLES.FULLSTACK_DEV'],
+        dates: [
+            {
+                startDate: new Date('2013-09'),
+                endDate: new Date('2014-08'),
+            },
+            {
+                startDate: new Date('2015-10'),
+                endDate: new Date('2017-01'),
+            },
+            {
+                startDate: new Date('2023-08'),
+                endDate: new Date('2024-12'),
+            },
+        ],
+        description: 'EXPERIENCES.DESCRIPTIONS.FREELANCE',
+        technologyIds: [
+            '1',
+            '14',
+            '28',
+            '2',
+            '5',
+            '26',
+            '7',
+            '3',
+            '24',
+            '15',
+            '30',
+            '40',
+            '10',
+            '41',
+            '42',
+            '43',
+            '44',
+            '4',
+            '6',
+            '8',
+            '32',
+        ],
+        projectIds: [
+            '9',
+            '10',
+            '11',
+            '12',
+            '13',
+            '14',
+            '15',
+            '16',
+            '17',
+            '18',
+            '19',
+        ],
+    },
+    {
+        id: '5',
+        companyId: '6',
+        showCompany: false,
+        roles: ['EXPERIENCES.ROLES.FULLSTACK_DEV'],
+        dates: [
+            {
+                startDate: new Date('2013-03'),
+                endDate: new Date('2013-06'),
+            },
+            {
+                startDate: new Date('2015-12'),
+                endDate: new Date('2016-06'),
+            },
+        ],
+        description: 'EXPERIENCES.DESCRIPTIONS.PRACTICES',
+        technologyIds: ['4', '44', '45'],
+        projectIds: ['7', '8'],
+    },
+];
 
 
-/***/ },
+/***/ }),
+/* 30 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-/***/ "./src/stats/stats.controller.ts"
-/*!***************************************!*\
-  !*** ./src/stats/stats.controller.ts ***!
-  \***************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.StatsModule = void 0;
+const common_1 = __webpack_require__(2);
+const skills_module_1 = __webpack_require__(23);
+const stats_controller_1 = __webpack_require__(31);
+const stats_service_1 = __webpack_require__(32);
+let StatsModule = class StatsModule {
+};
+exports.StatsModule = StatsModule;
+exports.StatsModule = StatsModule = __decorate([
+    (0, common_1.Module)({
+        imports: [skills_module_1.SkillsModule],
+        controllers: [stats_controller_1.StatsController],
+        providers: [stats_service_1.StatsService],
+    })
+], StatsModule);
+
+
+/***/ }),
+/* 31 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1688,9 +1601,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.StatsController = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const stats_service_1 = __webpack_require__(/*! ./stats.service */ "./src/stats/stats.service.ts");
+const common_1 = __webpack_require__(2);
+const swagger_1 = __webpack_require__(1);
+const stats_service_1 = __webpack_require__(32);
 let StatsController = class StatsController {
     statsService;
     constructor(statsService) {
@@ -1716,46 +1629,9 @@ exports.StatsController = StatsController = __decorate([
 ], StatsController);
 
 
-/***/ },
-
-/***/ "./src/stats/stats.module.ts"
-/*!***********************************!*\
-  !*** ./src/stats/stats.module.ts ***!
-  \***********************************/
-(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.StatsModule = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const skills_module_1 = __webpack_require__(/*! ../skills/skills.module */ "./src/skills/skills.module.ts");
-const stats_controller_1 = __webpack_require__(/*! ./stats.controller */ "./src/stats/stats.controller.ts");
-const stats_service_1 = __webpack_require__(/*! ./stats.service */ "./src/stats/stats.service.ts");
-let StatsModule = class StatsModule {
-};
-exports.StatsModule = StatsModule;
-exports.StatsModule = StatsModule = __decorate([
-    (0, common_1.Module)({
-        imports: [skills_module_1.SkillsModule],
-        controllers: [stats_controller_1.StatsController],
-        providers: [stats_service_1.StatsService],
-    })
-], StatsModule);
-
-
-/***/ },
-
-/***/ "./src/stats/stats.service.ts"
-/*!************************************!*\
-  !*** ./src/stats/stats.service.ts ***!
-  \************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ }),
+/* 32 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1770,9 +1646,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.StatsService = void 0;
-const stat_constants_1 = __webpack_require__(/*! ./constants/stat.constants */ "./src/stats/constants/stat.constants.ts");
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const skills_service_1 = __webpack_require__(/*! ../skills/skills.service */ "./src/skills/skills.service.ts");
+const stat_constants_1 = __webpack_require__(33);
+const common_1 = __webpack_require__(2);
+const skills_service_1 = __webpack_require__(25);
 let StatsService = class StatsService {
     skillsService;
     constructor(skillsService) {
@@ -1864,13 +1740,94 @@ exports.StatsService = StatsService = __decorate([
 ], StatsService);
 
 
-/***/ },
+/***/ }),
+/* 33 */
+/***/ ((__unused_webpack_module, exports) => {
 
-/***/ "./src/status/constants/status.contants.ts"
-/*!*************************************************!*\
-  !*** ./src/status/constants/status.contants.ts ***!
-  \*************************************************/
-(__unused_webpack_module, exports) {
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.StatCalculation = exports.StatKind = void 0;
+var StatKind;
+(function (StatKind) {
+    StatKind["STATIC"] = "static";
+    StatKind["DYNAMIC"] = "dynamic";
+    StatKind["SERVICE"] = "service";
+})(StatKind || (exports.StatKind = StatKind = {}));
+var StatCalculation;
+(function (StatCalculation) {
+    StatCalculation["YEARS"] = "years";
+    StatCalculation["DAYS"] = "days";
+})(StatCalculation || (exports.StatCalculation = StatCalculation = {}));
+
+
+/***/ }),
+/* 34 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.StatusModule = void 0;
+const common_1 = __webpack_require__(2);
+const status_service_1 = __webpack_require__(35);
+const status_controller_1 = __webpack_require__(38);
+let StatusModule = class StatusModule {
+};
+exports.StatusModule = StatusModule;
+exports.StatusModule = StatusModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [status_controller_1.StatusController],
+        providers: [status_service_1.StatusService],
+    })
+], StatusModule);
+
+
+/***/ }),
+/* 35 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.StatusService = void 0;
+const common_1 = __webpack_require__(2);
+const status_data_1 = __webpack_require__(36);
+let StatusService = class StatusService {
+    rawStatus = status_data_1.STATUS;
+    getStatus() {
+        return { status: this.rawStatus };
+    }
+};
+exports.StatusService = StatusService;
+exports.StatusService = StatusService = __decorate([
+    (0, common_1.Injectable)()
+], StatusService);
+
+
+/***/ }),
+/* 36 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.STATUS = void 0;
+const status_contants_1 = __webpack_require__(37);
+exports.STATUS = status_contants_1.ONLINE;
+
+
+/***/ }),
+/* 37 */
+/***/ ((__unused_webpack_module, exports) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
@@ -1879,28 +1836,9 @@ exports.ONLINE = 'Online';
 exports.OFFLINE = 'Offline';
 
 
-/***/ },
-
-/***/ "./src/status/data/status.data.ts"
-/*!****************************************!*\
-  !*** ./src/status/data/status.data.ts ***!
-  \****************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.STATUS = void 0;
-const status_contants_1 = __webpack_require__(/*! ../constants/status.contants */ "./src/status/constants/status.contants.ts");
-exports.STATUS = status_contants_1.ONLINE;
-
-
-/***/ },
-
-/***/ "./src/status/status.controller.ts"
-/*!*****************************************!*\
-  !*** ./src/status/status.controller.ts ***!
-  \*****************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ }),
+/* 38 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1915,9 +1853,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.StatusController = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const status_service_1 = __webpack_require__(/*! ./status.service */ "./src/status/status.service.ts");
+const common_1 = __webpack_require__(2);
+const swagger_1 = __webpack_require__(1);
+const status_service_1 = __webpack_require__(35);
 let StatusController = class StatusController {
     statusService;
     constructor(statusService) {
@@ -1941,13 +1879,9 @@ exports.StatusController = StatusController = __decorate([
 ], StatusController);
 
 
-/***/ },
-
-/***/ "./src/status/status.module.ts"
-/*!*************************************!*\
-  !*** ./src/status/status.module.ts ***!
-  \*************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ }),
+/* 39 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1957,125 +1891,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.StatusModule = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const status_service_1 = __webpack_require__(/*! ./status.service */ "./src/status/status.service.ts");
-const status_controller_1 = __webpack_require__(/*! ./status.controller */ "./src/status/status.controller.ts");
-let StatusModule = class StatusModule {
-};
-exports.StatusModule = StatusModule;
-exports.StatusModule = StatusModule = __decorate([
-    (0, common_1.Module)({
-        controllers: [status_controller_1.StatusController],
-        providers: [status_service_1.StatusService],
-    })
-], StatusModule);
-
-
-/***/ },
-
-/***/ "./src/status/status.service.ts"
-/*!**************************************!*\
-  !*** ./src/status/status.service.ts ***!
-  \**************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.StatusService = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const status_data_1 = __webpack_require__(/*! ./data/status.data */ "./src/status/data/status.data.ts");
-let StatusService = class StatusService {
-    rawStatus = status_data_1.STATUS;
-    getStatus() {
-        return { status: this.rawStatus };
+exports.TransformInterceptor = void 0;
+const common_1 = __webpack_require__(2);
+const rxjs_1 = __webpack_require__(40);
+let TransformInterceptor = class TransformInterceptor {
+    intercept(context, next) {
+        return next.handle().pipe((0, rxjs_1.map)((data) => ({
+            data,
+            timestamp: new Date().toISOString(),
+        })));
     }
 };
-exports.StatusService = StatusService;
-exports.StatusService = StatusService = __decorate([
+exports.TransformInterceptor = TransformInterceptor;
+exports.TransformInterceptor = TransformInterceptor = __decorate([
     (0, common_1.Injectable)()
-], StatusService);
+], TransformInterceptor);
 
 
-/***/ },
-
-/***/ "@nestjs/common"
-/*!*********************************!*\
-  !*** external "@nestjs/common" ***!
-  \*********************************/
-(module) {
-
-module.exports = require("@nestjs/common");
-
-/***/ },
-
-/***/ "@nestjs/config"
-/*!*********************************!*\
-  !*** external "@nestjs/config" ***!
-  \*********************************/
-(module) {
-
-module.exports = require("@nestjs/config");
-
-/***/ },
-
-/***/ "@nestjs/core"
-/*!*******************************!*\
-  !*** external "@nestjs/core" ***!
-  \*******************************/
-(module) {
-
-module.exports = require("@nestjs/core");
-
-/***/ },
-
-/***/ "@nestjs/swagger"
-/*!**********************************!*\
-  !*** external "@nestjs/swagger" ***!
-  \**********************************/
-(module) {
-
-module.exports = require("@nestjs/swagger");
-
-/***/ },
-
-/***/ "class-validator"
-/*!**********************************!*\
-  !*** external "class-validator" ***!
-  \**********************************/
-(module) {
-
-module.exports = require("class-validator");
-
-/***/ },
-
-/***/ "reflect-metadata"
-/*!***********************************!*\
-  !*** external "reflect-metadata" ***!
-  \***********************************/
-(module) {
-
-module.exports = require("reflect-metadata");
-
-/***/ },
-
-/***/ "rxjs"
-/*!***********************!*\
-  !*** external "rxjs" ***!
-  \***********************/
-(module) {
+/***/ }),
+/* 40 */
+/***/ ((module) => {
 
 module.exports = require("rxjs");
 
-/***/ }
-
-/******/ 	});
+/***/ })
+/******/ 	]);
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
@@ -2095,12 +1935,6 @@ module.exports = require("rxjs");
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		if (!(moduleId in __webpack_modules__)) {
-/******/ 			delete __webpack_module_cache__[moduleId];
-/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
-/******/ 			e.code = 'MODULE_NOT_FOUND';
-/******/ 			throw e;
-/******/ 		}
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
@@ -2112,16 +1946,13 @@ var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
 (() => {
 var exports = __webpack_exports__;
-/*!*********************!*\
-  !*** ./src/main.ts ***!
-  \*********************/
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
-const app_module_1 = __webpack_require__(/*! ./app.module */ "./src/app.module.ts");
-const transform_interceptor_1 = __webpack_require__(/*! ./common/interceptors/transform.interceptor */ "./src/common/interceptors/transform.interceptor.ts");
+const swagger_1 = __webpack_require__(1);
+const common_1 = __webpack_require__(2);
+const core_1 = __webpack_require__(3);
+const app_module_1 = __webpack_require__(4);
+const transform_interceptor_1 = __webpack_require__(39);
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.setGlobalPrefix('api/v1');

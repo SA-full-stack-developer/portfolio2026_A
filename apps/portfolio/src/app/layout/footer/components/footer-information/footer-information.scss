@@ -21,12 +21,12 @@
 
     &--online {
       font-size: 0.85rem;
-      color: rgba(v.$success-hue, 0.75);
+      color: color-mix(in srgb, v.$success-hue 75%, transparent);
     }
 
     &--offline {
       font-size: 0.85rem;
-      color: rgba(v.$warn-hue, 0.75);
+      color: color-mix(in srgb, v.$warn-hue 75%, transparent);
     }
 
     &-text {

@@ -3,13 +3,13 @@ import { GsapService, PlatformService } from '@shared-libs/services';
 
 import { FormsModule } from '@angular/forms';
 import { AiService } from '@core/services/ai';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { CoverLetterRequest } from '@portfolio/shared/models';
 
 @Component({
   selector: 'app-cover-letter',
   standalone: true,
-  imports: [FormsModule, TranslateModule],
+  imports: [FormsModule, TranslatePipe],
   templateUrl: './cover-letter.html',
   styleUrl: './cover-letter.scss',
 })

@@ -19,7 +19,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { BREADCRUMB_CONTACT, PAGE_SEO } from '@core/config/seo';
 import { SeoService } from '@core/services/seo';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { GsapService, PlatformService } from '@shared-libs/services';
 
 interface ContactForm {
@@ -33,7 +33,7 @@ interface ContactForm {
   selector: 'app-contact',
   imports: [
     FormField,
-    TranslateModule,
+    TranslatePipe,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,

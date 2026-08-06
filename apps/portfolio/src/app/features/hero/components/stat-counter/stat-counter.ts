@@ -1,12 +1,12 @@
 import { Component, DestroyRef, effect, inject, input, signal } from '@angular/core';
 import { GsapService } from '@shared-libs/services';
 
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-stat-counter',
   standalone: true,
-  imports: [TranslateModule],
+  imports: [TranslatePipe],
   templateUrl: './stat-counter.html',
   styleUrl: './stat-counter.scss',
 })
