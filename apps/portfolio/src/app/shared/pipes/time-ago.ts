@@ -1,7 +1,7 @@
 import { OnDestroy, Pipe, PipeTransform, inject } from '@angular/core';
 
-import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Pipe({
   name: 'timeAgo',
@@ -26,7 +26,7 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy {
     const date = value instanceof Date ? value : new Date(value);
     if (isNaN(date.getTime())) return '';
 
-    const inputKey = `${date.getTime()}-${this.translate.currentLang}`;
+    const inputKey = `${date.getTime()}-${this.translate.currentLang()}`;
     if (inputKey === this.lastInput) return this.lastValue;
 
     this.lastInput = inputKey;

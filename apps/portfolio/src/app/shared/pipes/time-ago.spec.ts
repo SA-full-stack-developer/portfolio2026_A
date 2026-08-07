@@ -1,7 +1,7 @@
-import { TestBed } from '@angular/core/testing';
-import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
+import { TestBed } from '@angular/core/testing';
 import { TimeAgoPipe } from './time-ago';
+import { TranslateService } from '@ngx-translate/core';
 
 const mockTranslate = {
   instant: (key: string, params?: { count?: number; years?: number; months?: number }) => {
@@ -24,7 +24,7 @@ const mockTranslate = {
     };
     return map[key] ?? key;
   },
-  currentLang: 'en',
+  currentLang: () => 'en',
   onLangChange: new Subject(),
 };
 
